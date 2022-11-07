@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     // abcxyzde
     //ccccc
     // vãi lồn
+    // minh đần
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
