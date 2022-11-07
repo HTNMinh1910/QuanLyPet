@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         // minh ăn lol111111
         // oidoioi
         //tung
+        //thanh
     }
 
 }
