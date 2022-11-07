@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     // abcxyzde
     //ccccc
-
+    // vãi lồn
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
