@@ -32,6 +32,7 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        // hà trần ngọc minh
         binding = null;
     }
 }
