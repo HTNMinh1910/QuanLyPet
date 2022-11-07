@@ -34,6 +34,7 @@ public class DashboardFragment extends Fragment {
         super.onDestroyView();
         // hà trần ngọc minh
         // kieu thanh tung
+        // dinh trong hao
         binding = null;
     }
 }
