@@ -15,6 +15,7 @@ import com.example.quanlypet.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    // abcxyz
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
