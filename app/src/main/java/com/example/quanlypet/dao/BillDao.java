@@ -15,7 +15,6 @@ public interface BillDao {
     @Query("SELECT * FROM Bill")
     List<BillObj> getAllData();
 
-
     @Update
     void edit(BillObj object);
 

@@ -16,7 +16,6 @@ public interface AdminDao {
     @Query("SELECT * FROM Admin")
     List<AdminObj> getAllData();
 
-
     @Update
     void edit(AdminObj object);
 
