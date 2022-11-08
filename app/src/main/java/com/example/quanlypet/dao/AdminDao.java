@@ -5,19 +5,21 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.quanlypet.model.AdminObj;
+
 import java.util.List;
 @Dao
 public interface AdminDao {
     @Insert
-    void insert(Object object);
+    void insert(AdminObj object);
 
-    @Query("SELECT * FROM table")
-    List<Object> getAllData();
+    @Query("SELECT * FROM Admin")
+    List<AdminObj> getAllData();
 
 
     @Update
-    void edit(Object object);
+    void edit(AdminObj object);
 
-    @Query("DELETE FROM table WHERE id = :ID")
+    @Query("DELETE FROM Admin WHERE id = :ID")
     void deleteById(int ID);
 }
