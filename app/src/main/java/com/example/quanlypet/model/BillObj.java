@@ -9,19 +9,26 @@ public class BillObj {
     private int id;
     private int id_case_file;
     private String time;
+    private String date;
     private double price;
     private String note;
-    private int status_obj;
 
-    public BillObj() {
-    }
 
-    public BillObj(int id_case_file, String time, double price, String note, int status_obj) {
+    public BillObj(int id_case_file, String time, String date, double price, String note ) {
         this.id_case_file = id_case_file;
         this.time = time;
+        this.date = date;
         this.price = price;
         this.note = note;
-        this.status_obj = status_obj;
+
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getId() {
@@ -62,13 +69,5 @@ public class BillObj {
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-    public int getStatus_obj() {
-        return status_obj;
-    }
-
-    public void setStatus_obj(int status_obj) {
-        this.status_obj = status_obj;
     }
 }
