@@ -12,17 +12,19 @@ public class UsersObj {
     private String email;
     private String phone;
     private int gender;
+    private String password;
     private int status_obj;
 
     public UsersObj() {
     }
 
-    public UsersObj(String import_name, String full_name, String email, String phone, int gender, int status_obj) {
+    public UsersObj(String import_name, String full_name, String email, String phone, int gender, String password, int status_obj) {
         this.import_name = import_name;
         this.full_name = full_name;
         this.email = email;
         this.phone = phone;
         this.gender = gender;
+        this.password = password;
         this.status_obj = status_obj;
     }
 
@@ -72,6 +74,14 @@ public class UsersObj {
 
     public void setGender(int gender) {
         this.gender = gender;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getStatus_obj() {

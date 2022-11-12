@@ -1,5 +1,6 @@
 package com.example.quanlypet.dao;
 
+import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -7,7 +8,7 @@ import androidx.room.Update;
 import com.example.quanlypet.model.UsersObj;
 
 import java.util.List;
-
+@Dao
 public interface UsersDao {
     @Insert
     void insert(UsersObj object);
@@ -20,4 +21,7 @@ public interface UsersDao {
 
     @Query("DELETE FROM Users WHERE id = :ID")
     void deleteById(int ID);
+
+    @Query("SELECT * FROM Users WHERE import_name = :user AND password = :password")
+    int checkLogin(String user, String password);
 }

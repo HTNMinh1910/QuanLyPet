@@ -10,15 +10,17 @@ public class AdminObj {
     private String import_name;
     private String full_name;
     private String email;
+    private String password;
     private int status_obj;
 
     public AdminObj() {
     }
 
-    public AdminObj(String import_name, String full_name, String email, int status_obj) {
+    public AdminObj(String import_name, String full_name, String email, String password, int status_obj) {
         this.import_name = import_name;
         this.full_name = full_name;
         this.email = email;
+        this.password = password;
         this.status_obj = status_obj;
     }
 
@@ -52,6 +54,14 @@ public class AdminObj {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getStatus_obj() {
