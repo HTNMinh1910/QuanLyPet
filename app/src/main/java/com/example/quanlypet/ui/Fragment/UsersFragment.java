@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.adapter.UsersAdapter;
+import com.example.quanlypet.adapter.ad_use.UsersAdapter;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.UsersObj;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
