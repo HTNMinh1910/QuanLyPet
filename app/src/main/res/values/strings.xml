@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">QuanLyPet</string>
+    <string name="app_name">demo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="openNav">open navigation</string>
-    <string name="closeNav">close navigation</string>
 </resources>

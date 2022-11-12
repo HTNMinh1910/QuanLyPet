@@ -3,27 +3,27 @@ package com.example.quanlypet.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Doctor")
-public class DoctorObj {
+@Entity
+public class DocterObj {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
     private String phone;
     private String email;
+    private String address;
     private int gender;
     private String specialize;
-    private int status_obj;
 
-    public DoctorObj() {
+    public DocterObj() {
     }
 
-    public DoctorObj(String name, String phone, String email, int gender, String specialize, int status_obj) {
+    public DocterObj(String name, String phone, String email, String address, int gender, String specialize) {
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.address = address;
         this.gender = gender;
         this.specialize = specialize;
-        this.status_obj = status_obj;
     }
 
     public int getId() {
@@ -58,6 +58,14 @@ public class DoctorObj {
         this.email = email;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public int getGender() {
         return gender;
     }
@@ -72,13 +80,5 @@ public class DoctorObj {
 
     public void setSpecialize(String specialize) {
         this.specialize = specialize;
-    }
-
-    public int getStatus_obj() {
-        return status_obj;
-    }
-
-    public void setStatus_obj(int status_obj) {
-        this.status_obj = status_obj;
     }
 }

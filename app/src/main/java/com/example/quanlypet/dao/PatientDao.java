@@ -8,17 +8,16 @@ import androidx.room.Update;
 import com.example.quanlypet.model.PatientObj;
 
 import java.util.List;
+
+
 @Dao
 public interface PatientDao {
     @Insert
-    void insert(PatientObj object);
+    void insert(PatientObj patientObj);
 
-    @Query("SELECT * FROM Patient")
+    @Query("SELECT * FROM PatientObj")
     List<PatientObj> getAllData();
 
     @Update
-    void edit(PatientObj object);
-
-    @Query("DELETE FROM Patient WHERE id = :ID")
-    void deleteById(int ID);
+    void edit(PatientObj patientObj);
 }
