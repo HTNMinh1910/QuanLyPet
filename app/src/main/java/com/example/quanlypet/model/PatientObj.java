@@ -3,23 +3,21 @@ package com.example.quanlypet.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Patient")
+@Entity
 public class PatientObj {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int id_doctor;
     private int id_animal;
-    private int id_medicine;
     private String date_create;
     private String date_update;
 
     public PatientObj() {
     }
 
-    public PatientObj(int id_doctor, int id_animal, int id_medicine, String date_create, String date_update) {
+    public PatientObj(int id_doctor, int id_animal, String date_create, String date_update) {
         this.id_doctor = id_doctor;
         this.id_animal = id_animal;
-        this.id_medicine = id_medicine;
         this.date_create = date_create;
         this.date_update = date_update;
     }
@@ -46,14 +44,6 @@ public class PatientObj {
 
     public void setId_animal(int id_animal) {
         this.id_animal = id_animal;
-    }
-
-    public int getId_medicine() {
-        return id_medicine;
-    }
-
-    public void setId_medicine(int id_medicine) {
-        this.id_medicine = id_medicine;
     }
 
     public String getDate_create() {
