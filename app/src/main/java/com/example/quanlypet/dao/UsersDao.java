@@ -21,4 +21,7 @@ public interface UsersDao {
 
     @Query("DELETE FROM Users WHERE id = :ID")
     void deleteById(int ID);
+
+    @Query("SELECT * FROM Users WHERE import_name = :user AND password = :password")
+    int checkLogin(String user, String password);
 }

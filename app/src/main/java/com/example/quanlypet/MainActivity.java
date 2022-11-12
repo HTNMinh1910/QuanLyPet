@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.example.quanlypet.Fragment.AnimalFragment;
-import com.example.quanlypet.Fragment.BillFragment;
+import com.example.quanlypet.ui.Fragment.AnimalFragment;
+import com.example.quanlypet.ui.Fragment.BillFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -15,10 +15,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.example.quanlypet.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;

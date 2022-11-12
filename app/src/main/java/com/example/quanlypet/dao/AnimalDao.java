@@ -1,7 +1,6 @@
 package com.example.quanlypet.dao;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -12,13 +11,14 @@ import java.util.List;
 @Dao
 public interface AnimalDao {
     @Insert
-    void InsertAnimal(AnimalObj object);
-    @Query("SELECT * FROM animal")
-    List<AnimalObj> getAllDataAnimal();
+    void insert(AnimalObj object);
+
+    @Query("SELECT * FROM Animal")
+    List<AnimalObj> getAllData();
 
     @Update
-    void UpDateAnimal( AnimalObj obj);
+    void edit(AnimalObj object);
 
-    @Delete
-    void DelteteAnimal( AnimalObj obj);
+    @Query("DELETE FROM Animal WHERE id = :ID")
+    void deleteById(int ID);
 }

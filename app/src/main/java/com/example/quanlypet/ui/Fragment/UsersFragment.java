@@ -1,4 +1,4 @@
-package com.example.quanlypet.fragment;
+package com.example.quanlypet.ui.Fragment;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -28,7 +28,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class UsersListFragment extends Fragment implements UsersAdapter.Callback {
+public class UsersFragment extends Fragment implements UsersAdapter.Callback {
     private UsersAdapter usersAdapter;
     private ArrayList<UsersObj> list = new ArrayList<>();
 
@@ -54,12 +54,12 @@ public class UsersListFragment extends Fragment implements UsersAdapter.Callback
 
 
 
-    public UsersListFragment() {
+    public UsersFragment() {
         // Required empty public constructor
     }
 
-    public static UsersListFragment newInstance() {
-        UsersListFragment fragment = new UsersListFragment();
+    public static UsersFragment newInstance() {
+        UsersFragment fragment = new UsersFragment();
         return fragment;
     }
 
@@ -72,7 +72,7 @@ public class UsersListFragment extends Fragment implements UsersAdapter.Callback
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_users_list, container, false);
+        return inflater.inflate(R.layout.fragment_users, container, false);
     }
 
     @Override
@@ -117,7 +117,7 @@ public class UsersListFragment extends Fragment implements UsersAdapter.Callback
                 if (importName .isEmpty() || fullName.isEmpty() || email.isEmpty() || phone.isEmpty() || edStatusUsers.getText().toString().trim().isEmpty()){
                     Toast.makeText(getActivity(), "Không được để trống!", Toast.LENGTH_SHORT).show();
                 } else {
-                    UsersObj usersObj = new UsersObj(importName,fullName,email,phone,gender,status);
+                    UsersObj usersObj = new UsersObj(importName,fullName,email,phone,gender,"");
                     UsersDB.getInstance(getActivity()).Dao().insert(usersObj);
                     Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
                     list = (ArrayList<UsersObj>) UsersDB.getInstance(getActivity()).Dao().getAllData();
@@ -178,7 +178,6 @@ public class UsersListFragment extends Fragment implements UsersAdapter.Callback
         } else if(usersObj.getGender() == 1){
             rdoFemaleEdit.setChecked(true);
         }
-        edStatusUsers.setText(usersObj.getStatus_obj()+"");
 
         tvEditUsers.setOnClickListener(v->{
             String importName = edImportnameUsers.getText().toString().trim();
@@ -200,7 +199,6 @@ public class UsersListFragment extends Fragment implements UsersAdapter.Callback
                 usersObj.setEmail(email);
                 usersObj.setPhone(phone);
                 usersObj.setGender(gender);
-                usersObj.setStatus_obj(status);
                 UsersDB.getInstance(getActivity()).Dao().edit(usersObj);
                 Toast.makeText(getActivity(), "Sửa thành công!", Toast.LENGTH_SHORT).show();
                 list = (ArrayList<UsersObj>) UsersDB.getInstance(getActivity()).Dao().getAllData();

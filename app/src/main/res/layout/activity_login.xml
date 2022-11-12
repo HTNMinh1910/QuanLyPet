@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="true"
+        app:boxBackgroundColor="#ffff">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_Username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:fontFamily="@font/biorhyme_bold"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        app:hintEnabled="true"
+        app:boxBackgroundColor="#ffff">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:fontFamily="@font/biorhyme_bold"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <CheckBox
+        android:id="@+id/ckb_nhoMK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ghi nhớ mật khẩu"
+        android:fontFamily="@font/biorhyme_bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00E5FF"
+            android:text="Exit" />
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#C00404"
+            android:text="Logn In"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_reset_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Quên mật khẩu ?"
+        android:textColor="#FB0F0F"
+        android:textSize="12sp"
+        android:fontFamily="@font/biorhyme_bold"/>
+</LinearLayout>

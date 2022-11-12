@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AdminListFragment"
+    tools:context=".ui.Fragment.AdminFragment"
     android:background="#ffff">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_listAdmin"
+        android:id="@+id/rcv_listUsers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/bbtn_addAdmin"
+        android:id="@+id/bbtn_addUsers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add"

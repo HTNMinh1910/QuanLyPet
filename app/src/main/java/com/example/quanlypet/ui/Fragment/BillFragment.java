@@ -1,4 +1,4 @@
-package com.example.quanlypet.Fragment;
+package com.example.quanlypet.ui.Fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.quanlypet.Adapter.BillAdapter;
+import com.example.quanlypet.adapter.bill.BillAdapter;
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.BillDB;
 import com.example.quanlypet.model.BillObj;

@@ -12,18 +12,18 @@ public class UsersObj {
     private String email;
     private String phone;
     private int gender;
-    private int status_obj;
+    private String password;
 
     public UsersObj() {
     }
 
-    public UsersObj(String import_name, String full_name, String email, String phone, int gender, int status_obj) {
+    public UsersObj(String import_name, String full_name, String email, String phone, int gender, String password) {
         this.import_name = import_name;
         this.full_name = full_name;
         this.email = email;
         this.phone = phone;
         this.gender = gender;
-        this.status_obj = status_obj;
+        this.password = password;
     }
 
     public int getId() {
@@ -74,11 +74,11 @@ public class UsersObj {
         this.gender = gender;
     }
 
-    public int getStatus_obj() {
-        return status_obj;
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setStatus_obj(int status_obj) {
-        this.status_obj = status_obj;
-    }
 }

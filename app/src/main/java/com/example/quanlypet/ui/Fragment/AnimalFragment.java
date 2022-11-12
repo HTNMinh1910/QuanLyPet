@@ -1,4 +1,4 @@
-package com.example.quanlypet.Fragment;
+package com.example.quanlypet.ui.Fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -31,7 +31,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.quanlypet.Adapter.AnimalAdapter;
+import com.example.quanlypet.adapter.animal.AnimalAdapter;
 import com.example.quanlypet.R;
 import com.example.quanlypet.dao.AnimalDao;
 import com.example.quanlypet.database.AnimalDB;
@@ -96,7 +96,7 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
     }
 
     public void fill() {
-        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllDataAnimal();
+        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllData();
         adapterAnimal = new AnimalAdapter(getContext(), this);
         adapterAnimal.setData(arrayList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -108,7 +108,7 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
     @Override
     public void onResume() {
         super.onResume();
-        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllDataAnimal();
+        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllData();
     }
 
     public void DialogAddAnimal() {
@@ -150,8 +150,8 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
             if (namean.isEmpty() || species.isEmpty()) {
                 Toast.makeText(getActivity(), "ko dc de trong", Toast.LENGTH_SHORT).show();
             } else {
-                AnimalObj object = new AnimalObj(idUser, namean, anh, age, species);
-                AnimalDB.getInstance(getActivity()).animalDao().InsertAnimal(object);
+                AnimalObj object = new AnimalObj(idUser, namean, anh, age, species,1);
+                AnimalDB.getInstance(getActivity()).animalDao().insert(object);
                 Toast.makeText(getActivity(), "them thanh cong", Toast.LENGTH_SHORT).show();
                 fill();
             }
@@ -166,7 +166,6 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
 
         Bitmap bp = (Bitmap) data.getExtras().get("data");
@@ -245,8 +244,8 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
                 object.setAvatar(anhup);
                 object.setAge(age);
                 object.setSpecies(speciesAnimal);
-                AnimalDB.getInstance(getActivity()).animalDao().UpDateAnimal(object);
-                arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllDataAnimal();
+                AnimalDB.getInstance(getActivity()).animalDao().edit(object);
+                arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllData();
                 adapterAnimal.setData(arrayList);
                 Toast.makeText(getActivity(), "sua thanh cong", Toast.LENGTH_SHORT).show();
                 dialog.cancel();
@@ -277,11 +276,4 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
                     }
                 }
             });
-
-    @Override
-    public void Delete(AnimalObj object) {
-        AnimalDB.getInstance(getActivity()).animalDao().DelteteAnimal(object);
-        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllDataAnimal();
-        adapterAnimal.setData(arrayList);
-    }
 }

@@ -1,4 +1,4 @@
-package com.example.quanlypet.Adapter;
+package com.example.quanlypet.adapter.bill;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.quanlypet.Adapter;
+package com.example.quanlypet.adapter.animal;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -53,9 +53,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         holder.imgUpdate.setOnClickListener(v ->{
             callback.Update(object);
         });
-        holder.imgDelete.setOnClickListener(v ->{
-            callback.Delete(object);
-        });
 
     }
     @Override
@@ -87,6 +84,5 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
     }
     public interface Callback{
         void Update(AnimalObj object);
-        void Delete(AnimalObj object);
     }
 }

@@ -21,4 +21,7 @@ public interface AdminDao {
 
     @Query("DELETE FROM Admin WHERE id = :ID")
     void deleteById(int ID);
+
+    @Query("SELECT * FROM Admin WHERE import_name = :user AND password = :password")
+    int checkLogin(String user, String password);
 }

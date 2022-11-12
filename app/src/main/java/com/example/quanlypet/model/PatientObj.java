@@ -12,18 +12,16 @@ public class PatientObj {
     private int id_medicine;
     private String date_create;
     private String date_update;
-    private int status_obj;
 
     public PatientObj() {
     }
 
-    public PatientObj(int id_doctor, int id_animal, int id_medicine, String date_create, String date_update, int status_obj) {
+    public PatientObj(int id_doctor, int id_animal, int id_medicine, String date_create, String date_update) {
         this.id_doctor = id_doctor;
         this.id_animal = id_animal;
         this.id_medicine = id_medicine;
         this.date_create = date_create;
         this.date_update = date_update;
-        this.status_obj = status_obj;
     }
 
     public int getId() {
@@ -72,13 +70,5 @@ public class PatientObj {
 
     public void setDate_update(String date_update) {
         this.date_update = date_update;
-    }
-
-    public int getStatus_obj() {
-        return status_obj;
-    }
-
-    public void setStatus_obj(int status_obj) {
-        this.status_obj = status_obj;
     }
 }

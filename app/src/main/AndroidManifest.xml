@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyPet"
         tools:targetApi="31">
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.QuanLyPet.fileprovider"
@@ -24,16 +25,41 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/paths_animal"/>
         </provider>
+
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.wellcome.WellcomeActivity"
             android:exported="true"
-            android:label="@string/app_name">
+            android:theme="@style/Theme.QuanLyPet.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.wellcome.SignupActivity"
+            android:exported="false"
+            android:theme="@style/Theme.QuanLyPet.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.wellcome.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.QuanLyPet.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

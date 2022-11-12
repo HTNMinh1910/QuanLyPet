@@ -1,4 +1,4 @@
-package com.example.quanlypet.fragment;
+package com.example.quanlypet.ui.Fragment;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -27,7 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class AdminListFragment extends Fragment implements AdminAdapter.Callback {
+public class AdminFragment extends Fragment implements AdminAdapter.Callback {
 
     private ArrayList<AdminObj> list = new ArrayList<>();
     private AdminAdapter adminAdapter;
@@ -46,12 +46,12 @@ public class AdminListFragment extends Fragment implements AdminAdapter.Callback
     private TextView tvCancelAddAdmin;
 
 
-    public AdminListFragment() {
+    public AdminFragment() {
         // Required empty public constructor
     }
 
-    public static AdminListFragment newInstance() {
-        AdminListFragment fragment = new AdminListFragment();
+    public static AdminFragment newInstance() {
+        AdminFragment fragment = new AdminFragment();
         return fragment;
     }
 
@@ -64,7 +64,7 @@ public class AdminListFragment extends Fragment implements AdminAdapter.Callback
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_list, container, false);
+        return inflater.inflate(R.layout.fragment_admin, container, false);
     }
 
     @Override
@@ -99,7 +99,7 @@ public class AdminListFragment extends Fragment implements AdminAdapter.Callback
                 if (importName.isEmpty() || fullName.isEmpty() || email.isEmpty() || edStatusAdmin.getText().toString().trim().isEmpty()) {
                     Toast.makeText(getActivity(), "Không được để trống!", Toast.LENGTH_SHORT).show();
                 } else {
-                    AdminObj adminObj = new AdminObj(importName, fullName, email, status);
+                    AdminObj adminObj = new AdminObj(importName, fullName, email, "");
                     AdminDB.getInstance(getActivity()).Dao().insert(adminObj);
                     Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
                     list = (ArrayList<AdminObj>) AdminDB.getInstance(getActivity()).Dao().getAllData();
@@ -151,7 +151,6 @@ public class AdminListFragment extends Fragment implements AdminAdapter.Callback
         edImportnameAdmin.setText(adminObj.getImport_name());
         edFullnameAdmin.setText(adminObj.getFull_name());
         edEmailAdmin.setText(adminObj.getEmail());
-        edStatusAdmin.setText(adminObj.getStatus_obj() + "");
 
         tvEditAdmin.setOnClickListener(v -> {
             String importName = edImportnameAdmin.getText().toString().trim();
@@ -164,7 +163,6 @@ public class AdminListFragment extends Fragment implements AdminAdapter.Callback
                 adminObj.setImport_name(importName);
                 adminObj.setFull_name(fullName);
                 adminObj.setEmail(email);
-                adminObj.setStatus_obj(status);
                 AdminDB.getInstance(getActivity()).Dao().edit(adminObj);
                 Toast.makeText(getActivity(), "Sửa thành công!", Toast.LENGTH_SHORT).show();
                 list = (ArrayList<AdminObj>) AdminDB.getInstance(getActivity()).Dao().getAllData();
