@@ -13,8 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.navigation.NavigationView;
 import androidx.viewpager2.widget.ViewPager2;
-
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager2 viewPager2;
