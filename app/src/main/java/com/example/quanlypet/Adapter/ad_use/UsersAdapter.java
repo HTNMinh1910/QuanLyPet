@@ -1,4 +1,4 @@
-package com.example.quanlypet.adapter;
+package com.example.quanlypet.adapter.ad_use;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -52,7 +52,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         } else if (usersObj.getGender() == 1){
             holder.tvGenderUsers.setText("Female");
         }
-        holder.tvStatusUsers.setText(usersObj.getStatus_obj()+"");
         holder.imgEditUsers.setOnClickListener(v->{
             callback.editUsers(usersObj);
         });

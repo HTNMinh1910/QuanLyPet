@@ -1,4 +1,4 @@
-package com.example.quanlypet.adapter;
+package com.example.quanlypet.adapter.ad_use;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -46,7 +46,6 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
         holder.tvImportnameAdmin.setText(adminObj.getImport_name());
         holder.tvFullnameAdmin.setText(adminObj.getFull_name());
         holder.tvEmailAdmin.setText(adminObj.getEmail());
-        holder.tvStatusAdmin.setText(adminObj.getStatus_obj()+"");
         holder.imgEditAdmin.setOnClickListener(v->{
             callback.editAdmin(adminObj);
         });

@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.adapter.AdminAdapter;
+import com.example.quanlypet.adapter.ad_use.AdminAdapter;
 import com.example.quanlypet.database.AdminDB;
 import com.example.quanlypet.model.AdminObj;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

@@ -2,61 +2,88 @@ package com.example.quanlypet;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
-import com.example.quanlypet.ui.Fragment.AnimalFragment;
-import com.example.quanlypet.ui.Fragment.BillFragment;
+
+import com.example.quanlypet.Adapter.viewpager2.ViewPager2Adapter;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
+import androidx.viewpager2.widget.ViewPager2;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private DrawerLayout idDrawlayout;
-    private Toolbar idToolbar;
-    private FrameLayout idLayoutcontent;
-    private NavigationView idNaviView;
-
+public class MainActivity extends AppCompatActivity {
+    private ViewPager2 viewPager2;
+    private BottomNavigationView bottomNavigationView;
+    private Toolbar Tbr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        idDrawlayout = (DrawerLayout) findViewById(R.id.id_drawlayout);
-        idToolbar = (Toolbar) findViewById(R.id.id_toolbar);
-        idLayoutcontent = (FrameLayout) findViewById(R.id.id_layoutcontent);
-        idNaviView = (NavigationView) findViewById(R.id.id_naviView);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, idDrawlayout, idToolbar, R.string.openNav, R.string.closeNav);
-        toggle.syncState();
-        idNaviView = findViewById(R.id.id_naviView);
-        idNaviView.setNavigationItemSelectedListener(this);
-        replaceFragmet(AnimalFragment.newInstance());
-        idToolbar.setTitle("Animal");
+        viewPager2 = findViewById(R.id.view_pager2);
+        bottomNavigationView = findViewById(R.id.bottom_nav);
+        Tbr = findViewById(R.id.id_tollBar);
+        setSupportActionBar(Tbr);
+
+        ViewPager2Adapter adapter = new ViewPager2Adapter(this);
+        viewPager2.setAdapter(adapter);
+
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                switch (position){
+                    case 0:
+                        bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
+                        Tbr.setTitle("Home");
+                        break;
+                    case 1:
+                        bottomNavigationView.getMenu().findItem(R.id.docter).setChecked(true);
+                        Tbr.setTitle("Bác sĩ");
+                        break;
+                    case 2:
+                        bottomNavigationView.getMenu().findItem(R.id.patient).setChecked(true);
+                        Tbr.setTitle("Bệnh Án");
+                        break;
+                    case 3:
+                        bottomNavigationView.getMenu().findItem(R.id.book).setChecked(true);
+                        Tbr.setTitle("Đặt Lịch");
+                        break;
+                    case 4:
+                        bottomNavigationView.getMenu().findItem(R.id.account).setChecked(true);
+                        Tbr.setTitle("Tài Khoản");
+                        break;
+                }
+            }
+        });
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        viewPager2.setCurrentItem(0);
+                        break;
+                    case R.id.docter:
+                        viewPager2.setCurrentItem(1);
+                        break;
+                    case R.id.patient:
+                        viewPager2.setCurrentItem(2);
+                        break;
+                    case R.id.book:
+                        viewPager2.setCurrentItem(3);
+                        break;
+                    case R.id.account:
+                        viewPager2.setCurrentItem(4);
+                        break;
+                }
+                return true;
+            }
+        });
     }
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.animal){
-            idToolbar.setTitle("Animal");
-            replaceFragmet(AnimalFragment.newInstance());
-        }
-        if (id == R.id.bild){
-            idToolbar.setTitle("Bill");
-            replaceFragmet(BillFragment.newInstance());
-        }
-        idDrawlayout.closeDrawer(idNaviView);
-        return true;
-    }
-    public void replaceFragmet(Fragment fragment){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.id_layoutcontent, fragment);
-        transaction.commit();
-    }
+
 }
