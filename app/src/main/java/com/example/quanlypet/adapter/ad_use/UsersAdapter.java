@@ -68,7 +68,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         private TextView tvEmailUsers;
         private TextView tvPhoneUsers;
         private TextView tvGenderUsers;
-        private TextView tvStatusUsers;
         private ImageView imgEditUsers;
 
         public UsersViewHolder(@NonNull View itemView) {
@@ -79,7 +78,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
             tvEmailUsers = (TextView) itemView.findViewById(R.id.tv_emailUsers);
             tvPhoneUsers = (TextView) itemView.findViewById(R.id.tv_phoneUsers);
             tvGenderUsers = (TextView) itemView.findViewById(R.id.tv_genderUsers);
-            tvStatusUsers = (TextView) itemView.findViewById(R.id.tv_statusUsers);
             imgEditUsers = (ImageView) itemView.findViewById(R.id.img_editUsers);
 
         }

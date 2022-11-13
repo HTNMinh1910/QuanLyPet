@@ -52,13 +52,6 @@
                 android:text="Gender"
                 android:textSize="18dp"
                 android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/tv_statusUsers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Status"
-                android:textSize="18dp"
-                android:textColor="@color/black"/>
         </LinearLayout>
         <ImageView
             android:id="@+id/img_editUsers"

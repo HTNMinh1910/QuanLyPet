@@ -1,4 +1,4 @@
-package com.example.quanlypet.ui.Fragment;
+package com.example.quanlypet.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.quanlypet.Adapter.docter.DocterAdapter;
+import com.example.quanlypet.adapter.docter.DocterAdapter;
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.DocterDB;
 import com.example.quanlypet.model.DocterObj;

@@ -1,6 +1,7 @@
-package com.example.quanlypet.ui.Fragment;
+package com.example.quanlypet.ui.fragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.ad_use.AdminAdapter;
 import com.example.quanlypet.database.AdminDB;
 import com.example.quanlypet.model.AdminObj;
+import com.example.quanlypet.ui.wellcome.SignupActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -42,12 +44,7 @@ public class AdminFragment extends Fragment implements AdminAdapter.Callback {
     private TextView tvEditAdmin;
     private TextView tvCancelEditAdmin;
 
-    private TextView tvAddAdmin;
-    private TextView tvCancelAddAdmin;
-
-
     public AdminFragment() {
-        // Required empty public constructor
     }
 
     public static AdminFragment newInstance() {
@@ -63,7 +60,6 @@ public class AdminFragment extends Fragment implements AdminAdapter.Callback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_admin, container, false);
     }
 
@@ -73,61 +69,24 @@ public class AdminFragment extends Fragment implements AdminAdapter.Callback {
 
         rcvListAdmin = (RecyclerView) view.findViewById(R.id.rcv_listAdmin);
         bbtnAddAdmin = (FloatingActionButton) view.findViewById(R.id.bbtn_addAdmin);
-
-        bbtnAddAdmin.setOnClickListener(v -> {
-            final Dialog dialog = new Dialog(getActivity());
-            dialog.setCancelable(false);
-            dialog.setContentView(R.layout.dialog_addadmin);
-            Window window = dialog.getWindow();
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            if (dialog != null && dialog.getWindow() != null) {
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            }
-
-            edImportnameAdmin = (EditText) dialog.findViewById(R.id.ed_importnameAdmin);
-            edFullnameAdmin = (EditText) dialog.findViewById(R.id.ed_fullnameAdmin);
-            edEmailAdmin = (EditText) dialog.findViewById(R.id.ed_emailAdmin);
-            edStatusAdmin = (EditText) dialog.findViewById(R.id.ed_statusAdmin);
-            tvAddAdmin = (TextView) dialog.findViewById(R.id.tv_addAdmin);
-            tvCancelAddAdmin = (TextView) dialog.findViewById(R.id.tv_cancelAddAdmin);
-
-            tvAddAdmin.setOnClickListener(v1 -> {
-                String importName = edImportnameAdmin.getText().toString().trim();
-                String fullName = edFullnameAdmin.getText().toString().trim();
-                String email = edEmailAdmin.getText().toString().trim();
-                int status = Integer.parseInt(edStatusAdmin.getText().toString().trim());
-                if (importName.isEmpty() || fullName.isEmpty() || email.isEmpty() || edStatusAdmin.getText().toString().trim().isEmpty()) {
-                    Toast.makeText(getActivity(), "Không được để trống!", Toast.LENGTH_SHORT).show();
-                } else {
-                    AdminObj adminObj = new AdminObj(importName, fullName, email, "");
-                    AdminDB.getInstance(getActivity()).Dao().insert(adminObj);
-                    Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
-                    list = (ArrayList<AdminObj>) AdminDB.getInstance(getActivity()).Dao().getAllData();
-                    adminAdapter.setData(list);
-                    dialog.cancel();
-                }
-            });
-            tvCancelAddAdmin.setOnClickListener(v1 -> {
-                dialog.cancel();
-            });
-            dialog.show();
-
-        });
-
         adminAdapter = new AdminAdapter(getActivity(), this);
-        list = (ArrayList<AdminObj>) AdminDB.getInstance(getActivity()).Dao().getAllData();
-        adminAdapter.setData(list);
-
+        LoadData();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rcvListAdmin.setAdapter(adminAdapter);
         rcvListAdmin.setLayoutManager(linearLayoutManager);
-    }
 
+        bbtnAddAdmin.setOnClickListener(v -> {
+                startActivity(new Intent(getContext(), SignupActivity.class));
+        });
+    }
+    public void LoadData(){
+        list = (ArrayList<AdminObj>) AdminDB.getInstance(getActivity()).Dao().getAllData();
+        adminAdapter.setData(list);
+    }
     @Override
     public void onResume() {
         super.onResume();
-        list = (ArrayList<AdminObj>) AdminDB.getInstance(getActivity()).Dao().getAllData();
-        adminAdapter.setData(list);
+        LoadData();
     }
 
     @Override
@@ -165,8 +124,7 @@ public class AdminFragment extends Fragment implements AdminAdapter.Callback {
                 adminObj.setEmail(email);
                 AdminDB.getInstance(getActivity()).Dao().edit(adminObj);
                 Toast.makeText(getActivity(), "Sửa thành công!", Toast.LENGTH_SHORT).show();
-                list = (ArrayList<AdminObj>) AdminDB.getInstance(getActivity()).Dao().getAllData();
-                adminAdapter.setData(list);
+                LoadData();
                 dialog.cancel();
             }
         });
