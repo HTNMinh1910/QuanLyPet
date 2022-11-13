@@ -58,8 +58,33 @@
         android:layout_height="wrap_content"
         app:hintEnabled="true"
         app:boxBackgroundColor="#ffff">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_Phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:fontFamily="@font/biorhyme_bold"
+            android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <RadioButton
+            android:id="@+id/rdo_Male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:layout_marginLeft="15dp"/>
+
+        <RadioButton
+            android:id="@+id/rdo_Female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:layout_marginLeft="15dp"/>
+    </RadioGroup>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

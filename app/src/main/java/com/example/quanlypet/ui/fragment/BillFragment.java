@@ -1,4 +1,4 @@
-package com.example.quanlypet.ui.Fragment;
+package com.example.quanlypet.ui.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;

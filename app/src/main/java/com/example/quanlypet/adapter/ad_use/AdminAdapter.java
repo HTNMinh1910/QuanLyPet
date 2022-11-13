@@ -60,7 +60,6 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
         private TextView tvImportnameAdmin;
         private TextView tvFullnameAdmin;
         private TextView tvEmailAdmin;
-        private TextView tvStatusAdmin;
         private ImageView imgEditAdmin;
 
         public AdminViewHolder(@NonNull View itemView) {
@@ -69,7 +68,6 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
             tvImportnameAdmin = (TextView) itemView.findViewById(R.id.tv_importnameAdmin);
             tvFullnameAdmin = (TextView) itemView.findViewById(R.id.tv_fullnameAdmin);
             tvEmailAdmin = (TextView) itemView.findViewById(R.id.tv_emailAdmin);
-            tvStatusAdmin = (TextView) itemView.findViewById(R.id.tv_statusAdmin);
             imgEditAdmin = (ImageView) itemView.findViewById(R.id.img_editAdmin);
 
         }

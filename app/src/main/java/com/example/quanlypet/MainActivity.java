@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 
-import com.example.quanlypet.Adapter.viewpager2.ViewPager2Adapter;
+import com.example.quanlypet.adapter.viewpager2.ViewPager2Adapter;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.navigation.NavigationView;
 import androidx.viewpager2.widget.ViewPager2;
 
 public class MainActivity extends AppCompatActivity {

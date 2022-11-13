@@ -29,6 +29,5 @@ public class WellcomeActivity extends AppCompatActivity {
             intent.putExtra("requet", "users");
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         });
-
     }
 }

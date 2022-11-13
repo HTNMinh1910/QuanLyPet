@@ -1,4 +1,4 @@
-package com.example.quanlypet.Adapter.patient;
+package com.example.quanlypet.adapter.patient;
 
 import android.app.Dialog;
 import android.content.Context;
