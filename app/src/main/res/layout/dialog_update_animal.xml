@@ -27,7 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bgrd_conneradios"/>
-    <LinearLayout
+
+<LinearLayout
         android:id="@+id/up_liner_share_animal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
