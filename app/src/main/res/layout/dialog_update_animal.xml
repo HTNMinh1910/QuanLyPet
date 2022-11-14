@@ -19,15 +19,16 @@
         android:id="@+id/up_idUsers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios"/>
+        android:background="@drawable/bgrd_conneradios"/>
     <EditText
         android:layout_marginTop="10dp"
         android:hint="name animal"
         android:id="@+id/up_nameAnimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios"/>
-    <LinearLayout
+        android:background="@drawable/bgrd_conneradios"/>
+
+<LinearLayout
         android:id="@+id/up_liner_share_animal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,14 +57,14 @@
         android:id="@+id/up_ageAnimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios" />
+        android:background="@drawable/bgrd_conneradios" />
     <EditText
         android:layout_marginTop="10dp"
         android:hint="species animal"
         android:id="@+id/up_speciesAnimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios"/>
+        android:background="@drawable/bgrd_conneradios"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

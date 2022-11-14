@@ -19,20 +19,21 @@
         android:id="@+id/ed_idUsers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios"/>
+        android:background="@drawable/bgrd_conneradios"/>
+        
     <EditText
         android:layout_marginTop="10dp"
         android:hint="name animal"
         android:id="@+id/ed_nameAnimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios"/>
+        android:background="@drawable/bgrd_conneradios"/>
+        
     <LinearLayout
         android:id="@+id/liner_share_animal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
         <ImageView
             android:id="@+id/img_anh"
             android:layout_width="100dp"
@@ -55,14 +56,16 @@
         android:id="@+id/ed_ageAnimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios" />
+        android:background="@drawable/bgrd_conneradios" />
+        
     <EditText
         android:layout_marginTop="10dp"
         android:hint="species animal"
         android:id="@+id/ed_speciesAnimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios"/>
+        android:background="@drawable/bgrd_conneradios"/>
+        
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

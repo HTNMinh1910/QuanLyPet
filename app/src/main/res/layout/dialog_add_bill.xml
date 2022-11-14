@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/background_coneradios"
+        android:background="@drawable/bgrd_conneradios"
         android:hint="case id" />
 
     <EditText
@@ -28,14 +28,15 @@
         android:id="@+id/ed_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios"/>
+        android:background="@drawable/bgrd_conneradios"/>
     <EditText
         android:layout_marginTop="10dp"
         android:hint="note"
         android:id="@+id/ed_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_coneradios" />
+        android:background="@drawable/bgrd_conneradios" />
+
 <!--    <CheckBox-->
 <!--        android:id="@+id/chk_thanhToan"-->
 <!--        android:layout_width="wrap_content"-->
