@@ -48,17 +48,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00E5FF"
-            android:text="Exit" />
-        <Button
             android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#C00404"
-            android:text="Logn In"/>
+            android:text="Đăng Nhập"/>
+        <Button
+            android:layout_marginLeft="5dp"
+            android:id="@+id/btn_cancel"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00E5FF"
+            android:text="Đăng Ký" />
+
 
     </LinearLayout>
 
