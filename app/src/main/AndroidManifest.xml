@@ -60,8 +60,8 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.Main.AddDocterActivity"
-            android:parentActivityName=".ui.Main.AddDocterActivity"
+            android:name=".ui.Main.AddDoctorActivity"
+            android:parentActivityName=".ui.Main.AddDoctorActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

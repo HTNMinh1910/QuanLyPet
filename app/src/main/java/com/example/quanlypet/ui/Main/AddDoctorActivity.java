@@ -10,12 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.database.DocterDB;
-import com.example.quanlypet.model.DocterObj;
+import com.example.quanlypet.database.DoctorDB;
+import com.example.quanlypet.model.DoctorObj;
 import com.google.android.material.textfield.TextInputEditText;
 
 
-public class AddDocterActivity extends AppCompatActivity {
+public class AddDoctorActivity extends AppCompatActivity {
     private TextInputEditText edNameDocter;
     private TextInputEditText edPhoneDocter;
     private RadioButton rdoBoy;
@@ -57,8 +57,8 @@ public class AddDocterActivity extends AppCompatActivity {
             if(name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty() || specialize.isEmpty()){
                 Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
             }else{
-                DocterObj docterObj = new DocterObj(name,phone,email,address,checkGender,specialize);
-                DocterDB.getInstance(getApplicationContext()).docterDao().insert(docterObj);
+                DoctorObj docterObj = new DoctorObj(name,phone,email,address,checkGender,specialize);
+                DoctorDB.getInstance(getApplicationContext()).docterDao().insert(docterObj);
                 Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
             }
         });

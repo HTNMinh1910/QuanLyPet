@@ -15,7 +15,7 @@ public interface PatientDao {
     @Insert
     void insert(PatientObj patientObj);
 
-    @Query("SELECT * FROM PatientObj")
+    @Query("SELECT * FROM Patient")
     List<PatientObj> getAllData();
 
     @Update

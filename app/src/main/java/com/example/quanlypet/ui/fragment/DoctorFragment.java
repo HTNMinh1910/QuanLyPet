@@ -12,11 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.quanlypet.adapter.docter.DocterAdapter;
+import com.example.quanlypet.adapter.doctor.DoctorAdapter;
 import com.example.quanlypet.R;
-import com.example.quanlypet.database.DocterDB;
-import com.example.quanlypet.model.DocterObj;
-import com.example.quanlypet.ui.Main.AddDocterActivity;
+import com.example.quanlypet.database.DoctorDB;
+import com.example.quanlypet.model.DoctorObj;
+import com.example.quanlypet.ui.Main.AddDoctorActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -25,22 +25,22 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DocterFragment#newInstance} factory method to
+ * Use the {@link DoctorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DocterFragment extends Fragment {
+public class DoctorFragment extends Fragment {
     private FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
-    private DocterAdapter adapter;
-    private ArrayList<DocterObj> list = new ArrayList<>();
+    private DoctorAdapter adapter;
+    private ArrayList<DoctorObj> list = new ArrayList<>();
 
-    public DocterFragment() {
+    public DoctorFragment() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static DocterFragment newInstance() {
-        DocterFragment fragment = new DocterFragment();
+    public static DoctorFragment newInstance() {
+        DoctorFragment fragment = new DoctorFragment();
         return fragment;
     }
 
@@ -61,9 +61,9 @@ public class DocterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.rcv_docter);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingbutton);
-        adapter = new DocterAdapter(getActivity());
+        adapter = new DoctorAdapter(getActivity());
         floatingActionButton.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), AddDocterActivity.class));
+            startActivity(new Intent(getContext(), AddDoctorActivity.class));
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -73,7 +73,7 @@ public class DocterFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        list = (ArrayList<DocterObj>) DocterDB.getInstance(getContext()).docterDao().getAllData();
+        list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getContext()).docterDao().getAllData();
         adapter.setDataDocter(list);
     }
 }

@@ -19,9 +19,9 @@ public interface UsersDao {
     @Update
     void edit(UsersObj object);
 
-    @Query("DELETE FROM Users WHERE id = :ID")
-    void deleteById(int ID);
-
     @Query("SELECT * FROM Users WHERE import_name = :user AND password = :password")
     int checkLogin(String user, String password);
+
+    @Query("UPDATE Users SET password = :pass WHERE phone like :phone")
+    void changePass(String phone, String pass);
 }

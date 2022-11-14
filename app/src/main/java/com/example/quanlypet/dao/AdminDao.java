@@ -19,9 +19,9 @@ public interface AdminDao {
     @Update
     void edit(AdminObj object);
 
-    @Query("DELETE FROM Admin WHERE id = :ID")
-    void deleteById(int ID);
-
     @Query("SELECT * FROM Admin WHERE import_name = :user AND password = :password")
     int checkLogin(String user, String password);
+
+    @Query("UPDATE Admin SET password = :pass WHERE import_name like :ID")
+    void changePass(String ID, String pass);
 }
