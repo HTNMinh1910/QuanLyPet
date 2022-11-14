@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
-
+        tools:ignore="ScopedStorage"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,13 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyPet"
         tools:targetApi="31">
-        <activity
-            android:name=".ui.Main.AddBooking"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -32,18 +23,13 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/paths_animal" />
+                android:resource="@xml/paths_animal"/>
         </provider>
 
         <activity
             android:name=".ui.wellcome.WellcomeActivity"
             android:exported="true"
             android:theme="@style/Theme.QuanLyPet.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -67,8 +53,8 @@
         </activity>
         <activity
             android:name=".ui.Main.InformationActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.Main.InformationActivity">
+            android:parentActivityName=".ui.Main.InformationActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -77,15 +63,14 @@
             android:name=".ui.Main.AddDoctorActivity"
             android:parentActivityName=".ui.Main.AddDoctorActivity"
             android:exported="false">
-            
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.Main.AddPatientActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.Main.AddPatientActivity">
+            android:parentActivityName=".ui.Main.AddPatientActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -97,6 +82,11 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
