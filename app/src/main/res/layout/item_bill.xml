@@ -111,7 +111,7 @@
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:src="@drawable/ic_baseline_edit_24" />
+                        android:src="@drawable/ic_edit" />
                 </LinearLayout>
 
             </LinearLayout>
