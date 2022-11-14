@@ -34,14 +34,15 @@
             android:fontFamily="@font/biorhyme_bold"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <CheckBox
         android:id="@+id/ckb_nhoMK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ghi nhớ mật khẩu"
-        android:fontFamily="@font/biorhyme_bold"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/biorhyme_bold"
+        android:text="Ghi nhớ mật khẩu" />
 
     <LinearLayout
         android:layout_width="wrap_content"
