@@ -1,4 +1,4 @@
-package com.example.quanlypet.ui.Main;
+package com.example.quanlypet.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

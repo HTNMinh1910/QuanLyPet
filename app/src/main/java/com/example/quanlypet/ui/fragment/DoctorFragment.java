@@ -16,7 +16,7 @@ import com.example.quanlypet.adapter.doctor.DoctorAdapter;
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.DoctorDB;
 import com.example.quanlypet.model.DoctorObj;
-import com.example.quanlypet.ui.Main.AddDoctorActivity;
+import com.example.quanlypet.ui.activity.AddDoctorActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

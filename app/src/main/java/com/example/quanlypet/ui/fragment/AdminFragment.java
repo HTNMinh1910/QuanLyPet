@@ -24,7 +24,7 @@ import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.ad_use.AdminAdapter;
 import com.example.quanlypet.database.AdminDB;
 import com.example.quanlypet.model.AdminObj;
-import com.example.quanlypet.ui.wellcome.SignupActivity;
+import com.example.quanlypet.ui.welcome.SignupActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

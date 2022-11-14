@@ -1,4 +1,4 @@
-package com.example.quanlypet.ui.wellcome;
+package com.example.quanlypet.ui.welcome;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -8,9 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.database.AdminDB;
 import com.example.quanlypet.database.UsersDB;
-import com.example.quanlypet.model.AdminObj;
 import com.example.quanlypet.model.UsersObj;
 import com.google.android.material.textfield.TextInputEditText;
 

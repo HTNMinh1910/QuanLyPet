@@ -1,4 +1,4 @@
-package com.example.quanlypet.ui.wellcome;
+package com.example.quanlypet.ui.welcome;
 
 import androidx.appcompat.app.AppCompatActivity;
 

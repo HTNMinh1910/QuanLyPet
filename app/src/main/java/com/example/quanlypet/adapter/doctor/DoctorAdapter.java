@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.DoctorDB;
 import com.example.quanlypet.model.DoctorObj;
-import com.example.quanlypet.ui.Main.InformationActivity;
+import com.example.quanlypet.ui.activity.InformationActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;

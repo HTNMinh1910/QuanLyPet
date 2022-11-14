@@ -27,7 +27,7 @@
         </provider>
 
         <activity
-            android:name=".ui.wellcome.WellcomeActivity"
+            android:name=".ui.welcome.WellcomeActivity"
             android:exported="true"
             android:theme="@style/Theme.QuanLyPet.NoActionBar">
 
@@ -36,7 +36,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.wellcome.SignupActivity"
+            android:name=".ui.welcome.SignupActivity"
             android:exported="false"
             android:theme="@style/Theme.QuanLyPet.NoActionBar">
             <meta-data
@@ -44,7 +44,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.wellcome.LoginActivity"
+            android:name=".ui.welcome.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.QuanLyPet.NoActionBar">
             <meta-data
@@ -52,24 +52,24 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.Main.InformationActivity"
-            android:parentActivityName=".ui.Main.InformationActivity"
+            android:name=".ui.activity.InformationActivity"
+            android:parentActivityName=".ui.activity.InformationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.Main.AddDoctorActivity"
-            android:parentActivityName=".ui.Main.AddDoctorActivity"
+            android:name=".ui.activity.AddDoctorActivity"
+            android:parentActivityName=".ui.activity.AddDoctorActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.Main.AddPatientActivity"
-            android:parentActivityName=".ui.Main.AddPatientActivity"
+            android:name=".ui.activity.AddPatientActivity"
+            android:parentActivityName=".ui.activity.AddPatientActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -79,14 +79,14 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
     </application>
 
