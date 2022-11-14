@@ -74,10 +74,6 @@
                 android:value="" />
         </activity>
         <activity
-
-            android:name=".ui.Main.AddDocterActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.Main.AddDocterActivity">
             android:name=".ui.Main.AddDoctorActivity"
             android:parentActivityName=".ui.Main.AddDoctorActivity"
             android:exported="false">
