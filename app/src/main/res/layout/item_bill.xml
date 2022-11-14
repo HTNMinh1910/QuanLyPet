@@ -8,7 +8,7 @@
     android:layout_marginLeft="10dp"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="10dp"
-    android:background="@drawable/background_edt"
+    android:background="@drawable/background_coneradios"
     android:id="@+id/id_item_bill">
 <RelativeLayout
     android:layout_width="match_parent"
@@ -111,7 +111,7 @@
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:src="@drawable/ic_baseline_edit_24" />
+                        android:src="@drawable/ic_edit" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -135,26 +135,6 @@
                     android:textColor="@color/black"
                     android:textSize="18sp" />
             </LinearLayout>
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="140dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:text="trang thai: " />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/tv_status"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text=""-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="18sp" />-->
-<!--            </LinearLayout>-->
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>
