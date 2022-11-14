@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.quanlypet.ui.fragment.BookFragment;
-import com.example.quanlypet.ui.fragment.DocterFragment;
+import com.example.quanlypet.ui.fragment.DoctorFragment;
 import com.example.quanlypet.ui.fragment.HomeFragment;
 import com.example.quanlypet.ui.fragment.PatientFragment;
 import com.example.quanlypet.ui.fragment.UsersFragment;
@@ -24,7 +24,7 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
             case 0:
                 return new HomeFragment();
             case 1:
-                return new DocterFragment();
+                return new DoctorFragment();
             case 2:
                 return new PatientFragment();
             case 3:

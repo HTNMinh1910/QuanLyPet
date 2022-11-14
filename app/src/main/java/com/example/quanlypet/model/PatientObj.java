@@ -3,7 +3,7 @@ package com.example.quanlypet.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "Patient")
 public class PatientObj {
     @PrimaryKey(autoGenerate = true)
     private int id;

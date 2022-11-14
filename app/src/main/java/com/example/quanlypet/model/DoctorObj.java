@@ -3,8 +3,8 @@ package com.example.quanlypet.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class DocterObj {
+@Entity(tableName = "Doctor")
+public class DoctorObj {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
@@ -14,10 +14,10 @@ public class DocterObj {
     private int gender;
     private String specialize;
 
-    public DocterObj() {
+    public DoctorObj() {
     }
 
-    public DocterObj(String name, String phone, String email, String address, int gender, String specialize) {
+    public DoctorObj(String name, String phone, String email, String address, int gender, String specialize) {
         this.name = name;
         this.phone = phone;
         this.email = email;

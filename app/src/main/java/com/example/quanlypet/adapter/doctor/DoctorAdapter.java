@@ -1,4 +1,4 @@
-package com.example.quanlypet.adapter.docter;
+package com.example.quanlypet.adapter.doctor;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -17,25 +17,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.database.DocterDB;
-import com.example.quanlypet.model.DocterObj;
+import com.example.quanlypet.database.DoctorDB;
+import com.example.quanlypet.model.DoctorObj;
 import com.example.quanlypet.ui.Main.InformationActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 
 
-public class DocterAdapter extends RecyclerView.Adapter<DocterAdapter.DocterViewHolder> {
+public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterViewHolder> {
     private Context context;
-    private ArrayList<DocterObj> list;
+    private ArrayList<DoctorObj> list;
     private int checkGender;
-    private DocterObj  docterObjNew;
-    public void setDataDocter(ArrayList<DocterObj> list){
+    private DoctorObj docterObjNew;
+    public void setDataDocter(ArrayList<DoctorObj> list){
         this.list=list;
         notifyDataSetChanged();
     }
 
-    public DocterAdapter(Context context) {
+    public DoctorAdapter(Context context) {
         this.context = context;
     }
 
@@ -48,7 +48,7 @@ public class DocterAdapter extends RecyclerView.Adapter<DocterAdapter.DocterView
 
     @Override
     public void onBindViewHolder(@NonNull DocterViewHolder holder, int position) {
-        DocterObj docterObj = list.get(position);
+        DoctorObj docterObj = list.get(position);
         if(docterObj==null)
             return;
         holder.tv_Id.setText(docterObj.getId()+"");
@@ -93,8 +93,8 @@ public class DocterAdapter extends RecyclerView.Adapter<DocterAdapter.DocterView
                     docterObjNew.setEmail(email);
                     docterObjNew.setSpecialize(specialize);
                     docterObjNew.setGender(checkGender);
-                    DocterDB.getInstance(v.getContext()).docterDao().edit(docterObj);
-                    list = (ArrayList<DocterObj>) DocterDB.getInstance(v.getContext()).docterDao().getAllData();
+                    DoctorDB.getInstance(v.getContext()).docterDao().edit(docterObj);
+                    list = (ArrayList<DoctorObj>) com.example.quanlypet.database.DoctorDB.getInstance(v.getContext()).docterDao().getAllData();
                     setDataDocter(list);
                     Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
