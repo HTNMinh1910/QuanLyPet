@@ -43,7 +43,7 @@ public class AddAdminActivity extends AppCompatActivity {
         setSupportActionBar(idTollBar);
         getSupportActionBar().setTitle("Thêm Admin");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        //hello
         tvAddAdmin.setOnClickListener(v1 -> {
             String importName = edImportnameAdmin.getText().toString().trim();
             String fullName = edFullnameAdmin.getText().toString().trim();
