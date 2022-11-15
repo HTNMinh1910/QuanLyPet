@@ -25,6 +25,7 @@ import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.ad_use.UsersAdapter;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.UsersObj;
+import com.example.quanlypet.ui.activity.AddUsersActivity;
 import com.example.quanlypet.ui.welcome.SignupUsersActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -81,7 +82,7 @@ public class UsersFragment extends Fragment implements UsersAdapter.Callback {
         rcvListUsers.setAdapter(usersAdapter);
 
         bbtnAddUsers.setOnClickListener(v->{
-            startActivity(new Intent(getContext(), SignupUsersActivity.class));
+            startActivity(new Intent(getContext(), AddUsersActivity.class));
         });
     }
     public void LoadData(){
