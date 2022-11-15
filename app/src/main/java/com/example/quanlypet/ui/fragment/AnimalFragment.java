@@ -36,6 +36,7 @@ import com.example.quanlypet.R;
 import com.example.quanlypet.dao.AnimalDao;
 import com.example.quanlypet.database.AnimalDB;
 import com.example.quanlypet.model.AnimalObj;
+import com.example.quanlypet.ui.AnimalActivity.AddAnimalAcitvity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
@@ -49,16 +50,8 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
     private AnimalDao loaiSachDao;
 
     private Bitmap bitmap;
-    private TextView title;
-    private EditText edIdUsers;
-    private EditText edNameAnimal;
     private ImageView imgAnh;
     private ImageView imgAnhup;
-    private Button btnAddanh;
-    private EditText edAgeAnimal;
-    private EditText edSpeciesAnimal;
-    private Button btnAddAnimal;
-    private Button btnCancel;
 
     public AnimalFragment() {
         // Required empty public constructor
@@ -91,7 +84,7 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
         bbtn = (FloatingActionButton) view.findViewById(R.id.bbtn);
         fill();
         bbtn.setOnClickListener(v -> {
-            DialogAddAnimal();
+            startActivity(new Intent(getContext(), AddAnimalAcitvity.class));
         });
     }
 
@@ -111,87 +104,12 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
         arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllData();
     }
 
-    public void DialogAddAnimal() {
-        Dialog dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_add_animal);
-        dialog.setCancelable(false);
-        Window window = dialog.getWindow();
-        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
-        dialog.show();
-        title = (TextView) dialog.findViewById(R.id.title);
-        edIdUsers = (EditText) dialog.findViewById(R.id.ed_idUsers);
-        edNameAnimal = (EditText) dialog.findViewById(R.id.ed_nameAnimal);
-        imgAnh = (ImageView) dialog.findViewById(R.id.img_anh);
-        LinearLayout linearshare = dialog.findViewById(R.id.liner_share_animal);
-        linearshare.setOnClickListener(v -> {
-            Intent i = new Intent();
-            i.setType("image/*");
-            i.setAction(Intent.ACTION_GET_CONTENT);
-            chooseImage.launch(i);
-        });
-        btnAddanh = (Button) dialog.findViewById(R.id.btn_addanh);
-        btnAddanh.setOnClickListener(v -> {
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent, 0);
-        });
-        edAgeAnimal = (EditText) dialog.findViewById(R.id.ed_ageAnimal);
-        edSpeciesAnimal = (EditText) dialog.findViewById(R.id.ed_speciesAnimal);
-        btnAddAnimal = (Button) dialog.findViewById(R.id.btn_addAnimal);
-        btnAddAnimal.setOnClickListener(v -> {
-            int idUser = Integer.parseInt(edIdUsers.getText().toString().trim());
-            String namean = edNameAnimal.getText().toString().trim();
-            BitmapDrawable bitmapDrawable = (BitmapDrawable) imgAnh.getDrawable();
-            Bitmap bitmap = bitmapDrawable.getBitmap();
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-            byte[] anh = byteArrayOutputStream.toByteArray();
-            int age = Integer.parseInt(edAgeAnimal.getText().toString().trim());
-            String species = edSpeciesAnimal.getText().toString().trim();
-            if (namean.isEmpty() || species.isEmpty()) {
-                Toast.makeText(getActivity(), "ko dc de trong", Toast.LENGTH_SHORT).show();
-            } else {
-                AnimalObj object = new AnimalObj(idUser, namean, anh, age, species,1);
-                AnimalDB.getInstance(getActivity()).animalDao().insert(object);
-                Toast.makeText(getActivity(), "them thanh cong", Toast.LENGTH_SHORT).show();
-                fill();
-            }
-            dialog.cancel();
-        });
-        btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
-        btnCancel.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-        btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
-
-    }
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         Bitmap bp = (Bitmap) data.getExtras().get("data");
         imgAnh.setImageBitmap(bp);
     }
-
-
-    ActivityResultLauncher<Intent> chooseImage = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
-                        Intent data = result.getData();
-                        Uri selectedImageUri = data.getData();
-                        if (null != selectedImageUri) {
-                            imgAnh.setImageURI(selectedImageUri);
-//                            txtImage.setText("Lựa chọn lại hình ảnh");
-
-                            BitmapDrawable bitmapDrawable = (BitmapDrawable) imgAnh.getDrawable();
-                            bitmap = bitmapDrawable.getBitmap();
-                        }
-                    }
-                }
-            });
-
     @Override
     public void Update(AnimalObj object) {
         final Dialog dialog = new Dialog(getContext());
