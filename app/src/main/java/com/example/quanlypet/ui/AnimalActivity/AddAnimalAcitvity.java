@@ -115,8 +115,6 @@ public class AddAnimalAcitvity extends AppCompatActivity {
                         Uri selectedImageUri = data.getData();
                         if (null != selectedImageUri) {
                             imgAnh.setImageURI(selectedImageUri);
-//                            txtImage.setText("Lựa chọn lại hình ảnh");
-
                             BitmapDrawable bitmapDrawable = (BitmapDrawable) imgAnh.getDrawable();
                             bitmap = bitmapDrawable.getBitmap();
                         }

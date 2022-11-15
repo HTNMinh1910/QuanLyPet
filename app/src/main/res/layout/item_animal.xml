@@ -7,140 +7,82 @@
     android:layout_marginRight="10dp"
     android:layout_marginLeft="10dp"
     android:layout_marginBottom="10dp"
-    app:cardCornerRadius="10dp"
-    android:background="@drawable/bgrd_conneradios">
+    app:cardCornerRadius="10dp">
     
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rely_animal">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="130dp"
+                android:gravity="center"
                 android:orientation="horizontal">
-                <TextView
-                    android:layout_width="140dp"
-                    android:layout_height="match_parent"
-                    android:textSize="15dp"
-                    android:text="id users: " />
-                <TextView
-                    android:id="@+id/id_users"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="1"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="140dp"
-                    android:layout_height="match_parent"
-                    android:textSize="15dp"
-                    android:text="name animal: " />
-                <TextView
-                    android:id="@+id/tv_nameAnimal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="ten animal"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:text="anh: " />
+                    android:gravity="center">
+
                     <ImageView
                         android:id="@+id/img_anh_item"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="120dp"
+                        android:layout_height="100dp"
                         android:layout_marginLeft="10dp" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/img_update"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="right"
-                            android:src="@drawable/ic_edit" />
-                        <ImageView
-                            android:id="@+id/img_delete"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="right"
-                            android:layout_marginTop="5dp"
-                            android:src="@drawable/ic_delete" />
-                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/id_users"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_nameAnimal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="ten animal"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_loai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="loai"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="140dp"
-                    android:layout_height="match_parent"
-                    android:textSize="15dp"
-                    android:text="tuoi: " />
-                <TextView
-                    android:id="@+id/tv_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="10dp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="140dp"
-                    android:layout_height="match_parent"
-                    android:textSize="15dp"
-                    android:text="loai: " />
-                <TextView
-                    android:id="@+id/tv_loai"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="loai"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="10dp"/>
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
