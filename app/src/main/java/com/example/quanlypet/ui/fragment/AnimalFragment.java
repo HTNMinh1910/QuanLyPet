@@ -28,7 +28,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quanlypet.adapter.animal.AnimalAdapter;
@@ -36,7 +35,7 @@ import com.example.quanlypet.R;
 import com.example.quanlypet.dao.AnimalDao;
 import com.example.quanlypet.database.AnimalDB;
 import com.example.quanlypet.model.AnimalObj;
-import com.example.quanlypet.ui.AnimalActivity.AddAnimalAcitvity;
+import com.example.quanlypet.ui.activity.AddAnimalAcitvity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;

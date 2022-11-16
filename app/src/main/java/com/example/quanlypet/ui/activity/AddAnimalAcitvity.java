@@ -1,4 +1,4 @@
-package com.example.quanlypet.ui.AnimalActivity;
+package com.example.quanlypet.ui.activity;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -51,7 +51,8 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_animal);
+        setContentView(R.layout.activity_add_animal_acitvity);
+
         edIdUsers = (EditText) findViewById(R.id.ed_idUsers);
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
         imgAnh = (ImageView) findViewById(R.id.img_anh);

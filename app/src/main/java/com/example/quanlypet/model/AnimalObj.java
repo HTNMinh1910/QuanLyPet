@@ -22,7 +22,6 @@ public class AnimalObj {
         this.species = species;
         this.status_obj = status_obj;
     }
-
     public int getId() {
         return id;
     }
