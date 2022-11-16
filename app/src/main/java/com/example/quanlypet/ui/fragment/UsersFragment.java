@@ -31,22 +31,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class UsersFragment extends Fragment {
-    private UsersAdapter usersAdapter;
-    private ArrayList<UsersObj> list = new ArrayList<>();
-
-    private RecyclerView rcvListUsers;
-    private FloatingActionButton bbtnAddUsers;
-
-    private EditText edImportnameUsers;
-    private EditText edFullnameUsers;
-    private EditText edEmailUsers;
-    private EditText edPhoneUsers;
-    private EditText edStatusUsers;
-    private RadioButton rdoMaleEdit;
-    private RadioButton rdoFemaleEdit;
-    private TextView tvEditUsers;
-    private TextView tvCancelEditUsers;
-
 
     public UsersFragment() {
     }
