@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.example.quanlypet.MainActivity;
 import com.example.quanlypet.R;
 
-public class WellcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
     private Button btnAdmin;
     private Button btnUsers;
 
