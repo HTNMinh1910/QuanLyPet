@@ -1,4 +1,4 @@
-package com.example.quanlypet.ui.AnimalActivity;
+package com.example.quanlypet.ui.activity;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
