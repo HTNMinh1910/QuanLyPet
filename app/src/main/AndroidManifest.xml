@@ -18,12 +18,10 @@
         android:theme="@style/Theme.QuanLyPet"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.AddUsersActivity"
             android:name=".AddAnimalAcitvity"
             android:exported="false" />
-        <activity
-            android:name=".AddAnimalActivity"
-            android:exported="false" />
-
+        
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.QuanLyPet.fileprovider"
