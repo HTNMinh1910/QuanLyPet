@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tbl_booking"
         android:layout_gravity="center_horizontal"
-        android:background="#F15B5B"
-        />
-
+        android:background="#F15B5B" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,9 +28,7 @@
                 android:id="@+id/spn_doctor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-
-                />
+                android:layout_marginTop="10dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TIP_NameDoctor"
@@ -40,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Họ và tên Bác Sĩ"
-                android:background="@drawable/bg_til_booking"                android:padding="10dp">
+                android:background="@drawable/bg_til_booking"
+                android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_NameDoctor"
@@ -57,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Số Điện Thoại"
-                android:background="@drawable/bg_til_booking"                android:padding="10dp">
+                android:background="@drawable/bg_til_booking"
+                android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_PhoneNumber"
@@ -73,9 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-
-                />
+                android:layout_marginBottom="5dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TIP_NamePet"
@@ -83,7 +79,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Tên Thú Cưng"
-                android:background="@drawable/bg_til_booking"                android:padding="10dp">
+                android:background="@drawable/bg_til_booking"
+                android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_NamePet"
@@ -98,7 +95,8 @@
                 android:id="@+id/TIP_TypePet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_til_booking"                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_til_booking"
+                android:layout_marginTop="10dp"
                 android:hint="Giống"
                 android:padding="10dp">
 
@@ -117,7 +115,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Tình Trạng"
-                android:background="@drawable/bg_til_booking"                android:padding="10dp">
+                android:background="@drawable/bg_til_booking"
+                android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_Status"
@@ -210,7 +209,8 @@
                 android:id="@+id/TIP_Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_til_booking"                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_til_booking"
+                android:layout_marginTop="10dp"
                 android:hint="Địa chỉ"
                 android:padding="10dp">
 
@@ -248,12 +248,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:backgroundTint="#F15B5B"
-                android:text="Đặt Lịch"
-
-                />
+                android:text="Đặt Lịch" />
         </LinearLayout>
-
     </ScrollView>
-
-
 </LinearLayout>
