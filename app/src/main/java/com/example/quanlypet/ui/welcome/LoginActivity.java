@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
         edUsername.setText(preferences.getString("Username",""));
         edPassword.setText(preferences.getString("Password",""));
-        ckbNhoMK.setChecked(preferences.getBoolean("Remeber",false));
+        ckbNhoMK.setChecked(preferences.getBoolean("Remember",false));
         btnCancel.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(),SignupActivity.class));
         });
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         }else {
             editor.putString("Username",R_user);
             editor.putString("Password",R_pass);
-            editor.putBoolean("Remeber",status);
+            editor.putBoolean("Remember",status);
         }
         editor.commit();
     }
