@@ -53,7 +53,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         holder.imgUpdate.setOnClickListener(v ->{
             callback.Update(object);
         });
-
     }
     @Override
     public int getItemCount() {
@@ -76,8 +75,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
             idUsers = (TextView) itemView.findViewById(R.id.id_users);
             tvNameAnimal = (TextView) itemView.findViewById(R.id.tv_nameAnimal);
             imgAnhItem = (ImageView) itemView.findViewById(R.id.img_anh_item);
-            imgUpdate = (ImageView) itemView.findViewById(R.id.img_update);
-            imgDelete = itemView.findViewById(R.id.img_delete);
             tvAge = (TextView) itemView.findViewById(R.id.tv_age);
             tvLoai = (TextView) itemView.findViewById(R.id.tv_loai);
         }
