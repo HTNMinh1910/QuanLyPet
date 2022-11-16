@@ -18,12 +18,8 @@
         android:theme="@style/Theme.QuanLyPet"
         tools:targetApi="31">
         <activity
-            android:name=".AddAnimalAcitvity"
+            android:name=".ui.AnimalActivity.AddAnimalAcitvity"
             android:exported="false" />
-        <activity
-            android:name=".AddAnimalActivity"
-            android:exported="false" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.QuanLyPet.fileprovider"
@@ -55,6 +51,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".ui.welcome.SignupUsersActivity"
+            android:exported="false"
+            android:theme="@style/Theme.QuanLyPet.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
         <activity
             android:name=".ui.welcome.LoginActivity"
             android:exported="true"
