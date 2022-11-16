@@ -53,7 +53,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         holder.imgUpdate.setOnClickListener(v ->{
             callback.Update(object);
         });
-
     }
     @Override
     public int getItemCount() {
