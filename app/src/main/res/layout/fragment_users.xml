@@ -5,19 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.fragment.AdminFragment">
-
     <Button
         android:id="@+id/btn_inforAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thông tin cá nhân" />
-
     <Button
         android:id="@+id/btn_animalManager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Quản lý thú cưng" />
-
     <Button
         android:id="@+id/btn_LogOut"
         android:layout_width="match_parent"
