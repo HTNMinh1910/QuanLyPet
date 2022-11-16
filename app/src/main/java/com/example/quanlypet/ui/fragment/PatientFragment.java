@@ -21,12 +21,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PatientFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PatientFragment extends Fragment {
     private FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
@@ -34,10 +28,8 @@ public class PatientFragment extends Fragment {
     private ArrayList<PatientObj> list = new ArrayList<>();
 
     public PatientFragment() {
-        // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static PatientFragment newInstance() {
         PatientFragment fragment = new PatientFragment();
         return fragment;
@@ -51,7 +43,6 @@ public class PatientFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_patient, container, false);
     }
 

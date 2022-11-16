@@ -38,7 +38,7 @@ public class AddPatientActivity extends AppCompatActivity {
         btnCanel = (Button) findViewById(R.id.btn_canel);
         Tbr = findViewById(R.id.id_tollBar);
         setSupportActionBar(Tbr);
-        getSupportActionBar().setTitle("Thêm Bác sĩ");
+        getSupportActionBar().setTitle("Thêm Bệnh án");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnAddPatient.setOnClickListener(v->{

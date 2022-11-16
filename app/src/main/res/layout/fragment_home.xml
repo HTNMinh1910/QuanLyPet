@@ -2,25 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
-
-
-
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        >
+        android:gravity="center_horizontal">
         <LinearLayout
             android:id="@+id/liner_booking"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_button_booking"
-            >
+            android:background="@drawable/bg_button_booking">
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -45,8 +39,7 @@
             android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_button_ambulance"
-            >
+            android:background="@drawable/bg_button_ambulance">
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -71,8 +64,7 @@
             android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_button_mess"
-            >
+            android:background="@drawable/bg_button_mess">
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -91,10 +83,6 @@
                 android:textSize="20dp"
                 />
         </LinearLayout>
-
-
     </LinearLayout>
-
-
-
 </LinearLayout>
+
