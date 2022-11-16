@@ -69,7 +69,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         private TextView tvAge;
         private TextView tvLoai;
         private ImageView imgDelete;
-        //123
 
         public AnimalViewHolder(@NonNull View itemView) {
             super(itemView);

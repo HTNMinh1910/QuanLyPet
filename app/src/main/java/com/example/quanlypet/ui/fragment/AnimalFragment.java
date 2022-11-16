@@ -57,7 +57,6 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
         // Required empty public constructor
     }
 
-
     // TODO: Rename and change types and number of parameters
     public static AnimalFragment newInstance() {
         AnimalFragment fragment = new AnimalFragment();

@@ -37,7 +37,6 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     private ArrayList<AnimalObj> arrayList = new ArrayList<>();
     private AnimalAdapter adapterAnimal;
     private AnimalDao loaiSachDao;
-
     private Bitmap bitmap;
     private TextView title;
     private EditText edIdUsers;
@@ -67,7 +66,6 @@ public class AddAnimalAcitvity extends AppCompatActivity {
         btnAddanh = (Button) findViewById(R.id.btn_addanh);
         btnAddanh.setOnClickListener(v -> {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//            startActivityForResult(intent, 0);
             onActivityResult(intent,0);
         });
         edAgeAnimal = (EditText) findViewById(R.id.ed_ageAnimal);
