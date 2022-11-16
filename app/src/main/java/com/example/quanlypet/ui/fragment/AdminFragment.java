@@ -24,7 +24,6 @@ import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.ad_use.AdminAdapter;
 import com.example.quanlypet.database.AdminDB;
 import com.example.quanlypet.model.AdminObj;
-import com.example.quanlypet.ui.activity.AddAdminActivity;
 import com.example.quanlypet.ui.welcome.SignupActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -77,7 +76,7 @@ public class AdminFragment extends Fragment implements AdminAdapter.Callback {
         rcvListAdmin.setLayoutManager(linearLayoutManager);
 
         bbtnAddAdmin.setOnClickListener(v -> {
-                startActivity(new Intent(getContext(), AddAdminActivity.class));
+                startActivity(new Intent(getContext(), SignupActivity.class));
         });
     }
     public void LoadData(){
