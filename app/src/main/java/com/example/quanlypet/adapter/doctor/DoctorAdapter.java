@@ -3,6 +3,8 @@ package com.example.quanlypet.adapter.doctor;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ import com.example.quanlypet.model.DoctorObj;
 import com.example.quanlypet.ui.activity.InformationActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 
@@ -30,13 +33,15 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
     private ArrayList<DoctorObj> list;
     private int checkGender;
     private DoctorObj docterObjNew;
+    private Callback callback;
     public void setDataDocter(ArrayList<DoctorObj> list){
         this.list=list;
         notifyDataSetChanged();
     }
 
-    public DoctorAdapter(Context context) {
+    public DoctorAdapter(Context context,Callback callback) {
         this.context = context;
+        this.callback=callback;
     }
 
     @NonNull
@@ -55,7 +60,9 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         holder.tv_Name.setText(docterObj.getName());
         holder.tv_Phone.setText(docterObj.getPhone());
         holder.tv_Email.setText(docterObj.getEmail());
-
+        byte[] hinhanh = docterObj.getImg();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
+        holder.img_Docter.setImageBitmap(bitmap);
         if(docterObj.getGender()==1){
             holder.tv_Gender.setText("Nam");
         }else{
@@ -64,53 +71,19 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         holder.tv_Specialize.setText(docterObj.getSpecialize());
 
         holder.id_RelativeLayout.setOnClickListener(v->{
-            Dialog dialog = new Dialog(v.getContext(), androidx.appcompat.R.style.ThemeOverlay_AppCompat_Dialog_Alert);
-            dialog.setContentView(R.layout.activity_add_docter);
-            dialog.setCancelable(false);
-            TextInputEditText ed_NameDocter = dialog.findViewById(R.id.ed_nameDocter);
-            TextInputEditText ed_PhoneDocter =  dialog.findViewById(R.id.ed_phoneDocter);
-            TextInputEditText ed_EmailDocter =  dialog.findViewById(R.id.ed_emailDocter);
-            RadioButton rdo_Boy =  dialog.findViewById(R.id.rdo_boy);
-            TextInputEditText ed_SpecializeDocter =  dialog.findViewById(R.id.ed_specializeDocter);
-            Button btn_AddDocter = (Button) dialog.findViewById(R.id.btn_addDocter);
-            Button btn_Canel = (Button) dialog.findViewById(R.id.btn_canel);
-            btn_AddDocter.setText("Sửa");
-            btn_AddDocter.setOnClickListener(v1->{
-
-                String name = ed_NameDocter.getText().toString().trim();
-                String phone = ed_PhoneDocter.getText().toString().trim();
-                String email = ed_EmailDocter.getText().toString().trim();
-                String specialize = ed_SpecializeDocter.getText().toString().trim();
-
-                checkGender = (rdo_Boy.isChecked()==true)?1:0;
-
-                if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || specialize.isEmpty()){
-                    Toast.makeText(v1.getContext(), "Không được để trống!", Toast.LENGTH_SHORT).show();
-                } else {
-                    docterObjNew = docterObj;
-                    docterObjNew.setName(name);
-                    docterObjNew.setPhone(phone);
-                    docterObjNew.setEmail(email);
-                    docterObjNew.setSpecialize(specialize);
-                    docterObjNew.setGender(checkGender);
-                    DoctorDB.getInstance(v.getContext()).docterDao().edit(docterObj);
-                    list = (ArrayList<DoctorObj>) com.example.quanlypet.database.DoctorDB.getInstance(v.getContext()).docterDao().getAllData();
-                    setDataDocter(list);
-                    Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-                }
-            });
-            btn_Canel.setOnClickListener(v1->{
-                dialog.cancel();
-            });
-            dialog.show();
+            callback.update(docterObj);
+            //context.startActivity(new Intent(context, UpdateDoctorActivity.class));
         });
         holder.img_Information.setOnClickListener(v->{
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] ByteArray = byteArrayOutputStream.toByteArray();
             Intent intent = new Intent(context, InformationActivity.class);
             intent.putExtra("name",docterObj.getName());
             intent.putExtra("phone",docterObj.getPhone());
             intent.putExtra("address",docterObj.getAddress());
             intent.putExtra("specialize",docterObj.getSpecialize());
+            intent.putExtra("img",ByteArray);
             context.startActivity(intent);
         });
 
@@ -146,5 +119,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             tv_Gender = (TextView) itemView.findViewById(R.id.tv_gender);
             tv_Specialize = (TextView) itemView.findViewById(R.id.tv_specialize);
         }
+    }
+    public interface Callback{
+        void update(DoctorObj doctorObj);
     }
 }

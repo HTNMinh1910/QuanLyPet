@@ -8,6 +8,7 @@ public class DoctorObj {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
+    byte[] img;
     private String phone;
     private String email;
     private String address;
@@ -17,13 +18,22 @@ public class DoctorObj {
     public DoctorObj() {
     }
 
-    public DoctorObj(String name, String phone, String email, String address, int gender, String specialize) {
+    public DoctorObj(String name,byte[] img, String phone, String email, String address, int gender, String specialize) {
         this.name = name;
+        this.img=img;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.gender = gender;
         this.specialize = specialize;
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
     }
 
     public int getId() {
