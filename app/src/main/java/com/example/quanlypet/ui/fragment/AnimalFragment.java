@@ -53,10 +53,8 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
     private ImageView imgAnhup;
 
     public AnimalFragment() {
-        // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static AnimalFragment newInstance() {
         AnimalFragment fragment = new AnimalFragment();
         return fragment;
@@ -71,7 +69,6 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_animal, container, false);
     }
 
@@ -184,8 +181,6 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
                         Uri selectedImageUri1 = data1.getData();
                         if (null != selectedImageUri1) {
                             imgAnhup.setImageURI(selectedImageUri1);
-//                            txtImage.setText("Lựa chọn lại hình ảnh");
-
                             BitmapDrawable bitmapDrawable = (BitmapDrawable) imgAnhup.getDrawable();
                             bitmap = bitmapDrawable.getBitmap();
                         }

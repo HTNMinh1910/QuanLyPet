@@ -25,7 +25,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.AnimalActivity.AddAnimalAcitvity"
+            android:name=".ui.activity.AddAnimalAcitvity"
             android:exported="false" />
 
         <provider
