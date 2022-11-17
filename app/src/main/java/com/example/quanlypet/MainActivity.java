@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.account).setChecked(true);
                         Tbr.setTitle("Tài Khoản");
                         break;
+//                    case 5:
+//                        bottomNavigationView.getMenu().findItem(R.id.animal).setChecked(true);
+//                        Tbr.setTitle("animal");
+//                        break;
                 }
             }
         });
@@ -79,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.account:
                         viewPager2.setCurrentItem(4);
                         break;
+//                    case R.id.animal:
+//                        viewPager2.setCurrentItem(5);
+//                        break;
                 }
                 return true;
             }
