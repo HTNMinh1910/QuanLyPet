@@ -6,16 +6,41 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".ui.fragment.AdminFragment">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/background_coneradios"
+        android:padding="5dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/ln_inforAccount">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thông tin cá nhân"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/biorhyme_bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:text=">"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/biorhyme_bold"/>
+    </FrameLayout>
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@drawable/background_coneradios"
     android:padding="5dp"
-    android:layout_marginTop="15dp">
+    android:layout_marginTop="15dp"
+    android:id="@+id/ln_animalManager">
     <TextView
-        android:id="@+id/tv_animalManager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quản lý thú cưng"
@@ -38,13 +63,13 @@
         android:orientation="horizontal"
         android:background="@drawable/background_coneradios"
         android:padding="5dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:id="@+id/ln_changePass">
 
         <TextView
-            android:id="@+id/tv_inforAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thông tin cá nhân"
+            android:text="Thay đổi mật khẩu"
             android:layout_gravity="center_vertical"
             android:textSize="20sp"
             android:textColor="@color/black"
@@ -64,9 +89,9 @@
         android:orientation="horizontal"
         android:background="@drawable/background_coneradios"
         android:padding="5dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:id="@+id/ln_logOut">
         <TextView
-            android:id="@+id/tv_logOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đăng xuất"
