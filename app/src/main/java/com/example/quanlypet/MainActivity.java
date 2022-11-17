@@ -45,15 +45,12 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.docter).setChecked(true);
                         Tbr.setTitle("Bác sĩ");
                         break;
+
                     case 2:
-                        bottomNavigationView.getMenu().findItem(R.id.patient).setChecked(true);
-                        Tbr.setTitle("Bệnh Án");
-                        break;
-                    case 3:
                         bottomNavigationView.getMenu().findItem(R.id.book).setChecked(true);
                         Tbr.setTitle("Đặt Lịch");
                         break;
-                    case 4:
+                    case 3:
                         bottomNavigationView.getMenu().findItem(R.id.account).setChecked(true);
                         Tbr.setTitle("Tài Khoản");
                         break;
@@ -74,14 +71,12 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.docter:
                         viewPager2.setCurrentItem(1);
                         break;
-                    case R.id.patient:
+
+                    case R.id.book:
                         viewPager2.setCurrentItem(2);
                         break;
-                    case R.id.book:
-                        viewPager2.setCurrentItem(3);
-                        break;
                     case R.id.account:
-                        viewPager2.setCurrentItem(4);
+                        viewPager2.setCurrentItem(3);
                         break;
 //                    case R.id.animal:
 //                        viewPager2.setCurrentItem(5);

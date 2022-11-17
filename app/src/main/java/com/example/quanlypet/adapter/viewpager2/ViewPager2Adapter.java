@@ -9,7 +9,7 @@ import com.example.quanlypet.ui.fragment.AnimalFragment;
 import com.example.quanlypet.ui.fragment.BookFragment;
 import com.example.quanlypet.ui.fragment.DoctorFragment;
 import com.example.quanlypet.ui.fragment.HomeFragment;
-import com.example.quanlypet.ui.fragment.PatientFragment;
+
 import com.example.quanlypet.ui.fragment.UsersFragment;
 
 
@@ -26,11 +26,10 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
                 return new HomeFragment();
             case 1:
                 return new DoctorFragment();
+
             case 2:
-                return new PatientFragment();
-            case 3:
                 return new BookFragment();
-            case 4:
+            case 3:
                 return new UsersFragment();
 //            case 5:
 //                return new AnimalFragment();
@@ -41,6 +40,6 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 4;
     }
 }
