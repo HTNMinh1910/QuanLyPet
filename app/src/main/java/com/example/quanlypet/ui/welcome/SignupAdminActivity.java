@@ -11,7 +11,7 @@ import com.example.quanlypet.database.AdminDB;
 import com.example.quanlypet.model.AdminObj;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupAdminActivity extends AppCompatActivity {
 
     private TextInputEditText edUsername;
     private TextInputEditText edName;
@@ -23,7 +23,7 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_signup_admin);
 
         edUsername = findViewById(R.id.ed_Username);
         edName = findViewById(R.id.ed_Name);

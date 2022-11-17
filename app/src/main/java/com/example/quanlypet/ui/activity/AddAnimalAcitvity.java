@@ -51,7 +51,7 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_animal_acitvity);
+        setContentView(R.layout.activity_add_animal);
         edIdUsers = (EditText) findViewById(R.id.ed_idUsers);
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
         imgAnh = (ImageView) findViewById(R.id.img_anh);
