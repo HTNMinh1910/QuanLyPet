@@ -50,7 +50,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         holder.imgAnhItem.setImageBitmap(bitmap);
         holder.tvAge.setText(object.getAge()+"");
         holder.tvLoai.setText(object.getSpecies());
-        holder.imgUpdate.setOnClickListener(v ->{
+        holder.relyAnimal.setOnClickListener(v ->{
             callback.Update(object);
         });
     }
