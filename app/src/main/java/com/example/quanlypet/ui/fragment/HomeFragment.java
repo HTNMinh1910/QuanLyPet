@@ -53,13 +53,6 @@ public class HomeFragment extends Fragment {
                 startActivity(i);
             }
         });
-        imgAddAnimal.setOnClickListener(view1 -> {
-            startActivity(new Intent(getActivity(), AddAnimalAcitvity.class));
-        });
-        linerAmbulance.setOnClickListener(view1 -> {
-        });
-        linerMess.setOnClickListener(view1 -> {
-        });
 
     }
 }
