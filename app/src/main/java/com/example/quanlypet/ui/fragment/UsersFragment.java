@@ -31,6 +31,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class UsersFragment extends Fragment {
+    private TextView tvAnimalManager;
+    private TextView tvInforAccount;
+    private TextView tvLogOut;
 
     public UsersFragment() {
     }
@@ -55,6 +58,19 @@ public class UsersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        tvAnimalManager = (TextView) view.findViewById(R.id.tv_animalManager);
+        tvInforAccount = (TextView) view.findViewById(R.id.tv_inforAccount);
+        tvLogOut = (TextView) view.findViewById(R.id.tv_logOut);
+
+        tvAnimalManager.setOnClickListener(view1 -> {
+
+        });
+        tvInforAccount.setOnClickListener(view1 -> {
+
+        });
+        tvLogOut.setOnClickListener(view1 -> {
+
+        });
     }
 
 }
