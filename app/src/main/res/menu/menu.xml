@@ -3,16 +3,24 @@
     <item android:id="@+id/home"
         android:title="Home"
         android:icon="@drawable/home"/>
+
     <item android:id="@+id/docter"
         android:title="Bác sĩ"
         android:icon="@drawable/doctor"/>
+
     <item android:id="@+id/patient"
         android:title="Bệnh án"
         android:icon="@drawable/patient"/>
+
     <item android:id="@+id/book"
         android:title="Đặt Lịch"
         android:icon="@drawable/book"/>
+
     <item android:id="@+id/account"
         android:title="Tài khoản"
         android:icon="@drawable/user"/>
+
+<!--    <item android:id="@+id/animal"-->
+<!--        android:title="animal"-->
+<!--        android:icon="@drawable/ic_image"/>-->
 </menu>

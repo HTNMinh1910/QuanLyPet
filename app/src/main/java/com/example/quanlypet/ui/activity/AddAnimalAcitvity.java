@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
@@ -38,11 +39,10 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     private AnimalAdapter adapterAnimal;
     private AnimalDao loaiSachDao;
     private Bitmap bitmap;
-    private TextView title;
+    private Toolbar Tbr;
     private EditText edIdUsers;
     private EditText edNameAnimal;
     private ImageView imgAnh;
-    private ImageView imgAnhup;
     private Button btnAddanh;
     private EditText edAgeAnimal;
     private EditText edSpeciesAnimal;
@@ -52,7 +52,6 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_animal_acitvity);
-
         edIdUsers = (EditText) findViewById(R.id.ed_idUsers);
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
         imgAnh = (ImageView) findViewById(R.id.img_anh);
@@ -64,6 +63,8 @@ public class AddAnimalAcitvity extends AppCompatActivity {
             chooseImage.launch(i);
         });
         btnAddanh = (Button) findViewById(R.id.btn_addanh);
+        btnCancel = (Button) findViewById(R.id.btn_cancel);
+
         btnAddanh.setOnClickListener(v -> {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             onActivityResult(intent,0);
@@ -89,7 +90,7 @@ public class AddAnimalAcitvity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
             }
         });
-        btnCancel = (Button) findViewById(R.id.btn_cancel);
+
         btnCancel.setOnClickListener(v -> {
             edIdUsers.setText("");
             edNameAnimal.setText("");

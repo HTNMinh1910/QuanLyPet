@@ -7,16 +7,15 @@
     android:layout_marginRight="10dp"
     android:layout_marginLeft="10dp"
     android:layout_marginBottom="10dp"
-    app:cardCornerRadius="10dp">
+    >
     
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/rely_animal">
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
 
