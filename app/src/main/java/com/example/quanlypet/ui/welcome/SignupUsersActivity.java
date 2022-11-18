@@ -1,5 +1,7 @@
 package com.example.quanlypet.ui.welcome;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.UsersObj;
+import com.example.quanlypet.ui.activity.InformationUsersActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SignupUsersActivity extends AppCompatActivity {
@@ -45,6 +48,20 @@ public class SignupUsersActivity extends AppCompatActivity {
             String fullName = edName.getText().toString().trim();
             String email = edEmail.getText().toString().trim();
             String phone = edPhone.getText().toString().trim();
+
+            SharedPreferences preferences = getSharedPreferences("thongtin", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("fullname",fullName);
+            editor.putString("email",email);
+            editor.putString("phone",phone);
+            editor.apply();
+//            edName.setText(preferences.getString("fullname",""));
+//            edEmail.setText(preferences.getString("email",""));
+//            edPhone.setText(preferences.getString("phone" ,""));
+//            preferences.getString("fullname",fullName);
+//            preferences.getString("email",email);
+//            preferences.getString("phone",phone);
+
             int gender = 0;
             if (rdoMale.isChecked()){
                 gender = 0;
