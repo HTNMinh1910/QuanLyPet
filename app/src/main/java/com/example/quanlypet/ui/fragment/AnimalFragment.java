@@ -103,7 +103,7 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
         super.onActivityResult(requestCode, resultCode, data);
 
         Bitmap bp = (Bitmap) data.getExtras().get("data");
-        imgAnh.setImageBitmap(bp);
+        imgAnhup.setImageBitmap(bp);
     }
     @Override
     public void Update(AnimalObj object) {

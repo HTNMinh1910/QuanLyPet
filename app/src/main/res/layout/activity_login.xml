@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#00E5FF"
-            android:text="Exit" />
+            android:text="Sign up" />
         <Button
             android:id="@+id/btn_login"
             android:layout_width="wrap_content"

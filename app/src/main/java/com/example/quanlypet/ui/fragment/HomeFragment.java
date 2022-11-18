@@ -46,21 +46,12 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         linerBooking = (LinearLayout) view.findViewById(R.id.liner_booking);
         linerAmbulance = (LinearLayout) view.findViewById(R.id.liner_ambulance);
-        linerMess = (LinearLayout) view.findViewById(R.id.liner_mess);
-        imgAddAnimal = (ImageView) view.findViewById(R.id.img_add_animal);
         linerBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AddBooking.class);
                 startActivity(i);
             }
-        });
-        imgAddAnimal.setOnClickListener(view1 -> {
-            startActivity(new Intent(getActivity(), AddAnimalAcitvity.class));
-        });
-        linerAmbulance.setOnClickListener(view1 -> {
-        });
-        linerMess.setOnClickListener(view1 -> {
         });
 
     }

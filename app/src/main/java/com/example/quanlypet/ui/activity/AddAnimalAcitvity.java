@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
@@ -14,6 +15,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,11 +40,10 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     private AnimalAdapter adapterAnimal;
     private AnimalDao loaiSachDao;
     private Bitmap bitmap;
-    private TextView title;
+    private Toolbar Tbr;
     private EditText edIdUsers;
     private EditText edNameAnimal;
     private ImageView imgAnh;
-    private ImageView imgAnhup;
     private Button btnAddanh;
     private EditText edAgeAnimal;
     private EditText edSpeciesAnimal;
@@ -52,7 +53,6 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_animal);
-
         edIdUsers = (EditText) findViewById(R.id.ed_idUsers);
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
         imgAnh = (ImageView) findViewById(R.id.img_anh);
@@ -64,9 +64,14 @@ public class AddAnimalAcitvity extends AppCompatActivity {
             chooseImage.launch(i);
         });
         btnAddanh = (Button) findViewById(R.id.btn_addanh);
-        btnAddanh.setOnClickListener(v -> {
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            onActivityResult(intent,0);
+        btnCancel = (Button) findViewById(R.id.btn_cancel);
+
+        btnAddanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,0);
+            }
         });
         edAgeAnimal = (EditText) findViewById(R.id.ed_ageAnimal);
         edSpeciesAnimal = (EditText) findViewById(R.id.ed_speciesAnimal);
@@ -89,7 +94,7 @@ public class AddAnimalAcitvity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
             }
         });
-        btnCancel = (Button) findViewById(R.id.btn_cancel);
+
         btnCancel.setOnClickListener(v -> {
             edIdUsers.setText("");
             edNameAnimal.setText("");
@@ -98,9 +103,11 @@ public class AddAnimalAcitvity extends AppCompatActivity {
         });
     }
 
-    private void onActivityResult(Intent intent, int i) {
-        Bitmap bp = (Bitmap) intent.getExtras().get("data");
-        imgAnh.setImageBitmap(bp);
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+        imgAnh.setImageBitmap(bitmap);
     }
 
     ActivityResultLauncher<Intent> chooseImage = registerForActivityResult(

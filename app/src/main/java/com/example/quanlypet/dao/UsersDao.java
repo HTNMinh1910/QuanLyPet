@@ -22,7 +22,7 @@ public interface UsersDao {
     @Query("SELECT * FROM Users WHERE import_name = :user AND password = :password")
     int checkLogin(String user, String password);
 
-    @Query("UPDATE Users SET password = :pass WHERE phone like :phone")
+    @Query("UPDATE Users SET password = :pass WHERE phone = :phone")
     void changePass(String phone, String pass);
 
     @Query("Select * From Users where  import_name = :id")

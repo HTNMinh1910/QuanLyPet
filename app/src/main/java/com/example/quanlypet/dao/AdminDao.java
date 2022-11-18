@@ -22,6 +22,6 @@ public interface AdminDao {
     @Query("SELECT * FROM Admin WHERE import_name = :user AND password = :password")
     int checkLogin(String user, String password);
 
-    @Query("UPDATE Admin SET password = :pass WHERE import_name like :ID")
+    @Query("UPDATE Admin SET password = :pass WHERE import_name = :ID")
     void changePass(String ID, String pass);
 }
