@@ -73,19 +73,16 @@ public class UsersFragment extends Fragment {
         lnAnimalManager.setOnClickListener(view1 -> {
             replaceFragmet(AnimalFragment.newInstance());
         });
-        tvInforAccount.setOnClickListener(view1 -> {
-            startActivity(new Intent(getActivity(), InformationUsersActivity.class));
-
         lnInforAccount.setOnClickListener(view1 -> {
-
-        });
+                    startActivity(new Intent(getActivity(), InformationUsersActivity.class));
+                });
         lnChangePass.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), ChangePasswordActivity.class));
         });
         lnLogOut.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), WelcomeActivity.class));
         });
-    }
+        }
     public void replaceFragmet(Fragment fragment){
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.ln_inforAccount, fragment);

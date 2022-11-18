@@ -25,6 +25,7 @@ public class InformationUsersActivity extends AppCompatActivity{
     private TextView edEmailUsers;
     private TextView edPhoneUsers;
     private TextView edGenderUsers;
+    private UsersObj usersObj = new UsersObj();
 
     private Button btnEdit;
 
@@ -35,14 +36,13 @@ public class InformationUsersActivity extends AppCompatActivity{
 
         SharedPreferences sharedPreferences = getSharedPreferences("user_file",MODE_PRIVATE);
         String username = sharedPreferences.getString("Username","");
-        UsersObj usersObj = new UsersObj();
 
         usersObj = UsersDB.getInstance(this).Dao().getIdUsers(username);
         String phone = usersObj.getPhone();
         String email = usersObj.getEmail();
         String name = usersObj.getFull_name();
         int gender = usersObj.getGender();
-        Toast.makeText(this, ""+phone, Toast.LENGTH_SHORT).show();
+
         idTollBar = (Toolbar) findViewById(R.id.id_tollBar);
         edImportnameUsers = (TextView) findViewById(R.id.ed_importnameUsers);
         edFullnameUsers = (TextView) findViewById(R.id.ed_fullnameUsers);
@@ -68,6 +68,21 @@ public class InformationUsersActivity extends AppCompatActivity{
         btnEdit.setOnClickListener(v->{
             startActivity(new Intent(getApplicationContext(), UpdateInformationActivity.class));
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences("user_file",MODE_PRIVATE);
+        String username = sharedPreferences.getString("Username","");
+        usersObj = UsersDB.getInstance(this).Dao().getIdUsers(username);
+        String phone = usersObj.getPhone();
+        String email = usersObj.getEmail();
+        String name = usersObj.getFull_name();
+        int gender = usersObj.getGender();
+        edImportnameUsers.setText(username);
+        edFullnameUsers.setText(name);
+        edEmailUsers.setText(email);
+        edPhoneUsers.setText(phone);
     }
 }

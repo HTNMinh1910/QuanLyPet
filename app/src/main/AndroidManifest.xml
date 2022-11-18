@@ -27,11 +27,13 @@
         </activity>
 
         <activity
-            android:name=".UpdateInformationActivity"
-            android:exported="false" />
+            android:name=".ui.activity.UpdateInformationActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.activity.UpdateInformationActivity"/>
         <activity
             android:name=".ui.activity.InformationUsersActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.activity.InformationUsersActivity"/>
         <activity
             android:name=".ui.activity.AddBooking"
             android:exported="false">
