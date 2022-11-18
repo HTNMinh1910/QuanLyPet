@@ -70,7 +70,7 @@ public class UsersFragment extends Fragment {
         lnLogOut = (FrameLayout) view.findViewById(R.id.ln_logOut);
 
         lnAnimalManager.setOnClickListener(view1 -> {
-
+            replaceFragmet(AnimalFragment.newInstance());
         });
         lnInforAccount.setOnClickListener(view1 -> {
 
@@ -81,5 +81,10 @@ public class UsersFragment extends Fragment {
         lnLogOut.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), WelcomeActivity.class));
         });
+    }
+    public void replaceFragmet(Fragment fragment){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.ln_inforAccount, fragment);
+        transaction.commit();
     }
 }
