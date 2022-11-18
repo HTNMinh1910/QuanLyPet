@@ -40,18 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         edPassword.setText(preferences.getString("Password",""));
         ckbNhoMK.setChecked(preferences.getBoolean("Remember",false));
         btnCancel.setOnClickListener(view -> {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getApplicationContext());
-            dialog.setTitle("Tạo tài khoản ?");
-            dialog.setMessage("Hay chọn dạng tài khoản muốn tạo");
-            dialog.setIcon(R.drawable.user);
-            dialog.setPositiveButton("Admin", (dialogInterface, i) -> {
-                startActivity(new Intent(getApplicationContext(), SignupAdminActivity.class));
-            });
-            dialog.setNegativeButton("Users", (dialogInterface, i) -> {
                 startActivity(new Intent(getApplicationContext(), SignupUsersActivity.class));
-            });
-            AlertDialog alertDialog = dialog.create();
-            alertDialog.show();
         });
         btnLogin.setOnClickListener(view -> CheckLogin());
     }
