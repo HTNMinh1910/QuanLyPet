@@ -15,6 +15,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -65,9 +66,12 @@ public class AddAnimalAcitvity extends AppCompatActivity {
         btnAddanh = (Button) findViewById(R.id.btn_addanh);
         btnCancel = (Button) findViewById(R.id.btn_cancel);
 
-        btnAddanh.setOnClickListener(v -> {
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            onActivityResult(intent,0);
+        btnAddanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,0);
+            }
         });
         edAgeAnimal = (EditText) findViewById(R.id.ed_ageAnimal);
         edSpeciesAnimal = (EditText) findViewById(R.id.ed_speciesAnimal);
@@ -99,9 +103,11 @@ public class AddAnimalAcitvity extends AppCompatActivity {
         });
     }
 
-    private void onActivityResult(Intent intent, int i) {
-        Bitmap bp = (Bitmap) intent.getExtras().get("data");
-        imgAnh.setImageBitmap(bp);
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+        imgAnh.setImageBitmap(bitmap);
     }
 
     ActivityResultLauncher<Intent> chooseImage = registerForActivityResult(
