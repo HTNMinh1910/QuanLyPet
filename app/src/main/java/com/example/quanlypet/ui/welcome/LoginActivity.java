@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quanlypet.MainActivity;
@@ -16,6 +17,7 @@ import com.example.quanlypet.R;
 import com.example.quanlypet.database.AdminDB;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.AdminObj;
+import com.example.quanlypet.model.UsersObj;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox ckbNhoMK;
     private Button btnCancel;
     private Button btnLogin;
+    private TextView tvDangky;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,10 @@ public class LoginActivity extends AppCompatActivity {
         ckbNhoMK = findViewById(R.id.ckb_nhoMK);
         btnCancel = findViewById(R.id.btn_cancel);
         btnLogin = findViewById(R.id.btn_login);
+        tvDangky = findViewById(R.id.tv_dangky);
+        tvDangky.setOnClickListener(v->{
+            startActivity(new Intent(getApplicationContext(),SignupUsersActivity.class));
+        });
 
         SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
         edUsername.setText(preferences.getString("Username",""));
@@ -53,7 +60,9 @@ public class LoginActivity extends AppCompatActivity {
             AlertDialog alertDialog = dialog.create();
             alertDialog.show();
         });
-        btnLogin.setOnClickListener(view -> CheckLogin());
+        btnLogin.setOnClickListener(view -> {
+            CheckLogin();
+        });
     }
     private AdminObj adminObj = new AdminObj();
     public void CheckLogin() {
