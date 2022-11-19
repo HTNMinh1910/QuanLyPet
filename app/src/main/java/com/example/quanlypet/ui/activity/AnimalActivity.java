@@ -54,7 +54,7 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
         rcvAnimal = (RecyclerView) findViewById(R.id.rcv_animal);
         Tbr = findViewById(R.id.id_tollBarAnimal);
         setSupportActionBar(Tbr);
-        getSupportActionBar().setTitle("animal");
+        getSupportActionBar().setTitle("Animal");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         fill();
     }
