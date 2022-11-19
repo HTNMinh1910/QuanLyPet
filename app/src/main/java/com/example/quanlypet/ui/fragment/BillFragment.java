@@ -1,6 +1,7 @@
 package com.example.quanlypet.ui.fragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.example.quanlypet.adapter.bill.BillAdapter;
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.BillDB;
 import com.example.quanlypet.model.BillObj;
+import com.example.quanlypet.ui.activity.AddBillActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
@@ -80,7 +82,7 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
         bbtn = (FloatingActionButton) view.findViewById(R.id.bbtn);
         fill();
         bbtn.setOnClickListener(v -> {
-            AddBill();
+           startActivity(new Intent(getContext(), AddBillActivity.class));
         });
     }
 
@@ -165,7 +167,6 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
             int idcaseup = Integer.parseInt(upCaseId.getText().toString().trim());
             double priceup = Double.parseDouble(upPrice.getText().toString().trim());
             String noteup = upNote.getText().toString().trim();
-            String status = chkThanhToanUp.getText().toString().trim();
             if (noteup.isEmpty()) {
                 Toast.makeText(getActivity(), "ko dc de trong", Toast.LENGTH_SHORT).show();
             } else {

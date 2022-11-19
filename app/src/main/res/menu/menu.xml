@@ -16,6 +16,10 @@
         android:title="Tài khoản"
         android:icon="@drawable/user"/>
 
+    <item android:id="@+id/bill"
+        android:title="bill"
+        android:icon="@drawable/ic_baseline_accessible_forward_24"/>
+
 <!--    <item android:id="@+id/animal"-->
 <!--        android:title="animal"-->
 <!--        android:icon="@drawable/ic_image"/>-->
