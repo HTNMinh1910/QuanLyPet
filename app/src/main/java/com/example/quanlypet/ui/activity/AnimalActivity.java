@@ -1,4 +1,14 @@
-package com.example.quanlypet.ui.fragment;
+package com.example.quanlypet.ui.activity;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -8,21 +18,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.provider.MediaStore;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,117 +29,109 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.quanlypet.adapter.animal.AnimalAdapter;
 import com.example.quanlypet.R;
-import com.example.quanlypet.dao.AnimalDao;
+import com.example.quanlypet.adapter.animal.AnimalAdapter;
 import com.example.quanlypet.database.AnimalDB;
 import com.example.quanlypet.model.AnimalObj;
-import com.example.quanlypet.ui.activity.AddAnimalAcitvity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
+public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.Callback{
+    private Toolbar idTollBarAnimal;
     private RecyclerView rcvAnimal;
-    private FloatingActionButton bbtn;
+    private Toolbar Tbr;
     private ArrayList<AnimalObj> arrayList = new ArrayList<>();
     private AnimalAdapter adapterAnimal;
-    private AnimalDao loaiSachDao;
-
-    private Bitmap bitmap;
-    private ImageView imgAnh;
     private ImageView imgAnhup;
-
-    public AnimalFragment() {
-    }
-
-    public static AnimalFragment newInstance() {
-        AnimalFragment fragment = new AnimalFragment();
-        return fragment;
-    }
-
+    private Bitmap bitmap;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_animal, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        rcvAnimal = (RecyclerView) view.findViewById(R.id.rcv_animal);
-        bbtn = (FloatingActionButton) view.findViewById(R.id.bbtn);
+        setContentView(R.layout.activity_animal);
+        idTollBarAnimal = (Toolbar) findViewById(R.id.id_tollBarAnimal);
+        rcvAnimal = (RecyclerView) findViewById(R.id.rcv_animal);
+        Tbr = findViewById(R.id.id_tollBarAnimal);
+        setSupportActionBar(Tbr);
+        getSupportActionBar().setTitle("animal");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         fill();
-        bbtn.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), AddAnimalAcitvity.class));
-        });
     }
-
-    public void fill() {
-        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllData();
-        adapterAnimal = new AnimalAdapter(getContext(), this);
+    @Override
+    public void onResume() {
+        super.onResume();
+        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).animalDao().getAllData();
         adapterAnimal.setData(arrayList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+    }
+    public void fill() {
+        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).animalDao().getAllData();
+        adapterAnimal = new AnimalAdapter(getApplicationContext(), this);
+        adapterAnimal.setData(arrayList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         rcvAnimal.setLayoutManager(layoutManager);
         rcvAnimal.setAdapter(adapterAnimal);
 
     }
-
     @Override
-    public void onResume() {
-        super.onResume();
-        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllData();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.meu_add_animal, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.add_animal_menu:
+                startActivity(new Intent(getApplicationContext(), AddAnimalAcitvity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && requestCode == RESULT_OK && data != null){
+            Bitmap bp = (Bitmap) data.getExtras().get("data");
+            imgAnhup.setImageBitmap(bp);
+        }
 
-        Bitmap bp = (Bitmap) data.getExtras().get("data");
-        imgAnhup.setImageBitmap(bp);
     }
     @Override
     public void Update(AnimalObj object) {
-        final Dialog dialog = new Dialog(getContext());
+        Dialog dialog = new Dialog(AnimalActivity.this);
         dialog.setContentView(R.layout.dialog_update_animal);
         dialog.setCancelable(false);
         Window window = dialog.getWindow();
         window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         dialog.show();
-        EditText upIdUser = dialog.findViewById(R.id.up_idUsers);
         EditText upnameAnimal = dialog.findViewById(R.id.up_nameAnimal);
+        EditText upageAnimal = dialog.findViewById(R.id.up_ageAnimal);
+        EditText upspeciesAnimal = dialog.findViewById(R.id.up_speciesAnimal);
         imgAnhup = dialog.findViewById(R.id.up_img_anh);
+        Button btnAddAnh = dialog.findViewById(R.id.btn_addanh);
+        Button btnAlbumUp = dialog.findViewById(R.id.btn_album_up);
+        Button btnUpDate = dialog.findViewById(R.id.btn_updateAnimal);
+        Button btnCancel = dialog.findViewById(R.id.btn_cancel);
         LinearLayout linearshare1 = dialog.findViewById(R.id.up_liner_share_animal);
-        linearshare1.setOnClickListener(v -> {
+        btnAlbumUp.setOnClickListener(v ->{
             Intent i = new Intent();
             i.setType("image/*");
             i.setAction(Intent.ACTION_GET_CONTENT);
 
             chooseImage1.launch(i);
         });
-        Button btnAddAnh = dialog.findViewById(R.id.btn_addanh);
         btnAddAnh.setOnClickListener(v -> {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, 0);
         });
-        EditText upageAnimal = dialog.findViewById(R.id.up_ageAnimal);
-        EditText upspeciesAnimal = dialog.findViewById(R.id.up_speciesAnimal);
-        upIdUser.setText(object.getId_users()+"");
+
         upnameAnimal.setText(object.getName());
         byte[] anh = object.getAvatar();
         Bitmap bitmap1 = BitmapFactory.decodeByteArray(anh, 0, anh.length);
         imgAnhup.setImageBitmap(bitmap1);
         upageAnimal.setText(object.getAge()+"");
         upspeciesAnimal.setText(object.getSpecies());
-        Button btnUpDate = dialog.findViewById(R.id.btn_updateAnimal);
         btnUpDate.setOnClickListener(v -> {
-            int iduser = Integer.parseInt(upIdUser.getText().toString().trim());
             String nameAnimal = upnameAnimal.getText().toString().trim();
             BitmapDrawable bitmapDrawableup = (BitmapDrawable) imgAnhup.getDrawable();
             Bitmap bitmap = bitmapDrawableup.getBitmap();
@@ -150,21 +141,19 @@ public class AnimalFragment extends Fragment implements AnimalAdapter.Callback {
             int age = Integer.parseInt(upageAnimal.getText().toString().trim());
             String speciesAnimal = upspeciesAnimal.getText().toString().trim();
             if (nameAnimal.isEmpty() || speciesAnimal.isEmpty()) {
-                Toast.makeText(getActivity(), "ko dc de trong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "ko dc de trong", Toast.LENGTH_SHORT).show();
             } else {
-                object.setId_users(iduser);
                 object.setName(nameAnimal);
                 object.setAvatar(anhup);
                 object.setAge(age);
                 object.setSpecies(speciesAnimal);
-                AnimalDB.getInstance(getActivity()).animalDao().edit(object);
-                arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getActivity()).animalDao().getAllData();
+                AnimalDB.getInstance(getApplicationContext()).animalDao().edit(object);
+                arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).animalDao().getAllData();
                 adapterAnimal.setData(arrayList);
-                Toast.makeText(getActivity(), "sua thanh cong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "sua thanh cong", Toast.LENGTH_SHORT).show();
                 dialog.cancel();
             }
         });
-        Button btnCancel = dialog.findViewById(R.id.btn_cancel);
         btnCancel.setOnClickListener(v -> {
             dialog.cancel();
         });

@@ -1,40 +1,27 @@
 package com.example.quanlypet.ui.fragment;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.RadioButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.quanlypet.R;
+import com.example.quanlypet.ui.activity.AddAnimalAcitvity;
+import com.example.quanlypet.ui.activity.AnimalActivity;
 import com.example.quanlypet.adapter.ad_use.UsersAdapter;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.InformationUsersActivity;
 import com.example.quanlypet.ui.welcome.ChangePasswordActivity;
-import com.example.quanlypet.ui.welcome.SignupUsersActivity;
 import com.example.quanlypet.ui.welcome.WelcomeActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
 
 public class UsersFragment extends Fragment {
     private FrameLayout lnInforAccount;
@@ -71,7 +58,7 @@ public class UsersFragment extends Fragment {
         lnLogOut = (FrameLayout) view.findViewById(R.id.ln_logOut);
 
         lnAnimalManager.setOnClickListener(view1 -> {
-            replaceFragmet(AnimalFragment.newInstance());
+            startActivity(new Intent(getContext(), AnimalActivity.class));
         });
         tvInforAccount.setOnClickListener(view1 -> {
             startActivity(new Intent(getActivity(), InformationUsersActivity.class));

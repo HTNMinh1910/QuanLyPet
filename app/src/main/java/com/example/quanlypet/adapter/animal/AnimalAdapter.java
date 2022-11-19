@@ -43,7 +43,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         AnimalObj object = arrayList.get(position);
         if (object == null)
             return;
-        holder.idUsers.setText(object.getId_users()+"");
         holder.tvNameAnimal.setText(object.getName());
         byte[] anh = object.getAvatar();
         Bitmap bitmap = BitmapFactory.decodeByteArray(anh, 0, anh.length);
@@ -64,15 +63,12 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         private TextView idUsers;
         private TextView tvNameAnimal;
         private ImageView imgAnhItem;
-        private ImageView imgUpdate;
         private TextView tvAge;
         private TextView tvLoai;
-        private ImageView imgDelete;
 
         public AnimalViewHolder(@NonNull View itemView) {
             super(itemView);
             relyAnimal = (RelativeLayout) itemView.findViewById(R.id.rely_animal);
-            idUsers = (TextView) itemView.findViewById(R.id.id_users);
             tvNameAnimal = (TextView) itemView.findViewById(R.id.tv_nameAnimal);
             imgAnhItem = (ImageView) itemView.findViewById(R.id.img_anh_item);
             tvAge = (TextView) itemView.findViewById(R.id.tv_age);

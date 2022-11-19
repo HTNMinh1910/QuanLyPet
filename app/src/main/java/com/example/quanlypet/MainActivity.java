@@ -28,10 +28,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         Tbr = findViewById(R.id.id_tollBar);
         setSupportActionBar(Tbr);
-
         ViewPager2Adapter adapter = new ViewPager2Adapter(this);
         viewPager2.setAdapter(adapter);
-
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -54,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.account).setChecked(true);
                         Tbr.setTitle("Tài Khoản");
                         break;
-//                    case 5:
-//                        bottomNavigationView.getMenu().findItem(R.id.animal).setChecked(true);
-//                        Tbr.setTitle("animal");
-//                        break;
+                    case 4:
+                        bottomNavigationView.getMenu().findItem(R.id.bill).setChecked(true);
+                        Tbr.setTitle("bill");
+                        break;
                 }
             }
         });
@@ -78,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.account:
                         viewPager2.setCurrentItem(3);
                         break;
-//                    case R.id.animal:
-//                        viewPager2.setCurrentItem(5);
-//                        break;
+                    case R.id.bill:
+                        viewPager2.setCurrentItem(4);
+                        break;
                 }
                 return true;
             }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ import com.example.quanlypet.model.AnimalObj;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class AddAnimalAcitvity extends AppCompatActivity {
@@ -38,34 +41,40 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     private FloatingActionButton bbtn;
     private ArrayList<AnimalObj> arrayList = new ArrayList<>();
     private AnimalAdapter adapterAnimal;
-    private AnimalDao loaiSachDao;
+    private Toolbar idTollBar;
     private Bitmap bitmap;
     private Toolbar Tbr;
     private EditText edIdUsers;
     private EditText edNameAnimal;
     private ImageView imgAnh;
     private Button btnAddanh;
+    private Button btnAlbum;
     private EditText edAgeAnimal;
     private EditText edSpeciesAnimal;
     private Button btnAddAnimal;
     private Button btnCancel;
+    int REQUEST_CODE_ALBUM = 123;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_animal);
-        edIdUsers = (EditText) findViewById(R.id.ed_idUsers);
+        idTollBar = (Toolbar) findViewById(R.id.id_tollBar_addAnimal);
+        Tbr = findViewById(R.id.id_tollBar_addAnimal);
+        setSupportActionBar(Tbr);
+        getSupportActionBar().setTitle("Thêm animal");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
+        btnAlbum = findViewById(R.id.btn_album);
         imgAnh = (ImageView) findViewById(R.id.img_anh);
-        LinearLayout linearshare = findViewById(R.id.liner_share_animal);
-        linearshare.setOnClickListener(v -> {
-            Intent i = new Intent();
+        btnAlbum.setOnClickListener(v ->{
+            Intent i = new Intent(Intent.ACTION_PICK);
             i.setType("image/*");
             i.setAction(Intent.ACTION_GET_CONTENT);
             chooseImage.launch(i);
+//            startActivityForResult(i, REQUEST_CODE_ALBUM);
         });
         btnAddanh = (Button) findViewById(R.id.btn_addanh);
         btnCancel = (Button) findViewById(R.id.btn_cancel);
-
         btnAddanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +86,6 @@ public class AddAnimalAcitvity extends AppCompatActivity {
         edSpeciesAnimal = (EditText) findViewById(R.id.ed_speciesAnimal);
         btnAddAnimal = (Button) findViewById(R.id.btn_addAnimal);
         btnAddAnimal.setOnClickListener(v -> {
-            int idUser = Integer.parseInt(edIdUsers.getText().toString().trim());
             String namean = edNameAnimal.getText().toString().trim();
             BitmapDrawable bitmapDrawable = (BitmapDrawable) imgAnh.getDrawable();
             Bitmap bitmap = bitmapDrawable.getBitmap();
@@ -89,7 +97,7 @@ public class AddAnimalAcitvity extends AppCompatActivity {
             if (namean.isEmpty() || species.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "ko dc de trong", Toast.LENGTH_SHORT).show();
             } else {
-                AnimalObj object = new AnimalObj(idUser, namean, anh, age, species,1);
+                AnimalObj object = new AnimalObj(namean, anh, age, species,1);
                 AnimalDB.getInstance(getApplicationContext()).animalDao().insert(object);
                 Toast.makeText(getApplicationContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
             }
@@ -106,10 +114,11 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-        imgAnh.setImageBitmap(bitmap);
+        if (requestCode == 0 && resultCode == RESULT_OK && data != null){
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                imgAnh.setImageBitmap(bitmap);
+        }
     }
-
     ActivityResultLauncher<Intent> chooseImage = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
