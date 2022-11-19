@@ -57,7 +57,7 @@
             android:id="@+id/btn_album"
             android:text="album"
             android:backgroundTint="#ccc"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             android:layout_gravity="center"
             android:textColor="@color/black"/>
     </LinearLayout>
