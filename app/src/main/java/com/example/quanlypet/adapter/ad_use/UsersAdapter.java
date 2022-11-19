@@ -1,6 +1,7 @@
 package com.example.quanlypet.adapter.ad_use;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.UsersObj;
+import com.example.quanlypet.ui.activity.InformationUsersActivity;
 
 import java.util.ArrayList;
 
@@ -55,6 +57,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         holder.imgEditUsers.setOnClickListener(v->{
             callback.editUsers(usersObj);
         });
+        Intent intent = new Intent(context, InformationUsersActivity.class);
+        intent.putExtra("importname", usersObj.getImport_name());
+        intent.putExtra("fullname", usersObj.getFull_name());
+        intent.putExtra("email",usersObj.getEmail());
+        intent.putExtra("phone",usersObj.getPhone());
+        context.startActivity(intent);
+
     }
 
     @Override

@@ -1,23 +1,49 @@
 package com.example.quanlypet.ui.activity;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.quanlypet.R;
+import com.example.quanlypet.adapter.Spinner.SpinnerAnimal;
+import com.example.quanlypet.adapter.Spinner.SpinnerDoctor;
+import com.example.quanlypet.database.AnimalDB;
+import com.example.quanlypet.database.BookDB;
+import com.example.quanlypet.database.DoctorDB;
+import com.example.quanlypet.model.AnimalObj;
+import com.example.quanlypet.model.BookObj;
+import com.example.quanlypet.model.DoctorObj;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddBooking extends AppCompatActivity {
     private ImageView imgClose;
@@ -27,7 +53,7 @@ public class AddBooking extends AppCompatActivity {
     private Button btnPhauthuat;
     private Button btnSieuam;
     private Button btnSpa;
-    private Toolbar  toolbar_booking;
+    private Toolbar toolbar_booking;
     private Spinner spnDoctor;
     private TextInputLayout TIPNameDoctor;
     private TextInputEditText TIEDNameDoctor;
@@ -46,29 +72,189 @@ public class AddBooking extends AppCompatActivity {
     private RadioGroup rdogr;
     private RadioButton rdoPhongkham;
     private RadioButton rdoTainha;
+    private TextInputLayout TIPTime;
+    private TextInputEditText TIEDTime;
+    private Bitmap bitmap;
+
+
     private TextInputLayout TIPAddress;
     private TextInputEditText TIEDAddress;
     private TextInputLayout TIPService;
     private TextInputEditText TIEDService;
     private Button btnBooking;
+    SpinnerAnimal adapterSPNAnimal;
+    SpinnerDoctor adapterSPNDoctor;
+    private String noikham;
+    private int idDoctor;
+    private int idPet;
+
+    List<AnimalObj> listAnimal = new ArrayList<>();
+    List<DoctorObj> listDoctor = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_booking);
+        findID();
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                startActivityForResult(intent, 1);
+            }
+        });
+        btnAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setType("image/*");
+                i.setAction(Intent.ACTION_GET_CONTENT);
+                chooseImg.launch(i);
+            }
+        });
+        adapterSPNAnimal = new SpinnerAnimal();
+        listAnimal = AnimalDB.getInstance(this).animalDao().getAllData();
+        adapterSPNAnimal.setData(listAnimal);
+        spnPet.setAdapter(adapterSPNAnimal);
+        adapterSPNDoctor = new SpinnerDoctor();
+
+        listDoctor = DoctorDB.getInstance(this).docterDao().getAllData();
+        adapterSPNDoctor.setDATA(listDoctor);
+        spnDoctor.setAdapter(adapterSPNDoctor);
         toolbar_booking = findViewById(R.id.tbl_booking);
         toolbar_booking.setTitle("Đặt Lịch");
-        findID();
+
         TIEDService.setFocusable(false);
         TIEDService.setFocusableInTouchMode(false);
+        TIEDNameDoctor.setFocusable(false);
+        TIEDNameDoctor.setFocusableInTouchMode(false);
+        TIEDNamePet.setFocusable(false);
+        TIEDNamePet.setFocusableInTouchMode(false);
+        TIEDPhoneNumber.setFocusable(false);
+        TIEDPhoneNumber.setFocusableInTouchMode(false);
+        TIEDTypePet.setFocusable(false);
+        TIEDTypePet.setFocusableInTouchMode(false);
+        rdogr.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rdo_phongkham:
+                        TIPAddress.setEnabled(false);
+                        break;
+                    case R.id.rdo_tainha:
+                        TIPAddress.setEnabled(true);
+                        break;
+                }
+            }
+        });
+
+
+
+
         TIEDService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDiaLogSerVice();
             }
         });
+        SlectedSpinner();
+
+
+        btnBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addBooking();
+            }
+        });
+    }
+    ActivityResultLauncher<Intent> chooseImg = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        Uri selectImgUri = data.getData();
+                        if (selectImgUri != null) {
+                            imgPicture.setImageURI(selectImgUri);
+                        }
+                        BitmapDrawable bitmapDrawable = (BitmapDrawable) imgPicture.getDrawable();
+                        bitmap = bitmapDrawable.getBitmap();
+                    }
+                }
+            }
+    );
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            imgPicture.setImageBitmap(bitmap);
+
+        }
     }
 
-    public void findID(){
+    private void addBooking() {
+
+        String strTT = TIEDStatus.getText().toString();
+
+        if (rdoPhongkham.isChecked()) {
+            noikham = "Phòng Khám";
+        } else if (rdoTainha.isChecked()) {
+            noikham = "Tại nhà";
+        }
+        String strTime = TIEDTime.getText().toString();
+        String strDiaChi = TIEDAddress.getText().toString();
+        String strDichVU = TIEDService.getText().toString();
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) imgPicture.getDrawable();
+        Bitmap bitmap = bitmapDrawable.getBitmap();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] anh = byteArrayOutputStream.toByteArray();
+
+        BookObj bookObj = new BookObj(idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU);
+        BookDB.getInstance(this).Dao().insert(bookObj);
+        Toast.makeText(this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
+    }
+
+    public void SlectedSpinner() {
+        spnDoctor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                listDoctor = DoctorDB.getInstance(getApplicationContext()).docterDao().getAllData();
+                idDoctor = listDoctor.get(position).getId();
+
+                TIEDNameDoctor.setText(listDoctor.get(position).getName());
+                TIEDPhoneNumber.setText(listDoctor.get(position).getPhone());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spnPet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                listAnimal = AnimalDB.getInstance(getApplicationContext()).animalDao().getAllData();
+                idPet = listAnimal.get(position).getId();
+                TIEDNamePet.setText(listAnimal.get(position).getName());
+                TIEDTypePet.setText(listAnimal.get(position).getSpecies());
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+    }
+
+    public void findID() {
 
 
         spnDoctor = (Spinner) findViewById(R.id.spn_doctor);
@@ -94,9 +280,12 @@ public class AddBooking extends AppCompatActivity {
         TIPService = (TextInputLayout) findViewById(R.id.TIP_Service);
         TIEDService = (TextInputEditText) findViewById(R.id.TIED_Service);
         btnBooking = (Button) findViewById(R.id.btn_booking);
+        TIPTime = (TextInputLayout) findViewById(R.id.TIP_Time);
+        TIEDTime = (TextInputEditText) findViewById(R.id.TIED_Time);
 
     }
-    public void showDiaLogSerVice(){
+
+    public void showDiaLogSerVice() {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_chon_dich_vu);
         dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.bg_dialog_dichvu));
@@ -161,8 +350,6 @@ public class AddBooking extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
-
         dialog.show();
     }
 }

@@ -8,6 +8,7 @@ import androidx.room.Update;
 import com.example.quanlypet.model.BookObj;
 
 import java.util.List;
+
 @Dao
 public interface BookDao {
     @Insert
@@ -21,4 +22,7 @@ public interface BookDao {
 
     @Query("DELETE FROM Book WHERE id = :ID")
     void deleteById(int ID);
+
+    @Query("SELECT *FROM book where id=:id")
+    BookObj getIDBook(String id);
 }

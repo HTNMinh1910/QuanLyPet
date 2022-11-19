@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#00E5FF"
-            android:text="Exit" />
+            android:text="Sign up" />
         <Button
             android:id="@+id/btn_login"
             android:layout_width="wrap_content"
@@ -68,6 +68,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Quên mật khẩu ?"
+        android:textColor="#FB0F0F"
+        android:textSize="12sp"
+        android:fontFamily="@font/biorhyme_bold"/>
+    <TextView
+        android:id="@+id/tv_dangky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Đăng ký tài khoản"
         android:textColor="#FB0F0F"
         android:textSize="12sp"
         android:fontFamily="@font/biorhyme_bold"/>
