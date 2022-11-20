@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/id_tollBar"
+            android:id="@+id/id_tollBar_addAnimal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#03A9F4" />
+            android:background="#03A9F4"
+            app:menu="@menu/meu_add_animal"/>
     </com.google.android.material.appbar.AppBarLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:hintEnabled="true">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_marginTop="10dp"
-            android:hint="id users"
-            android:id="@+id/ed_idUsers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,14 +42,22 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/ic_image" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_addanh"
-            android:text="chup anh tu may"
+            android:text="chup anh"
             android:backgroundTint="#ccc"
             android:layout_marginLeft="50dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_album"
+            android:text="album"
+            android:backgroundTint="#ccc"
+            android:layout_marginLeft="30dp"
             android:layout_gravity="center"
             android:textColor="@color/black"/>
     </LinearLayout>
@@ -104,4 +106,5 @@
             android:textColor="@color/white"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

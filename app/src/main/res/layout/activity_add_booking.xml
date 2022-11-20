@@ -204,6 +204,23 @@
 
 
             </RadioGroup>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TIP_Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_til_booking"
+                android:layout_marginTop="10dp"
+                android:hint="Ngày hẹn"
+                android:padding="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TIED_Time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TIP_Address"
@@ -247,6 +264,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:backgroundTint="#F15B5B"
                 android:text="Đặt Lịch" />
         </LinearLayout>

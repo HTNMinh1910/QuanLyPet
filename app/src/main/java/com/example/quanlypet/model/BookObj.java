@@ -10,17 +10,17 @@ public class BookObj {
     private int id_doctor;
     private int id_dnimal;
     private String status;
-    private int photo_status;
+    private byte[] photo_status;
     private String time;
     private String location;
     private String address;
     private String service;
-    private int status_obj;
+
 
     public BookObj() {
     }
 
-    public BookObj(int id_doctor, int id_dnimal, String status, int photo_status, String time, String location, String address, String service, int status_obj) {
+    public BookObj(int id_doctor, int id_dnimal, String status, byte[] photo_status, String time, String location, String address, String service) {
         this.id_doctor = id_doctor;
         this.id_dnimal = id_dnimal;
         this.status = status;
@@ -29,7 +29,6 @@ public class BookObj {
         this.location = location;
         this.address = address;
         this.service = service;
-        this.status_obj = status_obj;
     }
 
     public int getId() {
@@ -64,11 +63,11 @@ public class BookObj {
         this.status = status;
     }
 
-    public int getPhoto_status() {
+    public byte[] getPhoto_status() {
         return photo_status;
     }
 
-    public void setPhoto_status(int photo_status) {
+    public void setPhoto_status(byte[] photo_status) {
         this.photo_status = photo_status;
     }
 
@@ -102,13 +101,5 @@ public class BookObj {
 
     public void setService(String service) {
         this.service = service;
-    }
-
-    public int getStatus_obj() {
-        return status_obj;
-    }
-
-    public void setStatus_obj(int status_obj) {
-        this.status_obj = status_obj;
     }
 }

@@ -14,8 +14,7 @@ public class AnimalObj {
     private String species;
     private int status_obj;
 
-    public AnimalObj(int id_users, String name, byte[] avatar, int age, String species, int status_obj) {
-        this.id_users = id_users;
+    public AnimalObj( String name, byte[] avatar, int age, String species, int status_obj) {
         this.name = name;
         this.avatar = avatar;
         this.age = age;

@@ -13,7 +13,6 @@ public class BillObj {
     private double price;
     private String note;
 
-
     public BillObj(int id_case_file, String time, String date, double price, String note ) {
         this.id_case_file = id_case_file;
         this.time = time;

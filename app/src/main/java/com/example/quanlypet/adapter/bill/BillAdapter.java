@@ -49,12 +49,8 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
         holder.tvDate.setText(object.getDate());
         holder.tvPriceBill.setText(object.getPrice()+"");
         holder.tvNote.setText(object.getNote());
-        holder.imgUpdate.setOnClickListener(v ->{
+        holder.idItemBill.setOnClickListener(v -> {
             callback.Update(object);
-        });
-        holder.idItemBill.setOnLongClickListener(v -> {
-            callback.Update(object);
-            return false;
         });
 //            }
     }
@@ -82,9 +78,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
             tvDatetime = (TextView) itemView.findViewById(R.id.tv_time);
             tvDate = (TextView) itemView.findViewById(R.id.tv_date);
             tvPriceBill = (TextView) itemView.findViewById(R.id.tv_priceBill);
-            imgUpdate = (ImageView) itemView.findViewById(R.id.img_update);
             tvNote = (TextView) itemView.findViewById(R.id.tv_note);
-//            tvStatus = (TextView) itemView.findViewById(R.id.tv_status);
             idItemBill = (CardView) itemView.findViewById(R.id.id_item_bill);
 
         }
