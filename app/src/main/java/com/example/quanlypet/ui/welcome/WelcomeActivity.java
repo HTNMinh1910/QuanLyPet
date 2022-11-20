@@ -12,6 +12,8 @@ import android.widget.Button;
 import com.example.quanlypet.MainActivity;
 import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.viewpager2.SlideAdapter;
+import com.example.quanlypet.database.AdminDB;
+import com.example.quanlypet.model.AdminObj;
 import com.example.quanlypet.model.Photo;
 
 import java.util.ArrayList;
@@ -90,17 +92,14 @@ public class WelcomeActivity extends AppCompatActivity {
         circleIndicator.setViewPager(vpr);
         slideAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
         autoSlide();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
         btnAdmin.setOnClickListener(view -> {
-            intent.putExtra("requet", "admin");
+            AdminDB.getInstance(getApplicationContext()).Dao().insert(new AdminObj("Admin","Account_QLPV","qlpvip@gmail.com","petvip"));
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         });
         btnUsers.setOnClickListener(view -> {
-            intent.putExtra("requet", "users");
+            AdminDB.getInstance(getApplicationContext()).Dao().insert(new AdminObj("Admin","Account_QLPV","qlpvip@gmail.com","petvip"));
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         });
-
-
-
     }
 }

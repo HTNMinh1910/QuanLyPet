@@ -57,11 +57,12 @@ public class AddAnimalAcitvity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_animal);
         idTollBar = (Toolbar) findViewById(R.id.id_tollBar_addAnimal);
         Tbr = findViewById(R.id.id_tollBar_addAnimal);
         setSupportActionBar(Tbr);
-        getSupportActionBar().setTitle("Thêm animal");
+        getSupportActionBar().setTitle("Add Animal");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
         btnAlbum = findViewById(R.id.btn_album);
@@ -71,7 +72,6 @@ public class AddAnimalAcitvity extends AppCompatActivity {
             i.setType("image/*");
             i.setAction(Intent.ACTION_GET_CONTENT);
             chooseImage.launch(i);
-//            startActivityForResult(i, REQUEST_CODE_ALBUM);
         });
         btnAddanh = (Button) findViewById(R.id.btn_addanh);
         btnCancel = (Button) findViewById(R.id.btn_cancel);

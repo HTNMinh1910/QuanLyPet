@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -26,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox ckbNhoMK;
     private Button btnCancel;
     private Button btnLogin;
-    private TextView tvDangky;
+    private TextView tvErrors;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         ckbNhoMK = findViewById(R.id.ckb_nhoMK);
         btnCancel = findViewById(R.id.btn_cancel);
         btnLogin = findViewById(R.id.btn_login);
-        tvDangky = findViewById(R.id.tv_dangky);
-        tvDangky.setOnClickListener(v->{
-            startActivity(new Intent(getApplicationContext(),SignupUsersActivity.class));
-        });
-
+        tvErrors = findViewById(R.id.tv_errors);
+        tvErrors.setText("");
         SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
         edUsername.setText(preferences.getString("Username",""));
         edPassword.setText(preferences.getString("Password",""));
@@ -58,17 +56,20 @@ public class LoginActivity extends AppCompatActivity {
         String str_user = edUsername.getText().toString().trim();
         String str_pass = edPassword.getText().toString().trim();
         if (str_user.isEmpty()||str_pass.isEmpty()) {
-            Toast.makeText(this, "Không được bỏ trống !", Toast.LENGTH_SHORT).show();
+            tvErrors.setTextColor(Color.RED);
+            tvErrors.setText("Không được bỏ trống !");
         }else {
             if (AdminDB.getInstance(getApplicationContext()).Dao().checkLogin(str_user,str_pass)>0||
                     UsersDB.getInstance(getApplicationContext()).Dao().checkLogin(str_user,str_pass)>0||
                     str_user.equals("admin")&&str_pass.equals("123")){
                 RemeberUser(str_user,str_pass, ckbNhoMK.isChecked());
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                Toast.makeText(this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
+                tvErrors.setTextColor(Color.GREEN);
+                tvErrors.setText("Đăng nhập thành công.");
                 finish();
             }else {
-                Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không chính xác.", Toast.LENGTH_SHORT).show();
+                tvErrors.setTextColor(Color.RED);
+                tvErrors.setText("Tên đăng nhập hoặc mật khẩu không chính xác.");
             }
         }
     }

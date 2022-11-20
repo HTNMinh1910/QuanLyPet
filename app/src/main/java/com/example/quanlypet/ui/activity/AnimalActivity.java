@@ -61,13 +61,15 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
     @Override
     public void onResume() {
         super.onResume();
-        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).animalDao().getAllData();
-        adapterAnimal.setData(arrayList);
+        LoadData();
     }
-    public void fill() {
+    public void LoadData(){
         arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).animalDao().getAllData();
-        adapterAnimal = new AnimalAdapter(getApplicationContext(), this);
         adapterAnimal.setData(arrayList);
+        }
+    public void fill() {
+        adapterAnimal = new AnimalAdapter(getApplicationContext(), this);
+        LoadData();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         rcvAnimal.setLayoutManager(layoutManager);
         rcvAnimal.setAdapter(adapterAnimal);

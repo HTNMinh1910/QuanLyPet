@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:hintEnabled="true"
-        app:boxBackgroundColor="#ffff">
+        app:boxBackgroundColor="#ffff"
+        android:background="@drawable/background_coneradios">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_Username"
             android:layout_width="match_parent"
@@ -25,7 +26,8 @@
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
         app:hintEnabled="true"
-        app:boxBackgroundColor="#ffff">
+        app:boxBackgroundColor="#ffff"
+        android:background="@drawable/background_coneradios">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_Password"
             android:layout_width="match_parent"
@@ -42,7 +44,15 @@
         android:fontFamily="@font/biorhyme_bold"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="20dp"/>
-
+    <TextView
+        android:id="@+id/tv_errors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Lỗi tài khoản"
+        android:textColor="#FB0F0F"
+        android:textSize="12sp"
+        android:fontFamily="@font/biorhyme_bold"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,15 +78,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Quên mật khẩu ?"
-        android:textColor="#FB0F0F"
-        android:textSize="12sp"
-        android:fontFamily="@font/biorhyme_bold"/>
-    <TextView
-        android:id="@+id/tv_dangky"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Đăng ký tài khoản"
         android:textColor="#FB0F0F"
         android:textSize="12sp"
         android:fontFamily="@font/biorhyme_bold"/>
