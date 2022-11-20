@@ -83,7 +83,6 @@ public class UpdateInformationActivity extends AppCompatActivity {
                 usersObj.setPhone(phone);
                 usersObj.setGender(gender);
                 UsersDB.getInstance(this).Dao().edit(usersObj);
-                tvThongbao.setVisibility(View.INVISIBLE);
                 Toast.makeText(this, "Sua thanh cong", Toast.LENGTH_SHORT).show();
                 finish();
             }
