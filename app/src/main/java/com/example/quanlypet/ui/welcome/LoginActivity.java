@@ -25,8 +25,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText edUsername;
     private TextInputEditText edPassword;
     private CheckBox ckbNhoMK;
-    private Button btnCancel;
+    private TextView tvSignup;
     private Button btnLogin;
+    private TextView tvResetPass;
     private TextView tvErrors;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         edUsername = findViewById(R.id.ed_Username);
         edPassword = findViewById(R.id.ed_Password);
         ckbNhoMK = findViewById(R.id.ckb_nhoMK);
-        btnCancel = findViewById(R.id.btn_cancel);
+        tvResetPass = findViewById(R.id.tv_reset_pass);
+        tvSignup = findViewById(R.id.tv_signup);
         btnLogin = findViewById(R.id.btn_login);
         tvErrors = findViewById(R.id.tv_errors);
         tvErrors.setText("");
@@ -44,11 +46,15 @@ public class LoginActivity extends AppCompatActivity {
         edUsername.setText(preferences.getString("Username",""));
         edPassword.setText(preferences.getString("Password",""));
         ckbNhoMK.setChecked(preferences.getBoolean("Remember",false));
-        btnCancel.setOnClickListener(view -> {
+        tvSignup.setOnClickListener(view -> {
                 startActivity(new Intent(getApplicationContext(), SignupUsersActivity.class));
         });
         btnLogin.setOnClickListener(view -> {
             CheckLogin();
+            SharedPreferences sharedPreferences = getSharedPreferences("Users_info", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("Username",edUsername.getText().toString());
+            editor.commit();
         });
     }
     private AdminObj adminObj = new AdminObj();
@@ -60,8 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             tvErrors.setText("Không được bỏ trống !");
         }else {
             if (AdminDB.getInstance(getApplicationContext()).Dao().checkLogin(str_user,str_pass)>0||
-                    UsersDB.getInstance(getApplicationContext()).Dao().checkLogin(str_user,str_pass)>0||
-                    str_user.equals("admin")&&str_pass.equals("123")){
+                    UsersDB.getInstance(getApplicationContext()).Dao().checkLogin(str_user,str_pass)>0){
                 RemeberUser(str_user,str_pass, ckbNhoMK.isChecked());
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 tvErrors.setTextColor(Color.GREEN);

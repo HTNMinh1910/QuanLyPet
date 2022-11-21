@@ -93,13 +93,15 @@ public class AddDoctorActivity extends AppCompatActivity{
             }
         });
 
-        btnAddDocter.setOnClickListener(v->{
+        btnAddDocter.setOnClickListener(v-> {
+            String regexPhoneNumber = "(0|[3|5|7|8|9])+([0-9]{8})";
             String name = edNameDocter.getText().toString().trim();
             String phone = edPhoneDocter.getText().toString().trim();
+
             String email = edEmailDocter.getText().toString().trim();
             String address = edAddressDocter.getText().toString().trim();
             String specialize = edSpecializeDocter.getText().toString().trim();
-            checkGender = rdoBoy.isChecked()?1:0;
+            checkGender = rdoBoy.isChecked() ? 1 : 0;
 
             BitmapDrawable bitmapDrawable = (BitmapDrawable) imgPicture.getDrawable();
             bitmap = bitmapDrawable.getBitmap();
@@ -107,12 +109,15 @@ public class AddDoctorActivity extends AppCompatActivity{
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] hinhanh = byteArrayOutputStream.toByteArray();
 
-            if(name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty() || specialize.isEmpty()){
+            if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty() || specialize.isEmpty()) {
                 Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
+            }else if(phone.matches(regexPhoneNumber) == false){
+                Toast.makeText(this, "Số điện thoại không đúng định dạng", Toast.LENGTH_SHORT).show();
             }else{
                 DoctorObj docterObj = new DoctorObj(name,hinhanh,phone,email,address,checkGender,specialize);
-                DoctorDB.getInstance(getApplicationContext()).docterDao().insert(docterObj);
+                DoctorDB.getInstance(getApplicationContext()).Dao().insert(docterObj);
                 Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
         btnCanel.setOnClickListener(v->{
@@ -149,6 +154,7 @@ public class AddDoctorActivity extends AppCompatActivity{
                     && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED
+                    && checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
 
 
             ) {
@@ -160,7 +166,8 @@ public class AddDoctorActivity extends AppCompatActivity{
                         Manifest.permission.CAMERA,
                         Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.INTERNET
+                        Manifest.permission.INTERNET,
+                        Manifest.permission.CALL_PHONE
 
 
                 }, 1);

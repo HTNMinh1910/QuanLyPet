@@ -22,9 +22,6 @@ public interface BookDao {
     @Update
     void edit(BookObj object);
 
-    @Query("DELETE FROM Book WHERE id = :ID")
-    void deleteById(int ID);
-
     @Query("SELECT *FROM book where id=:id")
     BookObj getIDBook(String id);
 

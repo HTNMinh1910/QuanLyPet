@@ -81,8 +81,8 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
                     patientObjNew.setId_animal(Integer.parseInt(idAnimal));
                     patientObjNew.setDate_create(dateCreate);
                     patientObjNew.setDate_update(dateUpdate);
-                    PatientDB.getInstance(v.getContext()).patientDao().edit(patientObj);
-                    list = (ArrayList<PatientObj>) PatientDB.getInstance(v.getContext()).patientDao().getAllData();
+                    PatientDB.getInstance(v.getContext()).Dao().edit(patientObj);
+                    list = (ArrayList<PatientObj>) PatientDB.getInstance(v.getContext()).Dao().getAllData();
                     setDataPatient(list);
                     Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();

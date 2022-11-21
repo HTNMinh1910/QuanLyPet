@@ -87,7 +87,7 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     }
 
     public void fill() {
-        arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).billDao().getAllDataBill();
+        arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
         adapterBill = new BillAdapter(getContext(), this);
         adapterBill.setData(arrayList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -98,7 +98,7 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     @Override
     public void onResume() {
         super.onResume();
-        arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).billDao().getAllDataBill();
+        arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
         adapterBill.setData(arrayList);
     }
 
@@ -131,7 +131,7 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
 
                 String date = sdfdate.format(new Date());
                 BillObj object = new BillObj(caseid, time, date, price, note);
-                BillDB.getInstance(getActivity()).billDao().insertBill(object);
+                BillDB.getInstance(getActivity()).Dao().insertBill(object);
                 Toast.makeText(getActivity(), "them thanh cong", Toast.LENGTH_SHORT).show();
                 fill();
             }
@@ -180,8 +180,8 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
                 object.setPrice(priceup);
                 object.setNote(noteup);
 //                object.setStatus_obj(status);
-                BillDB.getInstance(getActivity()).billDao().editBill(object);
-                arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).billDao().getAllDataBill();
+                BillDB.getInstance(getActivity()).Dao().editBill(object);
+                arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
                 adapterBill.setData(arrayList);
                 Toast.makeText(getActivity(), "sua thanh cong", Toast.LENGTH_SHORT).show();
                 dialog.cancel();

@@ -5,80 +5,138 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center">
-
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/pet_shop"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/biorhyme_bold"
+        android:text="Login"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="start"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bioehyme_eegular"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
+        android:text="Enter your username and password"
+        android:textColor="#696969"
+        android:textSize="11sp" />
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         app:hintEnabled="true"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/businessman"
         app:boxBackgroundColor="#ffff"
-        android:background="@drawable/background_coneradios">
+        android:layout_marginTop="10dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_Username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
+            android:background="@drawable/background_coneradios"
             android:fontFamily="@font/biorhyme_bold"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
         app:hintEnabled="true"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/password"
         app:boxBackgroundColor="#ffff"
-        android:background="@drawable/background_coneradios">
+        android:layout_marginTop="10dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:background="@drawable/background_coneradios"
             android:fontFamily="@font/biorhyme_bold"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
-    <CheckBox
-        android:id="@+id/ckb_nhoMK"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Ghi nhớ mật khẩu"
-        android:fontFamily="@font/biorhyme_bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="20dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <CheckBox
+            android:id="@+id/ckb_nhoMK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember"
+            android:fontFamily="@font/biorhyme_bold"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tv_reset_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="Forgot password ?"
+            android:textColor="#FB0F0F"
+            android:textSize="12sp"
+            android:fontFamily="@font/biorhyme_bold"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tv_errors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:fontFamily="@font/biorhyme_bold"
         android:text="Lỗi tài khoản"
         android:textColor="#FB0F0F"
-        android:textSize="12sp"
-        android:fontFamily="@font/biorhyme_bold"/>
+        android:textSize="12sp" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00E5FF"
-            android:text="Sign up" />
-        <Button
             android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#C00404"
             android:text="Logn In"/>
-
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_reset_pass"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Quên mật khẩu ?"
-        android:textColor="#FB0F0F"
-        android:textSize="12sp"
-        android:fontFamily="@font/biorhyme_bold"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/biorhyme_bold"
+            android:text="Don't have an account ?"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/biorhyme_bold"
+            android:layout_marginLeft="5dp"
+            android:text="Signup"
+            android:textColor="#00B0FF"
+            android:textSize="12sp" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/kitty"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+
 </LinearLayout>

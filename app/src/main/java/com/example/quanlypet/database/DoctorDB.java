@@ -17,19 +17,12 @@ import com.example.quanlypet.model.DoctorObj;
 public abstract class DoctorDB extends RoomDatabase {
     private static final String DATABASENAME = "Doctor.db";
     private static DoctorDB Instance;
-    public abstract DoctorDao docterDao();
-    static Migration migration = new Migration(1,2) {
-        @Override
-        public void migrate(@NonNull SupportSQLiteDatabase database) {
-
-        }
-    };
+    public abstract DoctorDao Dao();
 
     public static synchronized DoctorDB getInstance(Context context){
         if (Instance==null){
-            Instance = Room.databaseBuilder(context, DoctorDB.class,DATABASENAME).allowMainThreadQueries()
-                    .addMigrations(migration)
-                    .build();
+            Instance = Room.databaseBuilder(context, DoctorDB.class,DATABASENAME).
+                    allowMainThreadQueries().build();
         }
         return Instance;
     }

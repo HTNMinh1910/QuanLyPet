@@ -94,7 +94,7 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     @Override
     public void onResume() {
         super.onResume();
-        list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getContext()).docterDao().getAllData();
+        list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getContext()).Dao().getAllData();
         adapter.setDataDocter(list);
     }
     @Override
@@ -155,8 +155,8 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
                 doctorObj.setEmail(email);
                 doctorObj.setAddress(address);
                 doctorObj.setSpecialize(specialize);
-                DoctorDB.getInstance(getActivity()).docterDao().edit(doctorObj);
-                list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getActivity()).docterDao().getAllData();
+                DoctorDB.getInstance(getActivity()).Dao().edit(doctorObj);
+                list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getActivity()).Dao().getAllData();
                 adapter.setDataDocter(list);
                 Toast.makeText(getActivity(), "Sửa thành công", Toast.LENGTH_SHORT).show();
                 dialog.cancel();

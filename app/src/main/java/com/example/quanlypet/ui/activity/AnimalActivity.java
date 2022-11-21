@@ -20,7 +20,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Button;
@@ -33,7 +32,6 @@ import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.animal.AnimalAdapter;
 import com.example.quanlypet.database.AnimalDB;
 import com.example.quanlypet.model.AnimalObj;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -64,7 +62,7 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
         LoadData();
     }
     public void LoadData(){
-        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).animalDao().getAllData();
+        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).Dao().getAllData();
         adapterAnimal.setData(arrayList);
         }
     public void fill() {
@@ -149,8 +147,8 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
                 object.setAvatar(anhup);
                 object.setAge(age);
                 object.setSpecies(speciesAnimal);
-                AnimalDB.getInstance(getApplicationContext()).animalDao().edit(object);
-                arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).animalDao().getAllData();
+                AnimalDB.getInstance(getApplicationContext()).Dao().edit(object);
+                arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).Dao().getAllData();
                 adapterAnimal.setData(arrayList);
                 Toast.makeText(getApplicationContext(), "sua thanh cong", Toast.LENGTH_SHORT).show();
                 dialog.cancel();

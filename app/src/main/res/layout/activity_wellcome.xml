@@ -3,14 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:gravity="center">
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="30dp">
+    android:gravity="center_horizontal">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -19,28 +14,43 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vpr"
             android:layout_width="match_parent"
-            android:layout_height="220dp"/>
+            android:layout_height="650dp"/>
 
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/circle_indicator"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="190dp"/>
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="10dp"/>
 
+        <TextView
+            android:id="@+id/tv_prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/biorhyme_bold"
+            android:text="Prev"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="start|bottom"
+            android:textColor="#FB0F0F"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/biorhyme_bold"
+            android:text="Next"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="end|bottom"
+            android:textColor="#FB0F0F"
+            android:textSize="18sp" />
     </FrameLayout>
-    </androidx.cardview.widget.CardView>
     <Button
         android:id="@+id/btn_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đăng Nhập"
+        android:layout_marginTop="10dp"
+        android:text="Signup or Signin"
         android:backgroundTint="#F57C7C"/>
-
-    <Button
-        android:id="@+id/btn_users"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Đăng Ký"
-        android:backgroundTint="#1DE9B6"/>
 </LinearLayout>

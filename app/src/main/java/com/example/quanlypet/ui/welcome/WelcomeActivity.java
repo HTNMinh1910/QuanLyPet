@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.quanlypet.MainActivity;
 import com.example.quanlypet.R;
@@ -27,7 +28,8 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class WelcomeActivity extends AppCompatActivity {
     private Button btnAdmin;
-    private Button btnUsers;
+    private TextView tvPrev;
+    private TextView tvNext;
     private ViewPager vpr;
     private CircleIndicator circleIndicator;
     private SlideAdapter slideAdapter;
@@ -43,33 +45,31 @@ public class WelcomeActivity extends AppCompatActivity {
         list.add(new Photo(R.drawable.six));
         return list;
     }
-    private void autoSlide(){
+    private void tapSlide(){
         if (photoList == null||photoList.isEmpty()||vpr == null){
             return;
         }
-        if (timer == null){
-            timer = new Timer();
-        }
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        int curentItem = vpr.getCurrentItem();
-                        int toltalItem = photoList.size() - 1;
-                        if (curentItem < toltalItem){
-                            curentItem++;
-                            vpr.setCurrentItem(curentItem);
-                        }else {
-                            vpr.setCurrentItem(0);
-                        }
-                    }
-                });
+        tvNext.setOnClickListener(view -> {
+            int curentItem = vpr.getCurrentItem();
+            int toltalItem = photoList.size() - 1;
+            if (curentItem < toltalItem){
+                curentItem++;
+                vpr.setCurrentItem(curentItem);
+            }else {
+                vpr.setCurrentItem(0);
             }
-        },500,3000);
+        });
+        tvPrev.setOnClickListener(view -> {
+            int curentItem = vpr.getCurrentItem();
+            int toltalItem = photoList.size()-6;
+            if (curentItem > toltalItem){
+                curentItem--;
+                vpr.setCurrentItem(curentItem);
+            }else {
+                vpr.setCurrentItem(6);
+            }
+        });
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -86,7 +86,8 @@ public class WelcomeActivity extends AppCompatActivity {
         UsersDB.getInstance(this).Dao().insert(new UsersObj("Admin","Account_QLPV","qlpvip@gmail.com","0977959629",2,"petvip"));
 
         btnAdmin = (Button) findViewById(R.id.btn_admin);
-        btnUsers = (Button) findViewById(R.id.btn_users);
+        tvPrev = (TextView) findViewById(R.id.tv_prev);
+        tvNext = (TextView) findViewById(R.id.tv_next);
         vpr = (ViewPager) findViewById(R.id.vpr);
         circleIndicator = (CircleIndicator) findViewById(R.id.circle_indicator);
         photoList = getListPhoto();
@@ -94,14 +95,10 @@ public class WelcomeActivity extends AppCompatActivity {
         vpr.setAdapter(slideAdapter);
         circleIndicator.setViewPager(vpr);
         slideAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
-        autoSlide();
-
+        tapSlide();
+        AdminDB.getInstance(getApplicationContext()).Dao().insert(new AdminObj("Admin","Account_QLPV","qlpvip@gmail.com","petvip"));
         btnAdmin.setOnClickListener(view -> {
-            UsersDB.getInstance(this).Dao().insert(new UsersObj("Admin","Account_QLPV","qlpvip@gmail.com","0977959629",2,"petvip"));
-            startActivity(new Intent(this,LoginActivity.class));
-        });
-        btnUsers.setOnClickListener(view -> {
-            startActivity(new Intent(this,SignupUsersActivity.class));
+          startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         });
     }
 }

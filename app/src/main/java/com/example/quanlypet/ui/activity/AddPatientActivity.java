@@ -51,7 +51,7 @@ public class AddPatientActivity extends AppCompatActivity {
                 Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
             }else{
                 PatientObj patientObj = new PatientObj(Integer.parseInt(idDocter),Integer.parseInt(idAnimal),dateCreate,dateUpdate);
-                PatientDB.getInstance(getApplicationContext()).patientDao().insert(patientObj);
+                PatientDB.getInstance(getApplicationContext()).Dao().insert(patientObj);
                 Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
             }
         });
