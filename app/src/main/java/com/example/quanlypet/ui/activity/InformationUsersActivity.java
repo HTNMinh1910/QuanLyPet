@@ -28,20 +28,19 @@ public class InformationUsersActivity extends AppCompatActivity{
     private TextView edPhoneUsers;
     private TextView edGenderUsers;
     private Button btnEdit;
-    private UsersObj usersObj = new UsersObj();
-    private AdminObj adminObj = new AdminObj();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_users);
 
-        idTollBar = (Toolbar) findViewById(R.id.id_tollBar);
-        edImportnameUsers = (TextView) findViewById(R.id.ed_importnameUsers);
-        edFullnameUsers = (TextView) findViewById(R.id.ed_fullnameUsers);
-        edEmailUsers = (TextView) findViewById(R.id.ed_emailUsers);
-        edPhoneUsers = (TextView) findViewById(R.id.ed_phoneUsers);
-        edGenderUsers = (TextView) findViewById(R.id.ed_genderUsers);
-        btnEdit = (Button) findViewById(R.id.btn_edit);
+        idTollBar = findViewById(R.id.id_tollBar);
+        edImportnameUsers = findViewById(R.id.ed_importnameUsers);
+        edFullnameUsers = findViewById(R.id.ed_fullnameUsers);
+        edEmailUsers = findViewById(R.id.ed_emailUsers);
+        edPhoneUsers = findViewById(R.id.ed_phoneUsers);
+        edGenderUsers = findViewById(R.id.ed_genderUsers);
+        btnEdit = findViewById(R.id.btn_edit);
 
         setSupportActionBar(idTollBar);
         getSupportActionBar().setTitle("Personal Information");
@@ -55,7 +54,7 @@ public class InformationUsersActivity extends AppCompatActivity{
         SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
         String username = sharedPreferences.getString("Username","");
         if (username.equals("Admin")){
-            adminObj = AdminDB.getInstance(getApplicationContext()).Dao().getIdAdmin(username);
+            AdminObj adminObj = AdminDB.getInstance(getApplicationContext()).Dao().getIdAdmin(username);
             String email = adminObj.getEmail();
             String name = adminObj.getFull_name();
             edImportnameUsers.setText(username);
@@ -64,7 +63,7 @@ public class InformationUsersActivity extends AppCompatActivity{
             edGenderUsers.setText("null");
             edPhoneUsers.setText("null");
         }else {
-            usersObj = UsersDB.getInstance(getApplicationContext()).Dao().getIdUsers(username);
+            UsersObj usersObj = UsersDB.getInstance(getApplicationContext()).Dao().getIdUsers(username);
             String phone = usersObj.getPhone();
             String email = usersObj.getEmail();
             String name = usersObj.getFull_name();

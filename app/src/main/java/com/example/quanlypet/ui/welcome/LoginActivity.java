@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             CheckLogin();
             SharedPreferences sharedPreferences = getSharedPreferences("Users_info", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("username",edUsername.getText().toString());
+            editor.putString("Username",edUsername.getText().toString());
             editor.commit();
         });
     }
