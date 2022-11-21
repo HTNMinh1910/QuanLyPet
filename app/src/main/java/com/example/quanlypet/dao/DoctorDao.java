@@ -23,6 +23,7 @@ public interface DoctorDao {
 
     @Update
     void edit(DoctorObj docterObj);
+
     @Query("SELECT *FROM doctor where id=:id ")
     DoctorObj getIdDoctor(String id);
 

@@ -5,36 +5,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.AdminDB;
+import com.example.quanlypet.database.UsersDB;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ChangePasswordActivity extends AppCompatActivity {
     private TextInputEditText NowPass;
     private TextInputEditText newPass;
     private TextInputEditText newPassAganin;
-    private ImageView btnCancel;
-    private ImageView btnSave;
+    private TextView tvErrors;
+    private TextView tvExit;
+    private ImageView imgSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-        NowPass = (TextInputEditText) findViewById(R.id.ed_nowPass);
-        newPass = (TextInputEditText) findViewById(R.id.newPass);
-        newPassAganin = (TextInputEditText) findViewById(R.id.newPassAganin);
-        btnCancel = (ImageView) findViewById(R.id.btn_cancel);
-        btnSave = (ImageView) findViewById(R.id.btn_save);
-
-        btnCancel.setOnClickListener(view1 -> {
-            NowPass.setText("");
-            newPass.setText("");
-            newPassAganin.setText("");
+        NowPass = findViewById(R.id.ed_nowPass);
+        newPass = findViewById(R.id.newPass);
+        newPassAganin = findViewById(R.id.newPassAganin);
+        tvErrors = findViewById(R.id.tv_errors);
+        tvExit = findViewById(R.id.tv_exit);
+        imgSave = findViewById(R.id.img_save);
+        tvErrors.setText("");
+        tvExit.setOnClickListener(view1 -> {
+            finish();
         });
-        btnSave.setOnClickListener(view1 -> {
+        imgSave.setOnClickListener(view1 -> {
             SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
             String user = preferences.getString("Username", "");
             String MKcu = NowPass.getText().toString();
@@ -42,21 +44,21 @@ public class ChangePasswordActivity extends AppCompatActivity {
             String MKlai = newPassAganin.getText().toString();
 
             if (Validate() > 0) {
-                AdminDB.getInstance(getApplicationContext()).Dao().changePass(user, MKmoi);
-                Toast.makeText(getApplicationContext(), "Đổi mật khẩu thành công.", Toast.LENGTH_SHORT).show();
+                UsersDB.getInstance(getApplicationContext()).Dao().changePass(user, newPass.getText().toString());
+                tvErrors.setText("Đổi mật khẩu thành công.");
                 NowPass.setText("");
                 newPass.setText("");
                 newPassAganin.setText("");
             } else {
-                Toast.makeText(getApplicationContext(), "Đổi mật khẩu thất bại.", Toast.LENGTH_SHORT).show();
+                tvErrors.setText("Đổi mật khẩu thất bại.");
             }
         });
     }
 
     public int Validate(){
         int check = 1;
-        if (NowPass.getText().toString().isEmpty() || newPass.getText().toString().isEmpty() || newPassAganin.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(), "Không để trống !", Toast.LENGTH_SHORT).show();
+        if (NowPass.getText().toString().trim().isEmpty() || newPass.getText().toString().trim().isEmpty() || newPassAganin.getText().toString().isEmpty()){
+            tvErrors.setText("Không để trống !");
             check = -1;
         }else {
             SharedPreferences preferences = getSharedPreferences("user_file",MODE_PRIVATE);
@@ -64,11 +66,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
             String MKmoi = newPass.getText().toString();
             String MKlai = newPassAganin.getText().toString();
             if (!MKcu.equals(NowPass.getText().toString())){
-                Toast.makeText(getApplicationContext(), "Mật khẩu hiện tại không đúng !", Toast.LENGTH_SHORT).show();
+                tvErrors.setText("Mật khẩu hiện tại không đúng !");
                 check = -1;
             }
             if (!MKmoi.equals(MKlai)){
-                Toast.makeText(getApplicationContext(), "Mật khẩu mới không trùng khớp !", Toast.LENGTH_SHORT).show();
+                tvErrors.setText("Mật khẩu mới không trùng khớp !");
                 check = -1;
             }
         }

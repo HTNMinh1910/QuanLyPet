@@ -58,7 +58,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             return;
         holder.tv_Id.setText(docterObj.getId()+"");
         holder.tv_Name.setText(docterObj.getName());
-        holder.tv_Phone.setText(docterObj.getPhone());
         holder.tv_Email.setText(docterObj.getEmail());
         byte[] hinhanh = docterObj.getImg();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
@@ -68,7 +67,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         }else{
             holder.tv_Gender.setText("Nữ");
         }
-        holder.tv_Specialize.setText(docterObj.getSpecialize());
 
         holder.id_RelativeLayout.setOnClickListener(v->{
             callback.update(docterObj);
@@ -98,10 +96,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         private ImageView img_Docter;
         private TextView tv_Id;
         private TextView tv_Name;
-        private TextView tv_Phone;
         private TextView tv_Email;
         private TextView tv_Gender;
-        private TextView tv_Specialize;
         private RelativeLayout id_RelativeLayout;
         private ImageView img_Information;
 
@@ -114,10 +110,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             img_Information = (ImageView) itemView.findViewById(R.id.img_information);
             tv_Id = (TextView) itemView.findViewById(R.id.tv_id);
             tv_Name = (TextView) itemView.findViewById(R.id.tv_name);
-            tv_Phone = (TextView) itemView.findViewById(R.id.tv_phone);
             tv_Email = (TextView) itemView.findViewById(R.id.tv_email);
             tv_Gender = (TextView) itemView.findViewById(R.id.tv_gender);
-            tv_Specialize = (TextView) itemView.findViewById(R.id.tv_specialize);
         }
     }
     public interface Callback{
