@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -34,9 +35,11 @@ import com.example.quanlypet.adapter.Spinner.SpinnerDoctor;
 import com.example.quanlypet.database.AnimalDB;
 import com.example.quanlypet.database.BookDB;
 import com.example.quanlypet.database.DoctorDB;
+import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.AnimalObj;
 import com.example.quanlypet.model.BookObj;
 import com.example.quanlypet.model.DoctorObj;
+import com.example.quanlypet.model.UsersObj;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -89,7 +92,7 @@ public class AddBooking extends AppCompatActivity {
 
     List<AnimalObj> listAnimal = new ArrayList<>();
     List<DoctorObj> listDoctor = new ArrayList<>();
-
+    UsersObj usersObj = new UsersObj();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,10 +121,10 @@ public class AddBooking extends AppCompatActivity {
         adapterSPNAnimal.setData(listAnimal);
         spnPet.setAdapter(adapterSPNAnimal);
         adapterSPNDoctor = new SpinnerDoctor();
-
         listDoctor = DoctorDB.getInstance(this).Dao().getAllData();
         adapterSPNDoctor.setDATA(listDoctor);
         spnDoctor.setAdapter(adapterSPNDoctor);
+
         toolbar_booking = findViewById(R.id.tbl_booking);
         toolbar_booking.setTitle("Đặt Lịch");
 
@@ -150,8 +153,6 @@ public class AddBooking extends AppCompatActivity {
         });
 
 
-
-
         TIEDService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,6 +169,7 @@ public class AddBooking extends AppCompatActivity {
             }
         });
     }
+
     ActivityResultLauncher<Intent> chooseImg = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -208,15 +210,21 @@ public class AddBooking extends AppCompatActivity {
         String strTime = TIEDTime.getText().toString();
         String strDiaChi = TIEDAddress.getText().toString();
         String strDichVU = TIEDService.getText().toString();
+
         BitmapDrawable bitmapDrawable = (BitmapDrawable) imgPicture.getDrawable();
         Bitmap bitmap = bitmapDrawable.getBitmap();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] anh = byteArrayOutputStream.toByteArray();
+        SharedPreferences sharedPreferences = getSharedPreferences("user_file", MODE_PRIVATE);
+        String user = sharedPreferences.getString("Username", "");
 
-        BookObj bookObj = new BookObj(idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU);
+        usersObj = UsersDB.getInstance(this).Dao().getIdUsers(user);
+        int id = usersObj.getId();
+        BookObj bookObj = new BookObj(id,idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU);
         BookDB.getInstance(this).Dao().insert(bookObj);
         Toast.makeText(this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
+
     }
 
     public void SlectedSpinner() {

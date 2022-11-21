@@ -83,11 +83,13 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
         if (!status) {
             editor.clear();
+            editor.putString("Username",R_user);
         }else {
             editor.putString("Username",R_user);
             editor.putString("Password",R_pass);
             editor.putBoolean("Remember",status);
         }
+
         editor.commit();
     }
 }

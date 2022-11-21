@@ -16,10 +16,13 @@ public interface BookDao {
 
     @Query("SELECT * FROM Book")
     List<BookObj> getAllData();
+    @Query("SELECT * FROM Book where id_user =:id")
+    List<BookObj> getAllDataFromID(int id);
 
     @Update
     void edit(BookObj object);
 
     @Query("SELECT *FROM book where id=:id")
     BookObj getIDBook(String id);
+
 }

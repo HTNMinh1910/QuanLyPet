@@ -22,6 +22,18 @@ import java.util.List;
 public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHolder> {
     List<BookObj> list;
     Context mContext;
+    private ClickItem clickItem;
+    public interface ClickItem{
+        void update(BookObj bookObj, int index);
+    }
+
+
+    public bookingAdapter(ClickItem clickItem) {
+        this.clickItem = clickItem;
+    }
+    public bookingAdapter() {
+
+    }
 
     public void setDATA(List<BookObj> list) {
         this.list = list;
@@ -38,6 +50,7 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BookObj obj = list.get(position);
+        int index = position;
         holder.tvTime.setText(obj.getTime());
         holder.tvService.setText(obj.getService());
         DoctorObj doctorObj = DoctorDB.getInstance(mContext).Dao().getIdDoctor(obj.getId_doctor() + "");
@@ -45,6 +58,12 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
         holder.tvAddress.setText(doctorObj.getAddress());
         AnimalObj animalObj = AnimalDB.getInstance(mContext).Dao().getIDAnimal(obj.getId_animal()+"");
         holder.tvNamePet.setText(animalObj.getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              clickItem.update(obj,index);
+            }
+        });
 
     }
 

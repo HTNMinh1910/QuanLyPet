@@ -52,12 +52,6 @@ public class SignupUsersActivity extends AppCompatActivity {
             finish();
         });
         btnSignup.setOnClickListener(view -> {
-//            SharedPreferences preferences = getSharedPreferences("thongtin", MODE_PRIVATE);
-//            SharedPreferences.Editor editor = preferences.edit();
-//            editor.putString("fullname",fullName);
-//            editor.putString("email",email);
-//            editor.putString("phone",phone);
-//            editor.apply();
             if (Validate()>0){
                 String importName = edUsername.getText().toString().trim();
                 String fullName = edName.getText().toString().trim();

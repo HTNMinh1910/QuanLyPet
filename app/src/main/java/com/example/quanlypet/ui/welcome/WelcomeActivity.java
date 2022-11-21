@@ -14,8 +14,10 @@ import com.example.quanlypet.MainActivity;
 import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.viewpager2.SlideAdapter;
 import com.example.quanlypet.database.AdminDB;
+import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.AdminObj;
 import com.example.quanlypet.model.Photo;
+import com.example.quanlypet.model.UsersObj;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +83,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wellcome);
+        UsersDB.getInstance(this).Dao().insert(new UsersObj("Admin","Account_QLPV","qlpvip@gmail.com","0977959629",2,"petvip"));
 
         btnAdmin = (Button) findViewById(R.id.btn_admin);
         tvPrev = (TextView) findViewById(R.id.tv_prev);
@@ -95,7 +98,7 @@ public class WelcomeActivity extends AppCompatActivity {
         tapSlide();
         AdminDB.getInstance(getApplicationContext()).Dao().insert(new AdminObj("Admin","Account_QLPV","qlpvip@gmail.com","petvip"));
         btnAdmin.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+          startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         });
     }
 }

@@ -27,4 +27,9 @@ public interface UsersDao {
 
     @Query("Select * From Users where  import_name = :id")
     UsersObj getIdUsers(String id);
+
+    @Query("Select * From Users where id =:id ")
+    UsersObj getID(int id);
+
+
 }
