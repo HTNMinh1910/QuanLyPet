@@ -14,11 +14,12 @@ import com.example.quanlypet.model.DoctorObj;
 public abstract class DoctorDB extends RoomDatabase {
     private static final String DATABASENAME = "Doctor.db";
     private static DoctorDB Instance;
-    public abstract DoctorDao docterDao();
+    public abstract DoctorDao Dao();
 
     public static synchronized DoctorDB getInstance(Context context){
         if (Instance==null){
-            Instance = Room.databaseBuilder(context.getApplicationContext(), DoctorDB.class,DATABASENAME).allowMainThreadQueries().build();
+            Instance = Room.databaseBuilder(context, DoctorDB.class,DATABASENAME).
+                    allowMainThreadQueries().build();
         }
         return Instance;
     }

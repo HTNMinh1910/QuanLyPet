@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,20 +19,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.animal.AnimalAdapter;
-import com.example.quanlypet.dao.AnimalDao;
 import com.example.quanlypet.database.AnimalDB;
 import com.example.quanlypet.model.AnimalObj;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class AddAnimalAcitvity extends AppCompatActivity {
@@ -98,7 +92,7 @@ public class AddAnimalAcitvity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "ko dc de trong", Toast.LENGTH_SHORT).show();
             } else {
                 AnimalObj object = new AnimalObj(namean, anh, age, species,1);
-                AnimalDB.getInstance(getApplicationContext()).animalDao().insert(object);
+                AnimalDB.getInstance(getApplicationContext()).Dao().insert(object);
                 Toast.makeText(getApplicationContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
             }
         });

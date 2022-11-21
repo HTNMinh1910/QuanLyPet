@@ -58,7 +58,7 @@ public class AddBillActivity extends AppCompatActivity {
                 String time = sdftime.format(new Date());
                 String date = sdfdate.format(new Date());
                 BillObj object = new BillObj(caseid, time, date, price, note);
-                BillDB.getInstance(getApplicationContext()).billDao().insertBill(object);
+                BillDB.getInstance(getApplicationContext()).Dao().insertBill(object);
                 Toast.makeText(getApplicationContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
 
             }

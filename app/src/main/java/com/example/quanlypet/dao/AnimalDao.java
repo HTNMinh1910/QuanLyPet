@@ -16,10 +16,6 @@ public interface AnimalDao {
     @Query("SELECT * FROM Animal")
     List<AnimalObj> getAllData();
 
-
-    @Query("SELECT * FROM Animal")
-    AnimalObj getAll();
-
     @Update
     void edit(AnimalObj object);
 

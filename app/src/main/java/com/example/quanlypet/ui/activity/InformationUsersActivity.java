@@ -52,7 +52,7 @@ public class InformationUsersActivity extends AppCompatActivity{
         });
     }
     public void LoadData(){
-        SharedPreferences sharedPreferences = getSharedPreferences("user_file",MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
         String username = sharedPreferences.getString("Username","");
         if (username.equals("Admin")){
             adminObj = AdminDB.getInstance(getApplicationContext()).Dao().getIdAdmin(username);

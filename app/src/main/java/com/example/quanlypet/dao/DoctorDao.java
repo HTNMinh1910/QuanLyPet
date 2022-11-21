@@ -18,9 +18,6 @@ public interface DoctorDao {
     @Query("SELECT * FROM Doctor")
     List<DoctorObj> getAllData();
 
-    @Query("SELECT * FROM Doctor")
-    DoctorObj getAll();
-
     @Update
     void edit(DoctorObj docterObj);
 

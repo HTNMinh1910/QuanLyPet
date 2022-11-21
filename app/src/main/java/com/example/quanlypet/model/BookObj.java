@@ -8,7 +8,7 @@ public class BookObj {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int id_doctor;
-    private int id_dnimal;
+    private int id_animal;
     private String status;
     private byte[] photo_status;
     private String time;
@@ -22,7 +22,7 @@ public class BookObj {
 
     public BookObj(int id_doctor, int id_dnimal, String status, byte[] photo_status, String time, String location, String address, String service) {
         this.id_doctor = id_doctor;
-        this.id_dnimal = id_dnimal;
+        this.id_animal = id_dnimal;
         this.status = status;
         this.photo_status = photo_status;
         this.time = time;
@@ -47,12 +47,12 @@ public class BookObj {
         this.id_doctor = id_doctor;
     }
 
-    public int getId_dnimal() {
-        return id_dnimal;
+    public int getId_animal() {
+        return id_animal;
     }
 
-    public void setId_dnimal(int id_dnimal) {
-        this.id_dnimal = id_dnimal;
+    public void setId_animal(int id_animal) {
+        this.id_animal = id_animal;
     }
 
     public String getStatus() {

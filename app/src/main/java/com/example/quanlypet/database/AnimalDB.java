@@ -11,12 +11,13 @@ import com.example.quanlypet.model.AnimalObj;
 
 @Database(entities = {AnimalObj.class}, version = 1)
 public abstract class AnimalDB extends RoomDatabase {
-    public abstract AnimalDao animalDao();
+    public abstract AnimalDao Dao();
     public static final String DATABASENAME = "Animal.db";
     public static AnimalDB Instance;
     public static synchronized AnimalDB getInstance(Context context){
         if (Instance == null){
-            Instance = Room.databaseBuilder(context, AnimalDB.class, DATABASENAME).allowMainThreadQueries().build();
+            Instance = Room.databaseBuilder(context,AnimalDB.class, DATABASENAME).
+                    allowMainThreadQueries().build();
         }
         return Instance;
     }

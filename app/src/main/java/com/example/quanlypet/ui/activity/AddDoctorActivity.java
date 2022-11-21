@@ -115,7 +115,7 @@ public class AddDoctorActivity extends AppCompatActivity{
                 Toast.makeText(this, "Số điện thoại không đúng định dạng", Toast.LENGTH_SHORT).show();
             }else{
                 DoctorObj docterObj = new DoctorObj(name,hinhanh,phone,email,address,checkGender,specialize);
-                DoctorDB.getInstance(getApplicationContext()).docterDao().insert(docterObj);
+                DoctorDB.getInstance(getApplicationContext()).Dao().insert(docterObj);
                 Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                 finish();
             }

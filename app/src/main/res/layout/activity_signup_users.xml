@@ -4,6 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/biorhyme_bold"
+            android:text="Exit"
+            android:layout_marginLeft="12dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="#FF3D00"
+            android:textSize="15sp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -113,7 +123,17 @@
             android:fontFamily="@font/biorhyme_bold"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
-
+    <TextView
+        android:id="@+id/tv_errors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/biorhyme_bold"
+        android:layout_gravity="center"
+        android:text="Lỗi tài khoản"
+        android:textColor="#FB0F0F"
+        android:textSize="12sp" />
     <Button
         android:id="@+id/btn_Signup"
         android:layout_width="match_parent"

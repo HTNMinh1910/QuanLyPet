@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class SignupUsersActivity extends AppCompatActivity {
 
+    private TextView tvExit;
     private TextInputEditText edUsername;
     private TextInputEditText edName;
     private TextInputEditText edEmail;
@@ -25,6 +27,7 @@ public class SignupUsersActivity extends AppCompatActivity {
     private RadioButton rdoFemale;
     private TextInputEditText edPassword;
     private TextInputEditText edRePassword;
+    private TextView tvErrors;
     private Button btnSignup;
 
     @Override
@@ -32,6 +35,7 @@ public class SignupUsersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_users);
 
+        tvExit = findViewById(R.id.tv_exit);
         edUsername = findViewById(R.id.ed_Username);
         edName = findViewById(R.id.ed_Name);
         edEmail = findViewById(R.id.ed_Email);
@@ -40,27 +44,24 @@ public class SignupUsersActivity extends AppCompatActivity {
         rdoFemale = findViewById(R.id.rdo_Female);
         edPassword = findViewById(R.id.ed_Password);
         edRePassword = findViewById(R.id.ed_RePassword);
+        tvErrors = (TextView) findViewById(R.id.tv_errors);
         btnSignup = findViewById(R.id.btn_Signup);
         rdoMale.setSelected(true);
-
+        tvExit.setOnClickListener(view -> {
+            finish();
+        });
         btnSignup.setOnClickListener(view -> {
             String importName = edUsername.getText().toString().trim();
             String fullName = edName.getText().toString().trim();
             String email = edEmail.getText().toString().trim();
             String phone = edPhone.getText().toString().trim();
 
-            SharedPreferences preferences = getSharedPreferences("thongtin", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("fullname",fullName);
-            editor.putString("email",email);
-            editor.putString("phone",phone);
-            editor.apply();
-//            edName.setText(preferences.getString("fullname",""));
-//            edEmail.setText(preferences.getString("email",""));
-//            edPhone.setText(preferences.getString("phone" ,""));
-//            preferences.getString("fullname",fullName);
-//            preferences.getString("email",email);
-//            preferences.getString("phone",phone);
+//            SharedPreferences preferences = getSharedPreferences("thongtin", MODE_PRIVATE);
+//            SharedPreferences.Editor editor = preferences.edit();
+//            editor.putString("fullname",fullName);
+//            editor.putString("email",email);
+//            editor.putString("phone",phone);
+//            editor.apply();
 
             int gender = 0;
             if (rdoMale.isChecked()){
@@ -73,13 +74,13 @@ public class SignupUsersActivity extends AppCompatActivity {
             if (importName.isEmpty() || fullName.isEmpty() || email.isEmpty() ||
                     phone.isEmpty() || password.isEmpty()||Repassword.isEmpty()) {
                 if (Repassword.equals(password)){
-                    Toast.makeText(getApplicationContext(), "Không Khớp", Toast.LENGTH_SHORT).show();
+                    tvErrors.setText("Mật khẩu không khớp");
                 }
-                Toast.makeText(getApplicationContext(), "Không được để trống!", Toast.LENGTH_SHORT).show();
+                tvErrors.setText("Không được để trống!");
             } else {
                 UsersObj usersObj = new UsersObj(importName,fullName,email,phone,gender,password);
                 UsersDB.getInstance(getApplicationContext()).Dao().insert(usersObj);
-                Toast.makeText(getApplicationContext(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                tvErrors.setText("Thêm thành công.");
             }
         });
     }

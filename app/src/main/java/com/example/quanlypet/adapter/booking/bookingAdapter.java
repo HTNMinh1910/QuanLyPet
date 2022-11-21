@@ -40,10 +40,10 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
         BookObj obj = list.get(position);
         holder.tvTime.setText(obj.getTime());
         holder.tvService.setText(obj.getService());
-        DoctorObj doctorObj = DoctorDB.getInstance(mContext).docterDao().getIdDoctor(obj.getId_doctor() + "");
+        DoctorObj doctorObj = DoctorDB.getInstance(mContext).Dao().getIdDoctor(obj.getId_doctor() + "");
         holder.nameDoctor.setText(doctorObj.getName());
         holder.tvAddress.setText(doctorObj.getAddress());
-        AnimalObj animalObj = AnimalDB.getInstance(mContext).animalDao().getIDAnimal(obj.getId_dnimal()+"");
+        AnimalObj animalObj = AnimalDB.getInstance(mContext).Dao().getIDAnimal(obj.getId_animal()+"");
         holder.tvNamePet.setText(animalObj.getName());
 
     }

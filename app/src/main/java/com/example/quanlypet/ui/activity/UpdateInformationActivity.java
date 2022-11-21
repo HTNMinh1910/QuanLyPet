@@ -35,7 +35,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_information);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("thongtin1",MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
         String username = sharedPreferences.getString("username","");
 
 

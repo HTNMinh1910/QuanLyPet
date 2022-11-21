@@ -10,7 +10,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -115,12 +114,12 @@ public class AddBooking extends AppCompatActivity {
             }
         });
         adapterSPNAnimal = new SpinnerAnimal();
-        listAnimal = AnimalDB.getInstance(this).animalDao().getAllData();
+        listAnimal = AnimalDB.getInstance(this).Dao().getAllData();
         adapterSPNAnimal.setData(listAnimal);
         spnPet.setAdapter(adapterSPNAnimal);
         adapterSPNDoctor = new SpinnerDoctor();
 
-        listDoctor = DoctorDB.getInstance(this).docterDao().getAllData();
+        listDoctor = DoctorDB.getInstance(this).Dao().getAllData();
         adapterSPNDoctor.setDATA(listDoctor);
         spnDoctor.setAdapter(adapterSPNDoctor);
         toolbar_booking = findViewById(R.id.tbl_booking);
@@ -224,7 +223,7 @@ public class AddBooking extends AppCompatActivity {
         spnDoctor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                listDoctor = DoctorDB.getInstance(getApplicationContext()).docterDao().getAllData();
+                listDoctor = DoctorDB.getInstance(getApplicationContext()).Dao().getAllData();
                 idDoctor = listDoctor.get(position).getId();
 
                 TIEDNameDoctor.setText(listDoctor.get(position).getName());
@@ -239,7 +238,7 @@ public class AddBooking extends AppCompatActivity {
         spnPet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                listAnimal = AnimalDB.getInstance(getApplicationContext()).animalDao().getAllData();
+                listAnimal = AnimalDB.getInstance(getApplicationContext()).Dao().getAllData();
                 idPet = listAnimal.get(position).getId();
                 TIEDNamePet.setText(listAnimal.get(position).getName());
                 TIEDTypePet.setText(listAnimal.get(position).getSpecies());
