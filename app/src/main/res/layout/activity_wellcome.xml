@@ -50,6 +50,7 @@
         android:id="@+id/btn_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Signup or Signin"
         android:backgroundTint="#F57C7C"/>
 </LinearLayout>
