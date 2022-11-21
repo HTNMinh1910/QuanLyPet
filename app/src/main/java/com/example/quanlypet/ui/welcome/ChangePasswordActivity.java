@@ -49,15 +49,15 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 NowPass.setText("");
                 newPass.setText("");
                 newPassAganin.setText("");
-            } else {
-                tvErrors.setText("Đổi mật khẩu thất bại.");
             }
         });
     }
 
     public int Validate(){
         int check = 1;
-        if (NowPass.getText().toString().trim().isEmpty() || newPass.getText().toString().trim().isEmpty() || newPassAganin.getText().toString().isEmpty()){
+        if (NowPass.getText().toString().trim().isEmpty() ||
+                newPass.getText().toString().trim().isEmpty() ||
+                newPassAganin.getText().toString().isEmpty()){
             tvErrors.setText("Không để trống !");
             check = -1;
         }else {
