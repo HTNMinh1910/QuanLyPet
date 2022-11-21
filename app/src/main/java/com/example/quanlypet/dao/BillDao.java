@@ -19,6 +19,4 @@ public interface BillDao {
     @Update
     void editBill(BillObj object);
 
-    @Query("DELETE FROM Bill WHERE id = :ID")
-    void deleteById(int ID);
 }
