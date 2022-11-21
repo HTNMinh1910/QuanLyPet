@@ -17,7 +17,7 @@ public abstract class PatientDB extends RoomDatabase {
 
     public static synchronized PatientDB getInstance(Context context){
         if (Instance==null){
-            Instance = Room.databaseBuilder(context.getApplicationContext(),PatientDB.class,DATABASENAME).allowMainThreadQueries().build();
+            Instance = Room.databaseBuilder(context,PatientDB.class,DATABASENAME).allowMainThreadQueries().build();
         }
         return Instance;
     }

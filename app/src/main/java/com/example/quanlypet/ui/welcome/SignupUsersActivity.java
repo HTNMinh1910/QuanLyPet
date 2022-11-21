@@ -55,13 +55,6 @@ public class SignupUsersActivity extends AppCompatActivity {
             editor.putString("email",email);
             editor.putString("phone",phone);
             editor.apply();
-//            edName.setText(preferences.getString("fullname",""));
-//            edEmail.setText(preferences.getString("email",""));
-//            edPhone.setText(preferences.getString("phone" ,""));
-//            preferences.getString("fullname",fullName);
-//            preferences.getString("email",email);
-//            preferences.getString("phone",phone);
-
             int gender = 0;
             if (rdoMale.isChecked()){
                 gender = 0;
@@ -73,7 +66,7 @@ public class SignupUsersActivity extends AppCompatActivity {
             if (importName.isEmpty() || fullName.isEmpty() || email.isEmpty() ||
                     phone.isEmpty() || password.isEmpty()||Repassword.isEmpty()) {
                 if (Repassword.equals(password)){
-                    Toast.makeText(getApplicationContext(), "Không Khớp", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
                 }
                 Toast.makeText(getApplicationContext(), "Không được để trống!", Toast.LENGTH_SHORT).show();
             } else {

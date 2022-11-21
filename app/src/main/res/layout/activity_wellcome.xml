@@ -34,13 +34,13 @@
         android:id="@+id/btn_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bạn là Admin"
+        android:text="Đăng Nhập"
         android:backgroundTint="#F57C7C"/>
 
     <Button
         android:id="@+id/btn_users"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bạn là users"
+        android:text="Đăng Ký"
         android:backgroundTint="#1DE9B6"/>
 </LinearLayout>

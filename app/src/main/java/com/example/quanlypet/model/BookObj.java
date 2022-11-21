@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 public class BookObj {
     @PrimaryKey(autoGenerate = true)
     private int id;
+    private int id_user;
     private int id_doctor;
     private int id_dnimal;
     private String status;
@@ -20,7 +21,8 @@ public class BookObj {
     public BookObj() {
     }
 
-    public BookObj(int id_doctor, int id_dnimal, String status, byte[] photo_status, String time, String location, String address, String service) {
+    public BookObj(int id_user, int id_doctor, int id_dnimal, String status, byte[] photo_status, String time, String location, String address, String service) {
+        this.id_user = id_user;
         this.id_doctor = id_doctor;
         this.id_dnimal = id_dnimal;
         this.status = status;
@@ -29,6 +31,14 @@ public class BookObj {
         this.location = location;
         this.address = address;
         this.service = service;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
     public int getId() {
