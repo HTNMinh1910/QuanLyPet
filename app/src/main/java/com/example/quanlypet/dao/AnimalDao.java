@@ -23,8 +23,6 @@ public interface AnimalDao {
     @Update
     void edit(AnimalObj object);
 
-    @Query("DELETE FROM Animal WHERE id = :ID")
-    void deleteById(int ID);
     @Query("SELECT *FROM animal where id =:id ")
     AnimalObj getIDAnimal(String id);
 }
