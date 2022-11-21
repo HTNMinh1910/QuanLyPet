@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         Tbr = findViewById(R.id.id_tollBar);
         setSupportActionBar(Tbr);
+        bottomNavigationView.setItemIconTintList(null);
         ViewPager2Adapter adapter = new ViewPager2Adapter(this);
         viewPager2.setAdapter(adapter);
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
