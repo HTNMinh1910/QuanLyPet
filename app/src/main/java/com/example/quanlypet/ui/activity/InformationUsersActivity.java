@@ -83,7 +83,7 @@ public class InformationUsersActivity extends AppCompatActivity{
     }
     @Override
     protected void onResume() {
-        super.onResume();
+        super.onResume();      
         LoadData();
     }
 }

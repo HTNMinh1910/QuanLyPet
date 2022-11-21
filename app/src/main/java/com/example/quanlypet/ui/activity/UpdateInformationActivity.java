@@ -35,8 +35,8 @@ public class UpdateInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_information);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("user_file",MODE_PRIVATE);
-        String username = sharedPreferences.getString("Username","");
+        SharedPreferences sharedPreferences = getSharedPreferences("thongtin1",MODE_PRIVATE);
+        String username = sharedPreferences.getString("username","");
 
 
         usersObj = UsersDB.getInstance(this).Dao().getIdUsers(username);

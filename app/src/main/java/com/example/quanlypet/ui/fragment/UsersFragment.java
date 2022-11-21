@@ -70,6 +70,7 @@ public class UsersFragment extends Fragment {
             startActivity(new Intent(getContext(), WelcomeActivity.class));
         });
     }
+    }
         public void replaceFragmet (Fragment fragment){
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.ln_inforAccount, fragment);
