@@ -43,32 +43,6 @@ public class WelcomeActivity extends AppCompatActivity {
         list.add(new Photo(R.drawable.six));
         return list;
     }
-    private void autoSlide(){
-        if (photoList == null||photoList.isEmpty()||vpr == null){
-            return;
-        }
-        if (timer == null){
-            timer = new Timer();
-        }
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        int curentItem = vpr.getCurrentItem();
-                        int toltalItem = photoList.size() - 1;
-                        if (curentItem < toltalItem){
-                            curentItem++;
-                            vpr.setCurrentItem(curentItem);
-                        }else {
-                            vpr.setCurrentItem(0);
-                        }
-                    }
-                });
-            }
-        },500,3000);
-    }
     private void tapSlide(){
         if (photoList == null||photoList.isEmpty()||vpr == null){
             return;
