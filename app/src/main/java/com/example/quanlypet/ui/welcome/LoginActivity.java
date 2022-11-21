@@ -49,6 +49,10 @@ public class LoginActivity extends AppCompatActivity {
         });
         btnLogin.setOnClickListener(view -> {
             CheckLogin();
+            SharedPreferences sharedPreferences = getSharedPreferences("thongtin1", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("username",edUsername.getText().toString());
+            editor.commit();
         });
     }
     private AdminObj adminObj = new AdminObj();

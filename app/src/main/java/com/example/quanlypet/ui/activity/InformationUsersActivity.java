@@ -34,8 +34,8 @@ public class InformationUsersActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_users);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("user_file",MODE_PRIVATE);
-        String username = sharedPreferences.getString("Username","");
+        SharedPreferences sharedPreferences = getSharedPreferences("thongtin1",MODE_PRIVATE);
+        String username = sharedPreferences.getString("username","");
 
         usersObj = UsersDB.getInstance(this).Dao().getIdUsers(username);
         String phone = usersObj.getPhone();
@@ -73,8 +73,9 @@ public class InformationUsersActivity extends AppCompatActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences sharedPreferences = getSharedPreferences("user_file",MODE_PRIVATE);
-        String username = sharedPreferences.getString("Username","");
+        SharedPreferences sharedPreferences = getSharedPreferences("thongtin1",MODE_PRIVATE);
+        String username = sharedPreferences.getString("username","");
+        Toast.makeText(this, ""+username, Toast.LENGTH_SHORT).show();
         usersObj = UsersDB.getInstance(this).Dao().getIdUsers(username);
         String phone = usersObj.getPhone();
         String email = usersObj.getEmail();
@@ -84,5 +85,10 @@ public class InformationUsersActivity extends AppCompatActivity{
         edFullnameUsers.setText(name);
         edEmailUsers.setText(email);
         edPhoneUsers.setText(phone);
+        if (gender == 0){
+            edGenderUsers.setText("Male");
+        } else {
+            edGenderUsers.setText("Female");
+        }
     }
 }
