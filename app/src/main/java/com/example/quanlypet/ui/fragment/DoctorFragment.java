@@ -40,11 +40,6 @@ import java.util.ArrayList;
 
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DoctorFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     private FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
@@ -57,10 +52,8 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     Button btnCamera;
     Button btnAlbum;
     public DoctorFragment() {
-        // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static DoctorFragment newInstance() {
         DoctorFragment fragment = new DoctorFragment();
         return fragment;
@@ -74,7 +67,6 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_docter, container, false);
     }
 
@@ -185,7 +177,6 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
                         Uri selectedImageUri = data.getData();
                         if (null != selectedImageUri) {
                             imgPicture.setImageURI(selectedImageUri);
-//                            txtImage.setText("Lựa chọn lại hình ảnh");
                             BitmapDrawable bitmapDrawable = (BitmapDrawable) imgPicture.getDrawable();
                             bitmap = bitmapDrawable.getBitmap();
                         }

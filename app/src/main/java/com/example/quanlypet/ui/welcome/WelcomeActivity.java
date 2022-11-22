@@ -96,7 +96,10 @@ public class WelcomeActivity extends AppCompatActivity {
         circleIndicator.setViewPager(vpr);
         slideAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
         tapSlide();
-        AdminDB.getInstance(getApplicationContext()).Dao().insert(new AdminObj("Admin","Account_QLPV","qlpvip@gmail.com","petvip"));
+        if (AdminDB.getInstance(getApplicationContext()).Dao().getAllData()!=null){
+            AdminDB.getInstance(getApplicationContext()).Dao().
+                    insert(new AdminObj("Admin","Account_QLPV","qlpvip@gmail.com","petvip"));
+        }
         btnAdmin.setOnClickListener(view -> {
           startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         });
