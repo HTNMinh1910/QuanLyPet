@@ -28,7 +28,6 @@ public class InformationUsersActivity extends AppCompatActivity{
     private TextView edPhoneUsers;
     private TextView edGenderUsers;
     private Button btnEdit;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

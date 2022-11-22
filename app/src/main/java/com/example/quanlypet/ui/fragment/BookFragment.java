@@ -61,7 +61,7 @@ import java.util.List;
  * Use the {@link BookFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BookFragment extends Fragment {
+public class BookFragment extends Fragment implements bookingAdapter.Callback{
     private int REQUEST_CAMERA =111;
     private Bitmap bitmap;
     private ImageView imgClose;
@@ -105,16 +105,14 @@ public class BookFragment extends Fragment {
     private int idPet;
     SpinnerAnimal adapterSPNAnimal;
     SpinnerDoctor adapterSPNDoctor;
-    List<AnimalObj> listAnimal = new ArrayList<>();
-    List<DoctorObj> listDoctor = new ArrayList<>();
+    List<AnimalObj> listAnimal;
+    List<DoctorObj> listDoctor;
     private int idDoctor;
 
 
     public BookFragment() {
-        // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static BookFragment newInstance() {
         BookFragment fragment = new BookFragment();
         return fragment;
@@ -128,7 +126,6 @@ public class BookFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_book, container, false);
     }
 
@@ -142,7 +139,7 @@ public class BookFragment extends Fragment {
         Toast.makeText(getActivity(), "" + user, Toast.LENGTH_SHORT).show();
         if (user.equalsIgnoreCase("Admin")) {
             list = BookDB.getInstance(getActivity()).Dao().getAllData();
-            adapter = new bookingAdapter();
+            adapter = new bookingAdapter(this,getActivity());
             adapter.setDATA(list);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
             reCy_booking.setAdapter(adapter);
@@ -151,19 +148,17 @@ public class BookFragment extends Fragment {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
             list = BookDB.getInstance(getActivity()).Dao().getAllDataFromID(id);
-            adapter = new bookingAdapter(getActivity(),new bookingAdapter.ClickItem() {
-                @Override
-                public void update(BookObj bookObj, int index) {
-                    updateBooking(bookObj, index);
-                }
-            });
+            adapter = new bookingAdapter(this,getActivity());
             adapter.setDATA(list);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
             reCy_booking.setAdapter(adapter);
             reCy_booking.setLayoutManager(linearLayoutManager);
         }
     }
-
+    @Override
+    public void update(BookObj bookObj, int index) {
+        updateBooking(bookObj,index);
+    }
     private void updateBooking(BookObj bookObj, int index) {
         final Dialog dialog = new Dialog(getActivity(), com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
 
@@ -444,9 +439,7 @@ public class BookFragment extends Fragment {
                 idPet = listAnimal.get(position).getId();
                 TIEDNamePet.setText(listAnimal.get(position).getName());
                 TIEDTypePet.setText(listAnimal.get(position).getSpecies());
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 

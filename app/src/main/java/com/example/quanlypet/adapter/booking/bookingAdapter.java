@@ -22,19 +22,15 @@ import java.util.List;
 public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHolder> {
     List<BookObj> list;
     Context mContext;
-    private ClickItem clickItem;
-    public interface ClickItem{
+    private Callback callback;
+
+    public interface Callback{
         void update(BookObj bookObj, int index);
     }
 
-
-    public bookingAdapter(Context mContext, ClickItem clickItem) {
+    public bookingAdapter(Callback callback, Context mContext) {
         this.mContext = mContext;
-        this.clickItem = clickItem;
-    }
-
-    public bookingAdapter() {
-
+        this.callback = callback;
     }
 
     public void setDATA(List<BookObj> list) {
@@ -63,7 +59,7 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              clickItem.update(obj,index);
+                callback.update(obj,index);
             }
         });
 
