@@ -88,13 +88,12 @@ public class AddDoctorActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_PICK);
                 i.setType("image/*");
-//                i.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(i, REQUEST_CODE_ALBUM);
             }
         });
 
         btnAddDocter.setOnClickListener(v-> {
-            String regexPhoneNumber = "(0|[3|5|7|8|9])+([0-9]{8})";
+            String regexPhoneNumber = "(09|03|07|08|05)+([0-9]{8})";
             String name = edNameDocter.getText().toString().trim();
             String phone = edPhoneDocter.getText().toString().trim();
 
@@ -149,7 +148,6 @@ public class AddDoctorActivity extends AppCompatActivity{
     }
     public boolean phanQuyen() {
         if (Build.VERSION.SDK_INT > 23) {
-            //1. nếu các quyền đã được gán thì return true
             if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
@@ -160,7 +158,6 @@ public class AddDoctorActivity extends AppCompatActivity{
             ) {
                 return true;
             }
-            //2. nếu các quyền chưa được gán thì cần xin người dùng cấp quyền, return false
             else {
                 ActivityCompat.requestPermissions(this, new String[]{
                         Manifest.permission.CAMERA,

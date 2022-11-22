@@ -13,13 +13,13 @@ import java.util.List;
 @Dao
 public interface DoctorDao {
     @Insert
-    void insert(DoctorObj docterObj);
+    void insert(DoctorObj doctorObj);
 
     @Query("SELECT * FROM Doctor")
     List<DoctorObj> getAllData();
 
     @Update
-    void edit(DoctorObj docterObj);
+    void edit(DoctorObj doctorObj);
 
     @Query("SELECT *FROM doctor where id=:id ")
     DoctorObj getIdDoctor(String id);
