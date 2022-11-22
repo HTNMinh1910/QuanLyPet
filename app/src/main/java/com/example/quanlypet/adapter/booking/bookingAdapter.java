@@ -28,7 +28,6 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
         void update(BookObj bookObj, int index);
     }
 
-
     public bookingAdapter(Callback callback, Context mContext) {
         this.mContext = mContext;
         this.callback = callback;
