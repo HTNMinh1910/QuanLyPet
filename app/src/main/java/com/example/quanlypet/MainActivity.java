@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager2 viewPager2;
     private BottomNavigationView bottomNavigationView;
     private Toolbar Tbr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,39 +32,11 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setItemIconTintList(null);
         ViewPager2Adapter adapter = new ViewPager2Adapter(this);
         viewPager2.setAdapter(adapter);
-        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                switch (position){
-                    case 0:
-                        bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
-                        Tbr.setTitle("Home");
-                        break;
-                    case 1:
-                        bottomNavigationView.getMenu().findItem(R.id.docter).setChecked(true);
-                        Tbr.setTitle("Bác sĩ");
-                        break;
 
-                    case 2:
-                        bottomNavigationView.getMenu().findItem(R.id.book).setChecked(true);
-                        Tbr.setTitle("Đặt Lịch");
-                        break;
-                    case 3:
-                        bottomNavigationView.getMenu().findItem(R.id.account).setChecked(true);
-                        Tbr.setTitle("Tài Khoản");
-                        break;
-                    case 4:
-                        bottomNavigationView.getMenu().findItem(R.id.bill).setChecked(true);
-                        Tbr.setTitle("bill");
-                        break;
-                }
-            }
-        });
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home:
                         viewPager2.setCurrentItem(0);
                         break;
@@ -86,4 +59,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
 }
+
+

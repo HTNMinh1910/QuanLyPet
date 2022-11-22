@@ -28,9 +28,11 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
     }
 
 
-    public bookingAdapter(ClickItem clickItem) {
+    public bookingAdapter(Context mContext, ClickItem clickItem) {
+        this.mContext = mContext;
         this.clickItem = clickItem;
     }
+
     public bookingAdapter() {
 
     }

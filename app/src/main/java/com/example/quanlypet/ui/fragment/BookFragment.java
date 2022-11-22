@@ -151,7 +151,7 @@ public class BookFragment extends Fragment {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
             list = BookDB.getInstance(getActivity()).Dao().getAllDataFromID(id);
-            adapter = new bookingAdapter(new bookingAdapter.ClickItem() {
+            adapter = new bookingAdapter(getActivity(),new bookingAdapter.ClickItem() {
                 @Override
                 public void update(BookObj bookObj, int index) {
                     updateBooking(bookObj, index);
@@ -170,7 +170,6 @@ public class BookFragment extends Fragment {
         dialog.setContentView(R.layout.update_booking);
         Toolbar toolbar = dialog.findViewById(R.id.tbl_booking);
         toolbar.setTitle("Chi tiết Lịch Đặt");
-
         spnDoctor = (Spinner) dialog.findViewById(R.id.spn_doctor);
         TIPNameDoctor = (TextInputLayout) dialog.findViewById(R.id.TIP_NameDoctor);
         TIEDNameDoctor = (TextInputEditText) dialog.findViewById(R.id.TIED_NameDoctor);
@@ -199,8 +198,33 @@ public class BookFragment extends Fragment {
         btnHuy = (Button) dialog.findViewById(R.id.btn_huy);
         SlectedSpinner();
         TIEDStatus.setText(bookObj.getStatus());
+        TIEDAddress.setText(bookObj.getAddress());
         TIEDTime.setText(bookObj.getTime());
         TIEDService.setText(bookObj.getService());
+        TIEDService.setFocusable(false);
+        TIEDService.setFocusableInTouchMode(false);
+        TIEDNameDoctor.setFocusable(false);
+        TIEDNameDoctor.setFocusableInTouchMode(false);
+        TIEDNamePet.setFocusable(false);
+        TIEDNamePet.setFocusableInTouchMode(false);
+        TIEDPhoneNumber.setFocusable(false);
+        TIEDPhoneNumber.setFocusableInTouchMode(false);
+        TIEDTypePet.setFocusable(false);
+        TIEDTypePet.setFocusableInTouchMode(false);
+        rdogr.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rdo_phongkham:
+                        TIPAddress.setEnabled(false);
+                        TIEDAddress.setText("");
+                        break;
+                    case R.id.rdo_tainha:
+                        TIPAddress.setEnabled(true);
+                        break;
+                }
+            }
+        });
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -232,12 +256,12 @@ public class BookFragment extends Fragment {
             rdoTainha.setChecked(false);
         }
         adapterSPNAnimal = new SpinnerAnimal();
-        listAnimal = AnimalDB.getInstance(getActivity()).animalDao().getAllData();
+        listAnimal = AnimalDB.getInstance(getActivity()).Dao().getAllData();
         adapterSPNAnimal.setData(listAnimal);
         spnPet.setAdapter(adapterSPNAnimal);
 
         adapterSPNDoctor = new SpinnerDoctor();
-        listDoctor = DoctorDB.getInstance(getActivity()).docterDao().getAllData();
+        listDoctor = DoctorDB.getInstance(getActivity()).Dao().getAllData();
         adapterSPNDoctor.setDATA(listDoctor);
         spnDoctor.setAdapter(adapterSPNDoctor);
 
@@ -248,12 +272,12 @@ public class BookFragment extends Fragment {
             }
         }
         for(int j=0;j<spnPet.getCount();j++){
-            if(list.get(index).getId_dnimal() == listAnimal.get(j).getId()){
+            if(list.get(index).getId_animal() == listAnimal.get(j).getId()){
                 spnPet.setSelection(j);
                 spnPet.setSelected(true);
             }
         }
-        String strTT = TIEDStatus.getText().toString();
+
         if (rdoPhongkham.isChecked()) {
             noikham = "Phòng Khám";
         } else if (rdoTainha.isChecked()) {
@@ -280,7 +304,12 @@ public class BookFragment extends Fragment {
                 String strTime = TIEDTime.getText().toString();
                 String strDiaChi = TIEDAddress.getText().toString();
                 String strDichVU = TIEDService.getText().toString();
-
+                String strTT = TIEDStatus.getText().toString();
+                if (rdoPhongkham.isChecked()) {
+                    noikham = "Phòng Khám";
+                } else if (rdoTainha.isChecked()) {
+                    noikham = "Tại nhà";
+                }
                 BitmapDrawable bitmapDrawable = (BitmapDrawable) imgPicture.getDrawable();
                 Bitmap bitmap2 = bitmapDrawable.getBitmap();
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -288,11 +317,11 @@ public class BookFragment extends Fragment {
                 byte[] anh = byteArrayOutputStream.toByteArray();
                 bookObj.setId_user(id);
                 bookObj.setId_doctor(idDoctor);
-                bookObj.setId_dnimal(idPet);
+                bookObj.setId_animal(idPet);
                 bookObj.setStatus(strTT);
                 bookObj.setPhoto_status(anh);
-                bookObj.setTime(strTime);
                 bookObj.setLocation(noikham);
+                bookObj.setTime(strTime);
                 bookObj.setAddress(strDiaChi);
                 bookObj.setService(strDichVU);
                 BookDB.getInstance(getActivity()).Dao().edit(bookObj);
@@ -396,7 +425,7 @@ public class BookFragment extends Fragment {
         spnDoctor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                listDoctor = DoctorDB.getInstance(getActivity()).docterDao().getAllData();
+                listDoctor = DoctorDB.getInstance(getActivity()).Dao().getAllData();
                 idDoctor = listDoctor.get(position).getId();
 
                 TIEDNameDoctor.setText(listDoctor.get(position).getName());
@@ -411,7 +440,7 @@ public class BookFragment extends Fragment {
         spnPet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                listAnimal = AnimalDB.getInstance(getActivity()).animalDao().getAllData();
+                listAnimal = AnimalDB.getInstance(getActivity()).Dao().getAllData();
                 idPet = listAnimal.get(position).getId();
                 TIEDNamePet.setText(listAnimal.get(position).getName());
                 TIEDTypePet.setText(listAnimal.get(position).getSpecies());
