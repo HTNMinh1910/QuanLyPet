@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,16 +14,20 @@
             android:layout_height="match_parent"
             android:background="#03A9F4" />
     </com.google.android.material.appbar.AppBarLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="15dp"
         android:orientation="vertical">
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:hintEnabled="true">
+            app:hintEnabled="true"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/businessman">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,7 +39,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:hintEnabled="true">
+            app:hintEnabled="true"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/name">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,7 +54,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:hintEnabled="true">
+            app:hintEnabled="true"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/email">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +69,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:hintEnabled="true">
+            app:hintEnabled="true"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/phone">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,48 +80,36 @@
                 android:id="@+id/ed_phoneUsers"
                 android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
-        <RadioGroup
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:hintEnabled="true"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/gender">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gender: "
-                android:textStyle="bold"
-                android:textSize="15dp"/>
-            <RadioButton
-                android:id="@+id/rdo_boy"
-                android:text="Male"
-                android:enabled="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <RadioButton
-                android:id="@+id/rdo_girl"
-                android:text="Female"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </RadioGroup>
+                android:hint="Gender"
+                android:id="@+id/ed_genderUsers"
+                android:textColorHint="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
             android:id="@+id/tv_thongbao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Không được để trống"
+            android:layout_gravity="center_horizontal"
             android:textColor="#C61A1A"
             android:layout_marginBottom="20dp"/>
-        <LinearLayout
+        <Button
+            android:id="@+id/btn_updateUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal">
-            <Button
-                android:id="@+id/btn_updateUser"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#E11515"
-                android:text="Update"/>
-
-        </LinearLayout>
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#E11515"
+            android:text="Update"/>
     </LinearLayout>
 </LinearLayout>

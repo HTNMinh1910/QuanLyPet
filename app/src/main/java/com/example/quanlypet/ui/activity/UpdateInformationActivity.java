@@ -22,8 +22,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
     private TextInputEditText edFullnameUser;
     private TextInputEditText edEmailUsers;
     private TextInputEditText edPhoneUsers;
-    private RadioButton rdoBoy;
-    private RadioButton rdoGirl;
+    private TextInputEditText edGenderUsers;
     private Button btnUpdateUser;
     private TextView tvThongbao;
 
@@ -43,8 +42,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
         edFullnameUser = findViewById(R.id.ed_fullnameUser);
         edEmailUsers = findViewById(R.id.ed_emailUsers);
         edPhoneUsers = findViewById(R.id.ed_phoneUsers);
-        rdoBoy = findViewById(R.id.rdo_boy);
-        rdoGirl = findViewById(R.id.rdo_girl);
+        edGenderUsers = findViewById(R.id.ed_genderUsers);
         btnUpdateUser = findViewById(R.id.btn_updateUser);
         tvThongbao = findViewById(R.id.tv_thongbao);
 
@@ -59,9 +57,9 @@ public class UpdateInformationActivity extends AppCompatActivity {
         edPhoneUsers.setText(usersObj.getPhone());
         edEmailUsers.setText(usersObj.getEmail());
         if (usersObj.getGender() == 0){
-            rdoBoy.setChecked(true);
+            edGenderUsers.setText("Male");
         } else {
-            rdoGirl.setChecked(true);
+            edGenderUsers.setText("Female");
         }
 
         btnUpdateUser.setOnClickListener(v->{
@@ -69,7 +67,7 @@ public class UpdateInformationActivity extends AppCompatActivity {
             String fullname = edFullnameUser.getText().toString().trim();
             String email = edEmailUsers.getText().toString().trim();
             String phone = edPhoneUsers.getText().toString().trim();
-            int gender = rdoBoy.isChecked()?0:1;
+            int gender = edGenderUsers.getText().toString().trim().equals("Male")?0:1;
             if (usernamenew.isEmpty()||fullname.isEmpty()||email.isEmpty()||phone.isEmpty()){
                 tvThongbao.setVisibility(View.VISIBLE);
             } else {
@@ -79,7 +77,8 @@ public class UpdateInformationActivity extends AppCompatActivity {
                 usersObj.setPhone(phone);
                 usersObj.setGender(gender);
                 UsersDB.getInstance(this).Dao().edit(usersObj);
-                Toast.makeText(this, "Sua thanh cong", Toast.LENGTH_SHORT).show();
+                tvThongbao.setText("Update successfully");
+                Toast.makeText(this, "Update successfully", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
