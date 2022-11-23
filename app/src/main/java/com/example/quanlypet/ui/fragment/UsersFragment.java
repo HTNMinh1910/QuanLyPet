@@ -20,6 +20,7 @@ import com.example.quanlypet.adapter.ad_use.UsersAdapter;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.InformationUsersActivity;
+import com.example.quanlypet.ui.activity.UpdateInformationActivity;
 import com.example.quanlypet.ui.welcome.ChangePasswordActivity;
 import com.example.quanlypet.ui.welcome.WelcomeActivity;
 
@@ -61,7 +62,7 @@ public class UsersFragment extends Fragment {
             startActivity(new Intent(getContext(), AnimalActivity.class));
         });
         lnInforAccount.setOnClickListener(view1 -> {
-            startActivity(new Intent(getActivity(), InformationUsersActivity.class));
+            startActivity(new Intent(getActivity(), UpdateInformationActivity.class));
         });
         lnChangePass.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), ChangePasswordActivity.class));
