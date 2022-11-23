@@ -204,23 +204,36 @@
 
 
             </RadioGroup>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/TIP_Time"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_til_booking"
-                android:layout_marginTop="10dp"
-                android:hint="Ngày hẹn"
-                android:padding="10dp">
+                android:padding="5dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/TIED_Time"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TIP_Time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:background="@drawable/bg_til_booking"
+                    android:layout_marginTop="10dp"
+                    android:hint="Ngày hẹn"
+                    android:padding="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/TIED_Time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                    android:id="@+id/img_date"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|center"
+                    android:src="@drawable/calendar"
+                    android:layout_marginEnd="10dp"/>
+            </FrameLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TIP_Address"

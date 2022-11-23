@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
                         viewPager2.setCurrentItem(2);
                         break;
                     case R.id.account:
-                        viewPager2.setCurrentItem(3);
+                        viewPager2.setCurrentItem(4);
                         break;
                     case R.id.bill:
-                        viewPager2.setCurrentItem(4);
+                        viewPager2.setCurrentItem(3);
                         break;
                 }
                 return true;

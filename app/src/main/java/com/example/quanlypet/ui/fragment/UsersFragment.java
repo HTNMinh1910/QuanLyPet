@@ -11,23 +11,20 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.ui.activity.AddAnimalAcitvity;
 import com.example.quanlypet.ui.activity.AnimalActivity;
-import com.example.quanlypet.adapter.ad_use.UsersAdapter;
-import com.example.quanlypet.database.UsersDB;
-import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.InformationUsersActivity;
 import com.example.quanlypet.ui.welcome.ChangePasswordActivity;
 import com.example.quanlypet.ui.welcome.WelcomeActivity;
 
 public class UsersFragment extends Fragment {
-    private FrameLayout lnInforAccount;
-    private FrameLayout lnAnimalManager;
-    private FrameLayout lnChangePass;
-    private FrameLayout lnLogOut;
+    private LinearLayout lnInforAccount;
+    private LinearLayout lnAnimalManager;
+    private LinearLayout lnUserManager;
+    private LinearLayout lnChangePass;
+    private LinearLayout lnLogOut;
 
     public UsersFragment() {
     }
@@ -52,10 +49,11 @@ public class UsersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        lnInforAccount = (FrameLayout) view.findViewById(R.id.ln_inforAccount);
-        lnAnimalManager = (FrameLayout) view.findViewById(R.id.ln_animalManager);
-        lnChangePass = (FrameLayout) view.findViewById(R.id.ln_changePass);
-        lnLogOut = (FrameLayout) view.findViewById(R.id.ln_logOut);
+        lnInforAccount = (LinearLayout) view.findViewById(R.id.ln_inforAccount);
+        lnAnimalManager = (LinearLayout) view.findViewById(R.id.ln_animalManager);
+        lnUserManager = (LinearLayout) view.findViewById(R.id.ln_userManager);
+        lnChangePass = (LinearLayout) view.findViewById(R.id.ln_changePass);
+        lnLogOut = (LinearLayout) view.findViewById(R.id.ln_logOut);
 
         lnAnimalManager.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), AnimalActivity.class));
