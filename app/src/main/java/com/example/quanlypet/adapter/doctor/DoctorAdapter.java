@@ -1,6 +1,5 @@
 package com.example.quanlypet.adapter.doctor;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,21 +7,16 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.database.DoctorDB;
 import com.example.quanlypet.model.DoctorObj;
 import com.example.quanlypet.ui.activity.InformationActivity;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -106,7 +100,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         public DocterViewHolder(@NonNull View itemView) {
             super(itemView);
             id_RelativeLayout = (RelativeLayout) itemView.findViewById(R.id.id_relativeLayout);
-            img_Docter = (ImageView) itemView.findViewById(R.id.img_docter);
+            img_Docter = (ImageView) itemView.findViewById(R.id.img_doctor);
             img_Information = (ImageView) itemView.findViewById(R.id.img_information);
             tv_Id = (TextView) itemView.findViewById(R.id.tv_id);
             tv_Name = (TextView) itemView.findViewById(R.id.tv_name);

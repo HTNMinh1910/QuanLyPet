@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -44,7 +46,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class AddBooking extends AppCompatActivity {
@@ -89,16 +94,29 @@ public class AddBooking extends AppCompatActivity {
     private String noikham;
     private int idDoctor;
     private int idPet;
+    private ImageView imgDate;
 
     List<AnimalObj> listAnimal = new ArrayList<>();
     List<DoctorObj> listDoctor = new ArrayList<>();
     UsersObj usersObj = new UsersObj();
-
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
+    int mYear, mMonth, mDate, mHour, mMinute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_booking);
         findID();
+        DatePickerDialog.OnDateSetListener date = (datePicker, year, monthOfYear, dayOfMonth) -> {
+            mYear = year;
+            mMonth = monthOfYear;
+            mDate = dayOfMonth;
+        };
+        TimePickerDialog.OnTimeSetListener time = ((timePicker, hourOfDay, minute) -> {
+            mHour = hourOfDay;
+            mMinute = minute;
+            GregorianCalendar calendar = new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute);
+            TIEDTime.setText(dateFormat.format(calendar.getTime()));
+        });
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,6 +134,20 @@ public class AddBooking extends AppCompatActivity {
                 chooseImg.launch(i);
             }
         });
+        imgDate.setOnClickListener(view -> {
+            Calendar calendar = Calendar.getInstance();
+            mYear = calendar.get(Calendar.YEAR);
+            mMonth = calendar.get(Calendar.MONTH);
+            mDate = calendar.get(Calendar.DAY_OF_MONTH);
+            mHour = calendar.get(Calendar.HOUR_OF_DAY);
+            mMinute = calendar.get(Calendar.MINUTE);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,0, date, mYear, mMonth, mDate);
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                    android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
+                    time, mHour, mMinute, true);
+            datePickerDialog.show();
+            timePickerDialog.show();
+        });
         adapterSPNAnimal = new SpinnerAnimal();
         listAnimal = AnimalDB.getInstance(this).Dao().getAllData();
         adapterSPNAnimal.setData(listAnimal);
@@ -124,7 +156,6 @@ public class AddBooking extends AppCompatActivity {
         listDoctor = DoctorDB.getInstance(this).Dao().getAllData();
         adapterSPNDoctor.setDATA(listDoctor);
         spnDoctor.setAdapter(adapterSPNDoctor);
-
         toolbar_booking = findViewById(R.id.tbl_booking);
         toolbar_booking.setTitle("Đặt Lịch");
 
@@ -233,14 +264,11 @@ public class AddBooking extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 listDoctor = DoctorDB.getInstance(getApplicationContext()).Dao().getAllData();
                 idDoctor = listDoctor.get(position).getId();
-
                 TIEDNameDoctor.setText(listDoctor.get(position).getName());
                 TIEDPhoneNumber.setText(listDoctor.get(position).getPhone());
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
         spnPet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -250,20 +278,13 @@ public class AddBooking extends AppCompatActivity {
                 idPet = listAnimal.get(position).getId();
                 TIEDNamePet.setText(listAnimal.get(position).getName());
                 TIEDTypePet.setText(listAnimal.get(position).getSpecies());
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-
     }
-
     public void findID() {
-
-
         spnDoctor = (Spinner) findViewById(R.id.spn_doctor);
         TIPNameDoctor = (TextInputLayout) findViewById(R.id.TIP_NameDoctor);
         TIEDNameDoctor = (TextInputEditText) findViewById(R.id.TIED_NameDoctor);
@@ -289,7 +310,7 @@ public class AddBooking extends AppCompatActivity {
         btnBooking = (Button) findViewById(R.id.btn_booking);
         TIPTime = (TextInputLayout) findViewById(R.id.TIP_Time);
         TIEDTime = (TextInputEditText) findViewById(R.id.TIED_Time);
-
+        imgDate = (ImageView) findViewById(R.id.img_date);
     }
 
     public void showDiaLogSerVice() {

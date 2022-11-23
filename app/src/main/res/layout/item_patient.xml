@@ -14,7 +14,7 @@
         android:layout_margin="10dp">
 
         <ImageView
-            android:id="@+id/img_docter"
+            android:id="@+id/img_doctor"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"

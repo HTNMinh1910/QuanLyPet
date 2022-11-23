@@ -29,9 +29,9 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
             case 2:
                 return new BookFragment();
             case 3:
-                return new UsersFragment();
-            case 4:
                 return new BillFragment();
+            case 4:
+                return new UsersFragment();
             default:
                 return new HomeFragment();
         }

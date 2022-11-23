@@ -112,7 +112,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
             super(itemView);
 
             idRelativeLayout = (RelativeLayout) itemView.findViewById(R.id.id_relativeLayout);
-            imgDocter = (ImageView) itemView.findViewById(R.id.img_docter);
+            imgDocter = (ImageView) itemView.findViewById(R.id.img_doctor);
             tvId = (TextView) itemView.findViewById(R.id.tv_id);
             tvIdDocter = (TextView) itemView.findViewById(R.id.tv_idDocter);
             tvIdAnimal = (TextView) itemView.findViewById(R.id.tv_idAnimal);

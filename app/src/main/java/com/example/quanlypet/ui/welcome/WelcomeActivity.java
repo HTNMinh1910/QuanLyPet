@@ -83,8 +83,6 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wellcome);
-        UsersDB.getInstance(this).Dao().insert(new UsersObj("Admin","Account_QLPV","qlpvip@gmail.com","0977959629",2,"petvip"));
-
         btnAdmin = (Button) findViewById(R.id.btn_admin);
         tvPrev = (TextView) findViewById(R.id.tv_prev);
         tvNext = (TextView) findViewById(R.id.tv_next);
