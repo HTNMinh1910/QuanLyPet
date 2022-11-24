@@ -1,7 +1,6 @@
 package com.example.quanlypet.adapter.ad_use;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.UsersObj;
-import com.example.quanlypet.ui.activity.InformationUsersActivity;
 
 import java.util.ArrayList;
 
@@ -30,14 +28,12 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         this.list = list;
         notifyDataSetChanged();
     }
-
     @NonNull
     @Override
     public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_users,parent,false);
         return new UsersViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
         UsersObj usersObj = list.get(position);
@@ -57,15 +53,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         holder.imgEditUsers.setOnClickListener(v->{
             callback.editUsers(usersObj);
         });
-        Intent intent = new Intent(context, InformationUsersActivity.class);
-        intent.putExtra("importname", usersObj.getImport_name());
-        intent.putExtra("fullname", usersObj.getFull_name());
-        intent.putExtra("email",usersObj.getEmail());
-        intent.putExtra("phone",usersObj.getPhone());
-        context.startActivity(intent);
-
     }
-
     @Override
     public int getItemCount() {
         return list == null?0:list.size();
@@ -82,13 +70,12 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         public UsersViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvImportnameUsers = (TextView) itemView.findViewById(R.id.tv_importnameUsers);
-            tvFullnameUsers = (TextView) itemView.findViewById(R.id.tv_fullnameUsers);
-            tvEmailUsers = (TextView) itemView.findViewById(R.id.tv_emailUsers);
-            tvPhoneUsers = (TextView) itemView.findViewById(R.id.tv_phoneUsers);
-            tvGenderUsers = (TextView) itemView.findViewById(R.id.tv_genderUsers);
-            imgEditUsers = (ImageView) itemView.findViewById(R.id.img_editUsers);
-
+            tvImportnameUsers = itemView.findViewById(R.id.tv_importnameUsers);
+            tvFullnameUsers = itemView.findViewById(R.id.tv_fullnameUsers);
+            tvEmailUsers = itemView.findViewById(R.id.tv_emailUsers);
+            tvPhoneUsers = itemView.findViewById(R.id.tv_phoneUsers);
+            tvGenderUsers = itemView.findViewById(R.id.tv_genderUsers);
+            imgEditUsers = itemView.findViewById(R.id.img_editUsers);
         }
     }
     public interface Callback{

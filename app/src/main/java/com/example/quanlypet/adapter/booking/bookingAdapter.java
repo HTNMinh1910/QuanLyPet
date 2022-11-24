@@ -73,9 +73,6 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
     }
 
     public interface Callback{
-
-    public interface Callback {
-
         void update(BookObj bookObj, int index);
     }
 

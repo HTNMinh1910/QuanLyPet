@@ -1,7 +1,6 @@
 package com.example.quanlypet.adapter.ad_use;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.AdminObj;
-import com.example.quanlypet.ui.activity.InformationUsersActivity;
 
 import java.util.ArrayList;
 

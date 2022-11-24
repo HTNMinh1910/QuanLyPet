@@ -20,6 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <ImageView
             android:id="@+id/img_date"
             android:layout_width="30dp"
@@ -28,7 +29,6 @@
             android:src="@drawable/calendar"
             android:layout_marginEnd="10dp"/>
     </FrameLayout>
-    <androidx.recyclerview.widget.RecyclerView=======
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
@@ -39,8 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lịch Chờ " />
-
-
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab2"
@@ -53,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lịch Đã Hoàn Thành" />
+
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab4"
             android:layout_width="wrap_content"

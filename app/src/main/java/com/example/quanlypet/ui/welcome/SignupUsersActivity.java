@@ -1,19 +1,15 @@
 package com.example.quanlypet.ui.welcome;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.UsersObj;
-import com.example.quanlypet.ui.activity.InformationUsersActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SignupUsersActivity extends AppCompatActivity {

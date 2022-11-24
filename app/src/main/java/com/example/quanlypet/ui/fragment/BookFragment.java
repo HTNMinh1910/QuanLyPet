@@ -67,11 +67,6 @@ import java.util.Calendar;
 import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BookFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BookFragment extends Fragment implements bookingAdapter.Callback {
     private int REQUEST_CAMERA = 111;
     private Bitmap bitmap;

@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +15,7 @@ import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.UsersObj;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class UpdateInformationActivity extends AppCompatActivity {
+public class UsersInforActivity extends AppCompatActivity {
     private Toolbar idTollBar;
     private TextInputEditText edUsername;
     private TextInputEditText edFullnameUser;

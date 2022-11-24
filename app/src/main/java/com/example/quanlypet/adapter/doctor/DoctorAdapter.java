@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.DoctorObj;
-import com.example.quanlypet.ui.activity.InformationActivity;
+import com.example.quanlypet.ui.activity.DoctorInforActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] ByteArray = byteArrayOutputStream.toByteArray();
-            Intent intent = new Intent(context, InformationActivity.class);
+            Intent intent = new Intent(context, DoctorInforActivity.class);
             intent.putExtra("name",docterObj.getName());
             intent.putExtra("phone",docterObj.getPhone());
             intent.putExtra("address",docterObj.getAddress());

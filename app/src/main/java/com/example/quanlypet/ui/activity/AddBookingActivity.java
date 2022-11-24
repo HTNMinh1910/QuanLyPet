@@ -52,7 +52,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class AddBooking extends AppCompatActivity {
+public class AddBookingActivity extends AppCompatActivity {
     private ImageView imgClose;
     private Button btnKhamvachua;
     private Button btnKiemtrasuckhoe;

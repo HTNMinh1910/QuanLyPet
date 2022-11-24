@@ -57,11 +57,6 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LichDaHuy_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callback {
     private int REQUEST_CAMERA = 111;
     private Bitmap bitmap;
@@ -114,11 +109,9 @@ public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callb
 
 
     public LichDaHuy_Fragment() {
-        // Required empty public constructor
     }
 
 
-    // TODO: Rename and change types and number of parameters
     public static LichDaHuy_Fragment newInstance() {
         LichDaHuy_Fragment fragment = new LichDaHuy_Fragment();
 
@@ -134,7 +127,6 @@ public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callb
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lich_da_huy_, container, false);
     }
 
