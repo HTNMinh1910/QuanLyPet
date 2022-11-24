@@ -184,13 +184,20 @@ public class AddBookingActivity extends AppCompatActivity {
         });
 
 
-        TIEDService.setOnClickListener(view -> {
-            showDiaLogSerVice();
+        TIEDService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDiaLogSerVice();
+            }
         });
         SlectedSpinner();
 
-        btnBooking.setOnClickListener(view ->{
+
+        btnBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 addBooking();
+            }
         });
     }
 
@@ -318,33 +325,54 @@ public class AddBookingActivity extends AppCompatActivity {
         btnPhauthuat = (Button) dialog.findViewById(R.id.btn_phauthuat);
         btnSieuam = (Button) dialog.findViewById(R.id.btn_sieuam);
         btnSpa = (Button) dialog.findViewById(R.id.btn_spa);
-        imgClose.setOnClickListener(view ->{
+        imgClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 dialog.dismiss();
+            }
         });
-        btnKhamvachua.setOnClickListener(view ->{
+        btnKhamvachua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 TIEDService.setText("Khám và Chữa");
                 dialog.dismiss();
+            }
         });
-        btnKiemtrasuckhoe.setOnClickListener(view ->{
+        btnKiemtrasuckhoe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 TIEDService.setText("Kiểm tra sức khỏe");
                 dialog.dismiss();
+            }
         });
-        btnTiemphong.setOnClickListener(view ->{
+        btnTiemphong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 TIEDService.setText("Tiêm Phòng");
                 dialog.dismiss();
+            }
         });
-        btnPhauthuat.setOnClickListener(view ->{
+        btnPhauthuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 TIEDService.setText("Phẫu Thuật");
                 dialog.dismiss();
+            }
         });
 
-        btnSieuam.setOnClickListener(view ->{
+        btnSieuam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 TIEDService.setText("Siêu Âm");
                 dialog.dismiss();
+            }
         });
-        btnSpa.setOnClickListener(view ->{
+        btnSpa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 TIEDService.setText("Spa - Cắt & Tỉa");
                 dialog.dismiss();
+            }
         });
         dialog.show();
     }
