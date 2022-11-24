@@ -184,20 +184,13 @@ public class AddBookingActivity extends AppCompatActivity {
         });
 
 
-        TIEDService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDiaLogSerVice();
-            }
+        TIEDService.setOnClickListener(view -> {
+            showDiaLogSerVice();
         });
         SlectedSpinner();
 
-
-        btnBooking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnBooking.setOnClickListener(view ->{
                 addBooking();
-            }
         });
     }
 
@@ -216,9 +209,7 @@ public class AddBookingActivity extends AppCompatActivity {
                         bitmap = bitmapDrawable.getBitmap();
                     }
                 }
-            }
-    );
-
+            });
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -230,9 +221,7 @@ public class AddBookingActivity extends AppCompatActivity {
     }
 
     private void addBooking() {
-
         String strTT = TIEDStatus.getText().toString();
-
         if (rdoPhongkham.isChecked()) {
             noikham = "Phòng Khám";
         } else if (rdoTainha.isChecked()) {
@@ -255,7 +244,7 @@ public class AddBookingActivity extends AppCompatActivity {
         BookObj bookObj = new BookObj(id,idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU,1);
         BookDB.getInstance(this).Dao().insert(bookObj);
         Toast.makeText(this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
-
+        finish();
     }
 
     public void SlectedSpinner() {
@@ -329,54 +318,33 @@ public class AddBookingActivity extends AppCompatActivity {
         btnPhauthuat = (Button) dialog.findViewById(R.id.btn_phauthuat);
         btnSieuam = (Button) dialog.findViewById(R.id.btn_sieuam);
         btnSpa = (Button) dialog.findViewById(R.id.btn_spa);
-        imgClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        imgClose.setOnClickListener(view ->{
                 dialog.dismiss();
-            }
         });
-        btnKhamvachua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnKhamvachua.setOnClickListener(view ->{
                 TIEDService.setText("Khám và Chữa");
                 dialog.dismiss();
-            }
         });
-        btnKiemtrasuckhoe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnKiemtrasuckhoe.setOnClickListener(view ->{
                 TIEDService.setText("Kiểm tra sức khỏe");
                 dialog.dismiss();
-            }
         });
-        btnTiemphong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnTiemphong.setOnClickListener(view ->{
                 TIEDService.setText("Tiêm Phòng");
                 dialog.dismiss();
-            }
         });
-        btnPhauthuat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnPhauthuat.setOnClickListener(view ->{
                 TIEDService.setText("Phẫu Thuật");
                 dialog.dismiss();
-            }
         });
 
-        btnSieuam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnSieuam.setOnClickListener(view ->{
                 TIEDService.setText("Siêu Âm");
                 dialog.dismiss();
-            }
         });
-        btnSpa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnSpa.setOnClickListener(view ->{
                 TIEDService.setText("Spa - Cắt & Tỉa");
                 dialog.dismiss();
-            }
         });
         dialog.show();
     }

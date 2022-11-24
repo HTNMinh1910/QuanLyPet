@@ -101,7 +101,10 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
                 }else{
                     ArrayList<DoctorObj> listdt = new ArrayList<>();
                     for (DoctorObj object: listDotor){
-                        if (object.getName().toLowerCase().contains(search.toLowerCase())){
+                        if (object.getName().toLowerCase().contains(search.toLowerCase())
+                                ||object.getSpecialize().toLowerCase().contains(search.toLowerCase())||
+                        object.getPhone().toLowerCase().contains(search.toLowerCase())||
+                                object.getEmail().toLowerCase().contains(search.toLowerCase())){
                             listdt.add(object);
                         }
                     }
