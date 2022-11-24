@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         if (username.equals("Admin")) {
             bottomNavigationView.getMenu().findItem(R.id.docter).setVisible(true);
+            bottomNavigationView.getMenu().findItem(R.id.bill).setVisible(true);
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
