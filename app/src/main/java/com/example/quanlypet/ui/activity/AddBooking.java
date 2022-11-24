@@ -101,6 +101,7 @@ public class AddBooking extends AppCompatActivity {
     UsersObj usersObj = new UsersObj();
     private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
     int mYear, mMonth, mDate, mHour, mMinute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +115,7 @@ public class AddBooking extends AppCompatActivity {
         TimePickerDialog.OnTimeSetListener time = ((timePicker, hourOfDay, minute) -> {
             mHour = hourOfDay;
             mMinute = minute;
-            GregorianCalendar calendar = new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute);
+            GregorianCalendar calendar = new GregorianCalendar(mYear, mMonth, mDate, mHour, mMinute);
             TIEDTime.setText(dateFormat.format(calendar.getTime()));
         });
         btnCamera.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +142,7 @@ public class AddBooking extends AppCompatActivity {
             mDate = calendar.get(Calendar.DAY_OF_MONTH);
             mHour = calendar.get(Calendar.HOUR_OF_DAY);
             mMinute = calendar.get(Calendar.MINUTE);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,0, date, mYear, mMonth, mDate);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, 0, date, mYear, mMonth, mDate);
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
                     time, mHour, mMinute, true);
@@ -252,7 +253,7 @@ public class AddBooking extends AppCompatActivity {
 
         usersObj = UsersDB.getInstance(this).Dao().getIdUsers(user);
         int id = usersObj.getId();
-        BookObj bookObj = new BookObj(id,idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU,1);
+        BookObj bookObj = new BookObj(id, idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU, 1);
         BookDB.getInstance(this).Dao().insert(bookObj);
         Toast.makeText(this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
 
@@ -267,6 +268,7 @@ public class AddBooking extends AppCompatActivity {
                 TIEDNameDoctor.setText(listDoctor.get(position).getName());
                 TIEDPhoneNumber.setText(listDoctor.get(position).getPhone());
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -279,11 +281,13 @@ public class AddBooking extends AppCompatActivity {
                 TIEDNamePet.setText(listAnimal.get(position).getName());
                 TIEDTypePet.setText(listAnimal.get(position).getSpecies());
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
     }
+
     public void findID() {
         spnDoctor = (Spinner) findViewById(R.id.spn_doctor);
         TIPNameDoctor = (TextInputLayout) findViewById(R.id.TIP_NameDoctor);
