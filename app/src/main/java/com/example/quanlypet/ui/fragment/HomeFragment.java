@@ -14,12 +14,15 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.viewpager2.SlideAdapterHome;
+import com.example.quanlypet.database.DoctorDB;
 import com.example.quanlypet.model.Photo;
 import com.example.quanlypet.ui.activity.AddBookingActivity;
+import com.example.quanlypet.ui.activity.DanhSachDoctor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,7 @@ public class HomeFragment extends Fragment {
     private LinearLayout linerAmbulance;
     private LinearLayout linerMess;
     private ImageView imgAddAnimal;
+    Fragment fragment = null;
 
     public HomeFragment() {
     }
@@ -69,6 +73,9 @@ public class HomeFragment extends Fragment {
         linerMess.setOnClickListener(v->{
             Uri uri = Uri.parse("http://m.me/100088046954126");
             startActivity(new Intent(Intent.ACTION_VIEW,uri));
+        });
+        linerAmbulance.setOnClickListener(v->{
+            startActivity(new Intent(getActivity(), DanhSachDoctor.class));
         });
         vpr = (ViewPager) view.findViewById(R.id.vpr);
         circleIndicator = (CircleIndicator) view.findViewById(R.id.circle_indicator);
