@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 
-import com.example.quanlypet.adapter.viewpager2.ViewPager2Adapter;
+import com.example.quanlypet.adapter.viewpager2.ViewPagerAdapter;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
         Tbr = findViewById(R.id.id_tollBar);
         setSupportActionBar(Tbr);
         bottomNavigationView.setItemIconTintList(null);
-        ViewPager2Adapter adapter = new ViewPager2Adapter(this);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
+        viewPager2.setUserInputEnabled(false);
         if (username.equals("Admin")) {
             bottomNavigationView.getMenu().findItem(R.id.docter).setVisible(true);
         }
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+
                 switch (item.getItemId()) {
                     case R.id.home:
                         viewPager2.setCurrentItem(0);
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.docter:
                         viewPager2.setCurrentItem(1);
                         break;
-
                     case R.id.book:
                         viewPager2.setCurrentItem(2);
                         break;
@@ -62,11 +61,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 return true;
-            }
         });
     }
-
-
 }
 
 
