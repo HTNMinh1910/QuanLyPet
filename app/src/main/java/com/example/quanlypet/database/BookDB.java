@@ -19,6 +19,8 @@ public abstract class BookDB extends RoomDatabase {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
             database.execSQL("ALTER TABLE Book ADD COLUMN id_user Integer");
+            database.execSQL("ALTER TABLE Book ADD COLUMN obj_status Integer");
+
         }
     };
     public static final String DATABASENAME="Book.db";

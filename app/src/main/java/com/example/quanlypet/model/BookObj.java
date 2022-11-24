@@ -16,24 +16,33 @@ public class BookObj {
     private String location;
     private String address;
     private String service;
+    private int obj_status;
 
 
     public BookObj() {
     }
 
-    public BookObj(int id_user, int id_doctor, int id_dnimal, String status, byte[] photo_status, String time, String location, String address, String service) {
+
+    public BookObj(int id_user, int id_doctor, int id_animal, String status, byte[] photo_status, String time, String location, String address, String service, int obj_status) {
         this.id_user = id_user;
         this.id_doctor = id_doctor;
-        this.id_animal = id_dnimal;
+        this.id_animal = id_animal;
         this.status = status;
         this.photo_status = photo_status;
         this.time = time;
         this.location = location;
         this.address = address;
         this.service = service;
+        this.obj_status = obj_status;
     }
 
+    public int getObj_status() {
+        return obj_status;
+    }
 
+    public void setObj_status(int obj_status) {
+        this.obj_status = obj_status;
+    }
 
     public int getId_user() {
         return id_user;

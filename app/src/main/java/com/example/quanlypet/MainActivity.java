@@ -1,5 +1,6 @@
 package com.example.quanlypet;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences sharedPreferences = getSharedPreferences("user_file", MODE_PRIVATE);
+        String username = sharedPreferences.getString("Username", "");
+
 
         viewPager2 = findViewById(R.id.view_pager2);
         bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -32,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setItemIconTintList(null);
         ViewPager2Adapter adapter = new ViewPager2Adapter(this);
         viewPager2.setAdapter(adapter);
+        if (username.equals("Admin")) {
+            bottomNavigationView.getMenu().findItem(R.id.docter).setVisible(true);
+        }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
