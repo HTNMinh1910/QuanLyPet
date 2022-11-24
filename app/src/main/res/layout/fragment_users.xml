@@ -27,15 +27,15 @@
         android:fontFamily="@font/biorhyme_bold"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:background="@drawable/background_coneradios"
-        android:padding="10dp"
+        android:padding="4dp"
         android:layout_marginTop="15dp"
         android:id="@+id/ln_inforAccount">
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/presonal_info"/>
         <TextView
             android:layout_marginLeft="20dp"
@@ -43,21 +43,21 @@
             android:layout_height="wrap_content"
             android:text="Thông tin cá nhân"
             android:layout_gravity="center_vertical"
-            android:textSize="20sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:fontFamily="@font/biorhyme_bold"/>
     </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="40dp"
     android:orientation="horizontal"
     android:background="@drawable/background_coneradios"
-    android:padding="5dp"
+    android:padding="4dp"
     android:layout_marginTop="15dp"
     android:id="@+id/ln_animalManager">
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:src="@drawable/maneger_pet"/>
     <TextView
         android:layout_marginLeft="20dp"
@@ -65,21 +65,22 @@
         android:layout_height="wrap_content"
         android:text="Quản lý thú cưng"
         android:layout_gravity="center_vertical"
-        android:textSize="20sp"
+        android:textSize="12sp"
         android:textColor="@color/black"
         android:fontFamily="@font/biorhyme_bold"/>
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:background="@drawable/background_coneradios"
-        android:padding="5dp"
+        android:padding="4dp"
+        android:visibility="gone"
         android:layout_marginTop="15dp"
         android:id="@+id/ln_userManager">
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/maneger_users"/>
 
         <TextView
@@ -88,23 +89,23 @@
             android:layout_height="wrap_content"
             android:text="Quản lý người dùng"
             android:layout_gravity="center_vertical"
-            android:textSize="20sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:fontFamily="@font/biorhyme_bold"/>
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:background="@drawable/background_coneradios"
-        android:padding="5dp"
+        android:padding="4dp"
         android:layout_marginTop="15dp"
         android:id="@+id/ln_changePass">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/change"/>
 
         <TextView
@@ -113,21 +114,21 @@
             android:layout_height="wrap_content"
             android:text="Thay đổi mật khẩu"
             android:layout_gravity="center_vertical"
-            android:textSize="20sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:fontFamily="@font/biorhyme_bold"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:background="@drawable/background_coneradios"
-        android:padding="5dp"
+        android:padding="4dp"
         android:layout_marginTop="15dp"
         android:id="@+id/ln_logOut">
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/logout"/>
 
         <TextView
@@ -136,7 +137,7 @@
             android:layout_height="wrap_content"
             android:text="Đăng xuất"
             android:layout_gravity="center_vertical"
-            android:textSize="20sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:fontFamily="@font/biorhyme_bold"/>
     </LinearLayout>

@@ -1,6 +1,8 @@
 package com.example.quanlypet.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -54,8 +56,13 @@ public class UsersFragment extends Fragment {
         lnUserManager = view.findViewById(R.id.ln_userManager);
         lnChangePass = view.findViewById(R.id.ln_changePass);
         lnLogOut = view.findViewById(R.id.ln_logOut);
+        SharedPreferences preferences = requireActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        String username = preferences.getString("Username", "");
+        if (username.equals("Admin")) {
+            lnUserManager.setVisibility(View.VISIBLE);
+        }
 
-        lnAnimalManager.setOnClickListener(view1 -> {
+            lnAnimalManager.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), AnimalActivity.class));
         });
         lnInforAccount.setOnClickListener(view1 -> {
