@@ -1,6 +1,7 @@
 package com.example.quanlypet.ui.fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -57,12 +58,17 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         linerBooking = (LinearLayout) view.findViewById(R.id.liner_booking);
         linerAmbulance = (LinearLayout) view.findViewById(R.id.liner_ambulance);
+        linerMess = view.findViewById(R.id.liner_mess);
         linerBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AddBookingActivity.class);
                 startActivity(i);
             }
+        });
+        linerMess.setOnClickListener(v->{
+            Uri uri = Uri.parse("http://m.me/100088046954126");
+            startActivity(new Intent(Intent.ACTION_VIEW,uri));
         });
         vpr = (ViewPager) view.findViewById(R.id.vpr);
         circleIndicator = (CircleIndicator) view.findViewById(R.id.circle_indicator);

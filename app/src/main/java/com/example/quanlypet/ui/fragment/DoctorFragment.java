@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -106,11 +108,10 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     }
     @Override
     public void update(DoctorObj doctorObj) {
-        final Dialog dialog = new Dialog(getContext());
+        final Dialog dialog = new Dialog(getContext(),com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
         dialog.setContentView(R.layout.dialog_update_docter);
-        dialog.setCancelable(false);
-        Window window = dialog.getWindow();
-        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+        Toolbar toolbar = dialog.findViewById(R.id.tbl_docter);
+        toolbar.setTitle("Sửa Bác Sĩ");
 
         TextInputEditText edNameDocter = (TextInputEditText) dialog.findViewById(R.id.ed_nameDocter);
         imgPicture = dialog.findViewById(R.id.img_picture);
@@ -119,11 +120,29 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
 
         TextInputEditText edPhoneDocter = (TextInputEditText) dialog.findViewById(R.id.ed_phoneDocter);
         RadioButton rdoBoy = (RadioButton) dialog.findViewById(R.id.rdo_boy);
+        RadioButton rdoGirl= (RadioButton) dialog.findViewById(R.id.rdo_girl);
+
         TextInputEditText edEmailDocter = (TextInputEditText) dialog.findViewById(R.id.ed_emailDocter);
         TextInputEditText edAddressDocter = (TextInputEditText) dialog.findViewById(R.id.ed_addressDocter);
         TextInputEditText edSpecializeDocter = (TextInputEditText) dialog.findViewById(R.id.ed_specializeDocter);
         Button btnUpdateDocter = (Button) dialog.findViewById(R.id.btn_updateDocter);
         Button btnCanel = (Button) dialog.findViewById(R.id.btn_canel);
+
+        edPhoneDocter.setText(doctorObj.getPhone());
+        edEmailDocter.setText(doctorObj.getEmail());
+        edNameDocter.setText(doctorObj.getName());
+        edAddressDocter.setText(doctorObj.getAddress());
+        edSpecializeDocter.setText(doctorObj.getSpecialize());
+        byte[] hinhanhUpdate = doctorObj.getImg();
+        Bitmap bitmapUpdate = BitmapFactory.decodeByteArray(hinhanhUpdate, 0, hinhanhUpdate.length);
+        imgPicture.setImageBitmap(bitmapUpdate);
+        if (doctorObj.getGender()==1) {
+            rdoBoy.setChecked(true);
+        } else {
+            rdoGirl.setChecked(true);
+        }
+
+
 
         btnAlbum.setOnClickListener(v -> {
             Intent i = new Intent();
@@ -138,8 +157,9 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
                 startActivityForResult(intent,0);
             }
         });
-        btnUpdateDocter.setOnClickListener(v -> {
 
+
+        btnUpdateDocter.setOnClickListener(v -> {
             String name = edNameDocter.getText().toString().trim();
             String phone = edPhoneDocter.getText().toString().trim();
             String email = edEmailDocter.getText().toString().trim();
