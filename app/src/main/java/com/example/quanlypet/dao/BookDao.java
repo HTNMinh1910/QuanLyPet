@@ -24,5 +24,10 @@ public interface BookDao {
 
     @Query("SELECT *FROM book where id=:id")
     BookObj getIDBook(String id);
+    @Query("SELECT *FROM book where obj_status=:obj_status ")
+    List<BookObj> getStatus(int obj_status);
+
+    @Query("SELECT *FROM book where obj_status=:obj_status and id_user =:id ")
+    List<BookObj> getStatus2(int obj_status, int id);
 
 }

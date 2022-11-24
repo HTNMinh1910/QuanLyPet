@@ -20,25 +20,24 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.database.AnimalDB;
 import com.example.quanlypet.database.BookDB;
-import com.example.quanlypet.database.DoctorDB;
-import com.example.quanlypet.model.AnimalObj;
+import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.BookObj;
-import com.example.quanlypet.model.DoctorObj;
+import com.example.quanlypet.model.UsersObj;
 
 import java.util.List;
 
-public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHolder> {
+public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Adapter.ViewHolder> {
     List<BookObj> list;
     Context mContext;
     private Callback callback;
 
     public interface Callback {
-        void update(BookObj bookObj, int index);
+        void updateAdmin(BookObj bookObj, int index);
     }
 
-    public bookingAdapter(Callback callback, Context mContext) {
+    public booking_admin_Adapter(List<BookObj> list, Context mContext, Callback callback) {
+        this.list = list;
         this.mContext = mContext;
         this.callback = callback;
     }
@@ -47,11 +46,10 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
         this.list = list;
         notifyDataSetChanged();
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_booking, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_booking_admin, parent, false);
         return new ViewHolder(view);
     }
 
@@ -59,60 +57,73 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BookObj obj = list.get(position);
         int index = position;
-        holder.tvTime.setText(obj.getTime());
+        UsersObj usersObj = UsersDB.getInstance(mContext).Dao().getID(obj.getId_user());
+        holder.nameDoctor.setText(usersObj.getFull_name());
         holder.tvService.setText(obj.getService());
-        DoctorObj doctorObj = DoctorDB.getInstance(mContext).Dao().getIdDoctor(obj.getId_doctor() + "");
-        holder.nameDoctor.setText(doctorObj.getName());
-        holder.tvAddress.setText(doctorObj.getAddress());
-        AnimalObj animalObj = AnimalDB.getInstance(mContext).Dao().getIDAnimal(obj.getId_animal() + "");
-        holder.tvNamePet.setText(animalObj.getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callback.update(obj, index);
-            }
-        });
+        holder.tvTime.setText(obj.getTime());
         if (obj.getObj_status() == 1) {
-            holder.linner_status.setBackgroundColor(Color.YELLOW);
+            holder.linnerStatus.setBackgroundColor(Color.YELLOW);
         } else if (obj.getObj_status() == 2) {
-            holder.linner_status.setBackgroundColor(Color.GRAY);
-            holder.img_more.setVisibility(View.INVISIBLE);
+            holder.linnerStatus.setBackgroundColor(Color.GRAY);
+            holder.imgMore.setVisibility(View.INVISIBLE);
         } else if (obj.getObj_status() == 3) {
-            holder.linner_status.setBackgroundColor(Color.GREEN);
+            holder.linnerStatus.setBackgroundColor(Color.GREEN);
         }
         else if (obj.getObj_status() == 4) {
-            holder.linner_status.setBackgroundColor(Color.BLUE);
+            holder.linnerStatus.setBackgroundColor(Color.BLUE);
+            holder.imgMore.setVisibility(View.INVISIBLE);
         }
-        holder.img_more.setOnClickListener(new View.OnClickListener() {
+        holder.imgMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDiaLogHuy(obj, index);
+                showDiaLogHuy(obj,index);
             }
         });
+       holder.itemView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               callback.updateAdmin(obj,index);
+           }
+       });
 
     }
-
     public void showDiaLogHuy(BookObj bookObj, int index) {
         Dialog dialog = new Dialog(mContext);
-        dialog.setContentView(R.layout.dialog_huy_booking);
+        dialog.setContentView(R.layout.dialog_xacnhan_hoanthanhbooking);
         dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
         Window window = dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         WindowManager.LayoutParams windowAttributes = window.getAttributes();
         window.setAttributes(windowAttributes);
         windowAttributes.gravity = Gravity.BOTTOM;
-        Button btn_huy = dialog.findViewById(R.id.btn_huylich);
+        CardView cv_xacnhan = dialog.findViewById(R.id.CV_xacnhan);
+        CardView cv_hoanthanh = dialog.findViewById(R.id.CV_hoanthanh);
+        Button btn_xacnhan = dialog.findViewById(R.id.btn_xacnhan);
+        Button btn_hoanthanh = dialog.findViewById(R.id.btn_hoanthanh);
         Button btn_cancle = dialog.findViewById(R.id.btn_cancel);
-
-        btn_huy.setOnClickListener(new View.OnClickListener() {
+        if(bookObj.getObj_status()==3 ||bookObj.getObj_status()==4){
+            btn_xacnhan.setVisibility(View.INVISIBLE);
+            cv_xacnhan.setVisibility(View.INVISIBLE);
+        }
+        btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bookObj.setObj_status(2);
+                bookObj.setObj_status(3);
                 BookDB.getInstance(mContext).Dao().edit(bookObj);
                 list.set(index, bookObj);
                 notifyDataSetChanged();
-                Toast.makeText(mContext, "Hủy Lịch Thành Công", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(mContext, "Xác nhận Thành Công", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+        btn_hoanthanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bookObj.setObj_status(4);
+                BookDB.getInstance(mContext).Dao().edit(bookObj);
+                list.set(index, bookObj);
+                notifyDataSetChanged();
+                Toast.makeText(mContext, "Lịch Đặt Đã Được Hoàn Thành", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         });
@@ -122,7 +133,6 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
                 dialog.dismiss();
             }
         });
-
 
         dialog.show();
 
@@ -134,31 +144,22 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private LinearLayout linner_status;
+        private LinearLayout linnerStatus;
         private TextView titleDoctor;
         private TextView nameDoctor;
-        private TextView gachngang;
-        private TextView tvAddress;
-        private TextView tvNamePet;
-        private TextView gachngang2;
         private TextView tvService;
         private TextView tvTime;
-        private ImageView img_more;
+        private ImageView imgMore;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            linnerStatus = (LinearLayout) itemView.findViewById(R.id.linner_status);
             titleDoctor = (TextView) itemView.findViewById(R.id.titleDoctor);
             nameDoctor = (TextView) itemView.findViewById(R.id.nameDoctor);
-            gachngang = (TextView) itemView.findViewById(R.id.gachngang);
-            tvAddress = (TextView) itemView.findViewById(R.id.tv_address);
-            tvNamePet = (TextView) itemView.findViewById(R.id.tv_namePet);
-            gachngang2 = (TextView) itemView.findViewById(R.id.gachngang2);
             tvService = (TextView) itemView.findViewById(R.id.tv_service);
             tvTime = (TextView) itemView.findViewById(R.id.tv_time);
-            linner_status = itemView.findViewById(R.id.linner_status);
-            img_more = itemView.findViewById(R.id.img_more);
+            imgMore = (ImageView) itemView.findViewById(R.id.img_more);
         }
     }
 }

@@ -252,7 +252,7 @@ public class AddBooking extends AppCompatActivity {
 
         usersObj = UsersDB.getInstance(this).Dao().getIdUsers(user);
         int id = usersObj.getId();
-        BookObj bookObj = new BookObj(id,idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU);
+        BookObj bookObj = new BookObj(id,idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU,1);
         BookDB.getInstance(this).Dao().insert(bookObj);
         Toast.makeText(this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
 
