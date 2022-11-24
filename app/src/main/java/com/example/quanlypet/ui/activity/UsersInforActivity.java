@@ -62,6 +62,7 @@ public class UsersInforActivity extends AppCompatActivity {
 
                 if (usernamenew.isEmpty() || fullname.isEmpty() || email.isEmpty()) {
                     tvThongbao.setVisibility(View.VISIBLE);
+                    tvThongbao.setText("Không để trống !");
                 } else {
                     adminObj.setImport_name(usernamenew);
                     adminObj.setFull_name(fullname);
@@ -91,6 +92,7 @@ public class UsersInforActivity extends AppCompatActivity {
                 int gender = edGenderUsers.getText().toString().trim().equals("Male") ? 0 : 1;
                 if (usernamenew.isEmpty() || fullname.isEmpty() || email.isEmpty() || phone.isEmpty()) {
                     tvThongbao.setVisibility(View.VISIBLE);
+                    tvThongbao.setText("Không để trống !");
                 } else {
                     usersObj.setImport_name(usernamenew);
                     usersObj.setFull_name(fullname);
