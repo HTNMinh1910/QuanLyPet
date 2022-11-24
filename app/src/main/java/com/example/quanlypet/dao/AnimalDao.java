@@ -21,4 +21,7 @@ public interface AnimalDao {
 
     @Query("SELECT *FROM animal where id =:id ")
     AnimalObj getIDAnimal(String id);
+
+    @Query("SELECT * FROM animal where id_users =:id ")
+    List<AnimalObj> getAllAnimalUsers(int id);
 }

@@ -1,7 +1,9 @@
 package com.example.quanlypet.ui.fragment;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,6 +33,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -52,7 +55,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -108,7 +113,10 @@ public class BookFragment extends Fragment implements bookingAdapter.Callback{
     List<AnimalObj> listAnimal;
     List<DoctorObj> listDoctor;
     private int idDoctor;
-
+    private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+    int itYear, itMonth, itDate;
+    private ImageView imgDate;
+    private SearchView searchDateBoock;
 
     public BookFragment() {
     }
@@ -133,7 +141,21 @@ public class BookFragment extends Fragment implements bookingAdapter.Callback{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         reCy_booking = view.findViewById(R.id.recy_booking);
+        searchDateBoock = (SearchView) view.findViewById(R.id.search_date_boock);
         list = new ArrayList<>();
+
+        searchDateBoock.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String user = sharedPreferences.getString("Username", "");
         Toast.makeText(getActivity(), "" + user, Toast.LENGTH_SHORT).show();

@@ -1,9 +1,12 @@
 package com.example.quanlypet.adapter.booking;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,12 +20,45 @@ import com.example.quanlypet.model.AnimalObj;
 import com.example.quanlypet.model.BookObj;
 import com.example.quanlypet.model.DoctorObj;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHolder> {
+public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHolder> implements Filterable {
     List<BookObj> list;
+    List<BookObj> listBoock;
     Context mContext;
     private Callback callback;
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String search = constraint.toString();
+                if (search.isEmpty()){
+                    list = listBoock;
+                }else{
+                    ArrayList<BookObj> listbk = new ArrayList<>();
+                    for (BookObj object: listBoock){
+                        if (object.getTime().toLowerCase().contains(search.toLowerCase())){
+                            listbk.add(object);
+                        }
+                    }
+                    list = listbk;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = list;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                list = (ArrayList<BookObj>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
 
     public interface Callback{
         void update(BookObj bookObj, int index);
@@ -35,6 +71,7 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
 
     public void setDATA(List<BookObj> list) {
         this.list = list;
+        this.listBoock = list;
         notifyDataSetChanged();
     }
 
