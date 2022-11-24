@@ -23,6 +23,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,6 +52,7 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     ImageView img;
     Button btnCamera;
     Button btnAlbum;
+    private SearchView searchNamedotor;
     public DoctorFragment() {
     }
 
@@ -76,6 +78,19 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
         recyclerView = (RecyclerView) view.findViewById(R.id.rcv_docter);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingbutton);
         adapter = new DoctorAdapter(getActivity(), this);
+        searchNamedotor = (SearchView) view.findViewById(R.id.search_namedotor);
+        searchNamedotor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
         floatingActionButton.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AddDoctorActivity.class));
         });
