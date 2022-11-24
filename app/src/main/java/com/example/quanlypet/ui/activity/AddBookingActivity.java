@@ -110,12 +110,12 @@ public class AddBookingActivity extends AppCompatActivity {
             mYear = year;
             mMonth = monthOfYear;
             mDate = dayOfMonth;
-            GregorianCalendar calendar = new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute);
-            TIEDTime.setText(dateFormat.format(calendar.getTime()));
         };
         TimePickerDialog.OnTimeSetListener time = ((timePicker, hourOfDay, minute) -> {
             mHour = hourOfDay;
             mMinute = minute;
+            GregorianCalendar calendar = new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute);
+            TIEDTime.setText(dateFormat.format(calendar.getTime()));
         });
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,8 +145,8 @@ public class AddBookingActivity extends AppCompatActivity {
                     date, mYear, mMonth, mDate);
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
                     time, mHour, mMinute, true);
-            datePickerDialog.show();
             timePickerDialog.show();
+            datePickerDialog.show();
         });
         adapterSPNAnimal = new SpinnerAnimal();
         listAnimal = AnimalDB.getInstance(this).Dao().getAllData();
