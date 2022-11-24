@@ -13,8 +13,9 @@ import com.example.quanlypet.ui.fragment.HomeFragment;
 import com.example.quanlypet.ui.fragment.UsersFragment;
 
 
-public class ViewPager2Adapter extends FragmentStateAdapter {
-    public ViewPager2Adapter(@NonNull FragmentActivity fragmentActivity) {
+public class ViewPagerAdapter extends FragmentStateAdapter {
+
+    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 
@@ -36,7 +37,6 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
                 return new HomeFragment();
         }
     }
-
     @Override
     public int getItemCount() {
         return 5;
