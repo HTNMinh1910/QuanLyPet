@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import com.example.quanlypet.R;
 import com.example.quanlypet.ui.activity.AnimalActivity;
 import com.example.quanlypet.ui.activity.InformationUsersActivity;
+import com.example.quanlypet.ui.activity.List_User_Activity;
 import com.example.quanlypet.ui.activity.UpdateInformationActivity;
 import com.example.quanlypet.ui.welcome.ChangePasswordActivity;
 import com.example.quanlypet.ui.welcome.WelcomeActivity;
@@ -67,6 +68,13 @@ public class UsersFragment extends Fragment {
         });
         lnLogOut.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), WelcomeActivity.class));
+        });
+        lnUserManager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), List_User_Activity.class));
+
+            }
         });
     }
         public void replaceFragmet (Fragment fragment){
