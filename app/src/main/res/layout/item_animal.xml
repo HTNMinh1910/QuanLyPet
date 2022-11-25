@@ -32,8 +32,8 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_anh_item"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_centerHorizontal="true" />
                 </LinearLayout>
 
@@ -71,10 +71,10 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:layout_marginLeft="10dp"
-                                android:text="species: " />
+                                android:background="@drawable/ic_baseline_offline_pin_24" />
 
                             <TextView
                                 android:id="@+id/tv_loai"
@@ -92,10 +92,10 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:layout_marginLeft="10dp"
-                                android:text="age: " />
+                                android:background="@drawable/ic_baseline_offline_pin_24" />
 
                             <TextView
                                 android:id="@+id/tv_age"

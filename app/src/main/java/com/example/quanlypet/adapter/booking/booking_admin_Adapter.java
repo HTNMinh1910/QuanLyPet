@@ -46,6 +46,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
         this.list = list;
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -68,25 +69,54 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
             holder.imgMore.setVisibility(View.INVISIBLE);
         } else if (obj.getObj_status() == 3) {
             holder.linnerStatus.setBackgroundColor(Color.GREEN);
-        }
-        else if (obj.getObj_status() == 4) {
+        } else if (obj.getObj_status() == 4) {
             holder.linnerStatus.setBackgroundColor(Color.BLUE);
             holder.imgMore.setVisibility(View.INVISIBLE);
         }
         holder.imgMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDiaLogHuy(obj,index);
+                showDiaLogHuy(obj, index);
             }
         });
-       holder.itemView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               callback.updateAdmin(obj,index);
-           }
-       });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callback.updateAdmin(obj, index);
+            }
+        });
+        if (obj.getObj_status() == 4) {
+           holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+               @Override
+               public boolean onLongClick(View v) {
+                   openDiaLogTaoHoaDon();
+                   return false;
+               }
+           });
+        }
 
     }
+
+    public void openDiaLogTaoHoaDon() {
+        Dialog dialog = new Dialog(mContext);
+        dialog.setContentView(R.layout.dialog_taohoadon);
+        dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
+        Window window = dialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        window.setAttributes(windowAttributes);
+        windowAttributes.gravity = Gravity.BOTTOM;
+        CardView CVTaobill;
+        Button btnTaobill;
+        Button btnCancel;
+        CVTaobill = (CardView) dialog.findViewById(R.id.CV_taobill);
+        btnTaobill = (Button) dialog.findViewById(R.id.btn_taobill);
+        btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
+
+
+        dialog.show();
+    }
+
     public void showDiaLogHuy(BookObj bookObj, int index) {
         Dialog dialog = new Dialog(mContext);
         dialog.setContentView(R.layout.dialog_xacnhan_hoanthanhbooking);
@@ -101,7 +131,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
         Button btn_xacnhan = dialog.findViewById(R.id.btn_xacnhan);
         Button btn_hoanthanh = dialog.findViewById(R.id.btn_hoanthanh);
         Button btn_cancle = dialog.findViewById(R.id.btn_cancel);
-        if(bookObj.getObj_status()==3 ||bookObj.getObj_status()==4){
+        if (bookObj.getObj_status() == 3 || bookObj.getObj_status() == 4) {
             btn_xacnhan.setVisibility(View.INVISIBLE);
             cv_xacnhan.setVisibility(View.INVISIBLE);
         }

@@ -52,7 +52,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class AddBookingActivity extends AppCompatActivity {
+public class AddBooking extends AppCompatActivity {
     private ImageView imgClose;
     private Button btnKhamvachua;
     private Button btnKiemtrasuckhoe;
@@ -141,12 +141,12 @@ public class AddBookingActivity extends AppCompatActivity {
             mDate = calendar.get(Calendar.DAY_OF_MONTH);
             mHour = calendar.get(Calendar.HOUR_OF_DAY);
             mMinute = calendar.get(Calendar.MINUTE);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
-                    date, mYear, mMonth, mDate);
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,0, date, mYear, mMonth, mDate);
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                    android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
                     time, mHour, mMinute, true);
-            timePickerDialog.show();
             datePickerDialog.show();
+            timePickerDialog.show();
         });
         adapterSPNAnimal = new SpinnerAnimal();
         listAnimal = AnimalDB.getInstance(this).Dao().getAllData();
@@ -216,7 +216,9 @@ public class AddBookingActivity extends AppCompatActivity {
                         bitmap = bitmapDrawable.getBitmap();
                     }
                 }
-            });
+            }
+    );
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -228,7 +230,9 @@ public class AddBookingActivity extends AppCompatActivity {
     }
 
     private void addBooking() {
+
         String strTT = TIEDStatus.getText().toString();
+
         if (rdoPhongkham.isChecked()) {
             noikham = "Phòng Khám";
         } else if (rdoTainha.isChecked()) {
@@ -251,7 +255,7 @@ public class AddBookingActivity extends AppCompatActivity {
         BookObj bookObj = new BookObj(id,idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU,1);
         BookDB.getInstance(this).Dao().insert(bookObj);
         Toast.makeText(this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
-        finish();
+
     }
 
     public void SlectedSpinner() {

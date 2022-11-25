@@ -12,7 +12,7 @@ import com.example.quanlypet.model.AnimalObj;
 @Database(entities = {AnimalObj.class}, version = 1)
 public abstract class AnimalDB extends RoomDatabase {
     public abstract AnimalDao Dao();
-    public static final String DATABASENAME = "Animal1.db";
+    public static final String DATABASENAME = "Animal.db";
     public static AnimalDB Instance;
     public static synchronized AnimalDB getInstance(Context context){
         if (Instance == null){
