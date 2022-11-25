@@ -99,7 +99,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
 
         holder.id_RelativeLayout.setOnClickListener(v->{
             callback.update(docterObj);
-            //context.startActivity(new Intent(context, UpdateDoctorActivity.class));
         });
         holder.img_Information.setOnClickListener(v->{
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
