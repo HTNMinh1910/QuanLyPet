@@ -1,6 +1,8 @@
 package com.example.quanlypet.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,9 +17,7 @@ import android.widget.LinearLayout;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.ui.activity.AnimalActivity;
-import com.example.quanlypet.ui.activity.InformationUsersActivity;
-import com.example.quanlypet.ui.activity.List_User_Activity;
-import com.example.quanlypet.ui.activity.UpdateInformationActivity;
+import com.example.quanlypet.ui.activity.UsersInforActivity;
 import com.example.quanlypet.ui.welcome.ChangePasswordActivity;
 import com.example.quanlypet.ui.welcome.WelcomeActivity;
 
@@ -51,30 +51,28 @@ public class UsersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        lnInforAccount = (LinearLayout) view.findViewById(R.id.ln_inforAccount);
-        lnAnimalManager = (LinearLayout) view.findViewById(R.id.ln_animalManager);
-        lnUserManager = (LinearLayout) view.findViewById(R.id.ln_userManager);
-        lnChangePass = (LinearLayout) view.findViewById(R.id.ln_changePass);
-        lnLogOut = (LinearLayout) view.findViewById(R.id.ln_logOut);
+        lnInforAccount = view.findViewById(R.id.ln_inforAccount);
+        lnAnimalManager = view.findViewById(R.id.ln_animalManager);
+        lnUserManager = view.findViewById(R.id.ln_userManager);
+        lnChangePass = view.findViewById(R.id.ln_changePass);
+        lnLogOut = view.findViewById(R.id.ln_logOut);
+        SharedPreferences preferences = requireActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        String username = preferences.getString("Username", "");
+        if (username.equals("Admin")) {
+            lnUserManager.setVisibility(View.VISIBLE);
+        }
 
-        lnAnimalManager.setOnClickListener(view1 -> {
+            lnAnimalManager.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), AnimalActivity.class));
         });
         lnInforAccount.setOnClickListener(view1 -> {
-            startActivity(new Intent(getActivity(), UpdateInformationActivity.class));
+            startActivity(new Intent(getActivity(), UsersInforActivity.class));
         });
         lnChangePass.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), ChangePasswordActivity.class));
         });
         lnLogOut.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), WelcomeActivity.class));
-        });
-        lnUserManager.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), List_User_Activity.class));
-
-            }
         });
     }
         public void replaceFragmet (Fragment fragment){
