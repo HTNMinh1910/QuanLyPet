@@ -78,7 +78,6 @@ public class WelcomeActivity extends AppCompatActivity {
             timer = null;
         }
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +93,7 @@ public class WelcomeActivity extends AppCompatActivity {
         circleIndicator.setViewPager(vpr);
         slideAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
         tapSlide();
-        if (AdminDB.getInstance(getApplicationContext()).Dao().getAllData()!=null){
+        if (AdminDB.getInstance(getApplicationContext()).Dao().getAllData().isEmpty()){
             AdminDB.getInstance(getApplicationContext()).Dao().
                     insert(new AdminObj("Admin","Account_QLPV","qlpvip@gmail.com","petvip"));
         }

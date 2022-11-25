@@ -8,8 +8,7 @@
         <item android:id="@+id/docter"
             android:title="Bác sĩ"
             android:icon="@drawable/doctor"
-            android:visible="false"
-            />
+            android:visible="true" />
 
         <item android:id="@+id/book"
             android:title="Đặt Lịch"
@@ -17,6 +16,7 @@
 
         <item android:id="@+id/bill"
             android:title="bill"
+            android:visible="false"
             android:icon="@drawable/bill"/>
 
         <item android:id="@+id/account"

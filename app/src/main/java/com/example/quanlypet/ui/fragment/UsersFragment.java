@@ -57,10 +57,12 @@ public class UsersFragment extends Fragment {
         lnUserManager = view.findViewById(R.id.ln_userManager);
         lnChangePass = view.findViewById(R.id.ln_changePass);
         lnLogOut = view.findViewById(R.id.ln_logOut);
-        SharedPreferences preferences = requireActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        SharedPreferences preferences = requireActivity().getSharedPreferences("Users_info", Context.MODE_PRIVATE);
         String username = preferences.getString("Username", "");
         if (username.equals("Admin")) {
             lnUserManager.setVisibility(View.VISIBLE);
+        }else {
+            lnAnimalManager.setVisibility(View.VISIBLE);
         }
 
         lnAnimalManager.setOnClickListener(view1 -> {

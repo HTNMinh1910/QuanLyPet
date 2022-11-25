@@ -89,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("Password",R_pass);
             editor.putBoolean("Remember",status);
         }
-
         editor.commit();
     }
 }

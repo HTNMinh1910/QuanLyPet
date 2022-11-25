@@ -39,16 +39,18 @@ public class ChangePasswordActivity extends AppCompatActivity {
         imgSave.setOnClickListener(view1 -> {
             SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
             String user = preferences.getString("Username", "");
-            String MKcu = NowPass.getText().toString();
-            String MKmoi = newPass.getText().toString();
-            String MKlai = newPassAganin.getText().toString();
-
-            if (Validate() > 0) {
-                UsersDB.getInstance(getApplicationContext()).Dao().changePass(user, newPass.getText().toString());
-                tvErrors.setText("Đổi mật khẩu thành công.");
-                NowPass.setText("");
-                newPass.setText("");
-                newPassAganin.setText("");
+            if (user.equals("Admin")){
+                if (Validate() > 0) {
+                    AdminDB.getInstance(getApplicationContext()).Dao().changePass(user, newPass.getText().toString());
+                    tvErrors.setText("Đổi mật khẩu thành công.");
+                    finish();
+                }
+            }else {
+                if (Validate() > 0) {
+                    UsersDB.getInstance(getApplicationContext()).Dao().changePass(user, newPass.getText().toString());
+                    tvErrors.setText("Đổi mật khẩu thành công.");
+                    finish();
+                }
             }
         });
     }
