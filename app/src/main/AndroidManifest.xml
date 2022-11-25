@@ -28,6 +28,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ui.activity.DanhSachDoctor"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.activity.AddBillActivity"
             android:exported="false"
             android:parentActivityName=".ui.activity.AddBillActivity" />
