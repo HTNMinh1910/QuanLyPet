@@ -114,7 +114,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         });
 
     }
-
     @Override
     public int getItemCount() {
         return list==null?0:list.size();
@@ -128,8 +127,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         private TextView tv_Gender;
         private RelativeLayout id_RelativeLayout;
         private ImageView img_Information;
-
-
 
         public DocterViewHolder(@NonNull View itemView) {
             super(itemView);

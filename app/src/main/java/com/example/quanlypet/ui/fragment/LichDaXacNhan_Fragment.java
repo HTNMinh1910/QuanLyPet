@@ -147,7 +147,6 @@ public class LichDaXacNhan_Fragment extends Fragment implements bookingAdapter.C
         list2 = new ArrayList<>();
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String user = sharedPreferences.getString("Username", "");
-        Toast.makeText(getActivity(), "" + user, Toast.LENGTH_SHORT).show();
         if (user.equalsIgnoreCase("Admin")) {
             list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
             adapterAdmin = new booking_admin_Adapter(list2, getActivity(), new booking_admin_Adapter.Callback() {
@@ -160,7 +159,6 @@ public class LichDaXacNhan_Fragment extends Fragment implements bookingAdapter.C
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
             reCy_booking.setAdapter(adapterAdmin);
             reCy_booking.setLayoutManager(linearLayoutManager);
-            Toast.makeText(getActivity(), "" + list2.size(), Toast.LENGTH_SHORT).show();
             loadDATA2();
         } else {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
