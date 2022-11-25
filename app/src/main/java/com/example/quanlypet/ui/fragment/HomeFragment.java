@@ -1,28 +1,28 @@
 package com.example.quanlypet.ui.fragment;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.quanlypet.R;
+import com.example.quanlypet.adapter.viewpager2.SlideAdapter;
 import com.example.quanlypet.adapter.viewpager2.SlideAdapterHome;
-import com.example.quanlypet.database.DoctorDB;
 import com.example.quanlypet.model.Photo;
-import com.example.quanlypet.ui.activity.AddBookingActivity;
-import com.example.quanlypet.ui.activity.DanhSachDoctor;
+import com.example.quanlypet.ui.activity.AddAnimalAcitvity;
+import com.example.quanlypet.ui.activity.AddBooking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment {
     private LinearLayout linerAmbulance;
     private LinearLayout linerMess;
     private ImageView imgAddAnimal;
-    Fragment fragment = null;
 
     public HomeFragment() {
     }
@@ -62,20 +61,12 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         linerBooking = (LinearLayout) view.findViewById(R.id.liner_booking);
         linerAmbulance = (LinearLayout) view.findViewById(R.id.liner_ambulance);
-        linerMess = view.findViewById(R.id.liner_mess);
         linerBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AddBookingActivity.class);
+                Intent i = new Intent(getActivity(), AddBooking.class);
                 startActivity(i);
             }
-        });
-        linerMess.setOnClickListener(v->{
-            Uri uri = Uri.parse("http://m.me/100088046954126");
-            startActivity(new Intent(Intent.ACTION_VIEW,uri));
-        });
-        linerAmbulance.setOnClickListener(v->{
-            startActivity(new Intent(getActivity(), DanhSachDoctor.class));
         });
         vpr = (ViewPager) view.findViewById(R.id.vpr);
         circleIndicator = (CircleIndicator) view.findViewById(R.id.circle_indicator);

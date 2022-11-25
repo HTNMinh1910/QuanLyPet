@@ -96,8 +96,6 @@
         </LinearLayout>
     </LinearLayout>
 <androidx.cardview.widget.CardView
-    android:layout_margin="10dp"
-    android:layout_marginTop="15dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="20dp">
@@ -106,6 +104,7 @@
         android:layout_height="wrap_content">
 
         <androidx.viewpager.widget.ViewPager
+            android:layout_marginTop="15dp"
             android:id="@+id/vpr"
             android:layout_width="match_parent"
             android:layout_height="150dp"/>

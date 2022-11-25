@@ -7,8 +7,6 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,22 +16,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.DoctorObj;
-import com.example.quanlypet.ui.activity.DoctorInforActivity;
+import com.example.quanlypet.ui.activity.InformationActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 
-public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterViewHolder> implements Filterable {
+public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterViewHolder> {
     private Context context;
     private ArrayList<DoctorObj> list;
-    private ArrayList<DoctorObj> listDotor;
     private int checkGender;
     private DoctorObj docterObjNew;
     private Callback callback;
     public void setDataDocter(ArrayList<DoctorObj> list){
         this.list=list;
-        this.listDotor = list;
         notifyDataSetChanged();
     }
 
@@ -66,19 +62,15 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             holder.tv_Gender.setText("Nữ");
         }
 
-        holder.id_RelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                callback.update(docterObj);
-                return false;
-            }
+        holder.id_RelativeLayout.setOnClickListener(v->{
+            callback.update(docterObj);
+            //context.startActivity(new Intent(context, UpdateDoctorActivity.class));
         });
-
         holder.img_Information.setOnClickListener(v->{
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] ByteArray = byteArrayOutputStream.toByteArray();
-            Intent intent = new Intent(context, DoctorInforActivity.class);
+            Intent intent = new Intent(context, InformationActivity.class);
             intent.putExtra("name",docterObj.getName());
             intent.putExtra("phone",docterObj.getPhone());
             intent.putExtra("address",docterObj.getAddress());
@@ -92,39 +84,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
     @Override
     public int getItemCount() {
         return list==null?0:list.size();
-    }
-
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                String search = constraint.toString();
-                if (search.isEmpty()){
-                    list = listDotor;
-                }else{
-                    ArrayList<DoctorObj> listdt = new ArrayList<>();
-                    for (DoctorObj object: listDotor){
-                        if (object.getName().toLowerCase().contains(search.toLowerCase())
-                                ||object.getSpecialize().toLowerCase().contains(search.toLowerCase())||
-                        object.getPhone().toLowerCase().contains(search.toLowerCase())||
-                                object.getEmail().toLowerCase().contains(search.toLowerCase())){
-                            listdt.add(object);
-                        }
-                    }
-                    list = listdt;
-                }
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = list;
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                list = (ArrayList<DoctorObj>) results.values;
-                notifyDataSetChanged();
-            }
-        };
     }
 
     public class DocterViewHolder extends RecyclerView.ViewHolder {

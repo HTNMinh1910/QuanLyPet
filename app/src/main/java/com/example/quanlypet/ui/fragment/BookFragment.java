@@ -1,9 +1,7 @@
 package com.example.quanlypet.ui.fragment;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,7 +31,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -61,19 +58,72 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.ByteArrayOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 
-public class BookFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link BookFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class BookFragment extends Fragment implements bookingAdapter.Callback {
+    private int REQUEST_CAMERA = 111;
+    private Bitmap bitmap;
+    private ImageView imgClose;
+    private Button btnKhamvachua;
+    private Button btnKiemtrasuckhoe;
+    private Button btnTiemphong;
+    private Button btnPhauthuat;
+    private Button btnSieuam;
+    private Button btnSpa;
+    List<BookObj> list;
+    List<BookObj> list2;
+    bookingAdapter adapter;
+    booking_admin_Adapter adapterAdmin;
+    RecyclerView reCy_booking;
+    UsersObj usersObj = new UsersObj();
+    private Spinner spnDoctor;
+    private TextInputLayout TIPNameDoctor;
+    private TextInputEditText TIEDNameDoctor;
+    private TextInputLayout TIPPhoneNumber;
+    private TextInputEditText TIEDPhoneNumber;
+    private Spinner spnPet;
+    private TextInputLayout TIPNamePet;
+    private TextInputEditText TIEDNamePet;
+    private TextInputLayout TIPTypePet;
+    private TextInputEditText TIEDTypePet;
+    private TextInputLayout TIPStatus;
+    private TextInputEditText TIEDStatus;
+    private ImageView imgPicture;
+    private Button btnCamera;
+    private Button btnAlbum;
+    private RadioGroup rdogr;
+    private RadioButton rdoPhongkham;
+    private RadioButton rdoTainha;
+    private TextInputLayout TIPTime;
+    private TextInputEditText TIEDTime;
+    private TextInputLayout TIPAddress;
+    private TextInputEditText TIEDAddress;
+    private TextInputLayout TIPService;
+    private TextInputEditText TIEDService;
+    private Button btnUpdate;
+    private Button btnHuy;
+    private String noikham;
+    private int idPet;
+    SpinnerAnimal adapterSPNAnimal;
+    SpinnerDoctor adapterSPNDoctor;
+    List<AnimalObj> listAnimal;
+    List<DoctorObj> listDoctor;
+    private int idDoctor;
+
     private TabLayout tablayout;
     private TabItem tab1;
     private TabItem tab2;
     private TabItem tab3;
     private TabItem tab4;
     private ViewPager2 viewpagerTablayout;
+
 
     public BookFragment() {
     }
@@ -93,6 +143,7 @@ public class BookFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_book, container, false);
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -125,5 +176,13 @@ public class BookFragment extends Fragment {
             }
         });
         tabLayoutMediator.attach();
+
+
+    }
+
+
+    @Override
+    public void update(BookObj bookObj, int index) {
+
     }
 }

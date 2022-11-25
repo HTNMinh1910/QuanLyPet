@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,8 +23,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,7 +51,6 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     ImageView img;
     Button btnCamera;
     Button btnAlbum;
-    private SearchView searchNamedotor;
     public DoctorFragment() {
     }
 
@@ -80,19 +76,6 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
         recyclerView = (RecyclerView) view.findViewById(R.id.rcv_docter);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingbutton);
         adapter = new DoctorAdapter(getActivity(), this);
-        searchNamedotor = (SearchView) view.findViewById(R.id.search_namedotor);
-        searchNamedotor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                adapter.getFilter().filter(query);
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
         floatingActionButton.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AddDoctorActivity.class));
         });
@@ -108,10 +91,11 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     }
     @Override
     public void update(DoctorObj doctorObj) {
-        final Dialog dialog = new Dialog(getContext(),com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
+        final Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.dialog_update_docter);
-        Toolbar toolbar = dialog.findViewById(R.id.tbl_docter);
-        toolbar.setTitle("Sửa Bác Sĩ");
+        dialog.setCancelable(false);
+        Window window = dialog.getWindow();
+        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
 
         TextInputEditText edNameDocter = (TextInputEditText) dialog.findViewById(R.id.ed_nameDocter);
         imgPicture = dialog.findViewById(R.id.img_picture);
@@ -120,29 +104,11 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
 
         TextInputEditText edPhoneDocter = (TextInputEditText) dialog.findViewById(R.id.ed_phoneDocter);
         RadioButton rdoBoy = (RadioButton) dialog.findViewById(R.id.rdo_boy);
-        RadioButton rdoGirl= (RadioButton) dialog.findViewById(R.id.rdo_girl);
-
         TextInputEditText edEmailDocter = (TextInputEditText) dialog.findViewById(R.id.ed_emailDocter);
         TextInputEditText edAddressDocter = (TextInputEditText) dialog.findViewById(R.id.ed_addressDocter);
         TextInputEditText edSpecializeDocter = (TextInputEditText) dialog.findViewById(R.id.ed_specializeDocter);
         Button btnUpdateDocter = (Button) dialog.findViewById(R.id.btn_updateDocter);
         Button btnCanel = (Button) dialog.findViewById(R.id.btn_canel);
-
-        edPhoneDocter.setText(doctorObj.getPhone());
-        edEmailDocter.setText(doctorObj.getEmail());
-        edNameDocter.setText(doctorObj.getName());
-        edAddressDocter.setText(doctorObj.getAddress());
-        edSpecializeDocter.setText(doctorObj.getSpecialize());
-        byte[] hinhanhUpdate = doctorObj.getImg();
-        Bitmap bitmapUpdate = BitmapFactory.decodeByteArray(hinhanhUpdate, 0, hinhanhUpdate.length);
-        imgPicture.setImageBitmap(bitmapUpdate);
-        if (doctorObj.getGender()==1) {
-            rdoBoy.setChecked(true);
-        } else {
-            rdoGirl.setChecked(true);
-        }
-
-
 
         btnAlbum.setOnClickListener(v -> {
             Intent i = new Intent();
@@ -157,9 +123,8 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
                 startActivityForResult(intent,0);
             }
         });
-
-
         btnUpdateDocter.setOnClickListener(v -> {
+
             String name = edNameDocter.getText().toString().trim();
             String phone = edPhoneDocter.getText().toString().trim();
             String email = edEmailDocter.getText().toString().trim();

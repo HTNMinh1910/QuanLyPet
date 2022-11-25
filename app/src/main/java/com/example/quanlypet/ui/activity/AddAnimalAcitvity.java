@@ -94,7 +94,6 @@ public class AddAnimalAcitvity extends AppCompatActivity {
                 AnimalObj object = new AnimalObj(namean, anh, age, species,1);
                 AnimalDB.getInstance(getApplicationContext()).Dao().insert(object);
                 Toast.makeText(getApplicationContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
-                finish();
             }
         });
 

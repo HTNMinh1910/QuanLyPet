@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,7 +24,7 @@ import com.example.quanlypet.ImageConverter;
 import com.example.quanlypet.R;
 
 
-public class DoctorInforActivity extends AppCompatActivity {
+public class InformationActivity extends AppCompatActivity {
     private TextView tvSpecializeDocter;
     private TextView tvNameDocter;
     private TextView tvPhoneDocter;
