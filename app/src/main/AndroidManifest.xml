@@ -51,16 +51,16 @@
             android:exported="false"
             android:parentActivityName=".ui.activity.InformationUsersActivity" />
         <activity
-            android:name=".ui.activity.AddBooking"
+            android:name=".ui.activity.AddBookingActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.activity.AddAnimalAcitvity"
+            android:name=".ui.activity.AddAnimalActivity"
             android:exported="false"
-            android:parentActivityName=".ui.activity.AddAnimalAcitvity" />
+            android:parentActivityName=".ui.activity.AddAnimalActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -41,7 +41,6 @@ public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.Vi
         holder.tvFullnameUsers.setText(obj.getFull_name());
         holder.tvEmailUsers.setText(obj.getEmail());
         holder.tvPhoneUsers.setText(obj.getPhone());
-
     }
 
     @Override
@@ -54,7 +53,6 @@ public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.Vi
         private TextView tvFullnameUsers;
         private TextView tvEmailUsers;
         private TextView tvPhoneUsers;
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

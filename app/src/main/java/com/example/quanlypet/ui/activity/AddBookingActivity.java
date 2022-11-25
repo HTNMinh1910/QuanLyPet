@@ -52,7 +52,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class AddBooking extends AppCompatActivity {
+public class AddBookingActivity extends AppCompatActivity {
     private ImageView imgClose;
     private Button btnKhamvachua;
     private Button btnKiemtrasuckhoe;
@@ -141,12 +141,12 @@ public class AddBooking extends AppCompatActivity {
             mDate = calendar.get(Calendar.DAY_OF_MONTH);
             mHour = calendar.get(Calendar.HOUR_OF_DAY);
             mMinute = calendar.get(Calendar.MINUTE);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,0, date, mYear, mMonth, mDate);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    android.R.style.Theme_Holo_Light_Dialog_NoActionBar, date, mYear, mMonth, mDate);
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                    android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
-                    time, mHour, mMinute, true);
-            datePickerDialog.show();
+                    android.R.style.Theme_Holo_Light_Dialog_NoActionBar, time, mHour, mMinute, true);
             timePickerDialog.show();
+            datePickerDialog.show();
         });
         adapterSPNAnimal = new SpinnerAnimal();
         listAnimal = AnimalDB.getInstance(this).Dao().getAllData();

@@ -7,10 +7,8 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,11 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.adapter.viewpager2.SlideAdapter;
 import com.example.quanlypet.adapter.viewpager2.SlideAdapterHome;
 import com.example.quanlypet.model.Photo;
-import com.example.quanlypet.ui.activity.AddAnimalAcitvity;
-import com.example.quanlypet.ui.activity.AddBooking;
+import com.example.quanlypet.ui.activity.AddBookingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +60,7 @@ public class HomeFragment extends Fragment {
         linerBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AddBooking.class);
+                Intent i = new Intent(getActivity(), AddBookingActivity.class);
                 startActivity(i);
             }
         });

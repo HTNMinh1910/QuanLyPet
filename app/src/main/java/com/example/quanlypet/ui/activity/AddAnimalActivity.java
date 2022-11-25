@@ -30,7 +30,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class AddAnimalAcitvity extends AppCompatActivity {
+public class AddAnimalActivity extends AppCompatActivity {
     private RecyclerView rcvAnimal;
     private FloatingActionButton bbtn;
     private ArrayList<AnimalObj> arrayList = new ArrayList<>();

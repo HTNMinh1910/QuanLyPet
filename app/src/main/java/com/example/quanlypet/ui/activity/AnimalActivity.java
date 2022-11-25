@@ -83,7 +83,7 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.add_animal_menu:
-                startActivity(new Intent(getApplicationContext(), AddAnimalAcitvity.class));
+                startActivity(new Intent(getApplicationContext(), AddAnimalActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
