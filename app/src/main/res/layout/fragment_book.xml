@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         app:tabMode="scrollable"
-        app:tabSelectedTextColor="#F9CBCB">
+        app:tabSelectedTextColor="#E1173E"
+        app:tabIndicatorColor="#E1173E">
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab1"
             android:layout_width="wrap_content"

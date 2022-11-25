@@ -23,6 +23,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +45,7 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     private FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
     private DoctorAdapter adapter;
+    private SearchView searchDoctor;
     private ArrayList<DoctorObj> list = new ArrayList<>();
     private int checkGender;
     private Bitmap bitmap;
@@ -75,6 +77,7 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.rcv_docter);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingbutton);
+        searchDoctor = view.findViewById(R.id.search_doctor);
         adapter = new DoctorAdapter(getActivity(), this);
         floatingActionButton.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AddDoctorActivity.class));
@@ -82,6 +85,19 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+        searchDoctor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
     @Override
     public void onResume() {
