@@ -7,18 +7,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.AdminDB;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.AdminObj;
 import com.example.quanlypet.model.UsersObj;
-import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.ArrayList;
 
 public class InformationUsersActivity extends AppCompatActivity{
     private Toolbar idTollBar;
@@ -46,7 +41,7 @@ public class InformationUsersActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         LoadData();
         btnEdit.setOnClickListener(v->{
-            startActivity(new Intent(getApplicationContext(), UpdateInformationActivity.class));
+            startActivity(new Intent(getApplicationContext(), UsersInforActivity.class));
         });
     }
     public void LoadData(){

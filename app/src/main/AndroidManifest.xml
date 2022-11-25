@@ -43,9 +43,9 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.activity.UpdateInformationActivity"
+            android:name=".ui.activity.UsersInforActivity"
             android:exported="false"
-            android:parentActivityName=".ui.activity.UpdateInformationActivity" />
+            android:parentActivityName=".ui.activity.UsersInforActivity" />
         <activity
             android:name=".ui.activity.InformationUsersActivity"
             android:exported="false"
@@ -111,9 +111,9 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.activity.InformationActivity"
+            android:name=".ui.activity.DoctorInforActivity"
             android:exported="false"
-            android:parentActivityName=".ui.activity.InformationActivity">
+            android:parentActivityName=".ui.activity.DoctorInforActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
