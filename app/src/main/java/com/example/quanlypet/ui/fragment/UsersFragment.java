@@ -14,12 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.ui.activity.AnimalActivity;
 import com.example.quanlypet.ui.activity.List_User_Activity;
 import com.example.quanlypet.ui.activity.UsersInforActivity;
 import com.example.quanlypet.ui.welcome.ChangePasswordActivity;
+import com.example.quanlypet.ui.welcome.LoginActivity;
 import com.example.quanlypet.ui.welcome.WelcomeActivity;
 
 public class UsersFragment extends Fragment {
@@ -28,7 +30,7 @@ public class UsersFragment extends Fragment {
     private LinearLayout lnUserManager;
     private LinearLayout lnChangePass;
     private LinearLayout lnLogOut;
-
+    private TextView usersName;
     public UsersFragment() {
     }
 
@@ -52,6 +54,7 @@ public class UsersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        usersName = view.findViewById(R.id.usersName);
         lnInforAccount = view.findViewById(R.id.ln_inforAccount);
         lnAnimalManager = view.findViewById(R.id.ln_animalManager);
         lnUserManager = view.findViewById(R.id.ln_userManager);
@@ -59,6 +62,7 @@ public class UsersFragment extends Fragment {
         lnLogOut = view.findViewById(R.id.ln_logOut);
         SharedPreferences preferences = requireActivity().getSharedPreferences("Users_info", Context.MODE_PRIVATE);
         String username = preferences.getString("Username", "");
+        usersName.setText(username);
         if (username.equals("Admin")) {
             lnUserManager.setVisibility(View.VISIBLE);
         }else {
@@ -78,7 +82,7 @@ public class UsersFragment extends Fragment {
             startActivity(new Intent(getContext(), ChangePasswordActivity.class));
         });
         lnLogOut.setOnClickListener(view1 -> {
-            startActivity(new Intent(getContext(), WelcomeActivity.class));
+            startActivity(new Intent(getContext(), LoginActivity.class));
         });
     }
         public void replaceFragmet (Fragment fragment){

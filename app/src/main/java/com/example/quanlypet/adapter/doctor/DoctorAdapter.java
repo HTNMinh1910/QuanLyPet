@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,9 +24,10 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 
-public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterViewHolder> {
+public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterViewHolder> implements Filterable {
     private Context context;
     private ArrayList<DoctorObj> list;
+    private ArrayList<DoctorObj> listDotor;
     private int checkGender;
     private DoctorObj docterObjNew;
     private Callback callback;
@@ -36,6 +39,38 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
     public DoctorAdapter(Context context,Callback callback) {
         this.context = context;
         this.callback=callback;
+    }
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String search = constraint.toString();
+                if (search.isEmpty()){
+                    list = listDotor;
+                }else{
+                    ArrayList<DoctorObj> listdt = new ArrayList<>();
+                    for (DoctorObj object: listDotor){
+                        if (object.getName().toLowerCase().contains(search.toLowerCase())||
+                                object.getEmail().toLowerCase().contains(search.toLowerCase())||
+                        object.getPhone().toLowerCase().contains(search.toLowerCase())||
+                        object.getSpecialize().toLowerCase().contains(search.toLowerCase())){
+                            listdt.add(object);
+                        }
+                    }
+                    list = listdt;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = list;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                list = (ArrayList<DoctorObj>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     @NonNull
@@ -68,6 +103,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
                 callback.update(docterObj);
                 return false;
             }
+        holder.id_RelativeLayout.setOnClickListener(v->{
+            callback.update(docterObj);
         });
         holder.img_Information.setOnClickListener(v->{
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -97,8 +134,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         private TextView tv_Gender;
         private RelativeLayout id_RelativeLayout;
         private ImageView img_Information;
-
-
 
         public DocterViewHolder(@NonNull View itemView) {
             super(itemView);
