@@ -97,6 +97,12 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             holder.tv_Gender.setText("Nữ");
         }
 
+        holder.id_RelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                callback.update(docterObj);
+                return false;
+            }
         holder.id_RelativeLayout.setOnClickListener(v->{
             callback.update(docterObj);
         });
@@ -128,8 +134,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         private TextView tv_Gender;
         private RelativeLayout id_RelativeLayout;
         private ImageView img_Information;
-
-
 
         public DocterViewHolder(@NonNull View itemView) {
             super(itemView);

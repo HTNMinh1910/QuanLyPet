@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -120,11 +121,27 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
 
         TextInputEditText edPhoneDocter = (TextInputEditText) dialog.findViewById(R.id.ed_phoneDocter);
         RadioButton rdoBoy = (RadioButton) dialog.findViewById(R.id.rdo_boy);
+        RadioButton rdoGirl= (RadioButton) dialog.findViewById(R.id.rdo_girl);
         TextInputEditText edEmailDocter = (TextInputEditText) dialog.findViewById(R.id.ed_emailDocter);
         TextInputEditText edAddressDocter = (TextInputEditText) dialog.findViewById(R.id.ed_addressDocter);
         TextInputEditText edSpecializeDocter = (TextInputEditText) dialog.findViewById(R.id.ed_specializeDocter);
         Button btnUpdateDocter = (Button) dialog.findViewById(R.id.btn_updateDocter);
         Button btnCanel = (Button) dialog.findViewById(R.id.btn_canel);
+
+        edPhoneDocter.setText(doctorObj.getPhone());
+        edEmailDocter.setText(doctorObj.getEmail());
+        edNameDocter.setText(doctorObj.getName());
+        edAddressDocter.setText(doctorObj.getAddress());
+        edSpecializeDocter.setText(doctorObj.getSpecialize());
+        byte[] hinhanhUpdate = doctorObj.getImg();
+        Bitmap bitmapUpdate = BitmapFactory.decodeByteArray(hinhanhUpdate, 0, hinhanhUpdate.length);
+        imgPicture.setImageBitmap(bitmapUpdate);
+        if (doctorObj.getGender()==1) {
+            rdoBoy.setChecked(true);
+        } else {
+            rdoGirl.setChecked(true);
+        }
+
 
         btnAlbum.setOnClickListener(v -> {
             Intent i = new Intent();
