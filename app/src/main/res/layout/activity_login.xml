@@ -76,6 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Remember"
+            android:textSize="11sp"
             android:fontFamily="@font/biorhyme_bold"
             android:layout_marginLeft="10dp" />
 
@@ -105,9 +106,12 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/btn_login"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#C00404"
+            android:background="@drawable/button"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="Logn In"/>
     </LinearLayout>
     <LinearLayout

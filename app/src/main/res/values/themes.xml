@@ -1,20 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.QuanLyPet" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">#00B0FF</item>
-        <item name="colorPrimaryVariant">#00B0FF</item>
+        <item name="colorPrimary">#FFB300</item>
+        <item name="colorPrimaryVariant">#FF9100</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">#23E587</item>
+        <item name="colorSecondaryVariant">#2CA7A6</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.QuanLyPet.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.QuanLyPet.NoTextButton">
+        <item name="windowNoTitle">true</item>
+        <item name="android:background">#F8DFBE</item>
+        <item name="colorButtonNormal">#F8DFBE</item>
     </style>
 </resources>
