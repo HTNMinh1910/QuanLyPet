@@ -61,11 +61,11 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp">
 
-                    <TextView
-                        android:layout_width="140dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="time : " />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/name"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -85,12 +85,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:layout_width="140dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="date : " />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/schedule"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -111,11 +110,11 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="140dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="price: " />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/delivery"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -136,11 +135,12 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="140dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="note : " />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/notes"/>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

@@ -103,8 +103,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
                 callback.update(docterObj);
                 return false;
             }
-        holder.id_RelativeLayout.setOnClickListener(v->{
-            callback.update(docterObj);
         });
         holder.img_Information.setOnClickListener(v->{
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -118,7 +116,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             intent.putExtra("img",ByteArray);
             context.startActivity(intent);
         });
-
     }
     @Override
     public int getItemCount() {

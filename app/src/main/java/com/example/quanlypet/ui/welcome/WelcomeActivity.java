@@ -27,10 +27,11 @@ import java.util.TimerTask;
 import me.relex.circleindicator.CircleIndicator;
 
 public class WelcomeActivity extends AppCompatActivity {
-    private Button btnAdmin;
     private TextView tvPrev;
     private TextView tvNext;
     private ViewPager vpr;
+    private Button btnSignin;
+    private Button btnSignup;
     private CircleIndicator circleIndicator;
     private SlideAdapter slideAdapter;
     private List<Photo> photoList;
@@ -82,7 +83,8 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wellcome);
-        btnAdmin = (Button) findViewById(R.id.btn_admin);
+        btnSignin = (Button) findViewById(R.id.btn_signin);
+        btnSignup = (Button) findViewById(R.id.btn_signup);
         tvPrev = (TextView) findViewById(R.id.tv_prev);
         tvNext = (TextView) findViewById(R.id.tv_next);
         vpr = (ViewPager) findViewById(R.id.vpr);
@@ -97,8 +99,11 @@ public class WelcomeActivity extends AppCompatActivity {
             AdminDB.getInstance(getApplicationContext()).Dao().
                     insert(new AdminObj("Admin","Account_QLPV","qlpvip@gmail.com","petvip"));
         }
-        btnAdmin.setOnClickListener(view -> {
+        btnSignin.setOnClickListener(view -> {
           startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        });
+        btnSignup.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(),SignupUsersActivity.class));
         });
     }
 }
