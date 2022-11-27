@@ -30,23 +30,18 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AddAnimalActivity extends AppCompatActivity {
-    private RecyclerView rcvAnimal;
-    private FloatingActionButton bbtn;
-    private ArrayList<AnimalObj> arrayList = new ArrayList<>();
-    private AnimalAdapter adapterAnimal;
     private Toolbar idTollBar;
     private Bitmap bitmap;
     private Toolbar Tbr;
-    private EditText edIdUsers;
     private EditText edNameAnimal;
-    private ImageView imgAnh;
-    private Button btnAddanh;
-    private Button btnAlbum;
+    private CircleImageView imgAnh;
+    private ImageView btnAlbum;
     private EditText edAgeAnimal;
     private EditText edSpeciesAnimal;
     private Button btnAddAnimal;
-    private Button btnCancel;
     int REQUEST_CODE_ALBUM = 123;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +55,14 @@ public class AddAnimalActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
         btnAlbum = findViewById(R.id.btn_album);
-        imgAnh = (ImageView) findViewById(R.id.img_anh);
+        imgAnh = (CircleImageView) findViewById(R.id.img_anh);
         btnAlbum.setOnClickListener(v ->{
             Intent i = new Intent(Intent.ACTION_PICK);
             i.setType("image/*");
             i.setAction(Intent.ACTION_GET_CONTENT);
             chooseImage.launch(i);
         });
-        btnAddanh = (Button) findViewById(R.id.btn_addanh);
-        btnCancel = (Button) findViewById(R.id.btn_cancel);
-        btnAddanh.setOnClickListener(new View.OnClickListener() {
+        imgAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -94,14 +87,8 @@ public class AddAnimalActivity extends AppCompatActivity {
                 AnimalObj object = new AnimalObj(namean, anh, age, species,1);
                 AnimalDB.getInstance(getApplicationContext()).Dao().insert(object);
                 Toast.makeText(getApplicationContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
+                finish();
             }
-        });
-
-        btnCancel.setOnClickListener(v -> {
-            edIdUsers.setText("");
-            edNameAnimal.setText("");
-            edAgeAnimal.setText("");
-            edSpeciesAnimal.setText("");
         });
     }
 

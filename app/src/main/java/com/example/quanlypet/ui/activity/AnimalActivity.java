@@ -37,7 +37,6 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.Callback{
-    private Toolbar idTollBarAnimal;
     private RecyclerView rcvAnimal;
     private Toolbar Tbr;
     private ArrayList<AnimalObj> arrayList = new ArrayList<>();
@@ -48,7 +47,6 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal);
-        idTollBarAnimal = (Toolbar) findViewById(R.id.id_tollBarAnimal);
         rcvAnimal = (RecyclerView) findViewById(R.id.rcv_animal);
         Tbr = findViewById(R.id.id_tollBarAnimal);
         setSupportActionBar(Tbr);

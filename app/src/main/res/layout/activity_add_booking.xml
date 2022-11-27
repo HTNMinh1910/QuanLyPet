@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tbl_booking"
         android:layout_gravity="center_horizontal"
-        android:background="#F15B5B" />
+        android:background="#FE9F59" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,9 +37,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Họ và tên Bác Sĩ"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/doctor_name"
                 android:background="@drawable/bg_til_booking"
                 android:padding="10dp">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_NameDoctor"
                     android:layout_width="match_parent"
@@ -54,6 +57,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Số Điện Thoại"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/phone"
                 android:background="@drawable/bg_til_booking"
                 android:padding="10dp">
 
@@ -79,6 +85,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Tên Thú Cưng"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/name_animal"
                 android:background="@drawable/bg_til_booking"
                 android:padding="10dp">
 
@@ -98,6 +107,9 @@
                 android:background="@drawable/bg_til_booking"
                 android:layout_marginTop="10dp"
                 android:hint="Giống"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/species"
                 android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -115,6 +127,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Tình Trạng"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/notes"
                 android:background="@drawable/bg_til_booking"
                 android:padding="10dp">
 
@@ -141,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/img_picture"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -149,27 +164,13 @@
                     android:layout_marginTop="5dp"
                     android:src="@drawable/camera" />
 
-                <Button
-                    android:id="@+id/btn_camera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="17dp"
-                    android:backgroundTint="#F4F1F1"
-                    android:text="CAMERA"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <Button
+                <ImageView
                     android:id="@+id/btn_album"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="17dp"
-                    android:backgroundTint="#F4F1F1"
-                    android:text="ALBUM"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:src="@drawable/photo_album" />
             </LinearLayout>
             <TextView
                 android:layout_marginTop="10dp"
@@ -216,6 +217,9 @@
                     android:background="@drawable/bg_til_booking"
                     android:layout_marginTop="10dp"
                     android:hint="Ngày hẹn"
+                    app:startIconTintMode="screen"
+                    app:startIconTint="@color/cardview_shadow_end_color"
+                    app:startIconDrawable="@drawable/schedule"
                     android:padding="10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -242,6 +246,9 @@
                 android:background="@drawable/bg_til_booking"
                 android:layout_marginTop="10dp"
                 android:hint="Địa chỉ"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/location"
                 android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -260,6 +267,9 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_til_booking"
                 android:hint="Dịch Vụ"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/clipboard"
                 android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -278,6 +288,9 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
+                android:textAllCaps="false"
+                android:background="@drawable/button"
+                android:theme="@style/Theme.QuanLyPet.Button_1"
                 android:backgroundTint="#F15B5B"
                 android:text="Đặt Lịch" />
         </LinearLayout>

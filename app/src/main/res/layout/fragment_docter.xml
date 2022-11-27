@@ -19,6 +19,8 @@
         android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
         android:layout_gravity="bottom|end"
+        android:tintMode="@integer/material_motion_duration_medium_1"
+        app:backgroundTint="@color/white"
         android:src="@drawable/report" />
 
 </FrameLayout>

@@ -77,7 +77,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/name"/>
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/doctor_name"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,6 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Điện thoại: "
+                    android:layout_marginRight="5dp"
                     android:textSize="16sp"/>
                 <TextView
                     android:layout_marginLeft="10dp"
@@ -142,7 +144,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/address"/>
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/location"/>
 
                 <TextView
                     android:layout_width="wrap_content"
