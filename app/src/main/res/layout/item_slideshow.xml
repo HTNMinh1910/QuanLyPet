@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:orientation="vertical">
     <ImageView
         android:id="@+id/img_slider"
-        android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_gravity="center"
+        android:layout_width="400dp"
+        android:layout_height="250dp"
         android:src="@drawable/one"
-        android:scaleType="centerCrop"/>
-</LinearLayout>
+        android:scaleType="fitCenter"
+        />
+</FrameLayout>

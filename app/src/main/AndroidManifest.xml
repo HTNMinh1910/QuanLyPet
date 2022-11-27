@@ -82,7 +82,8 @@
         <activity
             android:name=".ui.welcome.WelcomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.QuanLyPet.NoActionBar">
+            android:theme="@style/Theme.QuanLyPet.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -96,7 +97,7 @@
         <activity
             android:name=".ui.welcome.SignupAdminActivity"
             android:exported="false"
-            android:theme="@style/Theme.QuanLyPet.NoActionBar">
+            android:theme="@style/Theme.QuanLyPet">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
