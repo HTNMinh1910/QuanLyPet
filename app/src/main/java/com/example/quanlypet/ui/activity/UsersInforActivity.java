@@ -16,6 +16,7 @@ import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.AdminObj;
 import com.example.quanlypet.model.UsersObj;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class UsersInforActivity extends AppCompatActivity {
     private Toolbar idTollBar;
@@ -24,6 +25,8 @@ public class UsersInforActivity extends AppCompatActivity {
     private TextInputEditText edEmailUsers;
     private TextInputEditText edPhoneUsers;
     private TextInputEditText edGenderUsers;
+    private TextInputLayout TIPPhone;
+    private TextInputLayout TIPGender;
     private Button btnUpdateUser;
     private TextView tvThongbao;
 
@@ -41,6 +44,8 @@ public class UsersInforActivity extends AppCompatActivity {
         edEmailUsers = findViewById(R.id.ed_emailUsers);
         edPhoneUsers = findViewById(R.id.ed_phoneUsers);
         edGenderUsers = findViewById(R.id.ed_genderUsers);
+        TIPPhone = findViewById(R.id.TIP_phone);
+        TIPGender = findViewById(R.id.TIP_gender);
         btnUpdateUser = findViewById(R.id.btn_updateUser);
         tvThongbao = findViewById(R.id.tv_thongbao);
 
@@ -53,9 +58,9 @@ public class UsersInforActivity extends AppCompatActivity {
             AdminObj adminObj = AdminDB.getInstance(this).Dao().getIdAdmin(username);
             edUsername.setText(username);
             edFullnameUser.setText(adminObj.getFull_name());
-            edPhoneUsers.setVisibility(View.GONE);
+            TIPGender.setVisibility(View.GONE);
             edEmailUsers.setText(adminObj.getEmail());
-            edGenderUsers.setVisibility(View.GONE);
+            TIPPhone.setVisibility(View.GONE);
 
             btnUpdateUser.setOnClickListener(v->{
                 String usernamenew = edUsername.getText().toString();

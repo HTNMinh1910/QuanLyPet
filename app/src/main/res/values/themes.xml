@@ -11,13 +11,33 @@
     </style>
 
     <style name="Theme.QuanLyPet.NoActionBar">
+        <item name="colorPrimary">#FF6D00</item>
+        <item name="colorPrimaryVariant">#F2A507</item>
+        <item name="colorOnPrimary">#F9F9F9</item>
+        <item name="colorSecondary">#FF6D00</item>
+        <item name="colorSecondaryVariant">#D60000</item>
+        <item name="colorOnSecondary">#00BFA5</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="Theme.QuanLyPet.NoTextButton">
+    <style name="Theme.QuanLyPet.Button_1">
+        <item name="colorPrimary">#FF9443</item>
+        <item name="colorPrimaryVariant">#F2A507</item>
+        <item name="colorOnPrimary">#F9F9F9</item>
+        <item name="colorSecondary">#FF6D00</item>
+        <item name="colorSecondaryVariant">#D60000</item>
+        <item name="colorOnSecondary">#00BFA5</item>
+        <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:background">#F8DFBE</item>
-        <item name="colorButtonNormal">#F8DFBE</item>
+    </style>
+    <style name="Theme.QuanLyPet.Button">
+        <item name="colorPrimary">#F83939</item>
+        <item name="colorPrimaryVariant">#F2A507</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">#FF6D00</item>
+        <item name="colorSecondaryVariant">#D60000</item>
+        <item name="colorOnSecondary">#00BFA5</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>
