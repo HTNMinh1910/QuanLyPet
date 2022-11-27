@@ -66,6 +66,7 @@
                 android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TIP_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -80,7 +81,9 @@
                 android:id="@+id/ed_phoneUsers"
                 android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TIP_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"

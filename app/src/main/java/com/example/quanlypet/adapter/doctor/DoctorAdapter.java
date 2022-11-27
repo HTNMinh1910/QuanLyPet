@@ -64,7 +64,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
                 filterResults.values = list;
                 return filterResults;
             }
-
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 list = (ArrayList<DoctorObj>) results.values;
@@ -85,7 +84,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         DoctorObj docterObj = list.get(position);
         if(docterObj==null)
             return;
-        holder.tv_Id.setText(docterObj.getId()+"");
         holder.tv_Name.setText(docterObj.getName());
         holder.tv_Email.setText(docterObj.getEmail());
         byte[] hinhanh = docterObj.getImg();
@@ -124,7 +122,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
 
     public class DocterViewHolder extends RecyclerView.ViewHolder {
         private ImageView img_Docter;
-        private TextView tv_Id;
         private TextView tv_Name;
         private TextView tv_Email;
         private TextView tv_Gender;
@@ -136,7 +133,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             id_RelativeLayout = (RelativeLayout) itemView.findViewById(R.id.id_relativeLayout);
             img_Docter = (ImageView) itemView.findViewById(R.id.img_doctor);
             img_Information = (ImageView) itemView.findViewById(R.id.img_information);
-            tv_Id = (TextView) itemView.findViewById(R.id.tv_id);
             tv_Name = (TextView) itemView.findViewById(R.id.tv_name);
             tv_Email = (TextView) itemView.findViewById(R.id.tv_email);
             tv_Gender = (TextView) itemView.findViewById(R.id.tv_gender);
