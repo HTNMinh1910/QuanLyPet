@@ -74,7 +74,7 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_marginLeft="10dp"
-                                android:background="@drawable/ic_baseline_offline_pin_24" />
+                                android:background="@drawable/name" />
 
                             <TextView
                                 android:id="@+id/tv_loai"
@@ -95,7 +95,7 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_marginLeft="10dp"
-                                android:background="@drawable/ic_baseline_offline_pin_24" />
+                                android:background="@drawable/name" />
 
                             <TextView
                                 android:id="@+id/tv_age"

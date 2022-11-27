@@ -73,7 +73,7 @@ public class DoctorInforActivity extends AppCompatActivity {
     public void card_callPhone(){
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_callphone);
-        dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.bg_dialog_call));
+//        dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.bg_dialog_call));
         Window window = dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         WindowManager.LayoutParams windowAttributes = window.getAttributes();

@@ -19,7 +19,7 @@
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/patient" />
+            android:src="@drawable/report" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

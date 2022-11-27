@@ -147,7 +147,7 @@
                     android:layout_height="80dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:src="@drawable/ic_camera" />
+                    android:src="@drawable/camera" />
 
                 <Button
                     android:id="@+id/btn_camera"

@@ -16,7 +16,7 @@
             android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_button_booking">
+            android:background="@drawable/bg_btn_book">
 
             <ImageView
                 android:layout_width="40dp"
@@ -44,7 +44,7 @@
             android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_button_ambulance">
+            android:background="@drawable/bg_btn_ambulance">
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -75,7 +75,7 @@
             android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_button_mess">
+            android:background="@drawable/bg_btn_mess">
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"

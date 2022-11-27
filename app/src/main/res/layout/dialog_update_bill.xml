@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/bgrd_conneradios"
+        android:background="@drawable/bg_coneradios"
         android:hint="case id" />
 
     <EditText
@@ -28,24 +28,14 @@
         android:id="@+id/up_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bgrd_conneradios"/>
+        android:background="@drawable/bg_coneradios"/>
     <EditText
         android:layout_marginTop="10dp"
         android:hint="note"
         android:id="@+id/up_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bgrd_conneradios" />
-<!--    <CheckBox-->
-<!--        android:id="@+id/chk_thanhToan_up"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        android:text="da tra ?"-->
-<!--        android:textSize="20dp"-->
-<!--        android:background="@drawable/background_edt"/>-->
-
+        android:background="@drawable/bg_coneradios" />
 
     <LinearLayout
         android:layout_width="match_parent"

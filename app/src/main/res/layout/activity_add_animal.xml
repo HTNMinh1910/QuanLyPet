@@ -41,7 +41,7 @@
             android:id="@+id/img_anh"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_image" />
+            android:src="@drawable/camera" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
