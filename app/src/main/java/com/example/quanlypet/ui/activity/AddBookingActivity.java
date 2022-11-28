@@ -84,6 +84,11 @@ public class AddBookingActivity extends AppCompatActivity {
     private TextInputLayout TIPTime;
     private TextInputEditText TIEDTime;
     private Bitmap bitmap;
+    private TextInputLayout TIPTimeHold;
+    private TextInputEditText TIEDTimeHold;
+
+
+
 
 
     private TextInputLayout TIPAddress;
@@ -102,7 +107,7 @@ public class AddBookingActivity extends AppCompatActivity {
     List<DoctorObj> listDoctor = new ArrayList<>();
     UsersObj usersObj = new UsersObj();
     private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
-    int mYear, mMonth, mDate, mHour, mMinute;
+    int mYear, mMonth, mDate, mHour, mMinute,mMinute2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,8 +121,12 @@ public class AddBookingActivity extends AppCompatActivity {
         TimePickerDialog.OnTimeSetListener time = ((timePicker, hourOfDay, minute) -> {
             mHour = hourOfDay;
             mMinute = minute;
+            mMinute2 = minute+60;
             GregorianCalendar calendar = new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute);
+            GregorianCalendar calendar2= new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute2);
             TIEDTime.setText(dateFormat.format(calendar.getTime()));
+            TIEDTimeHold.setText(dateFormat.format(calendar2.getTime()));
+
         });
         imgPicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,8 +202,6 @@ public class AddBookingActivity extends AppCompatActivity {
             }
         });
         SlectedSpinner();
-
-
         btnBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -313,6 +320,8 @@ public class AddBookingActivity extends AppCompatActivity {
         TIPTime = (TextInputLayout) findViewById(R.id.TIP_Time);
         TIEDTime = (TextInputEditText) findViewById(R.id.TIED_Time);
         imgDate = (ImageView) findViewById(R.id.img_date);
+        TIPTimeHold = (TextInputLayout) findViewById(R.id.TIP_TimeHold);
+        TIEDTimeHold = (TextInputEditText) findViewById(R.id.TIED_TimeHold);
     }
 
     public void showDiaLogSerVice() {
