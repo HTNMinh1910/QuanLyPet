@@ -33,10 +33,8 @@ public class AdminFragment extends Fragment implements AdminAdapter.Callback {
 
     private ArrayList<AdminObj> list = new ArrayList<>();
     private AdminAdapter adminAdapter;
-
     private RecyclerView rcvListAdmin;
     private FloatingActionButton bbtnAddAdmin;
-
     private EditText edImportnameAdmin;
     private EditText edFullnameAdmin;
     private EditText edEmailAdmin;

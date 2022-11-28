@@ -79,9 +79,9 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
             holder.img_more.setVisibility(View.INVISIBLE);
         } else if (obj.getObj_status() == 3) {
             holder.linner_status.setBackgroundColor(Color.GREEN);
-        }
-        else if (obj.getObj_status() == 4) {
+        } else if (obj.getObj_status() == 4) {
             holder.linner_status.setBackgroundColor(Color.BLUE);
+            holder.img_more.setVisibility(View.INVISIBLE);
         }
         holder.img_more.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +130,7 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list == null ? 0 : list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

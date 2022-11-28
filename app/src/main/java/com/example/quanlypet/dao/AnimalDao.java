@@ -6,6 +6,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.quanlypet.model.AnimalObj;
+import com.example.quanlypet.model.UsersObj;
 
 import java.util.List;
 @Dao
@@ -21,4 +22,7 @@ public interface AnimalDao {
 
     @Query("SELECT *FROM animal where id =:id ")
     AnimalObj getIDAnimal(String id);
+
+    @Query("SELECT * FROM animal where id_users = :id")
+    List<AnimalObj> getIDUsers(String id);
 }

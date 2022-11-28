@@ -83,6 +83,7 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
         floatingActionButton.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AddDoctorActivity.class));
         });
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

@@ -31,6 +31,7 @@ public class UsersFragment extends Fragment {
     private LinearLayout lnChangePass;
     private LinearLayout lnLogOut;
     private TextView usersName;
+
     public UsersFragment() {
     }
 
@@ -65,7 +66,7 @@ public class UsersFragment extends Fragment {
         usersName.setText(username);
         if (username.equals("Admin")) {
             lnUserManager.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             lnAnimalManager.setVisibility(View.VISIBLE);
         }
 
@@ -83,11 +84,14 @@ public class UsersFragment extends Fragment {
         });
         lnLogOut.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), LoginActivity.class));
+            getActivity().finish();
+
         });
     }
-        public void replaceFragmet (Fragment fragment){
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.ln_inforAccount, fragment);
-            transaction.commit();
-        }
+
+    public void replaceFragmet(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.ln_inforAccount, fragment);
+        transaction.commit();
+    }
 }

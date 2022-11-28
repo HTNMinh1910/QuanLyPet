@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,11 +8,11 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbl_booking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tbl_booking"
         android:layout_gravity="center_horizontal"
-        android:background="#F15B5B" />
+        android:background="#FE9F59" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,9 +36,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Họ và tên Bác Sĩ"
                 android:background="@drawable/bg_til_booking"
-                android:padding="10dp">
+                android:hint="Họ và tên Bác Sĩ"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/doctor_name"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_NameDoctor"
@@ -53,9 +57,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Số Điện Thoại"
                 android:background="@drawable/bg_til_booking"
-                android:padding="10dp">
+                android:hint="Số Điện Thoại"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/phone"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_PhoneNumber"
@@ -78,9 +85,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Tên Thú Cưng"
                 android:background="@drawable/bg_til_booking"
-                android:padding="10dp">
+                android:hint="Tên Thú Cưng"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/name_animal"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_NamePet"
@@ -95,10 +105,13 @@
                 android:id="@+id/TIP_TypePet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_til_booking"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/bg_til_booking"
                 android:hint="Giống"
-                android:padding="10dp">
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/species"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_TypePet"
@@ -114,9 +127,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Tình Trạng"
                 android:background="@drawable/bg_til_booking"
-                android:padding="10dp">
+                android:hint="Tình Trạng"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/notes"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_Status"
@@ -130,18 +146,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
+                android:padding="10dp"
                 android:text="Ảnh Tình Trạng"
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/img_picture"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -149,33 +165,20 @@
                     android:layout_marginTop="5dp"
                     android:src="@drawable/camera" />
 
-                <Button
-                    android:id="@+id/btn_camera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="17dp"
-                    android:backgroundTint="#F4F1F1"
-                    android:text="CAMERA"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <Button
+                <ImageView
                     android:id="@+id/btn_album"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="17dp"
-                    android:backgroundTint="#F4F1F1"
-                    android:text="ALBUM"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:src="@drawable/photo_album" />
             </LinearLayout>
+
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Nơi khám"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -186,10 +189,10 @@
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:layout_marginTop="10dp"
                     android:id="@+id/rdo_phongkham"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="Phòng Khám"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -204,6 +207,7 @@
 
 
             </RadioGroup>
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -213,10 +217,13 @@
                     android:id="@+id/TIP_Time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_til_booking"
                     android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_til_booking"
                     android:hint="Ngày hẹn"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    app:startIconDrawable="@drawable/schedule"
+                    app:startIconTint="@color/cardview_shadow_end_color"
+                    app:startIconTintMode="screen">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/TIED_Time"
@@ -226,23 +233,51 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <ImageView
                     android:id="@+id/img_date"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="right|center"
-                    android:src="@drawable/calendar"
-                    android:layout_marginEnd="10dp"/>
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/calendar" />
+
+
             </FrameLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TIP_TimeHold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_til_booking"
+                android:hint="Giờ Xong"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/schedule"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TIED_TimeHold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TIP_Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_til_booking"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/bg_til_booking"
                 android:hint="Địa chỉ"
-                android:padding="10dp">
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/location"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_Address"
@@ -260,7 +295,10 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_til_booking"
                 android:hint="Dịch Vụ"
-                android:padding="10dp">
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/clipboard"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_Service"
@@ -278,8 +316,11 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
+                android:background="@drawable/button"
                 android:backgroundTint="#F15B5B"
-                android:text="Đặt Lịch" />
+                android:text="Đặt Lịch"
+                android:textAllCaps="false"
+                android:theme="@style/Theme.QuanLyPet.Button_1" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

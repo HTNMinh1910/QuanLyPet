@@ -52,6 +52,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AddBookingActivity extends AppCompatActivity {
     private ImageView imgClose;
     private Button btnKhamvachua;
@@ -73,15 +75,20 @@ public class AddBookingActivity extends AppCompatActivity {
     private TextInputEditText TIEDTypePet;
     private TextInputLayout TIPStatus;
     private TextInputEditText TIEDStatus;
-    private ImageView imgPicture;
+    private CircleImageView imgPicture;
     private Button btnCamera;
-    private Button btnAlbum;
+    private ImageView btnAlbum;
     private RadioGroup rdogr;
     private RadioButton rdoPhongkham;
     private RadioButton rdoTainha;
     private TextInputLayout TIPTime;
     private TextInputEditText TIEDTime;
     private Bitmap bitmap;
+    private TextInputLayout TIPTimeHold;
+    private TextInputEditText TIEDTimeHold;
+
+
+
 
 
     private TextInputLayout TIPAddress;
@@ -100,7 +107,7 @@ public class AddBookingActivity extends AppCompatActivity {
     List<DoctorObj> listDoctor = new ArrayList<>();
     UsersObj usersObj = new UsersObj();
     private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
-    int mYear, mMonth, mDate, mHour, mMinute;
+    int mYear, mMonth, mDate, mHour, mMinute,mMinute2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,10 +121,14 @@ public class AddBookingActivity extends AppCompatActivity {
         TimePickerDialog.OnTimeSetListener time = ((timePicker, hourOfDay, minute) -> {
             mHour = hourOfDay;
             mMinute = minute;
+            mMinute2 = minute+60;
             GregorianCalendar calendar = new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute);
+            GregorianCalendar calendar2= new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute2);
             TIEDTime.setText(dateFormat.format(calendar.getTime()));
+            TIEDTimeHold.setText(dateFormat.format(calendar2.getTime()));
+
         });
-        btnCamera.setOnClickListener(new View.OnClickListener() {
+        imgPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -191,8 +202,6 @@ public class AddBookingActivity extends AppCompatActivity {
             }
         });
         SlectedSpinner();
-
-
         btnBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -298,9 +307,8 @@ public class AddBookingActivity extends AppCompatActivity {
         TIEDTypePet = (TextInputEditText) findViewById(R.id.TIED_TypePet);
         TIPStatus = (TextInputLayout) findViewById(R.id.TIP_Status);
         TIEDStatus = (TextInputEditText) findViewById(R.id.TIED_Status);
-        imgPicture = (ImageView) findViewById(R.id.img_picture);
-        btnCamera = (Button) findViewById(R.id.btn_camera);
-        btnAlbum = (Button) findViewById(R.id.btn_album);
+        imgPicture = (CircleImageView) findViewById(R.id.img_picture);
+        btnAlbum = (ImageView) findViewById(R.id.btn_album);
         rdogr = (RadioGroup) findViewById(R.id.rdogr);
         rdoPhongkham = (RadioButton) findViewById(R.id.rdo_phongkham);
         rdoTainha = (RadioButton) findViewById(R.id.rdo_tainha);
@@ -312,6 +320,8 @@ public class AddBookingActivity extends AppCompatActivity {
         TIPTime = (TextInputLayout) findViewById(R.id.TIP_Time);
         TIEDTime = (TextInputEditText) findViewById(R.id.TIED_Time);
         imgDate = (ImageView) findViewById(R.id.img_date);
+        TIPTimeHold = (TextInputLayout) findViewById(R.id.TIP_TimeHold);
+        TIEDTimeHold = (TextInputEditText) findViewById(R.id.TIED_TimeHold);
     }
 
     public void showDiaLogSerVice() {

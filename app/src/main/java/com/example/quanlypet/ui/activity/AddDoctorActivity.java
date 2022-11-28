@@ -31,6 +31,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class AddDoctorActivity extends AppCompatActivity{
     private TextInputEditText edNameDocter;
@@ -41,12 +43,10 @@ public class AddDoctorActivity extends AppCompatActivity{
     private TextInputEditText edAddressDocter;
     private TextInputEditText edSpecializeDocter;
     private Button btnAddDocter;
-    private Button btnCanel;
     private int checkGender;
     private Toolbar Tbr;
-    private ImageView imgPicture;
-    private Button btnCamera;
-    private Button btnAlbum;
+    private CircleImageView imgPicture;
+    private ImageView btnAlbum;
     int REQUES_CODE_CAMERA = 111;
     int REQUEST_CODE_ALBUM = 123;
     Bitmap bitmap;
@@ -67,16 +67,14 @@ public class AddDoctorActivity extends AppCompatActivity{
         edAddressDocter = (TextInputEditText) findViewById(R.id.ed_addressDocter);
         edSpecializeDocter = (TextInputEditText) findViewById(R.id.ed_specializeDocter);
         btnAddDocter = (Button) findViewById(R.id.btn_addDocter);
-        btnCanel = (Button) findViewById(R.id.btn_canel);
-        imgPicture = (ImageView) findViewById(R.id.img_picture);
-        btnCamera = (Button) findViewById(R.id.btn_camera);
-        btnAlbum = (Button) findViewById(R.id.btn_album);
+        imgPicture = (CircleImageView) findViewById(R.id.img_picture);
+        btnAlbum = (ImageView) findViewById(R.id.btn_album);
         Tbr = findViewById(R.id.id_tollBar);
         setSupportActionBar(Tbr);
         getSupportActionBar().setTitle("Thêm Bác sĩ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        btnCamera.setOnClickListener(new View.OnClickListener() {
+        imgPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -119,14 +117,6 @@ public class AddDoctorActivity extends AppCompatActivity{
                 finish();
             }
         });
-        btnCanel.setOnClickListener(v->{
-            edNameDocter.setText("");
-            edPhoneDocter.setText("");
-            edEmailDocter.setText("");
-            edAddressDocter.setText("");
-            edSpecializeDocter.setText("");
-        });
-
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -152,21 +142,15 @@ public class AddDoctorActivity extends AppCompatActivity{
                     && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED
-                    && checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
-
-
-            ) {
+                    && checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                 return true;
-            }
-            else {
+            }else {
                 ActivityCompat.requestPermissions(this, new String[]{
                         Manifest.permission.CAMERA,
                         Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.INTERNET,
                         Manifest.permission.CALL_PHONE
-
-
                 }, 1);
                 return false;
             }

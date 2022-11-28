@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Ui.AddDocterActivity"
+    tools:context=".ui.activity.AddDoctorActivity"
     android:orientation="vertical">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -50,6 +50,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/schedule"
         app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -62,6 +65,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/schedule"
         app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -78,18 +84,14 @@
         <Button
             android:id="@+id/btn_addPatient"
             android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#E11515"
+            android:textAllCaps="false"
+            android:background="@drawable/button"
+            android:theme="@style/Theme.QuanLyPet.Button_1"
             android:text="Thêm"/>
-        <Button
-            android:id="@+id/btn_canel"
-            android:backgroundTint="#E11515"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hủy"/>
 
     </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
