@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -24,7 +25,9 @@ import android.widget.Toast;
 import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.animal.AnimalAdapter;
 import com.example.quanlypet.database.AnimalDB;
+import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.AnimalObj;
+import com.example.quanlypet.model.UsersObj;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
@@ -46,6 +49,7 @@ public class AddAnimalActivity extends AppCompatActivity {
     private EditText edAgeAnimal;
     private EditText edSpeciesAnimal;
     private Button btnAddAnimal;
+    private UsersObj usersObj;
     private Button btnCancel;
     int REQUEST_CODE_ALBUM = 123;
     @Override
@@ -61,6 +65,10 @@ public class AddAnimalActivity extends AppCompatActivity {
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
         btnAlbum = findViewById(R.id.btn_album);
         imgAnh = (ImageView) findViewById(R.id.img_anh);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
+        String username = sharedPreferences.getString("Username","");
+        usersObj = UsersDB.getInstance(getApplicationContext()).Dao().getIdUsers(username);
         btnAlbum.setOnClickListener(v ->{
             Intent i = new Intent(Intent.ACTION_PICK);
             i.setType("image/*");
@@ -91,9 +99,10 @@ public class AddAnimalActivity extends AppCompatActivity {
             if (namean.isEmpty() || species.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "ko dc de trong", Toast.LENGTH_SHORT).show();
             } else {
-                AnimalObj object = new AnimalObj(namean, anh, age, species,1);
+                AnimalObj object = new AnimalObj(usersObj.getId(),namean, anh, age, species,1);
                 AnimalDB.getInstance(getApplicationContext()).Dao().insert(object);
                 Toast.makeText(getApplicationContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 

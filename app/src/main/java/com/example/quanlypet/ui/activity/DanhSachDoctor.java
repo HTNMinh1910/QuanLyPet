@@ -33,8 +33,6 @@ public class DanhSachDoctor extends AppCompatActivity {
         idTollBar = (Toolbar) findViewById(R.id.id_tollBar);
         setSupportActionBar(idTollBar);
         getSupportActionBar().setTitle("Thông tin bác sĩ");
-
-
         adapter = new DoctorAdapter(getBaseContext(),null);
         list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getBaseContext()).Dao().getAllData();
         adapter.setDataDocter(list);

@@ -33,6 +33,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
     private Callback callback;
     public void setDataDocter(ArrayList<DoctorObj> list){
         this.list=list;
+        this.listDotor=list;
         notifyDataSetChanged();
     }
 

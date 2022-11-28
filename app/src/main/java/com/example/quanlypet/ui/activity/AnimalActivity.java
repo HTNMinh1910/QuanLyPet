@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -30,8 +31,12 @@ import android.widget.Toast;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.animal.AnimalAdapter;
+import com.example.quanlypet.database.AdminDB;
 import com.example.quanlypet.database.AnimalDB;
+import com.example.quanlypet.database.UsersDB;
+import com.example.quanlypet.model.AdminObj;
 import com.example.quanlypet.model.AnimalObj;
+import com.example.quanlypet.model.UsersObj;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -42,6 +47,7 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
     private Toolbar Tbr;
     private ArrayList<AnimalObj> arrayList = new ArrayList<>();
     private AnimalAdapter adapterAnimal;
+    private UsersObj usersObj;
     private ImageView imgAnhup;
     private Bitmap bitmap;
     @Override
@@ -54,6 +60,10 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
         setSupportActionBar(Tbr);
         getSupportActionBar().setTitle("Animal");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
+        String username = sharedPreferences.getString("Username","");
+        usersObj = UsersDB.getInstance(getApplicationContext()).Dao().getIdUsers(username);
         fill();
     }
     @Override
@@ -62,7 +72,9 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
         LoadData();
     }
     public void LoadData(){
-        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).Dao().getAllData();
+//          arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).Dao().getAllData();
+//        adapterAnimal.setData(arrayList);
+        arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).Dao().getIDUsers(String.valueOf(usersObj.getId()));
         adapterAnimal.setData(arrayList);
         }
     public void fill() {
