@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#403F3F"
-                android:padding="10dp"
+
                 android:textAllCaps="false"
                 android:text="Tạo Hóa Đơn" />
         </androidx.cardview.widget.CardView>
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#403F3F"
-                android:padding="10dp"
+
                 android:textAllCaps="false"
                 android:text="Hủy" />
         </androidx.cardview.widget.CardView>
