@@ -1,4 +1,4 @@
-package com.example.quanlypet.adapter.viewpager2;
+package com.example.quanlypet.dao.viewpager2;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,11 +15,11 @@ import com.example.quanlypet.model.Photo;
 
 import java.util.List;
 
-public class SlideAdapter extends PagerAdapter {
+public class SlideAdapterHome extends PagerAdapter {
     private Context context;
     private List<Photo> photoList;
 
-    public SlideAdapter(Context context, List<Photo> photoList) {
+    public SlideAdapterHome(Context context, List<Photo> photoList) {
         this.context = context;
         this.photoList = photoList;
     }
@@ -27,7 +27,7 @@ public class SlideAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_slideshow,container,false);
+        View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_slideshow_home,container,false);
         ImageView imgSlider = view.findViewById(R.id.img_slider);
         Photo photo = photoList.get(position);
         if (photo != null){
@@ -49,7 +49,6 @@ public class SlideAdapter extends PagerAdapter {
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == object;
     }
-
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View) object);

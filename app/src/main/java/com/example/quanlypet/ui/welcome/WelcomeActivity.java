@@ -4,27 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.quanlypet.MainActivity;
 import com.example.quanlypet.R;
-import com.example.quanlypet.adapter.viewpager2.SlideAdapter;
+import com.example.quanlypet.dao.viewpager2.SlideAdapter;
 import com.example.quanlypet.database.AdminDB;
-import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.AdminObj;
 import com.example.quanlypet.model.Photo;
-import com.example.quanlypet.model.UsersObj;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 

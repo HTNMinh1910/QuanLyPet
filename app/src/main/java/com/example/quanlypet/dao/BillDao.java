@@ -19,4 +19,7 @@ public interface BillDao {
     @Update
     void editBill(BillObj object);
 
+    @Query("Select SUM(price) AS 'TongGia' from Bill where date = :dateDT")
+    double getPriceDT(String dateDT);
+
 }
