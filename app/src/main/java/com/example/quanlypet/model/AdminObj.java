@@ -22,6 +22,14 @@ public class AdminObj {
         this.password = password;
     }
 
+    public AdminObj(int id, String import_name, String full_name, String email, String password) {
+        this.id = id;
+        this.import_name = import_name;
+        this.full_name = full_name;
+        this.email = email;
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }
