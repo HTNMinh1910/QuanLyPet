@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 
-import com.example.quanlypet.adapter.viewpager2.ViewPager2Adapter;
+import com.example.quanlypet.dao.viewpager2.ViewPager2Adapter;
 
 import com.example.quanlypet.effect.DepthPageTransformer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
