@@ -13,8 +13,10 @@ import com.example.quanlypet.model.DoctorObj;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class SpinnerDoctor extends BaseAdapter {
-    private ImageView imgAnimal;
+    private CircleImageView imgAnimal;
     private TextView tvNameAnimal;
     private TextView tvTypeAnimal;
     List<DoctorObj> list;
@@ -51,7 +53,7 @@ public class SpinnerDoctor extends BaseAdapter {
         }
         DoctorObj doctorObj = list.get(position);
 
-        imgAnimal = (ImageView) view.findViewById(R.id.img_animal);
+        imgAnimal = (CircleImageView) view.findViewById(R.id.img_animal);
         tvNameAnimal = (TextView) view.findViewById(R.id.tv_nameAnimal);
         tvTypeAnimal = (TextView) view.findViewById(R.id.tv_typeAnimal);
         tvNameAnimal.setText("Tên: "+doctorObj.getName());

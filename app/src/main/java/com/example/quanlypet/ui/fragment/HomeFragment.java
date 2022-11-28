@@ -21,6 +21,7 @@ import com.example.quanlypet.adapter.viewpager2.SlideAdapterHome;
 import com.example.quanlypet.model.Photo;
 import com.example.quanlypet.ui.activity.AddBookingActivity;
 import com.example.quanlypet.ui.activity.DanhSachDoctor;
+import com.example.quanlypet.ui.activity.MapsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class HomeFragment extends Fragment {
     private LinearLayout linerAmbulance;
     private LinearLayout linerMess;
     private ImageView imgAddAnimal;
+    private ImageView imgMap;
 
     public HomeFragment() {
     }
@@ -57,9 +59,11 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        linerBooking = (LinearLayout) view.findViewById(R.id.liner_booking);
-        linerAmbulance = (LinearLayout) view.findViewById(R.id.liner_ambulance);
+        linerBooking = view.findViewById(R.id.liner_booking);
+        linerAmbulance = view.findViewById(R.id.liner_ambulance);
         linerMess = view.findViewById(R.id.liner_mess);
+        imgMap = view.findViewById(R.id.img_map);
+
         linerBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +77,9 @@ public class HomeFragment extends Fragment {
         });
         linerAmbulance.setOnClickListener(v->{
             startActivity(new Intent(getActivity(), DanhSachDoctor.class));
+        });
+        imgMap.setOnClickListener(view1 -> {
+            startActivity(new Intent(getActivity(), MapsActivity.class));
         });
         vpr = (ViewPager) view.findViewById(R.id.vpr);
         circleIndicator = (CircleIndicator) view.findViewById(R.id.circle_indicator);

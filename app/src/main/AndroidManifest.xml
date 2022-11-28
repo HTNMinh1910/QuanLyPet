@@ -7,6 +7,8 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -18,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyPet"
         tools:targetApi="31" >
+        
         <activity
             android:name=".AnimalInfoAcitivity"
             android:exported="false" >
@@ -29,6 +32,20 @@
             android:name=".ui.activity.List_User_Activity"
             android:exported="false"
             android:parentActivityName=".ui.activity.List_User_Activity" >
+        tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/YOUR_API_KEY" />
+
+        <activity
+            android:name=".ui.activity.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".ui.activity.List_User_Activity"
+            android:exported="false"
+            android:parentActivityName=".ui.activity.List_User_Activity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -88,7 +105,7 @@
         <activity
             android:name=".ui.welcome.WelcomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.QuanLyPet.NoActionBar" >
+            android:theme="@style/Theme.QuanLyPet.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

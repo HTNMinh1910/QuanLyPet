@@ -2,4 +2,6 @@
     <string name="app_name">QL Pet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">blank fragment</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="YOUR_API_KEY">AIzaSyAAvS61s5w_fcWsDr1t-UCkYijimpQM89s</string>
 </resources>
