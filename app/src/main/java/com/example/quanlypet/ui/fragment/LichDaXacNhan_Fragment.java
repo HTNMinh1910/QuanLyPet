@@ -21,7 +21,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -63,7 +65,7 @@ import java.util.List;
  * create an instance of this fragment.
  *
  */
-public class LichDaXacNhan_Fragment extends Fragment implements bookingAdapter.Callback {
+public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private int REQUEST_CAMERA = 111;
     private Bitmap bitmap;
     private ImageView imgClose;
@@ -112,6 +114,7 @@ public class LichDaXacNhan_Fragment extends Fragment implements bookingAdapter.C
     List<AnimalObj> listAnimal;
     List<DoctorObj> listDoctor;
     private int idDoctor;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
 
@@ -145,6 +148,8 @@ public class LichDaXacNhan_Fragment extends Fragment implements bookingAdapter.C
         reCy_booking = view.findViewById(R.id.recy_daxacnhan);
         list = new ArrayList<>();
         list2 = new ArrayList<>();
+        swipeRefreshLayout = view.findViewById(R.id.SwipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String user = sharedPreferences.getString("Username", "");
         if (user.equalsIgnoreCase("Admin")) {
@@ -164,7 +169,12 @@ public class LichDaXacNhan_Fragment extends Fragment implements bookingAdapter.C
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
             list = BookDB.getInstance(getActivity()).Dao().getStatus2(3, id);
-            adapter = new bookingAdapter(this, getActivity());
+            adapter = new bookingAdapter(new bookingAdapter.Callback() {
+                @Override
+                public void update(BookObj bookObj, int index) {
+                    updateBooking(bookObj, index);
+                }
+            }, getActivity());
             adapter.setDATA(list);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
             reCy_booking.setAdapter(adapter);
@@ -304,10 +314,7 @@ public class LichDaXacNhan_Fragment extends Fragment implements bookingAdapter.C
         dialog.show();
     }
 
-    @Override
-    public void update(BookObj bookObj, int index) {
-        updateBooking(bookObj, index);
-    }
+
 
 
     private void updateBooking(BookObj bookObj, int index) {
@@ -654,5 +661,27 @@ public class LichDaXacNhan_Fragment extends Fragment implements bookingAdapter.C
 
 
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        String user = sharedPreferences.getString("Username", "");
+        if (user.equalsIgnoreCase("Admin")) {
+            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
+            adapterAdmin.setDATA(list2);
+        } else {
+            usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
+            int id = usersObj.getId();
+            list = BookDB.getInstance(getActivity()).Dao().getStatus2(3, id);
+            adapter.setDATA(list);
+        }
+        Handler handler  = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        },1000);
     }
 }

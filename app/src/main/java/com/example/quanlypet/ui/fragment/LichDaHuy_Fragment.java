@@ -21,7 +21,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -62,7 +64,7 @@ import java.util.List;
  * Use the {@link LichDaHuy_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callback {
+public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private int REQUEST_CAMERA = 111;
     private Bitmap bitmap;
     private ImageView imgClose;
@@ -111,6 +113,7 @@ public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callb
     List<AnimalObj> listAnimal;
     List<DoctorObj> listDoctor;
     private int idDoctor;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     public LichDaHuy_Fragment() {
@@ -142,6 +145,8 @@ public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callb
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         reCy_booking = view.findViewById(R.id.recy_huy);
+        swipeRefreshLayout = view.findViewById(R.id.SwipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
         list = new ArrayList<>();
         list2 = new ArrayList<>();
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
@@ -163,7 +168,12 @@ public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callb
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
             list = BookDB.getInstance(getActivity()).Dao().getStatus2(2, id);
-            adapter = new bookingAdapter(this, getActivity());
+            adapter = new bookingAdapter(new bookingAdapter.Callback() {
+                @Override
+                public void update(BookObj bookObj, int index) {
+                    updateBooking(bookObj, index);
+                }
+            }, getActivity());
             adapter.setDATA(list);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
             reCy_booking.setAdapter(adapter);
@@ -303,11 +313,6 @@ public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callb
         dialog.show();
     }
 
-    @Override
-    public void update(BookObj bookObj, int index) {
-        updateBooking(bookObj, index);
-    }
-
 
     private void updateBooking(BookObj bookObj, int index) {
         final Dialog dialog = new Dialog(getActivity(), com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
@@ -368,8 +373,6 @@ public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callb
             TIEDTime.setEnabled(false);
             TIEDAddress.setEnabled(false);
             TIEDService.setEnabled(false);
-
-
 
 
         }
@@ -656,5 +659,27 @@ public class LichDaHuy_Fragment extends Fragment implements bookingAdapter.Callb
 
 
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        String user = sharedPreferences.getString("Username", "");
+        if (user.equalsIgnoreCase("Admin")) {
+            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(2);
+            adapterAdmin.setDATA(list2);
+        } else {
+            usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
+            int id = usersObj.getId();
+            list = BookDB.getInstance(getActivity()).Dao().getStatus2(2, id);
+            adapter.setDATA(list);
+        }
+        Handler handler  = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        },1000);
     }
 }
