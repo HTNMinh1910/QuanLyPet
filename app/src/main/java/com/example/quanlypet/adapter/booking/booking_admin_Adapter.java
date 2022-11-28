@@ -2,6 +2,7 @@ package com.example.quanlypet.adapter.booking;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
@@ -24,6 +27,8 @@ import com.example.quanlypet.database.BookDB;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.BookObj;
 import com.example.quanlypet.model.UsersObj;
+import com.example.quanlypet.ui.activity.AddBillActivity;
+import com.example.quanlypet.ui.fragment.BillFragment;
 
 import java.util.List;
 
@@ -112,11 +117,12 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
         CVTaobill = (CardView) dialog.findViewById(R.id.CV_taobill);
         btnTaobill = (Button) dialog.findViewById(R.id.btn_taobill);
         btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
-
-
+        btnTaobill.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, AddBillActivity.class);
+            mContext.startActivity(intent);
+        });
         dialog.show();
     }
-
     public void showDiaLogHuy(BookObj bookObj, int index) {
         Dialog dialog = new Dialog(mContext);
         dialog.setContentView(R.layout.dialog_xacnhan_hoanthanhbooking);

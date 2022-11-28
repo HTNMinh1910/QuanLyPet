@@ -25,8 +25,8 @@ public interface UsersDao {
     @Query("UPDATE Users SET password = :pass WHERE import_name = :name")
     void changePass(String name, String pass);
 
-    @Query("Select * From Users where  import_name = :id")
-    UsersObj getIdUsers(String id);
+    @Query("Select * From Users where  import_name = :name")
+    UsersObj getIdUsers(String name);
 
     @Query("Select * From Users where id =:id ")
     UsersObj getID(int id);
