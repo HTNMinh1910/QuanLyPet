@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +16,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.DoctorObj;
+import com.example.quanlypet.ui.activity.DanhSachDoctor;
 import com.example.quanlypet.ui.activity.DoctorInforActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -90,12 +94,13 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         byte[] hinhanh = docterObj.getImg();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
         holder.img_Docter.setImageBitmap(bitmap);
+
+
         if(docterObj.getGender()==1){
             holder.tv_Gender.setText("Nam");
         }else{
             holder.tv_Gender.setText("Nữ");
         }
-
         holder.id_RelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -108,12 +113,12 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] ByteArray = byteArrayOutputStream.toByteArray();
             Intent intent = new Intent(context, DoctorInforActivity.class);
-            intent.putExtra("name",docterObj.getName());
-            intent.putExtra("phone",docterObj.getPhone());
-            intent.putExtra("address",docterObj.getAddress());
-            intent.putExtra("specialize",docterObj.getSpecialize());
-            intent.putExtra("img",ByteArray);
-            context.startActivity(intent);
+                intent.putExtra("name",docterObj.getName());
+                intent.putExtra("phone",docterObj.getPhone());
+                intent.putExtra("address",docterObj.getAddress());
+                intent.putExtra("specialize",docterObj.getSpecialize());
+                intent.putExtra("img",ByteArray);
+                context.startActivity(intent);
         });
     }
     @Override
