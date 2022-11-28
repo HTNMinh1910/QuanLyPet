@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,7 +28,7 @@ import com.example.quanlypet.dao.viewpager2.SlideAdapterHome;
 
 import com.example.quanlypet.adapter.booking.bookingAdapter;
 import com.example.quanlypet.adapter.booking.booking_admin_Adapter;
-import com.example.quanlypet.adapter.viewpager2.SlideAdapterHome;
+
 import com.example.quanlypet.database.BookDB;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.BookObj;
@@ -58,10 +58,16 @@ public class HomeFragment extends Fragment {
     private LinearLayout linerBooking;
     private LinearLayout linerAmbulance;
     private LinearLayout linerMess;
+    private ViewPager vpr;
+    private CircleIndicator circleIndicator;
+    private SlideAdapterHome slideAdapter;
+    private List<Photo> photoList;
+    private Timer timer;
     private ImageView imgAddAnimal;
     private ImageView imgMap;
     RecyclerView id_recyNear;
     List<BookObj> list;
+    private String user;
     bookingAdapter adapter;
     UsersObj usersObj = new UsersObj();
     TextView titleNear;
@@ -102,25 +108,22 @@ public class HomeFragment extends Fragment {
         adapter = new bookingAdapter(new bookingAdapter.Callback() {
             @Override
             public void update(BookObj bookObj, int index) {
-
             }
         }, getActivity());
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
-        String user = sharedPreferences.getString("Username", "");
+        user = sharedPreferences.getString("Username", "");
         if (user.equalsIgnoreCase("Admin")) {
             titleNear.setText("Lịch Đang Chờ Gần Đây");
             list2 = BookDB.getInstance(getActivity()).Dao().getStatus4(1);
             adapter2 = new booking_admin_Adapter(list2, getActivity(), new booking_admin_Adapter.Callback() {
                 @Override
                 public void updateAdmin(BookObj bookObj, int index) {
-
                 }
             });
             adapter2.setDATA(list2);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
             id_recyNear.setAdapter(adapter2);
             id_recyNear.setLayoutManager(linearLayoutManager);
-
         } else {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
@@ -128,17 +131,13 @@ public class HomeFragment extends Fragment {
             adapter = new bookingAdapter(new bookingAdapter.Callback() {
                 @Override
                 public void update(BookObj bookObj, int index) {
-
                 }
             }, getActivity());
             adapter.setDATA(list);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
             id_recyNear.setAdapter(adapter);
             id_recyNear.setLayoutManager(linearLayoutManager);
-
         }
-
-
         linerBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,18 +157,13 @@ public class HomeFragment extends Fragment {
         });
         vpr = (ViewPager) view.findViewById(R.id.vpr);
         circleIndicator = (CircleIndicator) view.findViewById(R.id.circle_indicator);
+        barChart = (BarChart) view.findViewById(R.id.barChart);
         photoList = getListPhoto();
         slideAdapter = new SlideAdapterHome(getContext(), photoList);
         vpr.setAdapter(slideAdapter);
         circleIndicator.setViewPager(vpr);
         slideAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
         autoSlide();
-
-        //BarChart
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
-        String username = sharedPreferences.getString("Username", "");
-
-        barChart = (BarChart) view.findViewById(R.id.barChart);
         ArrayList<BarEntry> visitor = new ArrayList<>();
 
         visitor.add(new BarEntry(1,110));
@@ -209,21 +203,12 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        if (username.equals("Admin")){
+        if (user.equals("Admin")){
             barChart.setVisibility(View.VISIBLE);
         } else {
             barChart.setVisibility(View.GONE);
         }
-
-
     }
-
-    private ViewPager vpr;
-    private CircleIndicator circleIndicator;
-    private SlideAdapterHome slideAdapter;
-    private List<Photo> photoList;
-    private Timer timer;
-
     private List<Photo> getListPhoto() {
         List<Photo> list = new ArrayList<>();
         list.add(new Photo(R.drawable.one));
@@ -234,7 +219,6 @@ public class HomeFragment extends Fragment {
         list.add(new Photo(R.drawable.six));
         return list;
     }
-
     private void autoSlide() {
         if (photoList == null || photoList.isEmpty() || vpr == null) {
             return;
@@ -261,12 +245,12 @@ public class HomeFragment extends Fragment {
             }
         }, 5000, 6000);
     }
-
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
-        String user = sharedPreferences.getString("Username", "");
+        LoadData();
+    }
+    public void LoadData(){
         if (user.equalsIgnoreCase("Admin")) {
             list2 = BookDB.getInstance(getActivity()).Dao().getStatus4(1);
             adapter2.setDATA(list2);
@@ -275,9 +259,6 @@ public class HomeFragment extends Fragment {
             int id = usersObj.getId();
             list = BookDB.getInstance(getActivity()).Dao().getStatus3(4, id);
             adapter.setDATA(list);
-
-
         }
     }
-
 }

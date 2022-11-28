@@ -60,7 +60,6 @@ public class AddAnimalActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
         btnAlbum = findViewById(R.id.btn_album);
-        imgAnh = (ImageView) findViewById(R.id.img_anh);
         SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
         String username = sharedPreferences.getString("Username","");
         usersObj = UsersDB.getInstance(getApplicationContext()).Dao().getIdUsers(username);

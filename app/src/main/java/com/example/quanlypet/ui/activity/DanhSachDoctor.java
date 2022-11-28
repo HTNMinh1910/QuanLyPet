@@ -38,8 +38,8 @@ public class DanhSachDoctor extends AppCompatActivity {
     private DanhSachDoctorAdapter danhSachDoctorAdapter;
     private Toolbar idTollBar;
     private SearchView searchDanhsachDoctor;
-
-    @SuppressLint({"MissingInflatedId", "WrongThread"})
+    private DoctorAdapter adapter;
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
