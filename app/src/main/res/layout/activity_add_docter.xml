@@ -26,6 +26,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/doctor_name"
                 app:hintEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -49,39 +52,24 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_picture"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="5dp"
                         android:src="@drawable/camera" />
 
-                    <Button
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:layout_marginTop="17dp"
-                        android:id="@+id/btn_camera"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#F4F1F1"
-                        android:text="CAMERA" />
-
-                    <Button
+                    <ImageView
                         android:layout_marginTop="17dp"
                         android:id="@+id/btn_album"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
+                        android:src="@drawable/photo_album"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:backgroundTint="#F4F1F1"
-                        android:text="ALBUM" />
+                        android:layout_marginLeft="20dp" />
                 </LinearLayout>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,6 +77,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/phone"
                 app:hintEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -101,12 +92,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <TextView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gender: "
-                    android:textStyle="bold"
-                    android:textSize="15dp"/>
+                    android:src="@drawable/gender"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Gender: "-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="15dp"/>-->
                 <RadioButton
                     android:id="@+id/rdo_boy"
                     android:text="Nam"
@@ -123,6 +120,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/email"
                 app:hintEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -135,6 +135,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/location"
                 app:hintEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -147,6 +150,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/specialized"
                 app:hintEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -163,16 +169,11 @@
                 <Button
                     android:id="@+id/btn_addDocter"
                     android:layout_marginRight="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/button"
                     android:backgroundTint="#E11515"
                     android:text="Thêm"/>
-                <Button
-                    android:id="@+id/btn_canel"
-                    android:backgroundTint="#E11515"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hủy"/>
 
             </LinearLayout>
         </LinearLayout>

@@ -8,11 +8,10 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
-       <ImageView
+       <de.hdodenhof.circleimageview.CircleImageView
            android:layout_width="60dp"
            android:layout_height="60dp"
-           android:id="@+id/img_animal"
-           />
+           android:id="@+id/img_animal" />
 
        <TextView
            android:id="@+id/tv_nameAnimal"

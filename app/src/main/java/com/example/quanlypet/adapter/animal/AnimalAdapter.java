@@ -1,6 +1,7 @@
 package com.example.quanlypet.adapter.animal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -15,13 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.AnimalObj;
+import com.example.quanlypet.ui.activity.DoctorInforActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>{
     private Context context;
     private Callback callback;
     private ArrayList<AnimalObj> arrayList;
+    private ArrayList<AnimalObj> arrayList2;
+
 
     public AnimalAdapter(Context context, Callback callback) {
         this.context = context;
@@ -60,12 +65,10 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
 
     public class AnimalViewHolder extends RecyclerView.ViewHolder {
         private RelativeLayout relyAnimal;
-        private TextView idUsers;
         private TextView tvNameAnimal;
         private ImageView imgAnhItem;
         private TextView tvAge;
         private TextView tvLoai;
-
         public AnimalViewHolder(@NonNull View itemView) {
             super(itemView);
             relyAnimal = (RelativeLayout) itemView.findViewById(R.id.rely_animal);

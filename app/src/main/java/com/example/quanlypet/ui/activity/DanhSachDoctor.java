@@ -49,7 +49,6 @@ public class DanhSachDoctor extends AppCompatActivity {
         searchDanhsachDoctor = (SearchView) findViewById(R.id.search_danhsachDoctor);
         setSupportActionBar(idTollBar);
         getSupportActionBar().setTitle("Thông tin bác sĩ");
-
         BitmapDrawable bitmapDrawableup = (BitmapDrawable) AppCompatResources.getDrawable(this,R.drawable.doctor);
         Bitmap bitmap = bitmapDrawableup.getBitmap();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -60,6 +59,7 @@ public class DanhSachDoctor extends AppCompatActivity {
                     insert(new DoctorObj("Hệ  thống hỗ trợ",hinhanh,"0999999999",null,null,2,null));
         }
         danhSachDoctorAdapter = new DanhSachDoctorAdapter(getBaseContext());
+        adapter = new DoctorAdapter(getBaseContext(),null);
         list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getBaseContext()).Dao().getAllData();
         danhSachDoctorAdapter.setDataDanhSach(list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
