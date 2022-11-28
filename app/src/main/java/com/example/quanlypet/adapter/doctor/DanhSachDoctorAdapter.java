@@ -1,14 +1,18 @@
 package com.example.quanlypet.adapter.doctor;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
+import android.net.Uri;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -16,7 +20,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
@@ -27,22 +30,20 @@ import com.example.quanlypet.ui.activity.DoctorInforActivity;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 
-public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterViewHolder> implements Filterable {
+public class DanhSachDoctorAdapter extends RecyclerView.Adapter<DanhSachDoctorAdapter.DocterViewHolder> implements Filterable {
     private Context context;
     private ArrayList<DoctorObj> list;
     private ArrayList<DoctorObj> listDotor;
-    private int checkGender;
-    private DoctorObj docterObjNew;
-    private Callback callback;
-    public void setDataDocter(ArrayList<DoctorObj> list){
+
+    public void setDataDanhSach(ArrayList<DoctorObj> list){
         this.list=list;
         notifyDataSetChanged();
     }
 
-    public DoctorAdapter(Context context,Callback callback) {
+    public DanhSachDoctorAdapter(Context context) {
         this.context = context;
-        this.callback=callback;
     }
     @Override
     public Filter getFilter() {
@@ -57,8 +58,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
                     for (DoctorObj object: listDotor){
                         if (object.getName().toLowerCase().contains(search.toLowerCase())||
                                 object.getEmail().toLowerCase().contains(search.toLowerCase())||
-                        object.getPhone().toLowerCase().contains(search.toLowerCase())||
-                        object.getSpecialize().toLowerCase().contains(search.toLowerCase())){
+                                object.getPhone().toLowerCase().contains(search.toLowerCase())||
+                                object.getSpecialize().toLowerCase().contains(search.toLowerCase())){
                             listdt.add(object);
                         }
                     }
@@ -75,12 +76,11 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             }
         };
     }
-
     @NonNull
     @Override
     public DocterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_docter,parent,false);
-        return new DocterViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_danhsachdocter,parent,false);
+        return new DanhSachDoctorAdapter.DocterViewHolder(view);
     }
 
     @Override
@@ -88,62 +88,64 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
         DoctorObj docterObj = list.get(position);
         if(docterObj==null)
             return;
-        holder.tv_Name.setText(docterObj.getName());
-        holder.tv_Email.setText(docterObj.getEmail());
+        holder.tvName.setText(docterObj.getName());
         byte[] hinhanh = docterObj.getImg();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
-        holder.img_Docter.setImageBitmap(bitmap);
+        holder.imgDoctor.setImageBitmap(bitmap);
+        holder.idRelativeLayout.setOnClickListener(v->{
+            Dialog dialog = new Dialog(v.getContext());
+            dialog.setContentView(R.layout.dialog_callphone);
+//        dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.bg_dialog_call));
 
+            Button btnCall = (Button) dialog.findViewById(R.id.btn_call);
+            Button btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
 
-        if(docterObj.getGender()==1){
-            holder.tv_Gender.setText("Nam");
-        }else{
-            holder.tv_Gender.setText("Nữ");
-        }
-        holder.id_RelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                callback.update(docterObj);
-                return false;
-            }
-        });
-        holder.img_Information.setOnClickListener(v->{
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-            byte[] ByteArray = byteArrayOutputStream.toByteArray();
-            Intent intent = new Intent(context, DoctorInforActivity.class);
-                intent.putExtra("name",docterObj.getName());
-                intent.putExtra("phone",docterObj.getPhone());
-                intent.putExtra("address",docterObj.getAddress());
-                intent.putExtra("specialize",docterObj.getSpecialize());
-                intent.putExtra("img",ByteArray);
-                context.startActivity(intent);
+            Window window = dialog.getWindow();
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            WindowManager.LayoutParams windowAttributes = window.getAttributes();
+            window.setAttributes(windowAttributes);
+            windowAttributes.gravity = Gravity.BOTTOM;
+            String phone1 = "0999999999";
+            btnCall.setText(phone1);
+            btnCall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent sharingIntent = new Intent(Intent.ACTION_CALL,Uri.parse("tel: "+phone1));
+                    sharingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity( sharingIntent);
+                }
+            });
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
         });
     }
+
     @Override
     public int getItemCount() {
         return list==null?0:list.size();
     }
 
     public class DocterViewHolder extends RecyclerView.ViewHolder {
-        private ImageView img_Docter;
-        private TextView tv_Name;
-        private TextView tv_Email;
-        private TextView tv_Gender;
-        private RelativeLayout id_RelativeLayout;
-        private ImageView img_Information;
+
+        private CircleImageView imgDoctor;
+        private TextView tvName;
+        private ImageView imgInformation;
+        private RelativeLayout idRelativeLayout;
+
 
         public DocterViewHolder(@NonNull View itemView) {
             super(itemView);
-            id_RelativeLayout = (RelativeLayout) itemView.findViewById(R.id.id_relativeLayout);
-            img_Docter = (ImageView) itemView.findViewById(R.id.img_doctor);
-            img_Information = (ImageView) itemView.findViewById(R.id.img_information);
-            tv_Name = (TextView) itemView.findViewById(R.id.tv_name);
-            tv_Email = (TextView) itemView.findViewById(R.id.tv_email);
-            tv_Gender = (TextView) itemView.findViewById(R.id.tv_gender);
+            idRelativeLayout = (RelativeLayout) itemView.findViewById(R.id.id_relativeLayout);
+
+            imgDoctor = (CircleImageView) itemView.findViewById(R.id.img_doctor);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            imgInformation = (ImageView) itemView.findViewById(R.id.img_information);
+
         }
-    }
-    public interface Callback{
-        void update(DoctorObj doctorObj);
     }
 }

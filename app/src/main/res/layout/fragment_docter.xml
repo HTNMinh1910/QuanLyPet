@@ -11,7 +11,6 @@
         android:id="@+id/rcv_docter"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingbutton"
         android:layout_width="wrap_content"
@@ -20,5 +19,6 @@
         android:layout_marginBottom="32dp"
         android:layout_gravity="bottom|end"
         android:src="@drawable/report" />
+
 
 </FrameLayout>
