@@ -74,7 +74,7 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_marginLeft="10dp"
-                                android:background="@drawable/name" />
+                                android:background="@drawable/species" />
 
                             <TextView
                                 android:id="@+id/tv_loai"
@@ -95,7 +95,7 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_marginLeft="10dp"
-                                android:background="@drawable/name" />
+                                android:background="@drawable/age" />
 
                             <TextView
                                 android:id="@+id/tv_age"

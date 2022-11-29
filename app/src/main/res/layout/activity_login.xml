@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:background="@drawable/bg_item_booking"
+    android:gravity="center"
+    android:padding="10dp">
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -29,9 +31,14 @@
         android:textColor="#696969"
         android:textSize="11sp" />
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:hintEnabled="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
         app:startIconTintMode="screen"
         app:startIconTint="@color/cardview_shadow_end_color"
         app:startIconDrawable="@drawable/businessman"
@@ -42,16 +49,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
-            android:background="@drawable/bg_coneradios"
             android:fontFamily="@font/biorhyme_bold"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
         app:hintEnabled="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
         app:startIconTintMode="screen"
         app:startIconTint="@color/cardview_shadow_end_color"
         app:startIconDrawable="@drawable/password"
@@ -62,7 +73,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:background="@drawable/bg_coneradios"
             android:fontFamily="@font/biorhyme_bold"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -108,8 +118,9 @@
             android:id="@+id/btn_login"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#C00404"
+            android:backgroundTint="#A84D4D"
             android:background="@drawable/button"
+            android:theme="@style/Theme.QuanLyPet.Button_1"
             android:textAllCaps="false"
             android:textSize="16sp"
             android:text="Logn In"/>

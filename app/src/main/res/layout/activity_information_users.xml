@@ -154,15 +154,5 @@
                     android:textStyle="bold"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <Button
-            android:layout_marginTop="20dp"
-            android:id="@+id/btn_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2196F3"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:text="Update Information"/>
     </LinearLayout>
-
 </LinearLayout>

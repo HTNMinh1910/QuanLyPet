@@ -82,6 +82,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="Họ và tên: "
                     android:textSize="16sp" />
 
@@ -91,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Nam"
+                    android:layout_gravity="center"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -116,7 +118,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Điện thoại: "
+                    android:text="  Điện thoại: "
+                    android:layout_gravity="center"
                     android:layout_marginRight="5dp"
                     android:textSize="16sp"/>
                 <TextView
@@ -124,6 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0912821312"
+                    android:layout_gravity="center"
                     android:id="@+id/tv_phoneDocter"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
@@ -151,6 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Địa chỉ: "
+                    android:layout_gravity="center"
                     android:textSize="16sp"/>
                 <TextView
                     android:layout_marginLeft="10dp"
@@ -159,6 +164,7 @@
                     android:text="Nam từ liêm, Hà Nội"
                     android:id="@+id/tv_addressDocter"
                     android:textSize="16sp"
+                    android:layout_gravity="center"
                     android:textStyle="bold"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

@@ -34,7 +34,6 @@ public class InformationUsersActivity extends AppCompatActivity{
         edEmailUsers = findViewById(R.id.ed_emailUsers);
         edPhoneUsers = findViewById(R.id.ed_phoneUsers);
         edGenderUsers = findViewById(R.id.ed_genderUsers);
-        btnEdit = findViewById(R.id.btn_edit);
 
         setSupportActionBar(idTollBar);
         getSupportActionBar().setTitle("Personal Information");

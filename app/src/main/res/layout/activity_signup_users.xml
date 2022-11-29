@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
         <TextView
             android:id="@+id/tv_exit"
             android:layout_width="wrap_content"
@@ -14,130 +20,207 @@
             android:layout_gravity="center_vertical"
             android:textColor="#FF3D00"
             android:textSize="15sp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Đăng ký tài khoản"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:hintEnabled="true"
-        app:boxBackgroundColor="#ffff">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_Username"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            android:fontFamily="@font/biorhyme_bold"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:hintEnabled="true"
-        app:boxBackgroundColor="#ffff">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_Name"
+            android:text="Đăng ký tài khoản"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
-            android:fontFamily="@font/biorhyme_bold"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:hintEnabled="true"
+            android:layout_marginTop="20dp"
+            app:startIconTintMode="screen"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_coneradios"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/businessman"
+            app:boxBackgroundColor="#ffff">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_Username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:fontFamily="@font/biorhyme_bold"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="true"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_coneradios"
+            android:layout_marginTop="20dp"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/name"
+            app:boxBackgroundColor="#ffff">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:fontFamily="@font/biorhyme_bold"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:hintEnabled="true"
-        app:boxBackgroundColor="#ffff">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_Email"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:fontFamily="@font/biorhyme_bold"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            app:hintEnabled="true"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_coneradios"
+            android:layout_marginTop="20dp"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/email"
+            app:boxBackgroundColor="#ffff">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:fontFamily="@font/biorhyme_bold"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:hintEnabled="true"
-        app:boxBackgroundColor="#ffff">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_Phone"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone"
-            android:fontFamily="@font/biorhyme_bold"
-            android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            app:hintEnabled="true"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_coneradios"
+            android:layout_marginTop="20dp"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/phone"
+            app:boxBackgroundColor="#ffff">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_Phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:fontFamily="@font/biorhyme_bold"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_coneradios"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/gender"/>
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/rdo_Male"
+                <RadioButton
+                    android:id="@+id/rdo_Male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:layout_marginLeft="15dp"/>
+
+                <RadioButton
+                    android:id="@+id/rdo_Female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:layout_marginLeft="15dp"/>
+            </RadioGroup>
+
+        </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:hintEnabled="true"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_coneradios"
+            android:layout_marginTop="20dp"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/password"
+            app:boxBackgroundColor="#ffff">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:fontFamily="@font/biorhyme_bold"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:hintEnabled="true"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_coneradios"
+            android:layout_marginTop="20dp"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/password"
+            app:boxBackgroundColor="#ffff">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_RePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm password"
+                android:fontFamily="@font/biorhyme_bold"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/tv_errors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male"
-            android:layout_marginLeft="15dp"/>
-
-        <RadioButton
-            android:id="@+id/rdo_Female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Female"
-            android:layout_marginLeft="15dp"/>
-    </RadioGroup>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
-        app:hintEnabled="true"
-        app:boxBackgroundColor="#ffff">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_Password"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/biorhyme_bold"
+            android:layout_gravity="center"
+            android:text="Lỗi tài khoản"
+            android:textColor="#FB0F0F"
+            android:textSize="12sp" />
+        <Button
+            android:id="@+id/btn_Signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:fontFamily="@font/biorhyme_bold"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
-        app:hintEnabled="true"
-        app:boxBackgroundColor="#ffff">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_RePassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Confirm password"
-            android:fontFamily="@font/biorhyme_bold"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:id="@+id/tv_errors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="@font/biorhyme_bold"
-        android:layout_gravity="center"
-        android:text="Lỗi tài khoản"
-        android:textColor="#FB0F0F"
-        android:textSize="12sp" />
-    <Button
-        android:id="@+id/btn_Signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#F13030"
-        android:text="Sign Up" />
-</LinearLayout>
+            android:background="@drawable/button"
+            android:textAllCaps="false"
+            android:layout_marginBottom="20dp"
+            android:theme="@style/Theme.QuanLyPet.Button"
+            android:backgroundTint="#F13030"
+            android:text="Sign Up" />
+    </LinearLayout>
+</ScrollView>
