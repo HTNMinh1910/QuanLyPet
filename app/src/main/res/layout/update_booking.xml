@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@drawable/bg_tabarlayout"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -15,13 +17,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_tabarlayout">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_tabarlayout"
             android:orientation="vertical">
 
             <Spinner
@@ -35,9 +38,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Họ và tên Bác Sĩ"
                 android:background="@drawable/bg_til_booking"
-                android:padding="10dp">
+                android:hint="Họ và tên Bác Sĩ"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/doctor_name"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_NameDoctor"
@@ -53,9 +59,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Số Điện Thoại"
                 android:background="@drawable/bg_til_booking"
-                android:padding="10dp">
+                android:hint="Số Điện Thoại"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/phone"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_PhoneNumber"
@@ -78,9 +87,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Tên Thú Cưng"
                 android:background="@drawable/bg_til_booking"
-                android:padding="10dp">
+                android:hint="Tên Thú Cưng"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/name_animal"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_NamePet"
@@ -95,10 +107,13 @@
                 android:id="@+id/TIP_TypePet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_til_booking"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/bg_til_booking"
                 android:hint="Giống"
-                android:padding="10dp">
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/species"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_TypePet"
@@ -114,9 +129,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Tình Trạng"
                 android:background="@drawable/bg_til_booking"
-                android:padding="10dp">
+                android:hint="Tình Trạng"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/notes"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_Status"
@@ -130,15 +148,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
+                android:padding="10dp"
                 android:text="Ảnh Tình Trạng"
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -171,11 +189,12 @@
                     android:textColor="@color/black"
                     android:textStyle="bold" />
             </LinearLayout>
+
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Nơi khám"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -186,10 +205,10 @@
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:layout_marginTop="10dp"
                     android:id="@+id/rdo_phongkham"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="Phòng Khám"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -204,14 +223,18 @@
 
 
             </RadioGroup>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TIP_Time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_til_booking"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/bg_til_booking"
                 android:hint="Ngày hẹn"
-                android:padding="10dp">
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/schedule"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_Time"
@@ -226,10 +249,13 @@
                 android:id="@+id/TIP_Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_til_booking"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/bg_til_booking"
                 android:hint="Địa chỉ"
-                android:padding="10dp">
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/location"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_Address"
@@ -247,7 +273,10 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_til_booking"
                 android:hint="Dịch Vụ"
-                android:padding="10dp">
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/clipboard"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconTintMode="screen">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIED_Service"
@@ -258,31 +287,39 @@
                     android:textStyle="bold" />
             </com.google.android.material.textfield.TextInputLayout>
 
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="horizontal"
-               android:gravity="center_horizontal">
-               <Button
-                   android:id="@+id/btn_update"
-                   android:layout_width="160dp"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center"
-                   android:layout_marginTop="15dp"
-                   android:layout_marginBottom="15dp"
-                   android:backgroundTint="#F15B5B"
-                   android:text="Sửa Lịch" />
-               <Button
-                   android:layout_marginLeft="15dp"
-                   android:id="@+id/btn_huy"
-                   android:layout_width="160dp"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center"
-                   android:layout_marginTop="15dp"
-                   android:layout_marginBottom="15dp"
-                   android:backgroundTint="#F15B5B"
-                   android:text="Hủy" />
-           </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_update"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:backgroundTint="#F15B5B"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button"
+                    android:theme="@style/Theme.QuanLyPet.Button_1"
+                    android:text="Sửa Lịch" />
+
+                <Button
+                    android:id="@+id/btn_huy"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:backgroundTint="#F15B5B"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button"
+                    android:theme="@style/Theme.QuanLyPet.Button"
+                    android:text="Hủy" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
