@@ -35,10 +35,9 @@ import com.example.quanlypet.model.BookObj;
 import com.example.quanlypet.model.Photo;
 import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.AddBookingActivity;
-import com.example.quanlypet.ui.activity.DanhSachDoctor;
+import com.example.quanlypet.ui.activity.ListDoctorActivity;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -147,10 +146,10 @@ public class HomeFragment extends Fragment {
         });
         linerMess.setOnClickListener(v -> {
             Uri uri = Uri.parse("http://m.me/100088046954126");
-            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            this.startActivity(new Intent(Intent.ACTION_VIEW, uri));
         });
         linerAmbulance.setOnClickListener(v -> {
-            startActivity(new Intent(getActivity(), DanhSachDoctor.class));
+            startActivity(new Intent(getActivity(), ListDoctorActivity.class));
         });
         imgMap.setOnClickListener(view1 -> {
             startActivity(new Intent(getActivity(), MapsActivity.class));

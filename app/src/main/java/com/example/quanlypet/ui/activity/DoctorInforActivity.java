@@ -39,7 +39,7 @@ public class DoctorInforActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_information);
+        setContentView(R.layout.activity_doctor_infor);
         tvSpecializeDocter = (TextView) findViewById(R.id.tv_specializeDocter);
         tvNameDocter = (TextView) findViewById(R.id.tv_nameDocter);
         imgDt = findViewById(R.id.img_dt);
@@ -72,7 +72,7 @@ public class DoctorInforActivity extends AppCompatActivity {
     }
     public void card_callPhone(){
         Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog_callphone);
+        dialog.setContentView(R.layout.dialog_call_phone);
         dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.bg_dialog_call));
         Window window = dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);

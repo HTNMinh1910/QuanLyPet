@@ -59,7 +59,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class BookConfirmFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private int REQUEST_CAMERA = 111;
     private Bitmap bitmap;
     private ImageView imgClose;
@@ -111,14 +111,15 @@ public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.O
     private SwipeRefreshLayout swipeRefreshLayout;
 
 
-    public LichDaHuy_Fragment() {
-    }
 
 
-    public static LichDaHuy_Fragment newInstance() {
-        LichDaHuy_Fragment fragment = new LichDaHuy_Fragment();
+    public static BookConfirmFragment newInstance() {
+        BookConfirmFragment fragment = new BookConfirmFragment();
 
         return fragment;
+    }
+
+    public BookConfirmFragment() {
     }
 
     @Override
@@ -130,21 +131,21 @@ public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_lich_da_huy_, container, false);
+        return inflater.inflate(R.layout.fragment_book_confirm, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        reCy_booking = view.findViewById(R.id.recy_huy);
-        swipeRefreshLayout = view.findViewById(R.id.SwipeRefreshLayout);
-        swipeRefreshLayout.setOnRefreshListener(this);
+        reCy_booking = view.findViewById(R.id.recy_daxacnhan);
         list = new ArrayList<>();
         list2 = new ArrayList<>();
+        swipeRefreshLayout = view.findViewById(R.id.SwipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String user = sharedPreferences.getString("Username", "");
         if (user.equalsIgnoreCase("Admin")) {
-            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(2);
+            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
             adapterAdmin = new booking_admin_Adapter(list2, getActivity(), new booking_admin_Adapter.Callback() {
                 @Override
                 public void updateAdmin(BookObj bookObj, int index) {
@@ -159,7 +160,7 @@ public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.O
         } else {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
-            list = BookDB.getInstance(getActivity()).Dao().getStatus2(2, id);
+            list = BookDB.getInstance(getActivity()).Dao().getStatus2(3, id);
             adapter = new bookingAdapter(new bookingAdapter.Callback() {
                 @Override
                 public void update(BookObj bookObj, int index) {
@@ -306,6 +307,8 @@ public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.O
     }
 
 
+
+
     private void updateBooking(BookObj bookObj, int index) {
         final Dialog dialog = new Dialog(getActivity(), com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
 
@@ -365,9 +368,8 @@ public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.O
             TIEDTime.setEnabled(false);
             TIEDAddress.setEnabled(false);
             TIEDService.setEnabled(false);
-
-
         }
+
         rdogr.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -510,7 +512,7 @@ public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.O
 
     public void showDiaLogSerVice() {
         Dialog dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_chon_dich_vu);
+        dialog.setContentView(R.layout.dialog_choose_service);
         dialog.getWindow().setBackgroundDrawable(getActivity().getDrawable(R.drawable.bg_dialog_dichvu));
         Window window = dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -624,12 +626,12 @@ public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.O
         String user = sharedPreferences.getString("Username", "");
         usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
         int id = usersObj.getId();
-        list = BookDB.getInstance(getActivity()).Dao().getStatus2(2, id);
+        list = BookDB.getInstance(getActivity()).Dao().getStatus2(3,id);
         adapter.setDATA(list);
     }
 
     public void loadDATA2() {
-        list2 = BookDB.getInstance(getActivity()).Dao().getStatus(2);
+        list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
         adapterAdmin.setDATA(list2);
     }
 
@@ -639,14 +641,14 @@ public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.O
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String user = sharedPreferences.getString("Username", "");
         if (user.equalsIgnoreCase("Admin")) {
-            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(2);
+            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
             adapterAdmin.setDATA(list2);
 
 
         } else {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
-            list = BookDB.getInstance(getActivity()).Dao().getStatus2(2, id);
+            list = BookDB.getInstance(getActivity()).Dao().getStatus2(3, id);
             adapter.setDATA(list);
 
 
@@ -658,12 +660,12 @@ public class LichDaHuy_Fragment extends Fragment implements SwipeRefreshLayout.O
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String user = sharedPreferences.getString("Username", "");
         if (user.equalsIgnoreCase("Admin")) {
-            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(2);
+            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
             adapterAdmin.setDATA(list2);
         } else {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
-            list = BookDB.getInstance(getActivity()).Dao().getStatus2(2, id);
+            list = BookDB.getInstance(getActivity()).Dao().getStatus2(3, id);
             adapter.setDATA(list);
         }
         Handler handler  = new Handler();

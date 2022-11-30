@@ -81,9 +81,6 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
         super.onViewCreated(view, savedInstanceState);
         rcvBill = (RecyclerView) view.findViewById(R.id.rcv_bill);
         fill();
-        bbtn.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), AddBillActivity.class));
-        });
     }
 
     public void fill() {

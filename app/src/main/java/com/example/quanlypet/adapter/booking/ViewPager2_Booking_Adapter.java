@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.quanlypet.ui.fragment.LichCho_Fragment;
-import com.example.quanlypet.ui.fragment.LichDaHuy_Fragment;
-import com.example.quanlypet.ui.fragment.LichDaXacNhan_Fragment;
-import com.example.quanlypet.ui.fragment.LichDaXong_Fragment;
+import com.example.quanlypet.ui.fragment.BookWaitFragment;
+import com.example.quanlypet.ui.fragment.BookCancelFragment;
+import com.example.quanlypet.ui.fragment.BookConfirmFragment;
+import com.example.quanlypet.ui.fragment.BookDoneFragment;
 
 public class ViewPager2_Booking_Adapter extends FragmentStateAdapter {
     public ViewPager2_Booking_Adapter(@NonNull FragmentActivity fragmentActivity) {
@@ -21,16 +21,16 @@ public class ViewPager2_Booking_Adapter extends FragmentStateAdapter {
         Fragment fragment =null;
         switch (position) {
             case 0:
-                fragment = LichCho_Fragment.newInstance();
+                fragment = BookWaitFragment.newInstance();
                 break;
             case 1:
-                fragment = LichDaXacNhan_Fragment.newInstance();
+                fragment = BookConfirmFragment.newInstance();
                 break;
             case 2:
-                fragment = LichDaXong_Fragment.newInstance();
+                fragment = BookDoneFragment.newInstance();
                 break;
             case 3:
-                fragment = LichDaHuy_Fragment.newInstance();
+                fragment = BookCancelFragment.newInstance();
                 break;
         }
         return fragment;

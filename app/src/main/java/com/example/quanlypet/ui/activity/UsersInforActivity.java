@@ -33,7 +33,7 @@ public class UsersInforActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_information);
+        setContentView(R.layout.activity_infor_users);
 
         SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
         String username = sharedPreferences.getString("Username","");

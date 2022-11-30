@@ -41,13 +41,15 @@ import com.example.quanlypet.model.UsersObj;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.Callback{
     private RecyclerView rcvAnimal;
     private Toolbar Tbr;
     private ArrayList<AnimalObj> arrayList = new ArrayList<>();
     private AnimalAdapter adapterAnimal;
     private UsersObj usersObj;
-    private ImageView imgAnhup;
+    private CircleImageView imgAnhup;
     private Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +72,6 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
         LoadData();
     }
     public void LoadData(){
-//          arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).Dao().getAllData();
-//        adapterAnimal.setData(arrayList);
         arrayList = (ArrayList<AnimalObj>) AnimalDB.getInstance(getApplicationContext()).Dao().getIDUsers(String.valueOf(usersObj.getId()));
         adapterAnimal.setData(arrayList);
         }
@@ -108,7 +108,7 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
     }
     @Override
     public void Update(AnimalObj object) {
-        Dialog dialog = new Dialog(AnimalActivity.this);
+        Dialog dialog = new Dialog(AnimalActivity.this,com.google.android.material.R.style.ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Window_Fullscreen);
         dialog.setContentView(R.layout.dialog_update_animal);
         dialog.setCancelable(false);
         Window window = dialog.getWindow();
@@ -118,8 +118,7 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
         EditText upageAnimal = dialog.findViewById(R.id.up_ageAnimal);
         EditText upspeciesAnimal = dialog.findViewById(R.id.up_speciesAnimal);
         imgAnhup = dialog.findViewById(R.id.up_img_anh);
-        Button btnAddAnh = dialog.findViewById(R.id.btn_addanh);
-        Button btnAlbumUp = dialog.findViewById(R.id.btn_album_up);
+        ImageView btnAlbumUp = dialog.findViewById(R.id.btn_album_up);
         Button btnUpDate = dialog.findViewById(R.id.btn_updateAnimal);
         Button btnCancel = dialog.findViewById(R.id.btn_cancel);
         LinearLayout linearshare1 = dialog.findViewById(R.id.up_liner_share_animal);
@@ -130,7 +129,7 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
 
             chooseImage1.launch(i);
         });
-        btnAddAnh.setOnClickListener(v -> {
+        imgAnhup.setOnClickListener(v -> {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, 0);
         });

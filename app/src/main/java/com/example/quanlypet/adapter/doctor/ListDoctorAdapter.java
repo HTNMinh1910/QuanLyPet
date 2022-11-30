@@ -24,15 +24,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.DoctorObj;
-import com.example.quanlypet.ui.activity.DanhSachDoctor;
-import com.example.quanlypet.ui.activity.DoctorInforActivity;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class DanhSachDoctorAdapter extends RecyclerView.Adapter<DanhSachDoctorAdapter.DocterViewHolder> implements Filterable {
+public class ListDoctorAdapter extends RecyclerView.Adapter<ListDoctorAdapter.DocterViewHolder> implements Filterable {
     private Context context;
     private ArrayList<DoctorObj> list;
     private ArrayList<DoctorObj> listDotor;
@@ -42,7 +39,7 @@ public class DanhSachDoctorAdapter extends RecyclerView.Adapter<DanhSachDoctorAd
         notifyDataSetChanged();
     }
 
-    public DanhSachDoctorAdapter(Context context) {
+    public ListDoctorAdapter(Context context) {
         this.context = context;
     }
     @Override
@@ -79,8 +76,8 @@ public class DanhSachDoctorAdapter extends RecyclerView.Adapter<DanhSachDoctorAd
     @NonNull
     @Override
     public DocterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_danhsachdocter,parent,false);
-        return new DanhSachDoctorAdapter.DocterViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_emergency,parent,false);
+        return new ListDoctorAdapter.DocterViewHolder(view);
     }
 
     @Override
@@ -94,12 +91,11 @@ public class DanhSachDoctorAdapter extends RecyclerView.Adapter<DanhSachDoctorAd
         holder.imgDoctor.setImageBitmap(bitmap);
         holder.idRelativeLayout.setOnClickListener(v->{
             Dialog dialog = new Dialog(v.getContext());
-            dialog.setContentView(R.layout.dialog_callphone);
-//        dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.bg_dialog_call));
+            dialog.setContentView(R.layout.dialog_call_phone);
 
             Button btnCall = (Button) dialog.findViewById(R.id.btn_call);
             Button btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
-
+            dialog.getWindow().setBackgroundDrawable(context.getDrawable(R.drawable.bg_dialog_call));
             Window window = dialog.getWindow();
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
             WindowManager.LayoutParams windowAttributes = window.getAttributes();

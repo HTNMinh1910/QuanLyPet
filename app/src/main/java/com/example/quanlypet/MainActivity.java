@@ -1,8 +1,10 @@
 package com.example.quanlypet;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 
 import com.example.quanlypet.dao.viewpager2.ViewPager2Adapter;
@@ -37,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
         ViewPager2Adapter adapter = new ViewPager2Adapter(this);
         viewPager2.setAdapter(adapter);
         viewPager2.setUserInputEnabled(false);
-        Tbr.setLogo(R.drawable.home);
+        Tbr.setNavigationIcon(R.drawable.age);
+        Tbr.setTitle("home");
+        Tbr.setTitleTextColor(Color.WHITE);
         if (username.equals("Admin")) {
             bottomNavigationView.getMenu().findItem(R.id.docter).setVisible(true);
-
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,27 +52,37 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home:
                         viewPager2.setCurrentItem(0);
-                        Tbr.setLogo(R.drawable.home);
+                        Tbr.setTitle("Home");
+                        Tbr.setTitleTextColor(Color.WHITE);
+                        Tbr.setNavigationIcon(R.drawable.age);
                         viewPager2.setPageTransformer(new DepthPageTransformer());
                         break;
                     case R.id.docter:
                         viewPager2.setCurrentItem(1);
-                        Tbr.setLogo(R.drawable.doctor);
+                        Tbr.setTitle("Doctor");
+                        Tbr.setTitleTextColor(Color.WHITE);
+                        Tbr.setNavigationIcon(R.drawable.age);
                         viewPager2.setPageTransformer(new DepthPageTransformer());
                         break;
                     case R.id.book:
                         viewPager2.setCurrentItem(2);
-                        Tbr.setLogo(R.drawable.booking);
+                        Tbr.setTitle("Book");
+                        Tbr.setTitleTextColor(Color.WHITE);
+                        Tbr.setNavigationIcon(R.drawable.age);
                         viewPager2.setPageTransformer(new DepthPageTransformer());
                         break;
                     case R.id.bill:
                         viewPager2.setCurrentItem(3);
-                        Tbr.setLogo(R.drawable.bill);
+                        Tbr.setTitle("Bill");
+                        Tbr.setTitleTextColor(Color.WHITE);
+                        Tbr.setNavigationIcon(R.drawable.age);
                         viewPager2.setPageTransformer(new DepthPageTransformer());
                         break;
                     case R.id.account:
                         viewPager2.setCurrentItem(4);
-                        Tbr.setLogo(R.drawable.users);
+                        Tbr.setTitle("Account");
+                        Tbr.setTitleTextColor(Color.WHITE);
+                        Tbr.setNavigationIcon(R.drawable.age);
                         viewPager2.setPageTransformer(new DepthPageTransformer());
                         break;
                 }

@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
@@ -94,7 +93,7 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
 
     public void showDiaLogHuy(BookObj bookObj, int index) {
         Dialog dialog = new Dialog(mContext);
-        dialog.setContentView(R.layout.dialog_huy_booking);
+        dialog.setContentView(R.layout.dialog_cancel_book);
         dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
         Window window = dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);

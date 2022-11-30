@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bg_tabarlayout">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -181,6 +182,7 @@
             android:id="@+id/btn_Add_bill"
             android:text="add"
             android:backgroundTint="#ccc"
+            android:background="@drawable/button"
             android:textColor="@color/black"
             android:layout_marginRight="10dp"/>
     </LinearLayout>

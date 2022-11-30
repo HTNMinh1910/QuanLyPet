@@ -38,7 +38,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.activity.DanhSachDoctor"
+            android:name=".ui.activity.ListDoctorActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -64,9 +64,9 @@
             android:exported="false"
             android:parentActivityName=".ui.activity.UsersInforActivity" />
         <activity
-            android:name=".ui.activity.InformationUsersActivity"
+            android:name=".ui.activity.DetailUsersActivity"
             android:exported="false"
-            android:parentActivityName=".ui.activity.InformationUsersActivity" />
+            android:parentActivityName=".ui.activity.DetailUsersActivity" />
         <activity
             android:name=".ui.activity.AddBookingActivity"
             android:exported="false" >

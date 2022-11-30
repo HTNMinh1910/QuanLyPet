@@ -59,7 +59,11 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class BookWaitFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener  {
+    private  SwipeRefreshLayout swipeRefreshLayout;
+
+
+
     private int REQUEST_CAMERA = 111;
     private Bitmap bitmap;
     private ImageView imgClose;
@@ -108,18 +112,15 @@ public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayo
     List<AnimalObj> listAnimal;
     List<DoctorObj> listDoctor;
     private int idDoctor;
-    private SwipeRefreshLayout swipeRefreshLayout;
 
 
-
-
-    public static LichDaXacNhan_Fragment newInstance() {
-        LichDaXacNhan_Fragment fragment = new LichDaXacNhan_Fragment();
+    public static BookWaitFragment newInstance() {
+        BookWaitFragment fragment = new BookWaitFragment();
 
         return fragment;
     }
 
-    public LichDaXacNhan_Fragment() {
+    public BookWaitFragment() {
     }
 
     @Override
@@ -131,21 +132,21 @@ public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayo
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_lich_da_xac_nhan_, container, false);
+        return inflater.inflate(R.layout.fragment_book_wait, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        reCy_booking = view.findViewById(R.id.recy_daxacnhan);
-        list = new ArrayList<>();
-        list2 = new ArrayList<>();
+        reCy_booking = view.findViewById(R.id.recy_cho);
         swipeRefreshLayout = view.findViewById(R.id.SwipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
+        list = new ArrayList<>();
+        list2 = new ArrayList<>();
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String user = sharedPreferences.getString("Username", "");
         if (user.equalsIgnoreCase("Admin")) {
-            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
+            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(1);
             adapterAdmin = new booking_admin_Adapter(list2, getActivity(), new booking_admin_Adapter.Callback() {
                 @Override
                 public void updateAdmin(BookObj bookObj, int index) {
@@ -160,7 +161,7 @@ public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayo
         } else {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
-            list = BookDB.getInstance(getActivity()).Dao().getStatus2(3, id);
+            list = BookDB.getInstance(getActivity()).Dao().getStatus2(1,id);
             adapter = new bookingAdapter(new bookingAdapter.Callback() {
                 @Override
                 public void update(BookObj bookObj, int index) {
@@ -172,6 +173,7 @@ public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayo
             reCy_booking.setAdapter(adapter);
             reCy_booking.setLayoutManager(linearLayoutManager);
             loadDATA();
+
         }
     }
 
@@ -356,20 +358,6 @@ public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayo
         TIEDPhoneNumber.setFocusableInTouchMode(false);
         TIEDTypePet.setFocusable(false);
         TIEDTypePet.setFocusableInTouchMode(false);
-        if (bookObj.getObj_status() == 2 || bookObj.getObj_status() == 3 || bookObj.getObj_status() == 4) {
-            btnUpdate.setVisibility(View.INVISIBLE);
-            btnHuy.setVisibility(View.INVISIBLE);
-            spnDoctor.setEnabled(false);
-            spnPet.setEnabled(false);
-            TIEDStatus.setEnabled(false);
-            btnCamera.setEnabled(false);
-            btnAlbum.setEnabled(false);
-            rdogr.setEnabled(false);
-            TIEDTime.setEnabled(false);
-            TIEDAddress.setEnabled(false);
-            TIEDService.setEnabled(false);
-        }
-
         rdogr.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -512,7 +500,7 @@ public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayo
 
     public void showDiaLogSerVice() {
         Dialog dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_chon_dich_vu);
+        dialog.setContentView(R.layout.dialog_choose_service);
         dialog.getWindow().setBackgroundDrawable(getActivity().getDrawable(R.drawable.bg_dialog_dichvu));
         Window window = dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -626,12 +614,11 @@ public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayo
         String user = sharedPreferences.getString("Username", "");
         usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
         int id = usersObj.getId();
-        list = BookDB.getInstance(getActivity()).Dao().getStatus2(3,id);
+        list = BookDB.getInstance(getActivity()).Dao().getStatus2(1,id);
         adapter.setDATA(list);
     }
-
     public void loadDATA2() {
-        list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
+        list2 = BookDB.getInstance(getActivity()).Dao().getStatus(1);
         adapterAdmin.setDATA(list2);
     }
 
@@ -641,16 +628,13 @@ public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayo
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String user = sharedPreferences.getString("Username", "");
         if (user.equalsIgnoreCase("Admin")) {
-            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
+            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(1);
             adapterAdmin.setDATA(list2);
-
-
         } else {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
-            list = BookDB.getInstance(getActivity()).Dao().getStatus2(3, id);
+            list = BookDB.getInstance(getActivity()).Dao().getStatus2(1,id);
             adapter.setDATA(list);
-
 
         }
     }
@@ -660,13 +644,14 @@ public class LichDaXacNhan_Fragment extends Fragment implements SwipeRefreshLayo
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String user = sharedPreferences.getString("Username", "");
         if (user.equalsIgnoreCase("Admin")) {
-            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(3);
+            list2 = BookDB.getInstance(getActivity()).Dao().getStatus(1);
             adapterAdmin.setDATA(list2);
         } else {
             usersObj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(user);
             int id = usersObj.getId();
-            list = BookDB.getInstance(getActivity()).Dao().getStatus2(3, id);
+            list = BookDB.getInstance(getActivity()).Dao().getStatus2(1,id);
             adapter.setDATA(list);
+
         }
         Handler handler  = new Handler();
         handler.postDelayed(new Runnable() {

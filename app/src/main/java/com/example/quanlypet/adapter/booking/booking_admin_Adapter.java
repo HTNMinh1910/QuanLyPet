@@ -19,8 +19,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
@@ -29,7 +27,6 @@ import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.BookObj;
 import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.AddBillActivity;
-import com.example.quanlypet.ui.fragment.BillFragment;
 
 import java.util.List;
 
@@ -56,7 +53,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_booking_admin, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_book_admin, parent, false);
         return new ViewHolder(view);
     }
 
@@ -96,7 +93,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
                @Override
                public boolean onLongClick(View v) {
                    Dialog dialog = new Dialog(mContext);
-                   dialog.setContentView(R.layout.dialog_taohoadon);
+                   dialog.setContentView(R.layout.dialog_create_bill);
                    dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
                    Window window = dialog.getWindow();
                    window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -126,7 +123,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
     }
     public void openDiaLogTaoHoaDon() {
         Dialog dialog = new Dialog(mContext);
-        dialog.setContentView(R.layout.dialog_taohoadon);
+        dialog.setContentView(R.layout.dialog_create_bill);
         dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
         Window window = dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -147,7 +144,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
     }
     public void showDiaLogHuy(BookObj bookObj, int index) {
         Dialog dialog = new Dialog(mContext);
-        dialog.setContentView(R.layout.dialog_xacnhan_hoanthanhbooking);
+        dialog.setContentView(R.layout.dialog_book_confirm_done);
         dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
         Window window = dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);

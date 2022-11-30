@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +14,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.DoctorObj;
-import com.example.quanlypet.ui.activity.DanhSachDoctor;
 import com.example.quanlypet.ui.activity.DoctorInforActivity;
 
 import java.io.ByteArrayOutputStream;

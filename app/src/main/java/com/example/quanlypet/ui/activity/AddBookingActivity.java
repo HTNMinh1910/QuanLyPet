@@ -101,7 +101,6 @@ public class AddBookingActivity extends AppCompatActivity {
     private String noikham;
     private int idDoctor;
     private int idPet;
-    private ImageView imgDate;
 
     List<AnimalObj> listAnimal = new ArrayList<>();
     List<DoctorObj> listDoctor = new ArrayList<>();
@@ -145,7 +144,8 @@ public class AddBookingActivity extends AppCompatActivity {
                 chooseImg.launch(i);
             }
         });
-        imgDate.setOnClickListener(view -> {
+        dismissKeyboardShortcutsHelper();
+        TIEDTime.setOnClickListener(view -> {
             Calendar calendar = Calendar.getInstance();
             mYear = calendar.get(Calendar.YEAR);
             mMonth = calendar.get(Calendar.MONTH);
@@ -319,14 +319,13 @@ public class AddBookingActivity extends AppCompatActivity {
         btnBooking = (Button) findViewById(R.id.btn_booking);
         TIPTime = (TextInputLayout) findViewById(R.id.TIP_Time);
         TIEDTime = (TextInputEditText) findViewById(R.id.TIED_Time);
-        imgDate = (ImageView) findViewById(R.id.img_date);
         TIPTimeHold = (TextInputLayout) findViewById(R.id.TIP_TimeHold);
         TIEDTimeHold = (TextInputEditText) findViewById(R.id.TIED_TimeHold);
     }
 
     public void showDiaLogSerVice() {
         Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog_chon_dich_vu);
+        dialog.setContentView(R.layout.dialog_choose_service);
         dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.bg_dialog_dichvu));
         Window window = dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
