@@ -76,12 +76,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_case_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:hint="case id" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,25 +134,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:startIconTintMode="screen"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_coneradios"
             app:startIconTint="@color/cardview_shadow_end_color"
             app:startIconDrawable="@drawable/delivery">
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_marginTop="10dp"
                 android:hint="price"
                 android:id="@+id/ed_price"
+                android:backgroundTint="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:startIconTintMode="screen"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_coneradios"
             app:startIconTint="@color/cardview_shadow_end_color"
             app:startIconDrawable="@drawable/notes">
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_marginTop="10dp"
                 android:hint="note"
                 android:id="@+id/ed_note"
+                android:backgroundTint="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Tbr.setLogo(R.drawable.home);
         if (username.equals("Admin")) {
             bottomNavigationView.getMenu().findItem(R.id.docter).setVisible(true);
-            bottomNavigationView.getMenu().findItem(R.id.bill).setVisible(true);
+
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

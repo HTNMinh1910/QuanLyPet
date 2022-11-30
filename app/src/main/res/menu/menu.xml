@@ -16,7 +16,7 @@
 
         <item android:id="@+id/bill"
             android:title="bill"
-            android:visible="false"
+
             android:icon="@drawable/bill"/>
 
         <item android:id="@+id/account"

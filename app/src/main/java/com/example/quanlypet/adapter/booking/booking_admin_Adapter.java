@@ -3,6 +3,7 @@ package com.example.quanlypet.adapter.booking;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -94,14 +95,35 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                @Override
                public boolean onLongClick(View v) {
-                   openDiaLogTaoHoaDon();
+                   Dialog dialog = new Dialog(mContext);
+                   dialog.setContentView(R.layout.dialog_taohoadon);
+                   dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
+                   Window window = dialog.getWindow();
+                   window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                   WindowManager.LayoutParams windowAttributes = window.getAttributes();
+                   window.setAttributes(windowAttributes);
+                   windowAttributes.gravity = Gravity.BOTTOM;
+                   CardView CVTaobill;
+                   Button btnTaobill;
+                   Button btnCancel;
+                   CVTaobill = (CardView) dialog.findViewById(R.id.CV_taobill);
+                   btnTaobill = (Button) dialog.findViewById(R.id.btn_taobill);
+                   btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
+                   btnTaobill.setOnClickListener(view -> {
+                       Intent intent = new Intent(mContext, AddBillActivity.class);
+                       SharedPreferences sharedPreferences = mContext.getSharedPreferences("Users_info_id", mContext.MODE_PRIVATE);
+                       SharedPreferences.Editor editor = sharedPreferences.edit();
+                       editor.putInt("userId",obj.getId_user());
+                       editor.commit();
+                       mContext.startActivity(intent);
+                   });
+                   dialog.show();
+
                    return false;
                }
            });
         }
-
     }
-
     public void openDiaLogTaoHoaDon() {
         Dialog dialog = new Dialog(mContext);
         dialog.setContentView(R.layout.dialog_taohoadon);

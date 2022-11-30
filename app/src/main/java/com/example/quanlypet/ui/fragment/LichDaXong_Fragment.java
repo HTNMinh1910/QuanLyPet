@@ -59,11 +59,6 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LichDaXong_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LichDaXong_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private int REQUEST_CAMERA = 111;
     private Bitmap bitmap;
@@ -117,7 +112,6 @@ public class LichDaXong_Fragment extends Fragment implements SwipeRefreshLayout.
 
 
     public LichDaXong_Fragment() {
-        // Required empty public constructor
     }
 
 
@@ -136,7 +130,6 @@ public class LichDaXong_Fragment extends Fragment implements SwipeRefreshLayout.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lich_da_xong_, container, false);
     }
 

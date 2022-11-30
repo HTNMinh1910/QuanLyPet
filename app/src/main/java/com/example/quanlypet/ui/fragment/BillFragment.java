@@ -1,7 +1,9 @@
 package com.example.quanlypet.ui.fragment;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,7 +25,9 @@ import android.widget.Toast;
 import com.example.quanlypet.adapter.bill.BillAdapter;
 import com.example.quanlypet.R;
 import com.example.quanlypet.database.BillDB;
+import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.BillObj;
+import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.AddBillActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -51,13 +55,11 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     private ArrayList<BillObj> arrayList = new ArrayList<>();
     private BillAdapter adapterBill;
     private SimpleDateFormat sdftime = new SimpleDateFormat("HH:mm");
+    private SimpleDateFormat sdfdate = new SimpleDateFormat("HH:mm dd-MM-yyyy");
 
-    private SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy-MM-dd");
     public BillFragment() {
-        // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static BillFragment newInstance() {
         BillFragment fragment = new BillFragment();
         return fragment;
@@ -71,7 +73,6 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bill, container, false);
     }
 
@@ -79,27 +80,51 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rcvBill = (RecyclerView) view.findViewById(R.id.rcv_bill);
-        bbtn = (FloatingActionButton) view.findViewById(R.id.bbtn);
         fill();
         bbtn.setOnClickListener(v -> {
-           startActivity(new Intent(getContext(), AddBillActivity.class));
+            startActivity(new Intent(getContext(), AddBillActivity.class));
         });
     }
 
     public void fill() {
-        arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
-        adapterBill = new BillAdapter(getContext(), this);
-        adapterBill.setData(arrayList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        rcvBill.setLayoutManager(layoutManager);
-        rcvBill.setAdapter(adapterBill);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("Username", "");
+
+        if (username.equals("Admin")) {
+            adapterBill = new BillAdapter(getContext(), this);
+            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
+            adapterBill.setData(arrayList);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+            rcvBill.setLayoutManager(layoutManager);
+            rcvBill.setAdapter(adapterBill);
+        } else {
+            UsersObj userobj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(username);
+            int id = userobj.getId();
+            adapterBill = new BillAdapter(getContext(), this);
+            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBillFromUserName(id);
+            adapterBill.setData(arrayList);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+            rcvBill.setLayoutManager(layoutManager);
+            rcvBill.setAdapter(adapterBill);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
-        adapterBill.setData(arrayList);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("Username", "");
+        if (username.equals("Admin")) {
+            adapterBill = new BillAdapter(getContext(), this);
+            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
+            adapterBill.setData(arrayList);
+        } else {
+            UsersObj userobj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(username);
+            int id = userobj.getId();
+            adapterBill = new BillAdapter(getContext(), this);
+            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBillFromUserName(id);
+            adapterBill.setData(arrayList);
+        }
     }
 
     public void AddBill() {
@@ -111,10 +136,8 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
         dialog.show();
         title = dialog.findViewById(R.id.title);
         edCaseId = dialog.findViewById(R.id.ed_case_id);
-
         edPrice = dialog.findViewById(R.id.ed_price);
         edNote = dialog.findViewById(R.id.ed_note);
-
         edNote.setText("");
         btnAddBill = dialog.findViewById(R.id.btn_Add_bill);
         btnAddBill.setOnClickListener(v -> {
@@ -126,9 +149,7 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
             if (note.isEmpty()) {
                 Toast.makeText(getActivity(), "ban phai nhap het", Toast.LENGTH_SHORT).show();
             } else {
-
                 String time = sdftime.format(new Date());
-
                 String date = sdfdate.format(new Date());
                 BillObj object = new BillObj(caseid, time, date, price, note);
                 BillDB.getInstance(getActivity()).Dao().insertBill(object);
@@ -158,9 +179,9 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
         upPrice = (EditText) dialog.findViewById(R.id.up_price);
         upNote = (EditText) dialog.findViewById(R.id.up_note);
 
-        upCaseId.setText(object.getId_case_file()+"");
+        upCaseId.setText(object.getId_case_file() + "");
         upNote.setText(object.getNote());
-        upPrice.setText(object.getPrice()+"");
+        upPrice.setText(object.getPrice() + "");
 
         btnUpdateBill = (Button) dialog.findViewById(R.id.btn_Update_bill);
         btnUpdateBill.setOnClickListener(v -> {
@@ -171,26 +192,22 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
                 Toast.makeText(getActivity(), "ko dc de trong", Toast.LENGTH_SHORT).show();
             } else {
                 object.setId_case_file(idcaseup);
-//                chkThanhToanUp = (chk.isChecked() == true) ? "Đã trả" : "Chưa trả";
-//                object.setStatus_obj(chkThanhToanUp);
                 String time = sdftime.format(new Date());
                 String date = sdfdate.format(new Date());
                 object.setTime(time);
                 object.setDate(date);
                 object.setPrice(priceup);
                 object.setNote(noteup);
-//                object.setStatus_obj(status);
                 BillDB.getInstance(getActivity()).Dao().editBill(object);
                 arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
                 adapterBill.setData(arrayList);
                 Toast.makeText(getActivity(), "sua thanh cong", Toast.LENGTH_SHORT).show();
-                dialog.cancel();
+                dialog.dismiss();
             }
-
         });
         btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
         btnCancel.setOnClickListener(v -> {
-            dialog.dismiss();
+            dialog.cancel();
         });
     }
 }

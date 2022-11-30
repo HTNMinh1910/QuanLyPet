@@ -26,6 +26,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
                 app:startIconTintMode="screen"
                 app:startIconTint="@color/cardview_shadow_end_color"
                 app:startIconDrawable="@drawable/doctor_name"
@@ -35,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Tên Bác Sĩ"
                     android:id="@+id/ed_nameDocter"
+                    android:backgroundTint="@color/white"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -77,6 +83,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
                 app:startIconTintMode="screen"
                 app:startIconTint="@color/cardview_shadow_end_color"
                 app:startIconDrawable="@drawable/phone"
@@ -85,6 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Số điện thoại"
+                    android:backgroundTint="@color/white"
                     android:id="@+id/ed_phoneDocter"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,6 +132,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
                 app:startIconTintMode="screen"
                 app:startIconTint="@color/cardview_shadow_end_color"
                 app:startIconDrawable="@drawable/email"
@@ -128,6 +145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
+                    android:backgroundTint="@color/white"
                     android:id="@+id/ed_emailDocter"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -135,6 +153,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
                 app:startIconTintMode="screen"
                 app:startIconTint="@color/cardview_shadow_end_color"
                 app:startIconDrawable="@drawable/location"
@@ -143,6 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Địa chỉ"
+                    android:backgroundTint="@color/white"
                     android:id="@+id/ed_addressDocter"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -150,6 +174,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
                 app:startIconTintMode="screen"
                 app:startIconTint="@color/cardview_shadow_end_color"
                 app:startIconDrawable="@drawable/specialized"
@@ -158,6 +187,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Chuyên Ngành"
+                    android:backgroundTint="@color/white"
                     android:id="@+id/ed_specializeDocter"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -173,6 +203,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/button"
                     android:backgroundTint="#E11515"
+                    android:textAllCaps="false"
                     android:text="Thêm"/>
 
             </LinearLayout>

@@ -25,11 +25,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
         app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID Docter"
+            android:backgroundTint="@color/white"
             android:id="@+id/ed_idDocter"
             android:textColorHint="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -37,11 +43,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
         app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID Animal"
+            android:backgroundTint="@color/white"
             android:id="@+id/ed_idAnimal"
             android:textColorHint="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -50,6 +62,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
         app:startIconTintMode="screen"
         app:startIconTint="@color/cardview_shadow_end_color"
         app:startIconDrawable="@drawable/schedule"
@@ -58,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date Create"
+            android:backgroundTint="@color/white"
             android:id="@+id/ed_dateCreate"
             android:textColorHint="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -65,6 +83,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
         app:startIconTintMode="screen"
         app:startIconTint="@color/cardview_shadow_end_color"
         app:startIconDrawable="@drawable/schedule"
@@ -73,6 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date Update"
+            android:backgroundTint="@color/white"
             android:id="@+id/ed_dateUpdate"
             android:textColorHint="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>

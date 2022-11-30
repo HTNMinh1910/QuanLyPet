@@ -16,6 +16,10 @@ public interface BillDao {
     @Query("SELECT * FROM Bill")
     List<BillObj> getAllDataBill();
 
+    @Query("SELECT * FROM Bill where id_case_file =:id")
+    List<BillObj> getAllDataBillFromUserName(int id);
+
+
     @Update
     void editBill(BillObj object);
 

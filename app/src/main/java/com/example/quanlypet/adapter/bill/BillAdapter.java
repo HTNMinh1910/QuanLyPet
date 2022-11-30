@@ -1,6 +1,7 @@
 package com.example.quanlypet.adapter.bill;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,6 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
     private Context context;
     private Callback callback;
     private ArrayList<BillObj> arrayList;
-
     public BillAdapter(Context context, Callback callback) {
         this.context = context;
         this.callback = callback;
@@ -43,8 +43,6 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
         BillObj object = arrayList.get(position);
         if (object == null)
             return;
-//        if (object.getStatus_obj()==1){
-        holder.idCaseFile.setText(object.getId_case_file()+"");
         holder.tvDatetime.setText(object.getTime());
         holder.tvDate.setText(object.getDate());
         holder.tvPriceBill.setText(object.getPrice()+"");
@@ -52,7 +50,6 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
         holder.idItemBill.setOnClickListener(v -> {
             callback.Update(object);
         });
-//            }
     }
 
     @Override

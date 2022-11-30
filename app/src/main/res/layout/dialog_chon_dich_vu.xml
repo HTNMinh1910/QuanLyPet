@@ -41,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
+                android:textAllCaps="false"
                 android:text="Khám và Chữa"
                 android:textColor="#0E75C6" />
 
@@ -60,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
+                android:textAllCaps="false"
                 android:text="Kiểm tra sức Khỏe"
                 android:textColor="#0E75C6" />
         </LinearLayout>
@@ -78,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
+                android:textAllCaps="false"
                 android:text="Tiêm Phòng"
                 android:textColor="#0E75C6" />
 
@@ -98,6 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
+                android:textAllCaps="false"
                 android:text="Phẫu Thuật"
                 android:textColor="#0E75C6" />
         </LinearLayout>
@@ -116,6 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
+                android:textAllCaps="false"
                 android:text="Siêu âm"
                 android:textColor="#0E75C6" />
         </LinearLayout>
@@ -133,6 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
+                android:textAllCaps="false"
                 android:text="Spa - Cắt và tỉa"
                 android:textColor="#0E75C6" />
 
