@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,6 +114,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] ByteArray = byteArrayOutputStream.toByteArray();
             Intent intent = new Intent(context, DoctorInforActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("name",docterObj.getName());
                 intent.putExtra("phone",docterObj.getPhone());
                 intent.putExtra("address",docterObj.getAddress());

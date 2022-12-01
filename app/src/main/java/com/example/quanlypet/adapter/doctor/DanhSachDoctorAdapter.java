@@ -1,5 +1,8 @@
 package com.example.quanlypet.adapter.doctor;
 
+import static com.example.quanlypet.R.drawable.bg_dialog_call;
+import static com.example.quanlypet.R.drawable.doctor;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
+import com.example.quanlypet.model.DSDoctorObj;
 import com.example.quanlypet.model.DoctorObj;
 import com.example.quanlypet.ui.activity.DanhSachDoctor;
 import com.example.quanlypet.ui.activity.DoctorInforActivity;
@@ -32,85 +36,52 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class DanhSachDoctorAdapter extends RecyclerView.Adapter<DanhSachDoctorAdapter.DocterViewHolder> implements Filterable {
+public class DanhSachDoctorAdapter extends RecyclerView.Adapter<DanhSachDoctorAdapter.DSDocterViewHolder> {
     private Context context;
-    private ArrayList<DoctorObj> list;
-    private ArrayList<DoctorObj> listDotor;
+    private ArrayList<DSDoctorObj> listDS;
 
-    public void setDataDanhSach(ArrayList<DoctorObj> list){
-        this.list=list;
-        notifyDataSetChanged();
-    }
 
     public DanhSachDoctorAdapter(Context context) {
         this.context = context;
     }
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                String search = constraint.toString();
-                if (search.isEmpty()){
-                    list = listDotor;
-                }else{
-                    ArrayList<DoctorObj> listdt = new ArrayList<>();
-                    for (DoctorObj object: listDotor){
-                        if (object.getName().toLowerCase().contains(search.toLowerCase())||
-                                object.getEmail().toLowerCase().contains(search.toLowerCase())||
-                                object.getPhone().toLowerCase().contains(search.toLowerCase())||
-                                object.getSpecialize().toLowerCase().contains(search.toLowerCase())){
-                            listdt.add(object);
-                        }
-                    }
-                    list = listdt;
-                }
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = list;
-                return filterResults;
-            }
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                list = (ArrayList<DoctorObj>) results.values;
-                notifyDataSetChanged();
-            }
-        };
+
+    public void  setDataDS(ArrayList<DSDoctorObj> listDS) {
+        this.listDS=listDS;
+        notifyDataSetChanged();
     }
     @NonNull
     @Override
-    public DocterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DSDocterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_danhsachdocter,parent,false);
-        return new DanhSachDoctorAdapter.DocterViewHolder(view);
+        return new DSDocterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DocterViewHolder holder, int position) {
-        DoctorObj docterObj = list.get(position);
-        if(docterObj==null)
+    public void onBindViewHolder(@NonNull DSDocterViewHolder holder, int position) {
+        DSDoctorObj dsDoctorObj = listDS.get(position);
+        if(dsDoctorObj==null) {
             return;
-        holder.tvName.setText(docterObj.getName());
-        byte[] hinhanh = docterObj.getImg();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
-        holder.imgDoctor.setImageBitmap(bitmap);
+        }
+        holder.tvName.setText(dsDoctorObj.getName());
+        holder.imgDoctor.setTag(dsDoctorObj.getImg());
+
         holder.idRelativeLayout.setOnClickListener(v->{
             Dialog dialog = new Dialog(v.getContext());
             dialog.setContentView(R.layout.dialog_callphone);
-//        dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.bg_dialog_call));
-
             Button btnCall = (Button) dialog.findViewById(R.id.btn_call);
             Button btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
 
             Window window = dialog.getWindow();
+            dialog.getWindow().setBackgroundDrawableResource(bg_dialog_call);
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
             WindowManager.LayoutParams windowAttributes = window.getAttributes();
             window.setAttributes(windowAttributes);
             windowAttributes.gravity = Gravity.BOTTOM;
-            String phone1 = "0999999999";
-            btnCall.setText(phone1);
+            btnCall.setText(dsDoctorObj.getPhone());
             btnCall.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent sharingIntent = new Intent(Intent.ACTION_CALL,Uri.parse("tel: "+phone1));
+                    Intent sharingIntent = new Intent(Intent.ACTION_CALL,Uri.parse("tel: "+dsDoctorObj.getPhone()));
                     sharingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity( sharingIntent);
                 }
@@ -127,10 +98,10 @@ public class DanhSachDoctorAdapter extends RecyclerView.Adapter<DanhSachDoctorAd
 
     @Override
     public int getItemCount() {
-        return list==null?0:list.size();
+        return listDS==null?0:listDS.size();
     }
 
-    public class DocterViewHolder extends RecyclerView.ViewHolder {
+    public class DSDocterViewHolder extends RecyclerView.ViewHolder {
 
         private CircleImageView imgDoctor;
         private TextView tvName;
@@ -138,7 +109,7 @@ public class DanhSachDoctorAdapter extends RecyclerView.Adapter<DanhSachDoctorAd
         private RelativeLayout idRelativeLayout;
 
 
-        public DocterViewHolder(@NonNull View itemView) {
+        public DSDocterViewHolder(@NonNull View itemView) {
             super(itemView);
             idRelativeLayout = (RelativeLayout) itemView.findViewById(R.id.id_relativeLayout);
 
