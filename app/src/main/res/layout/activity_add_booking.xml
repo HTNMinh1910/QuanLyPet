@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/bg_tabarlayout">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbl_booking"
@@ -19,10 +20,10 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="@drawable/bg_tabarlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:background="#FFFFFF"
             android:orientation="vertical">
 
             <Spinner

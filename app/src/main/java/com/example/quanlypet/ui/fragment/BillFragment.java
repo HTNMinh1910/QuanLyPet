@@ -84,23 +84,23 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     }
 
     public void fill() {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("Username", "");
 
         if (username.equals("Admin")) {
             adapterBill = new BillAdapter(getContext(), this);
-            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
+            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getAllData();
             adapterBill.setData(arrayList);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
             rcvBill.setLayoutManager(layoutManager);
             rcvBill.setAdapter(adapterBill);
         } else {
-            UsersObj userobj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(username);
+            UsersObj userobj = UsersDB.getInstance(getContext()).Dao().getIdUsers(username);
             int id = userobj.getId();
             adapterBill = new BillAdapter(getContext(), this);
-            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBillFromUserName(id);
+            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getbyUsers(id);
             adapterBill.setData(arrayList);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
             rcvBill.setLayoutManager(layoutManager);
             rcvBill.setAdapter(adapterBill);
         }
@@ -109,17 +109,17 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("Username", "");
         if (username.equals("Admin")) {
             adapterBill = new BillAdapter(getContext(), this);
-            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
+            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getAllData();
             adapterBill.setData(arrayList);
         } else {
-            UsersObj userobj = UsersDB.getInstance(getActivity()).Dao().getIdUsers(username);
+            UsersObj userobj = UsersDB.getInstance(getContext()).Dao().getIdUsers(username);
             int id = userobj.getId();
             adapterBill = new BillAdapter(getContext(), this);
-            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBillFromUserName(id);
+            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getbyUsers(id);
             adapterBill.setData(arrayList);
         }
     }
@@ -144,13 +144,13 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
             double price = Double.parseDouble(edPrice.getText().toString().trim());
             String note = edNote.getText().toString().trim();
             if (note.isEmpty()) {
-                Toast.makeText(getActivity(), "ban phai nhap het", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "ban phai nhap het", Toast.LENGTH_SHORT).show();
             } else {
                 String time = sdftime.format(new Date());
                 String date = sdfdate.format(new Date());
                 BillObj object = new BillObj(caseid, time, date, price, note);
-                BillDB.getInstance(getActivity()).Dao().insertBill(object);
-                Toast.makeText(getActivity(), "them thanh cong", Toast.LENGTH_SHORT).show();
+                BillDB.getInstance(getContext()).Dao().insertBill(object);
+                Toast.makeText(getContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
                 fill();
             }
             dialog.cancel();
@@ -195,8 +195,8 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
                 object.setDate(date);
                 object.setPrice(priceup);
                 object.setNote(noteup);
-                BillDB.getInstance(getActivity()).Dao().editBill(object);
-                arrayList = (ArrayList<BillObj>) BillDB.getInstance(getActivity()).Dao().getAllDataBill();
+                BillDB.getInstance(getContext()).Dao().editBill(object);
+                arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getAllData();
                 adapterBill.setData(arrayList);
                 Toast.makeText(getActivity(), "sua thanh cong", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();

@@ -20,6 +20,6 @@
         </padding>
 
         <corners
-            android:bottomLeftRadius="100dp"
-            android:bottomRightRadius="100dp"/>
+            android:bottomLeftRadius="50dp"
+            android:bottomRightRadius="50dp"/>
     </shape>

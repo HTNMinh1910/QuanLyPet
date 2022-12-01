@@ -14,7 +14,7 @@
             app:menu="@menu/menu_huy_docter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#C14A79" />
+            android:background="#FFAB00" />
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.appcompat.widget.SearchView
         android:layout_margin="15dp"

@@ -6,7 +6,7 @@
             android:icon="@drawable/home"/>
 
         <item android:id="@+id/docter"
-            android:title="Bác sĩ"
+            android:title="Bác Sĩ"
             android:icon="@drawable/doctor"
             android:visible="true" />
 
@@ -15,12 +15,12 @@
             android:icon="@drawable/booking"/>
 
         <item android:id="@+id/bill"
-            android:title="bill"
+            android:title="Hóa Đơn"
 
             android:icon="@drawable/bill"/>
 
         <item android:id="@+id/account"
-            android:title="Tài khoản"
+            android:title="Tài Khoản"
             android:icon="@drawable/users"/>
     </group>
 </menu>

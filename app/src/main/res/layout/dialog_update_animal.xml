@@ -38,7 +38,6 @@
         android:id="@+id/up_liner_share_animal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_coneradios"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
         <de.hdodenhof.circleimageview.CircleImageView

@@ -12,7 +12,7 @@
             android:id="@+id/id_tollBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#03A9F4" />
+            android:background="#FFAB00" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager2.widget.ViewPager2

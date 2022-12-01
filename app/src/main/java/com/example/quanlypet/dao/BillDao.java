@@ -14,11 +14,10 @@ public interface BillDao {
     void insertBill(BillObj object);
 
     @Query("SELECT * FROM Bill")
-    List<BillObj> getAllDataBill();
+    List<BillObj> getAllData();
 
-    @Query("SELECT * FROM Bill where id_case_file =:id")
-    List<BillObj> getAllDataBillFromUserName(int id);
-
+    @Query("SELECT * FROM Bill where id_users =:id")
+    List<BillObj> getbyUsers(int id);
 
     @Update
     void editBill(BillObj object);

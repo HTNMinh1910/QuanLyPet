@@ -40,9 +40,7 @@ public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         UsersObj obj = list.get(position);
-        holder.tvImportnameUsers.setText(obj.getImport_name());
         holder.tvFullnameUsers.setText(obj.getFull_name());
-        holder.tvEmailUsers.setText(obj.getEmail());
         holder.tvPhoneUsers.setText(obj.getPhone());
         holder.cardViewItem.setOnLongClickListener(view -> {
             Intent intent = new Intent(mContext, DetailUsersActivity.class);
@@ -58,17 +56,13 @@ public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvImportnameUsers;
         private TextView tvFullnameUsers;
-        private TextView tvEmailUsers;
         private TextView tvPhoneUsers;
         private CardView cardViewItem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvImportnameUsers = (TextView) itemView.findViewById(R.id.tv_importnameUsers);
             tvFullnameUsers = (TextView) itemView.findViewById(R.id.tv_fullnameUsers);
-            tvEmailUsers = (TextView) itemView.findViewById(R.id.tv_emailUsers);
             tvPhoneUsers = (TextView) itemView.findViewById(R.id.tv_phoneUsers);
             cardViewItem = (CardView) itemView.findViewById(R.id.card_view_item);
 

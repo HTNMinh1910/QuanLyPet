@@ -1,6 +1,7 @@
 package com.example.quanlypet.adapter.bill;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,11 +48,8 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
             return;
         UsersObj usersObj = UsersDB.getInstance(context).Dao().getID(object.getId_users());
         holder.tvNameUsers.setText(usersObj.getFull_name());
-        holder.tvPhoneUsers.setText(usersObj.getPhone());
-        holder.tvDatetime.setText(object.getTime());
         holder.tvDate.setText(object.getDate());
         holder.tvPriceBill.setText(object.getPrice()+"");
-        holder.tvNote.setText(object.getNote());
         holder.idItemBill.setOnClickListener(v -> {
             callback.Update(object);
         });
@@ -63,29 +61,18 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
     }
 
     public class BillViewHolder extends RecyclerView.ViewHolder {
-        private RelativeLayout relyBill;
-        private TextView idCaseFile;
-        private TextView tvDatetime;
         private TextView tvPriceBill;
-        private ImageView imgUpdate;
-        private TextView tvNote;
-        private TextView tvStatus;
         private TextView tvDate;
         private CardView idItemBill;
         private TextView tvNameUsers;
-        private TextView tvPhoneUsers;
 
         public BillViewHolder(@NonNull View itemView) {
             super(itemView);
-            relyBill = (RelativeLayout) itemView.findViewById(R.id.rely_bill);
+
+            idItemBill = (CardView) itemView.findViewById(R.id.id_item_bill);
             tvNameUsers = (TextView) itemView.findViewById(R.id.tv_nameUsers);
-            tvPhoneUsers = (TextView) itemView.findViewById(R.id.tv_phoneUsers);
-            tvDatetime = (TextView) itemView.findViewById(R.id.tv_time);
             tvDate = (TextView) itemView.findViewById(R.id.tv_date);
             tvPriceBill = (TextView) itemView.findViewById(R.id.tv_priceBill);
-            tvNote = (TextView) itemView.findViewById(R.id.tv_note);
-            idItemBill = (CardView) itemView.findViewById(R.id.id_item_bill);
-
         }
     }
     public interface Callback{

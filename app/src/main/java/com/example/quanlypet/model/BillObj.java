@@ -14,7 +14,7 @@ public class BillObj {
     private double price;
     private String note;
 
-    public BillObj(int id_users, String time, String date, double price, String note ) {
+    public BillObj(int id_users, String time, String date, double price, String note) {
         this.id_users = id_users;
         this.time = time;
         this.date = date;

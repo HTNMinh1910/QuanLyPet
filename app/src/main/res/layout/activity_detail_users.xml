@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bg_tabarlayout">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,7 +13,7 @@
             android:id="@+id/id_tollBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#03A9F4" />
+            android:background="#FFAB00" />
     </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#DDDCDC"
+            android:backgroundTint="#F6F3F3"
             android:orientation="horizontal"
             app:cardCornerRadius="5dp"
             android:layout_marginTop="15dp">
@@ -55,7 +56,7 @@
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#DDDCDC"
+            android:backgroundTint="#F6F3F3"
             app:cardCornerRadius="5dp"
             android:orientation="horizontal"
             android:layout_marginTop="15dp">
@@ -82,7 +83,7 @@
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#DDDCDC"
+            android:backgroundTint="#F6F3F3"
             app:cardCornerRadius="5dp"
             android:layout_marginTop="15dp"
             android:orientation="horizontal">
@@ -109,7 +110,7 @@
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#DDDCDC"
+            android:backgroundTint="#F6F3F3"
             app:cardCornerRadius="5dp"
             android:layout_marginTop="15dp"
             android:orientation="horizontal">
@@ -136,7 +137,7 @@
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#DDDCDC"
+            android:backgroundTint="#F6F3F3"
             app:cardCornerRadius="5dp"
             android:layout_marginTop="15dp"
             android:orientation="horizontal">

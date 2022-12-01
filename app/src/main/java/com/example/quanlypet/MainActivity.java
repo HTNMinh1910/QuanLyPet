@@ -59,28 +59,28 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.docter:
                         viewPager2.setCurrentItem(1);
-                        Tbr.setTitle("Doctor");
+                        Tbr.setTitle("Bác Sĩ");
                         Tbr.setTitleTextColor(Color.WHITE);
                         Tbr.setNavigationIcon(R.drawable.doctor_item);
                         viewPager2.setPageTransformer(new DepthPageTransformer());
                         break;
                     case R.id.book:
                         viewPager2.setCurrentItem(2);
-                        Tbr.setTitle("Book");
+                        Tbr.setTitle("Đặt Lịch");
                         Tbr.setTitleTextColor(Color.WHITE);
                         Tbr.setNavigationIcon(R.drawable.booking_item);
                         viewPager2.setPageTransformer(new DepthPageTransformer());
                         break;
                     case R.id.bill:
                         viewPager2.setCurrentItem(3);
-                        Tbr.setTitle("Bill");
+                        Tbr.setTitle("Hóa Đơn");
                         Tbr.setTitleTextColor(Color.WHITE);
                         Tbr.setNavigationIcon(R.drawable.bill_item);
                         viewPager2.setPageTransformer(new DepthPageTransformer());
                         break;
                     case R.id.account:
                         viewPager2.setCurrentItem(4);
-                        Tbr.setTitle("Account");
+                        Tbr.setTitle("Tài Khoản");
                         Tbr.setTitleTextColor(Color.WHITE);
                         Tbr.setNavigationIcon(R.drawable.account_item);
                         viewPager2.setPageTransformer(new DepthPageTransformer());

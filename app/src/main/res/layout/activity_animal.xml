@@ -14,7 +14,7 @@
             android:id="@+id/id_tollBarAnimal"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#03A9F4"
+            android:background="#FFAB00"
             app:menu="@menu/meu_add_animal"/>
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.recyclerview.widget.RecyclerView
