@@ -8,18 +8,27 @@ public class BillObj {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int id_case_file;
+    private int id_users;
     private String time;
     private String date;
     private double price;
     private String note;
 
-    public BillObj(int id_case_file, String time, String date, double price, String note ) {
-        this.id_case_file = id_case_file;
+    public BillObj(int id_users, String time, String date, double price, String note ) {
+        this.id_users = id_users;
         this.time = time;
         this.date = date;
         this.price = price;
         this.note = note;
 
+    }
+
+    public int getId_users() {
+        return id_users;
+    }
+
+    public void setId_users(int id_users) {
+        this.id_users = id_users;
     }
 
     public String getDate() {

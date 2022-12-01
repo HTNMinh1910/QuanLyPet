@@ -14,7 +14,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
+import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.BillObj;
+import com.example.quanlypet.model.UsersObj;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,9 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
         BillObj object = arrayList.get(position);
         if (object == null)
             return;
+        UsersObj usersObj = UsersDB.getInstance(context).Dao().getID(object.getId_users());
+        holder.tvNameUsers.setText(usersObj.getFull_name());
+        holder.tvPhoneUsers.setText(usersObj.getPhone());
         holder.tvDatetime.setText(object.getTime());
         holder.tvDate.setText(object.getDate());
         holder.tvPriceBill.setText(object.getPrice()+"");
@@ -67,11 +72,14 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
         private TextView tvStatus;
         private TextView tvDate;
         private CardView idItemBill;
+        private TextView tvNameUsers;
+        private TextView tvPhoneUsers;
 
         public BillViewHolder(@NonNull View itemView) {
             super(itemView);
             relyBill = (RelativeLayout) itemView.findViewById(R.id.rely_bill);
-            idCaseFile = (TextView) itemView.findViewById(R.id.tv_case_id);
+            tvNameUsers = (TextView) itemView.findViewById(R.id.tv_nameUsers);
+            tvPhoneUsers = (TextView) itemView.findViewById(R.id.tv_phoneUsers);
             tvDatetime = (TextView) itemView.findViewById(R.id.tv_time);
             tvDate = (TextView) itemView.findViewById(R.id.tv_date);
             tvPriceBill = (TextView) itemView.findViewById(R.id.tv_priceBill);
