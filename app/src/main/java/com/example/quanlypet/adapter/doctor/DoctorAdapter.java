@@ -109,6 +109,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] ByteArray = byteArrayOutputStream.toByteArray();
             Intent intent = new Intent(context, DoctorInforActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("name",docterObj.getName());
                 intent.putExtra("phone",docterObj.getPhone());
                 intent.putExtra("address",docterObj.getAddress());
