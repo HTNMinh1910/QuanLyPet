@@ -81,7 +81,6 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         rcvAnimal.setLayoutManager(layoutManager);
         rcvAnimal.setAdapter(adapterAnimal);
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
