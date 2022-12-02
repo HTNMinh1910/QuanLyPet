@@ -45,7 +45,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.example.quanlypet.ui.activity.MapsActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -101,7 +101,6 @@ public class HomeFragment extends Fragment {
         linerAmbulance = view.findViewById(R.id.liner_ambulance);
         linerMess = view.findViewById(R.id.liner_mess);
         titleNear = view.findViewById(R.id.titleNear);
-        imgMap = view.findViewById(R.id.img_map);
         list = new ArrayList<>();
         id_recyNear = view.findViewById(R.id.recy_bookingNear);
         adapter = new bookingAdapter(new bookingAdapter.Callback() {
@@ -137,6 +136,11 @@ public class HomeFragment extends Fragment {
             id_recyNear.setAdapter(adapter);
             id_recyNear.setLayoutManager(linearLayoutManager);
         }
+        if (user.equals("Admin")){
+            linerBooking.setVisibility(View.GONE);
+            linerAmbulance.setVisibility(View.GONE);
+            linerMess.setVisibility(View.GONE);
+        }
         linerBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,9 +155,6 @@ public class HomeFragment extends Fragment {
         linerAmbulance.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), ListDoctorActivity.class));
         });
-        imgMap.setOnClickListener(view1 -> {
-            startActivity(new Intent(getActivity(), MapsActivity.class));
-        });
         vpr = (ViewPager) view.findViewById(R.id.vpr);
         circleIndicator = (CircleIndicator) view.findViewById(R.id.circle_indicator);
         barChart = (BarChart) view.findViewById(R.id.barChart);
@@ -165,18 +166,18 @@ public class HomeFragment extends Fragment {
         autoSlide();
         ArrayList<BarEntry> visitor = new ArrayList<>();
 
-        visitor.add(new BarEntry(1,110));
-        visitor.add(new BarEntry(2,320));
-        visitor.add(new BarEntry(3,100));
+        visitor.add(new BarEntry(1,30));
+        visitor.add(new BarEntry(2,52));
+        visitor.add(new BarEntry(3,50));
         visitor.add(new BarEntry(4,70));
-        visitor.add(new BarEntry(5,200));
-        visitor.add(new BarEntry(6,140));
-        visitor.add(new BarEntry(7,190));
-        visitor.add(new BarEntry(8,400));
-        visitor.add(new BarEntry(9,350));
-        visitor.add(new BarEntry(10,450));
-        visitor.add(new BarEntry(11,200));
-        visitor.add(new BarEntry(12,170));
+        visitor.add(new BarEntry(5,60));
+        visitor.add(new BarEntry(6,40));
+        visitor.add(new BarEntry(7,90));
+        visitor.add(new BarEntry(8,80));
+        visitor.add(new BarEntry(9,50));
+        visitor.add(new BarEntry(10,40));
+        visitor.add(new BarEntry(11,20));
+        visitor.add(new BarEntry(12,70));
 
         BarDataSet barDataSet = new BarDataSet(visitor,"Thống kê doanh thu theo tháng");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
@@ -185,8 +186,8 @@ public class HomeFragment extends Fragment {
         BarData barData = new BarData( barDataSet);
         barChart.setFitBars(true);
         barChart.setData(barData);
-        barChart.getDescription().setText("Thống kê doanh thu theo tháng");
-        barChart.getDescription().setTextSize(20f);
+        barChart.getDescription().setText("");
+        barChart.getDescription().setTextSize(10f);
         barChart.animateY(2000);
 
         XAxis xAxis = barChart.getXAxis();

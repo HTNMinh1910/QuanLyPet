@@ -2,7 +2,9 @@ package com.example.quanlypet.ui.fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -100,6 +102,11 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
                 return false;
             }
         });
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        String user = sharedPreferences.getString("Username", "");
+        if (user.equals("Admin")){
+            floatingActionButton.setVisibility(View.VISIBLE);
+        }
     }
     @Override
     public void onResume() {
