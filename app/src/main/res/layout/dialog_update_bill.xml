@@ -1,62 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
     <TextView
         android:id="@+id/title"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:text="Update Bill"
+        android:text=" Bill"
         android:gravity="center"
-        android:background="#C1A5F1"
+        android:background="#03A9F4"
         android:layout_width="match_parent"
         android:layout_height="40dp"/>
 
-    <EditText
-        android:id="@+id/up_case_id"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_coneradios"
-        android:hint="case id" />
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/biorhyme_bold"
+                android:text="Nane users: "
+                android:layout_marginLeft="12dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tv_naneUsers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bioehyme_eegular"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:text=""
+                android:textColor="#696969"
+                android:textSize="16sp" />
 
-    <EditText
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/biorhyme_bold"
+                android:text="Users phone: "
+                android:layout_marginLeft="12dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tv_sdtUsers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bioehyme_eegular"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:text=""
+                android:textColor="#696969"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
+                android:fontFamily="@font/biorhyme_bold"
+                android:text="Time: "
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bioehyme_eegular"
+                android:text=""
+                android:textColor="#696969"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
+                android:fontFamily="@font/biorhyme_bold"
+                android:text="Date: "
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bioehyme_eegular"
+                android:text=""
+                android:textColor="#696969"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_marginTop="10dp"
         android:hint="price"
+        android:layout_marginLeft="10dp"
         android:id="@+id/up_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_coneradios"/>
-    <EditText
-        android:layout_marginTop="10dp"
-        android:hint="note"
-        android:id="@+id/up_note"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_coneradios" />
-
+        android:padding="10dp"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_marginTop="20dp"
+            android:hint="note"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/up_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_margin="10dp">
-        <Button
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_Update_bill"
-            android:text="Update"
-            android:backgroundTint="#ccc"
-            android:textColor="@color/black"
-            android:layout_marginRight="10dp"/>
+            android:id="@+id/line_upBill">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_Update_bill"
+                android:text="Update"
+                android:backgroundTint="#ccc"
+                android:textColor="@color/black"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button"/>
+        </LinearLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_cancel"
             android:text="cancel"
             android:backgroundTint="#ccc"
+            android:background="@drawable/button"
             android:textColor="@color/black"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>

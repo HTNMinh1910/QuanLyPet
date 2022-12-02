@@ -19,6 +19,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,11 +41,16 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     private EditText upCaseId;
     private EditText upPrice;
     private EditText upNote;
+    private LinearLayout lineUpBill;
     private CheckBox chkThanhToanUp;
+    private TextView tvNaneUsers;
+    private TextView tvSdtUsers;
+    private TextView tvTime;
+    private TextView tvDate;
     private Button btnUpdateBill;
     private TextView title;
     private EditText edCaseId;
-
+    private String users;
     private EditText edPrice;
     private EditText edNote;
     private int chkThanhToan;
@@ -80,13 +86,12 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rcvBill = (RecyclerView) view.findViewById(R.id.rcv_bill);
+
         fill();
     }
-
     public void fill() {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("Username", "");
-
         if (username.equals("Admin")) {
             adapterBill = new BillAdapter(getContext(), this);
             arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getAllData();
@@ -124,71 +129,46 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
         }
     }
 
-    public void AddBill() {
-        Dialog dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_add_bill);
-        dialog.setCancelable(false);
-        Window window = dialog.getWindow();
-        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
-        dialog.show();
-        title = dialog.findViewById(R.id.title);
-        edCaseId = dialog.findViewById(R.id.ed_case_id);
-        edPrice = dialog.findViewById(R.id.ed_price);
-        edNote = dialog.findViewById(R.id.ed_note);
-        edNote.setText("");
-        btnAddBill = dialog.findViewById(R.id.btn_Add_bill);
-        btnAddBill.setOnClickListener(v -> {
-            int caseid = Integer.parseInt(edCaseId.getText().toString().trim());
-
-
-            double price = Double.parseDouble(edPrice.getText().toString().trim());
-            String note = edNote.getText().toString().trim();
-            if (note.isEmpty()) {
-                Toast.makeText(getContext(), "ban phai nhap het", Toast.LENGTH_SHORT).show();
-            } else {
-                String time = sdftime.format(new Date());
-                String date = sdfdate.format(new Date());
-                BillObj object = new BillObj(caseid, time, date, price, note);
-                BillDB.getInstance(getContext()).Dao().insertBill(object);
-                Toast.makeText(getContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
-                fill();
-            }
-            dialog.cancel();
-        });
-        btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
-        btnCancel.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-    }
-
     @Override
     public void Update(BillObj object) {
         final Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.dialog_update_bill);
         dialog.setCancelable(false);
         Window window = dialog.getWindow();
-        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.MATCH_PARENT);
         dialog.show();
         Calendar thoigian = Calendar.getInstance();
         Calendar lich = Calendar.getInstance();
+
         title = (TextView) dialog.findViewById(R.id.title);
-        upCaseId = (EditText) dialog.findViewById(R.id.up_case_id);
+        tvNaneUsers = (TextView) dialog.findViewById(R.id.tv_naneUsers);
+        tvSdtUsers = (TextView)  dialog.findViewById(R.id.tv_sdtUsers);
+        tvTime = (TextView)  dialog.findViewById(R.id.tv_time);
+        tvDate = (TextView)  dialog.findViewById(R.id.tv_date);
         upPrice = (EditText) dialog.findViewById(R.id.up_price);
         upNote = (EditText) dialog.findViewById(R.id.up_note);
-
-        upCaseId.setText(object.getId_case_file() + "");
+        lineUpBill = (LinearLayout) dialog.findViewById(R.id.line_upBill);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        users = sharedPreferences.getString("Username", "");
+        if (!users.equals("Admin")){
+            lineUpBill.setVisibility(View.GONE);
+        }
         upNote.setText(object.getNote());
         upPrice.setText(object.getPrice() + "");
-
         btnUpdateBill = (Button) dialog.findViewById(R.id.btn_Update_bill);
+        SharedPreferences sharedPreferences1 = requireActivity().getSharedPreferences("Users_info_id", Context.MODE_PRIVATE);
+        int userid = sharedPreferences1.getInt("userId", 0);
+        tvDate.setText(sdfdate.format(new Date()));
+        tvTime.setText(sdftime.format(new Date()));
+        UsersObj usersObj = UsersDB.getInstance(getActivity()).Dao().getID(userid);
+        tvNaneUsers.setText(usersObj.getFull_name());
+        tvSdtUsers.setText(usersObj.getPhone());
         btnUpdateBill.setOnClickListener(v -> {
-            int idcaseup = Integer.parseInt(upCaseId.getText().toString().trim());
             double priceup = Double.parseDouble(upPrice.getText().toString().trim());
             String noteup = upNote.getText().toString().trim();
             if (noteup.isEmpty()) {
                 Toast.makeText(getActivity(), "ko dc de trong", Toast.LENGTH_SHORT).show();
             } else {
-                object.setId_case_file(idcaseup);
                 String time = sdftime.format(new Date());
                 String date = sdfdate.format(new Date());
                 object.setTime(time);

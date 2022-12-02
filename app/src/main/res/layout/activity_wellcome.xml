@@ -14,7 +14,7 @@
                 android:id="@+id/vpr"
                 android:background="@drawable/bg_wellcome"
                 android:layout_width="match_parent"
-                android:layout_height="600dp"/>
+                android:layout_height="550dp"/>
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/circle_indicator"
             android:layout_width="match_parent"
