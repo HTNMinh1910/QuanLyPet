@@ -23,7 +23,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                app:hintEnabled="true">
+                app:hintEnabled="true"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/doctor_name"
+                app:boxBackgroundColor="#ffff">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,7 +95,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                app:hintEnabled="true">
+                app:hintEnabled="true"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/phone"
+                app:boxBackgroundColor="#ffff">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -122,7 +140,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                app:hintEnabled="true">
+                app:hintEnabled="true"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/email"
+                app:boxBackgroundColor="#ffff">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -134,7 +161,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                app:hintEnabled="true">
+                app:hintEnabled="true"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/location"
+                app:boxBackgroundColor="#ffff">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -146,7 +182,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                app:hintEnabled="true">
+                app:hintEnabled="true"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/specialized"
+                app:boxBackgroundColor="#ffff">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,14 +207,20 @@
                 <Button
                     android:id="@+id/btn_updateDocter"
                     android:layout_marginRight="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#E11515"
+                    android:theme="@style/Theme.QuanLyPet.Button_1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button"
                     android:text="Sửa"/>
                 <Button
                     android:id="@+id/btn_canel"
                     android:backgroundTint="#E11515"
-                    android:layout_width="wrap_content"
+                    android:background="@drawable/button"
+                    android:textAllCaps="false"
+                    android:theme="@style/Theme.QuanLyPet.Button"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Hủy"/>
 

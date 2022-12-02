@@ -2,6 +2,7 @@ package com.example.quanlypet.ui.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.SearchManager;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -35,9 +36,9 @@ public class ListDoctorActivity extends AppCompatActivity {
     private ArrayList<DoctorObj> list = new ArrayList<>();
     private ArrayList<ListDoctorObj> list1 = new ArrayList<>();
     private ListDoctorAdapter listDoctorAdapter;
-    private SearchView searchDanhsachDoctor;
     private Toolbar idTollBar;
     private DoctorAdapter adapter;
+    private SearchView searchView;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +46,6 @@ public class ListDoctorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_doctor);
         phanQuyen();
         rcvDoctor = (RecyclerView) findViewById(R.id.rcv_Doctor);
-        searchDanhsachDoctor = (SearchView) findViewById(R.id.search_danhsachDoctor);
-
-
-        searchDanhsachDoctor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                adapter.getFilter().filter(query);
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-
         idTollBar = (Toolbar) findViewById(R.id.id_tollBar);
         setSupportActionBar(idTollBar);
         getSupportActionBar().setTitle("Thông tin bác sĩ");
@@ -83,18 +68,34 @@ public class ListDoctorActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_huy_docter, menu);
-        return super.onCreateOptionsMenu(menu);
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.error).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.error:
-                finish();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.error:
+//
+//                break;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public void getDS() {
         list1.add(new ListDoctorObj("Hệ thống hỗ trợ", R.drawable.doctor, "0999999999"));

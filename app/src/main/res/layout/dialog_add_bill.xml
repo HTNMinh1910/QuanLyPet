@@ -12,7 +12,7 @@
         android:gravity="center"
         android:background="#C1A5F1"
         android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+        android:layout_height="50dp"/>
 
     <EditText
         android:id="@+id/ed_case_id"

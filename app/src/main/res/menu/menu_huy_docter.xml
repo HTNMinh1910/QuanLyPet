@@ -2,7 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/error"
-        android:title="Hủy"
-        android:icon="@drawable/error"
-        app:showAsAction="always"/>
+        android:title="Search"
+        android:icon="@drawable/search"
+        android:iconTintMode="screen"
+        app:showAsAction="always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 </menu>
