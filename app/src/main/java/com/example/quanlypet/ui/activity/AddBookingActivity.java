@@ -86,11 +86,6 @@ public class AddBookingActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private TextInputLayout TIPTimeHold;
     private TextInputEditText TIEDTimeHold;
-
-
-
-
-
     private TextInputLayout TIPAddress;
     private TextInputEditText TIEDAddress;
     private TextInputLayout TIPService;
