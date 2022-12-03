@@ -17,6 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.quanlypet.R;
+import com.example.quanlypet.database.AdminDB;
+import com.example.quanlypet.database.UsersDB;
+import com.example.quanlypet.model.AdminObj;
+import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.AnimalActivity;
 import com.example.quanlypet.ui.activity.List_User_Activity;
 import com.example.quanlypet.ui.activity.UsersInforActivity;
@@ -63,11 +67,14 @@ public class UsersFragment extends Fragment {
         lnLogOut = view.findViewById(R.id.ln_logOut);
         SharedPreferences preferences = requireActivity().getSharedPreferences("Users_info", Context.MODE_PRIVATE);
         String username = preferences.getString("Username", "");
-        usersName.setText(username);
         if (username.equals("Admin")) {
             lnUserManager.setVisibility(View.VISIBLE);
+            AdminObj adminObj = AdminDB.getInstance(getContext()).Dao().getIdAdmin(username);
+            usersName.setText(adminObj.getFull_name());
         } else {
             lnAnimalManager.setVisibility(View.VISIBLE);
+            UsersObj usersObj = UsersDB.getInstance(getContext()).Dao().getIdUsers(username);
+            usersName.setText(usersObj.getFull_name());
         }
 
         lnAnimalManager.setOnClickListener(view1 -> {

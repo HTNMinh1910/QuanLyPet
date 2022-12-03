@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -149,8 +150,10 @@ public class HomeFragment extends Fragment {
             }
         });
         linerMess.setOnClickListener(v -> {
-            Uri uri = Uri.parse("http://m.me/100088046954126");
-            this.startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                Uri uri = Uri.parse("http://m.me/100088046954126");
+                this.startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            }
         });
         linerAmbulance.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), ListDoctorActivity.class));

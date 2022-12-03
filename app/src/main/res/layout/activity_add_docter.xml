@@ -61,7 +61,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_picture"
@@ -104,19 +105,14 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/gender"
                     android:layout_gravity="center"
                     android:layout_marginRight="5dp"/>
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Gender: "-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textSize="15dp"/>-->
                 <RadioButton
                     android:id="@+id/rdo_boy"
                     android:text="Nam"

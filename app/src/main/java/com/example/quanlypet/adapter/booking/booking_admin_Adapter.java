@@ -114,6 +114,9 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
                        editor.commit();
                        mContext.startActivity(intent);
                    });
+                   btnCancel.setOnClickListener(view -> {
+                       dialog.cancel();
+                   });
                    dialog.show();
 
                    return false;

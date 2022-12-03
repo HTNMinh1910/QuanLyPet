@@ -87,18 +87,8 @@ public class ListDoctorActivity extends AppCompatActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.error:
-//
-//                break;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
     public void getDS() {
-        list1.add(new ListDoctorObj("Hệ thống hỗ trợ", R.drawable.doctor, "0999999999"));
+        list1.add(new ListDoctorObj("Hệ thống hỗ trợ", R.drawable.doctor, "0961803120"));
     }
     public boolean phanQuyen() {
         if (Build.VERSION.SDK_INT > 23) {
