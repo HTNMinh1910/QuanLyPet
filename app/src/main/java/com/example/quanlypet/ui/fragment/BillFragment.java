@@ -51,7 +51,7 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     private ArrayList<BillObj> arrayList = new ArrayList<>();
     private BillAdapter adapterBill;
     private SimpleDateFormat sdftime = new SimpleDateFormat("HH:mm");
-    private SimpleDateFormat sdfdate = new SimpleDateFormat("dd-MM-yyyy");
+    private SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy-MM-dd");
     private String username;
 
     public BillFragment() {
