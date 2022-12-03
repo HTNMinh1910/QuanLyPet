@@ -53,9 +53,8 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     private int checkGender;
     private Bitmap bitmap;
     ImageView imgPicture;
-    ImageView img;
-    Button btnCamera;
-    Button btnAlbum;
+    ImageView btnAlbum;
+    private String user;
     public DoctorFragment() {
     }
 
@@ -81,6 +80,8 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
         recyclerView = (RecyclerView) view.findViewById(R.id.rcv_docter);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingbutton);
         searchDoctor = view.findViewById(R.id.search_doctor);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
+        user = sharedPreferences.getString("Username", "");
         adapter = new DoctorAdapter(getActivity(), this);
         floatingActionButton.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AddDoctorActivity.class));
@@ -102,8 +103,6 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
                 return false;
             }
         });
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
-        String user = sharedPreferences.getString("Username", "");
         if (user.equals("Admin")){
             floatingActionButton.setVisibility(View.VISIBLE);
         }
@@ -116,89 +115,87 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     }
     @Override
     public void update(DoctorObj doctorObj) {
-        final Dialog dialog = new Dialog(getContext(), com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
-        dialog.setContentView(R.layout.dialog_update_docter);
-        dialog.setCancelable(false);
-//        Window window = dialog.getWindow();
-//        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.MATCH_PARENT);
+        if (user.equals("Admin")) {
+            final Dialog dialog = new Dialog(getContext(), com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
+            dialog.setContentView(R.layout.dialog_update_docter);
+            dialog.setCancelable(false);
 
-        TextInputEditText edNameDocter = (TextInputEditText) dialog.findViewById(R.id.ed_nameDocter);
-        imgPicture = dialog.findViewById(R.id.img_picture);
-        btnCamera = dialog.findViewById(R.id.btn_camera);
-        btnAlbum = dialog.findViewById(R.id.btn_album);
+            TextInputEditText edNameDocter = (TextInputEditText) dialog.findViewById(R.id.ed_nameDocter);
+            imgPicture = dialog.findViewById(R.id.img_picture);
+            btnAlbum = dialog.findViewById(R.id.btn_album);
 
-        TextInputEditText edPhoneDocter = (TextInputEditText) dialog.findViewById(R.id.ed_phoneDocter);
-        RadioButton rdoBoy = (RadioButton) dialog.findViewById(R.id.rdo_boy);
-        RadioButton rdoGirl= (RadioButton) dialog.findViewById(R.id.rdo_girl);
-        TextInputEditText edEmailDocter = (TextInputEditText) dialog.findViewById(R.id.ed_emailDocter);
-        TextInputEditText edAddressDocter = (TextInputEditText) dialog.findViewById(R.id.ed_addressDocter);
-        TextInputEditText edSpecializeDocter = (TextInputEditText) dialog.findViewById(R.id.ed_specializeDocter);
-        Button btnUpdateDocter = (Button) dialog.findViewById(R.id.btn_updateDocter);
-        Button btnCanel = (Button) dialog.findViewById(R.id.btn_canel);
-
-        edPhoneDocter.setText(doctorObj.getPhone());
-        edEmailDocter.setText(doctorObj.getEmail());
-        edNameDocter.setText(doctorObj.getName());
-        edAddressDocter.setText(doctorObj.getAddress());
-        edSpecializeDocter.setText(doctorObj.getSpecialize());
-        byte[] hinhanhUpdate = doctorObj.getImg();
-        Bitmap bitmapUpdate = BitmapFactory.decodeByteArray(hinhanhUpdate, 0, hinhanhUpdate.length);
-        imgPicture.setImageBitmap(bitmapUpdate);
-        if (doctorObj.getGender()==1) {
-            rdoBoy.setChecked(true);
-        } else {
-            rdoGirl.setChecked(true);
-        }
-
-
-        btnAlbum.setOnClickListener(v -> {
-            Intent i = new Intent();
-            i.setType("image/*");
-            i.setAction(Intent.ACTION_GET_CONTENT);
-            chooseImage1.launch(i);
-        });
-        btnCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,0);
-            }
-        });
-        btnUpdateDocter.setOnClickListener(v -> {
-
-            String name = edNameDocter.getText().toString().trim();
-            String phone = edPhoneDocter.getText().toString().trim();
-            String email = edEmailDocter.getText().toString().trim();
-            String address = edAddressDocter.getText().toString().trim();
-            String specialize = edSpecializeDocter.getText().toString().trim();
-            checkGender = rdoBoy.isChecked()?1:0;
-
-            BitmapDrawable bitmapDrawableup = (BitmapDrawable) imgPicture.getDrawable();
-            Bitmap bitmap = bitmapDrawableup.getBitmap();
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-            byte[] hinhanh = byteArrayOutputStream.toByteArray();
-
-            if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty() || specialize.isEmpty()) {
-                Toast.makeText(getActivity(), "Không được để trống", Toast.LENGTH_SHORT).show();
+            TextInputEditText edPhoneDocter = (TextInputEditText) dialog.findViewById(R.id.ed_phoneDocter);
+            RadioButton rdoBoy = (RadioButton) dialog.findViewById(R.id.rdo_boy);
+            RadioButton rdoGirl = (RadioButton) dialog.findViewById(R.id.rdo_girl);
+            TextInputEditText edEmailDocter = (TextInputEditText) dialog.findViewById(R.id.ed_emailDocter);
+            TextInputEditText edAddressDocter = (TextInputEditText) dialog.findViewById(R.id.ed_addressDocter);
+            TextInputEditText edSpecializeDocter = (TextInputEditText) dialog.findViewById(R.id.ed_specializeDocter);
+            Button btnUpdateDocter = (Button) dialog.findViewById(R.id.btn_updateDocter);
+            Button btnCanel = (Button) dialog.findViewById(R.id.btn_canel);
+            edPhoneDocter.setText(doctorObj.getPhone());
+            edEmailDocter.setText(doctorObj.getEmail());
+            edNameDocter.setText(doctorObj.getName());
+            edAddressDocter.setText(doctorObj.getAddress());
+            edSpecializeDocter.setText(doctorObj.getSpecialize());
+            byte[] hinhanhUpdate = doctorObj.getImg();
+            Bitmap bitmapUpdate = BitmapFactory.decodeByteArray(hinhanhUpdate, 0, hinhanhUpdate.length);
+            imgPicture.setImageBitmap(bitmapUpdate);
+            if (doctorObj.getGender() == 1) {
+                rdoBoy.setChecked(true);
             } else {
-                doctorObj.setName(name);
-                doctorObj.setImg(hinhanh);
-                doctorObj.setPhone(phone);
-                doctorObj.setEmail(email);
-                doctorObj.setAddress(address);
-                doctorObj.setSpecialize(specialize);
-                DoctorDB.getInstance(getActivity()).Dao().edit(doctorObj);
-                list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getActivity()).Dao().getAllData();
-                adapter.setDataDocter(list);
-                Toast.makeText(getActivity(), "Sửa thành công", Toast.LENGTH_SHORT).show();
-                dialog.cancel();
+                rdoGirl.setChecked(true);
             }
-        });
-        btnCanel.setOnClickListener(v -> {
-            dialog.cancel();
-        });
-        dialog.show();
+
+
+            btnAlbum.setOnClickListener(v -> {
+                Intent i = new Intent();
+                i.setType("image/*");
+                i.setAction(Intent.ACTION_GET_CONTENT);
+                chooseImage1.launch(i);
+            });
+            imgPicture.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 0);
+                }
+            });
+            btnUpdateDocter.setOnClickListener(v -> {
+
+                String name = edNameDocter.getText().toString().trim();
+                String phone = edPhoneDocter.getText().toString().trim();
+                String email = edEmailDocter.getText().toString().trim();
+                String address = edAddressDocter.getText().toString().trim();
+                String specialize = edSpecializeDocter.getText().toString().trim();
+                checkGender = rdoBoy.isChecked() ? 1 : 0;
+
+                BitmapDrawable bitmapDrawableup = (BitmapDrawable) imgPicture.getDrawable();
+                Bitmap bitmap = bitmapDrawableup.getBitmap();
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                byte[] hinhanh = byteArrayOutputStream.toByteArray();
+
+                if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty() || specialize.isEmpty()) {
+                    Toast.makeText(getActivity(), "Không được để trống", Toast.LENGTH_SHORT).show();
+                } else {
+                    doctorObj.setName(name);
+                    doctorObj.setImg(hinhanh);
+                    doctorObj.setPhone(phone);
+                    doctorObj.setEmail(email);
+                    doctorObj.setAddress(address);
+                    doctorObj.setSpecialize(specialize);
+                    DoctorDB.getInstance(getActivity()).Dao().edit(doctorObj);
+                    list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getActivity()).Dao().getAllData();
+                    adapter.setDataDocter(list);
+                    Toast.makeText(getActivity(), "Sửa thành công", Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
+                }
+            });
+            btnCanel.setOnClickListener(v -> {
+                dialog.cancel();
+            });
+            dialog.show();
+        }
     }
 
     @Override

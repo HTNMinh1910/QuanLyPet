@@ -30,7 +30,7 @@ import com.example.quanlypet.model.ListDoctorObj;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class ListDoctorActivity extends AppCompatActivity {
+public class ListDoctorActivity extends AppCompatActivity implements DoctorAdapter.Callback{
     private RecyclerView rcvDanhsachDoctor;
     private RecyclerView rcvDoctor;
     private ArrayList<DoctorObj> list = new ArrayList<>();
@@ -39,7 +39,6 @@ public class ListDoctorActivity extends AppCompatActivity {
     private Toolbar idTollBar;
     private DoctorAdapter adapter;
     private SearchView searchView;
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,7 @@ public class ListDoctorActivity extends AppCompatActivity {
         idTollBar = (Toolbar) findViewById(R.id.id_tollBar);
         setSupportActionBar(idTollBar);
         getSupportActionBar().setTitle("Thông tin bác sĩ");
-        adapter = new DoctorAdapter(getBaseContext(), null);
+        adapter = new DoctorAdapter(getBaseContext(), this);
         list = (ArrayList<DoctorObj>) DoctorDB.getInstance(getBaseContext()).Dao().getAllData();
         adapter.setDataDocter(list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
@@ -111,5 +110,10 @@ public class ListDoctorActivity extends AppCompatActivity {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public void update(DoctorObj doctorObj) {
+
     }
 }
