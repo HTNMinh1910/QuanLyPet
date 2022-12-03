@@ -14,7 +14,6 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -77,8 +76,8 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = (RecyclerView) view.findViewById(R.id.rcv_docter);
-        floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingbutton);
+        recyclerView = view.findViewById(R.id.rcv_docter);
+        floatingActionButton = view.findViewById(R.id.floatingbutton);
         searchDoctor = view.findViewById(R.id.search_doctor);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("Username", "");
@@ -120,18 +119,18 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
             dialog.setContentView(R.layout.dialog_update_docter);
             dialog.setCancelable(false);
 
-            TextInputEditText edNameDocter = (TextInputEditText) dialog.findViewById(R.id.ed_nameDocter);
+            TextInputEditText edNameDocter = dialog.findViewById(R.id.ed_nameDocter);
             imgPicture = dialog.findViewById(R.id.img_picture);
             btnAlbum = dialog.findViewById(R.id.btn_album);
 
-            TextInputEditText edPhoneDocter = (TextInputEditText) dialog.findViewById(R.id.ed_phoneDocter);
-            RadioButton rdoBoy = (RadioButton) dialog.findViewById(R.id.rdo_boy);
-            RadioButton rdoGirl = (RadioButton) dialog.findViewById(R.id.rdo_girl);
-            TextInputEditText edEmailDocter = (TextInputEditText) dialog.findViewById(R.id.ed_emailDocter);
-            TextInputEditText edAddressDocter = (TextInputEditText) dialog.findViewById(R.id.ed_addressDocter);
-            TextInputEditText edSpecializeDocter = (TextInputEditText) dialog.findViewById(R.id.ed_specializeDocter);
-            Button btnUpdateDocter = (Button) dialog.findViewById(R.id.btn_updateDocter);
-            Button btnCanel = (Button) dialog.findViewById(R.id.btn_canel);
+            TextInputEditText edPhoneDocter = dialog.findViewById(R.id.ed_phoneDocter);
+            RadioButton rdoBoy = dialog.findViewById(R.id.rdo_boy);
+            RadioButton rdoGirl = dialog.findViewById(R.id.rdo_girl);
+            TextInputEditText edEmailDocter = dialog.findViewById(R.id.ed_emailDocter);
+            TextInputEditText edAddressDocter = dialog.findViewById(R.id.ed_addressDocter);
+            TextInputEditText edSpecializeDocter = dialog.findViewById(R.id.ed_specializeDocter);
+            Button btnUpdateDocter = dialog.findViewById(R.id.btn_updateDocter);
+            Button btnCanel = dialog.findViewById(R.id.btn_canel);
             edPhoneDocter.setText(doctorObj.getPhone());
             edEmailDocter.setText(doctorObj.getEmail());
             edNameDocter.setText(doctorObj.getName());
@@ -153,12 +152,9 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
                 i.setAction(Intent.ACTION_GET_CONTENT);
                 chooseImage1.launch(i);
             });
-            imgPicture.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent, 0);
-                }
+            imgPicture.setOnClickListener(v -> {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 0);
             });
             btnUpdateDocter.setOnClickListener(v -> {
 
@@ -191,9 +187,7 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
                     dialog.cancel();
                 }
             });
-            btnCanel.setOnClickListener(v -> {
-                dialog.cancel();
-            });
+            btnCanel.setOnClickListener(v -> dialog.cancel());
             dialog.show();
         }
     }
