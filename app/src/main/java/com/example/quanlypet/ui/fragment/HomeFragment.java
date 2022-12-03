@@ -218,39 +218,39 @@ public class HomeFragment extends Fragment {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
                 //CHO NAY DUNG CO XOA CUA TAO
-//                Dialog dialog = new Dialog(getActivity());
-//                dialog.setContentView(R.layout.dialog_thongketuan);
-//                Window window = dialog.getWindow();
-//                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//                if (dialog!= null && dialog.getWindow()!= null){
-//                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//
-//                    bcThongketuan = (BarChart) dialog.findViewById(R.id.bc_thongketuan);
-//                    ArrayList<BarEntry> visitor = new ArrayList<>();
-//
-//                    float dtt1 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("2022-12-01","2022-12-07");
-//                    float dtt2 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("2022-12-08","2022-12-15");
-//                    float dtt3 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("16","23");
-//                    float dtt4 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("24","31");
-//
-//                    visitor.add(new BarEntry(1,dtt1));
-//                    visitor.add(new BarEntry(2,dtt2));
-//                    visitor.add(new BarEntry(3,dtt3));
-//                    visitor.add(new BarEntry(4,dtt4));
-//
-//                    BarDataSet barDataSet = new BarDataSet(visitor,"Thống kê doanh thu theo tuần");
-//                    barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-//                    barDataSet.setValueTextColor(Color.BLACK);
-//                    barDataSet.setValueTextSize(14f);
-//                    BarData barData = new BarData( barDataSet);
-//                    bcThongketuan.setFitBars(true);
-//                    bcThongketuan.setData(barData);
-//                    bcThongketuan.invalidate();
-//                    bcThongketuan.getDescription().setText("Thống kê doanh thu theo tuần");
-//                    bcThongketuan.getDescription().setTextSize(20f);
-//                    bcThongketuan.animateY(5000);
-//                    dialog.show();
-//                }
+                Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.dialog_thongketuan);
+                Window window = dialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                if (dialog!= null && dialog.getWindow()!= null){
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    bcThongketuan = (BarChart) dialog.findViewById(R.id.bc_thongketuan);
+                    ArrayList<BarEntry> visitor = new ArrayList<>();
+
+                    float dtt1 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("01","07");
+                    float dtt2 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("08","15");
+                    float dtt3 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("16","23");
+                    float dtt4 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("24","31");
+
+                    visitor.add(new BarEntry(1,dtt1));
+                    visitor.add(new BarEntry(2,dtt2));
+                    visitor.add(new BarEntry(3,dtt3));
+                    visitor.add(new BarEntry(4,dtt4));
+
+                    BarDataSet barDataSet = new BarDataSet(visitor,"Thống kê doanh thu theo tuần");
+                    barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+                    barDataSet.setValueTextColor(Color.BLACK);
+                    barDataSet.setValueTextSize(14f);
+                    BarData barData = new BarData( barDataSet);
+                    bcThongketuan.setFitBars(true);
+                    bcThongketuan.setData(barData);
+                    bcThongketuan.invalidate();
+                    bcThongketuan.getDescription().setText("Thống kê doanh thu theo tuần");
+                    bcThongketuan.getDescription().setTextSize(20f);
+                    bcThongketuan.animateY(5000);
+                    dialog.show();
+                }
             }
 
             @Override
