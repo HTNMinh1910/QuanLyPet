@@ -62,7 +62,7 @@ public class AddBillActivity extends AppCompatActivity {
 
             double price = Double.parseDouble(edPrice.getText().toString().trim());
             String note = edNote.getText().toString().trim();
-            if (note.isEmpty()) {
+            if (edPrice.getText().toString().trim().isEmpty()||note.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "ban phai nhap het", Toast.LENGTH_SHORT).show();
             } else {
                 String time = sdftime.format(new Date());

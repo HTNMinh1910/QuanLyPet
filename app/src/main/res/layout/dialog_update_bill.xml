@@ -2,182 +2,174 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="10dp">
-    <TextView
-        android:id="@+id/title"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text=" Bill"
-        android:gravity="center"
-        android:background="#03A9F4"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/biorhyme_bold"
-                android:text="Nane users: "
-                android:layout_marginLeft="12dp"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-            <TextView
-                android:id="@+id/tv_naneUsers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bioehyme_eegular"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:text=""
-                android:textColor="#696969"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/biorhyme_bold"
-                android:text="Users phone: "
-                android:layout_marginLeft="12dp"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-            <TextView
-                android:id="@+id/tv_sdtUsers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bioehyme_eegular"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:text=""
-                android:textColor="#696969"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-    </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="12dp"
-                android:fontFamily="@font/biorhyme_bold"
-                android:text="Time: "
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/bioehyme_eegular"
-                android:text=""
-                android:textColor="#696969"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="12dp"
-                android:fontFamily="@font/biorhyme_bold"
-                android:text="Date: "
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/bioehyme_eegular"
-                android:text=""
-                android:textColor="#696969"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_marginTop="10dp"
-        android:hint="price"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/up_price"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"/>
+        app:hintEnabled="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/name"
+        app:boxBackgroundColor="#ffff"
+        android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_marginTop="20dp"
-            android:hint="note"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/up_note"
+            android:id="@+id/ed_Username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:hint="User name"
+            android:fontFamily="@font/biorhyme_bold"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/phone"
+        app:boxBackgroundColor="#ffff"
+        android:layout_marginTop="20dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_Userphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="User phone"
+            android:fontFamily="@font/biorhyme_bold"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/name"
+        app:boxBackgroundColor="#ffff"
+        android:layout_marginTop="20dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Time"
+            android:fontFamily="@font/biorhyme_bold"
+            android:inputType="time" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/schedule"
+        app:boxBackgroundColor="#ffff"
+        android:layout_marginTop="20dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date"
+            android:fontFamily="@font/biorhyme_bold"
+            android:inputType="date" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/delivery"
+        app:boxBackgroundColor="#ffff"
+        android:layout_marginTop="20dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Price"
+            android:fontFamily="@font/biorhyme_bold"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/bg_coneradios"
+        app:startIconTintMode="screen"
+        app:startIconTint="@color/cardview_shadow_end_color"
+        app:startIconDrawable="@drawable/notes"
+        app:boxBackgroundColor="#ffff"
+        android:layout_marginTop="20dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Notes"
+            android:fontFamily="@font/biorhyme_bold"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_margin="10dp">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/line_upBill">
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_Update_bill"
                 android:text="Update"
+                android:textAllCaps="false"
                 android:backgroundTint="#ccc"
                 android:textColor="@color/black"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/button"/>
-        </LinearLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_cancel"
-            android:text="cancel"
+            android:text="Cancel"
+            android:textAllCaps="false"
             android:backgroundTint="#ccc"
             android:background="@drawable/button"
             android:textColor="@color/black"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
+</LinearLayout>
 </LinearLayout>
