@@ -116,12 +116,11 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     }
     @Override
     public void update(DoctorObj doctorObj) {
-        final Dialog dialog = new Dialog(getContext());
+        final Dialog dialog = new Dialog(getContext(), com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
         dialog.setContentView(R.layout.dialog_update_docter);
-        dialog.setCancelable(false);
-        Window window = dialog.getWindow();
-        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
-
+//        dialog.setCancelable(false);
+//        Window window = dialog.getWindow();
+//        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         TextInputEditText edNameDocter = (TextInputEditText) dialog.findViewById(R.id.ed_nameDocter);
         imgPicture = dialog.findViewById(R.id.img_picture);
         btnCamera = dialog.findViewById(R.id.btn_camera);

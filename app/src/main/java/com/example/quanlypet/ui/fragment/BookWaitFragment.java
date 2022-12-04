@@ -112,6 +112,7 @@ public class BookWaitFragment extends Fragment implements SwipeRefreshLayout.OnR
     List<AnimalObj> listAnimal;
     List<DoctorObj> listDoctor;
     private int idDoctor;
+    private List<BookObj> list3;
 
 
     public static BookWaitFragment newInstance() {
@@ -138,6 +139,7 @@ public class BookWaitFragment extends Fragment implements SwipeRefreshLayout.OnR
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         reCy_booking = view.findViewById(R.id.recy_cho);
         swipeRefreshLayout = view.findViewById(R.id.SwipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -173,7 +175,6 @@ public class BookWaitFragment extends Fragment implements SwipeRefreshLayout.OnR
             reCy_booking.setAdapter(adapter);
             reCy_booking.setLayoutManager(linearLayoutManager);
             loadDATA();
-
         }
     }
 

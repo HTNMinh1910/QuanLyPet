@@ -7,6 +7,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -15,9 +17,11 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.View;
@@ -28,6 +32,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -42,6 +47,7 @@ import com.example.quanlypet.model.AnimalObj;
 import com.example.quanlypet.model.BookObj;
 import com.example.quanlypet.model.DoctorObj;
 import com.example.quanlypet.model.UsersObj;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -55,6 +61,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddBookingActivity extends AppCompatActivity {
+    ConstraintLayout constraintLayout;
     private ImageView imgClose;
     private Button btnKhamvachua;
     private Button btnKiemtrasuckhoe;
@@ -88,9 +95,6 @@ public class AddBookingActivity extends AppCompatActivity {
     private TextInputEditText TIEDTimeHold;
 
 
-
-
-
     private TextInputLayout TIPAddress;
     private TextInputEditText TIEDAddress;
     private TextInputLayout TIPService;
@@ -106,7 +110,8 @@ public class AddBookingActivity extends AppCompatActivity {
     List<DoctorObj> listDoctor = new ArrayList<>();
     UsersObj usersObj = new UsersObj();
     private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
-    int mYear, mMonth, mDate, mHour, mMinute,mMinute2;
+    int mYear, mMonth, mDate, mHour, mMinute, mMinute2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,9 +125,9 @@ public class AddBookingActivity extends AppCompatActivity {
         TimePickerDialog.OnTimeSetListener time = ((timePicker, hourOfDay, minute) -> {
             mHour = hourOfDay;
             mMinute = minute;
-            mMinute2 = minute+60;
-            GregorianCalendar calendar = new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute);
-            GregorianCalendar calendar2= new GregorianCalendar(mYear, mMonth, mDate,mHour,mMinute2);
+            mMinute2 = minute + 60;
+            GregorianCalendar calendar = new GregorianCalendar(mYear, mMonth, mDate, mHour, mMinute);
+            GregorianCalendar calendar2 = new GregorianCalendar(mYear, mMonth, mDate, mHour, mMinute2);
             TIEDTime.setText(dateFormat.format(calendar.getTime()));
             TIEDTimeHold.setText(dateFormat.format(calendar2.getTime()));
 
@@ -159,8 +164,12 @@ public class AddBookingActivity extends AppCompatActivity {
             timePickerDialog.show();
             datePickerDialog.show();
         });
+        SharedPreferences sharedPreferences = getSharedPreferences("user_file", MODE_PRIVATE);
+        String username = sharedPreferences.getString("Username", "");
+        UsersObj userObj = UsersDB.getInstance(this).Dao().getIdUsers(username);
+        int id = userObj.getId();
         adapterSPNAnimal = new SpinnerAnimal();
-        listAnimal = AnimalDB.getInstance(this).Dao().getAllData();
+        listAnimal = AnimalDB.getInstance(this).Dao().getIDUsers(String.valueOf(id));
         adapterSPNAnimal.setData(listAnimal);
         spnPet.setAdapter(adapterSPNAnimal);
         adapterSPNDoctor = new SpinnerDoctor();
@@ -248,6 +257,7 @@ public class AddBookingActivity extends AppCompatActivity {
             noikham = "Tại nhà";
         }
         String strTime = TIEDTime.getText().toString();
+        String strTimeHold = TIEDTimeHold.getText().toString();
         String strDiaChi = TIEDAddress.getText().toString();
         String strDichVU = TIEDService.getText().toString();
 
@@ -261,10 +271,22 @@ public class AddBookingActivity extends AppCompatActivity {
 
         usersObj = UsersDB.getInstance(this).Dao().getIdUsers(user);
         int id = usersObj.getId();
-        BookObj bookObj = new BookObj(id,idDoctor, idPet, strTT, anh, strTime, noikham, strDiaChi, strDichVU,1);
-        BookDB.getInstance(this).Dao().insert(bookObj);
-        Toast.makeText(this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
-        finish();
+
+        if (checkBooking() == 0) {
+            BookObj bookObj = new BookObj(id, idDoctor, idPet, strTT, anh, strTime, strTimeHold, noikham, strDiaChi, strDichVU, 1);
+            BookDB.getInstance(this).Dao().insert(bookObj);
+            showSnackbar();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    finish();
+                }
+            },3000);
+        } else {
+           showSnackbar2();
+        }
+
 
     }
 
@@ -277,6 +299,7 @@ public class AddBookingActivity extends AppCompatActivity {
                 TIEDNameDoctor.setText(listDoctor.get(position).getName());
                 TIEDPhoneNumber.setText(listDoctor.get(position).getPhone());
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -289,11 +312,13 @@ public class AddBookingActivity extends AppCompatActivity {
                 TIEDNamePet.setText(listAnimal.get(position).getName());
                 TIEDTypePet.setText(listAnimal.get(position).getSpecies());
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
     }
+
     public void findID() {
         spnDoctor = (Spinner) findViewById(R.id.spn_doctor);
         TIPNameDoctor = (TextInputLayout) findViewById(R.id.TIP_NameDoctor);
@@ -389,5 +414,41 @@ public class AddBookingActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    public int checkBooking() {
+        int temp = 0;
+        List<BookObj> list = BookDB.getInstance(this).Dao().getAllData();
+        for (int i = 0; i < list.size(); i++) {
+            if ( BookDB.getInstance(this).Dao().checkBooking(TIEDTime.getText().toString(),TIEDTimeHold.getText().toString()).isEmpty()) {
+                temp = 0;
+            } else {
+                temp = 1;
+                break;
+            }
+        }
+        return temp;
+    }
+
+    public void showSnackbar() {
+      findID();
+        Snackbar snackbar = Snackbar.make(btnBooking, "", Snackbar.LENGTH_LONG);
+        View custom = getLayoutInflater().inflate(R.layout.custom_snackbar, null);
+        snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
+        Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+        snackbarLayout.setPadding(0, 0, 0, 0);
+        snackbarLayout.addView(custom, 0);
+        snackbar.show();
+    }
+    public void showSnackbar2() {
+        findID();
+        Snackbar snackbar = Snackbar.make(btnBooking, "", Snackbar.LENGTH_LONG);
+        View custom = getLayoutInflater().inflate(R.layout.custom_snackbar2, null);
+        snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
+        Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+        snackbarLayout.setPadding(0, 0, 0, 0);
+        snackbarLayout.addView(custom, 0);
+        snackbar.show();
+
     }
 }
