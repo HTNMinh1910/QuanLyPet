@@ -13,6 +13,7 @@ public class BookObj {
     private String status;
     private byte[] photo_status;
     private String time;
+    private String timeHold;
     private String location;
     private String address;
     private String service;
@@ -23,17 +24,26 @@ public class BookObj {
     }
 
 
-    public BookObj(int id_user, int id_doctor, int id_animal, String status, byte[] photo_status, String time, String location, String address, String service, int obj_status) {
+    public BookObj(int id_user, int id_doctor, int id_animal, String status, byte[] photo_status, String time, String timeHold, String location, String address, String service, int obj_status) {
         this.id_user = id_user;
         this.id_doctor = id_doctor;
         this.id_animal = id_animal;
         this.status = status;
         this.photo_status = photo_status;
         this.time = time;
+        this.timeHold = timeHold;
         this.location = location;
         this.address = address;
         this.service = service;
         this.obj_status = obj_status;
+    }
+
+    public String getTimeHold() {
+        return timeHold;
+    }
+
+    public void setTimeHold(String timeHold) {
+        this.timeHold = timeHold;
     }
 
     public int getObj_status() {

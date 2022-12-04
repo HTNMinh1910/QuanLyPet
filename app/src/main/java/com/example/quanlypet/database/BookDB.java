@@ -20,6 +20,7 @@ public abstract class BookDB extends RoomDatabase {
         public void migrate(@NonNull SupportSQLiteDatabase database) {
             database.execSQL("ALTER TABLE Book ADD COLUMN id_user Integer");
             database.execSQL("ALTER TABLE Book ADD COLUMN obj_status Integer");
+            database.execSQL("ALTER TABLE Book ADD COLUMN timeHold TEXT");
 
         }
     };
