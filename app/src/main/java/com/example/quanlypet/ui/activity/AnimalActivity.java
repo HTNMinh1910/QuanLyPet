@@ -81,7 +81,6 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         rcvAnimal.setLayoutManager(layoutManager);
         rcvAnimal.setAdapter(adapterAnimal);
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,11 +107,11 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
     }
     @Override
     public void Update(AnimalObj object) {
-        Dialog dialog = new Dialog(AnimalActivity.this,com.google.android.material.R.style.ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Window_Fullscreen);
+        Dialog dialog = new Dialog(AnimalActivity.this,com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
         dialog.setContentView(R.layout.dialog_update_animal);
-        dialog.setCancelable(false);
-        Window window = dialog.getWindow();
-        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+//        dialog.setCancelable(false);
+//        Window window = dialog.getWindow();
+//        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         dialog.show();
         EditText upnameAnimal = dialog.findViewById(R.id.up_nameAnimal);
         EditText upageAnimal = dialog.findViewById(R.id.up_ageAnimal);

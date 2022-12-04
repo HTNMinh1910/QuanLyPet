@@ -1,17 +1,23 @@
 package com.example.quanlypet.adapter.animal;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
@@ -58,6 +64,30 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
             callback.Update(object);
             return false;
         });
+        holder.relyAnimal.setOnClickListener(v ->{
+            Dialog dialog = new Dialog(v.getContext());
+            dialog.setContentView(R.layout.dialog_benh_an);
+            dialog.getWindow().setBackgroundDrawable(context.getDrawable(R.drawable.bg_huy_booking));
+            Window window = dialog.getWindow();
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            WindowManager.LayoutParams windowAttributes = window.getAttributes();
+            window.setAttributes(windowAttributes);
+            windowAttributes.gravity = Gravity.BOTTOM;
+            CardView CVTaobenhan;
+            Button btnTaoBenhAn;
+            CardView CVXembenhan;
+            Button btnXemBenhAn;
+            Button btnCancel;
+            CVTaobenhan = (CardView) dialog.findViewById(R.id.CV_taobenhan);
+            btnTaoBenhAn = (Button) dialog.findViewById(R.id.btn_taoBenhAn);
+            btnTaoBenhAn.setOnClickListener(v1 ->{
+
+            });
+            CVXembenhan = (CardView) dialog.findViewById(R.id.CV_xembenhan);
+            btnXemBenhAn = (Button) dialog.findViewById(R.id.btn_xemBenhAn);
+            btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
+            dialog.show();
+        });
     }
     @Override
     public int getItemCount() {
@@ -70,6 +100,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         private ImageView imgAnhItem;
         private TextView tvAge;
         private TextView tvLoai;
+        private ImageView imgInformation;
         public AnimalViewHolder(@NonNull View itemView) {
             super(itemView);
             relyAnimal = (RelativeLayout) itemView.findViewById(R.id.rely_animal);
@@ -77,6 +108,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
             imgAnhItem = (ImageView) itemView.findViewById(R.id.img_anh_item);
             tvAge = (TextView) itemView.findViewById(R.id.tv_age);
             tvLoai = (TextView) itemView.findViewById(R.id.tv_loai);
+            imgInformation = (ImageView) itemView.findViewById(R.id.img_information);
         }
     }
     public interface Callback{

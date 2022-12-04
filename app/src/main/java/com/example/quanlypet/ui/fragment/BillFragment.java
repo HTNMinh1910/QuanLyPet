@@ -19,6 +19,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import com.example.quanlypet.model.BillObj;
 import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.AddBillActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,25 +39,20 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class BillFragment extends Fragment implements BillAdapter.Callback {
-    private EditText upCaseId;
-    private EditText upPrice;
-    private EditText upNote;
-    private CheckBox chkThanhToanUp;
+    private TextInputEditText edUsername;
+    private TextInputEditText edUserphone;
+    private TextInputEditText edTime;
+    private TextInputEditText edDate;
+    private TextInputEditText edPrice;
+    private TextInputEditText edNote;
     private Button btnUpdateBill;
-    private TextView title;
-    private EditText edCaseId;
-
-    private EditText edPrice;
-    private EditText edNote;
-    private int chkThanhToan;
-    private Button btnAddBill;
     private Button btnCancel;
     private RecyclerView rcvBill;
-    private FloatingActionButton bbtn;
     private ArrayList<BillObj> arrayList = new ArrayList<>();
     private BillAdapter adapterBill;
     private SimpleDateFormat sdftime = new SimpleDateFormat("HH:mm");
-    private SimpleDateFormat sdfdate = new SimpleDateFormat("HH:mm dd-MM-yyyy");
+    private SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy-MM-dd");
+    private String username;
 
     public BillFragment() {
     }
@@ -79,122 +76,68 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rcvBill = (RecyclerView) view.findViewById(R.id.rcv_bill);
-        fill();
-    }
-
-    public void fill() {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("user_file", Context.MODE_PRIVATE);
-        String username = sharedPreferences.getString("Username", "");
-
+        username = sharedPreferences.getString("Username", "");
+        rcvBill = (RecyclerView) view.findViewById(R.id.rcv_bill);
+        adapterBill = new BillAdapter(getContext(), this);
+        LoadData();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        rcvBill.setLayoutManager(layoutManager);
+        rcvBill.setAdapter(adapterBill);
+    }
+    public void LoadData() {
         if (username.equals("Admin")) {
-            adapterBill = new BillAdapter(getContext(), this);
             arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getAllData();
             adapterBill.setData(arrayList);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-            rcvBill.setLayoutManager(layoutManager);
-            rcvBill.setAdapter(adapterBill);
         } else {
             UsersObj userobj = UsersDB.getInstance(getContext()).Dao().getIdUsers(username);
-            int id = userobj.getId();
-            adapterBill = new BillAdapter(getContext(), this);
-            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getbyUsers(id);
+            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getbyUsers(userobj.getId());
             adapterBill.setData(arrayList);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-            rcvBill.setLayoutManager(layoutManager);
-            rcvBill.setAdapter(adapterBill);
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user_file", Context.MODE_PRIVATE);
-        String username = sharedPreferences.getString("Username", "");
-        if (username.equals("Admin")) {
-            adapterBill = new BillAdapter(getContext(), this);
-            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getAllData();
-            adapterBill.setData(arrayList);
-        } else {
-            UsersObj userobj = UsersDB.getInstance(getContext()).Dao().getIdUsers(username);
-            int id = userobj.getId();
-            adapterBill = new BillAdapter(getContext(), this);
-            arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getbyUsers(id);
-            adapterBill.setData(arrayList);
-        }
-    }
-
-    public void AddBill() {
-        Dialog dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_add_bill);
-        dialog.setCancelable(false);
-        Window window = dialog.getWindow();
-        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
-        dialog.show();
-        title = dialog.findViewById(R.id.title);
-        edCaseId = dialog.findViewById(R.id.ed_case_id);
-        edPrice = dialog.findViewById(R.id.ed_price);
-        edNote = dialog.findViewById(R.id.ed_note);
-        edNote.setText("");
-        btnAddBill = dialog.findViewById(R.id.btn_Add_bill);
-        btnAddBill.setOnClickListener(v -> {
-            int caseid = Integer.parseInt(edCaseId.getText().toString().trim());
-
-
-            double price = Double.parseDouble(edPrice.getText().toString().trim());
-            String note = edNote.getText().toString().trim();
-            if (note.isEmpty()) {
-                Toast.makeText(getContext(), "ban phai nhap het", Toast.LENGTH_SHORT).show();
-            } else {
-                String time = sdftime.format(new Date());
-                String date = sdfdate.format(new Date());
-                BillObj object = new BillObj(caseid, time, date, price, note);
-                BillDB.getInstance(getContext()).Dao().insertBill(object);
-                Toast.makeText(getContext(), "them thanh cong", Toast.LENGTH_SHORT).show();
-                fill();
-            }
-            dialog.cancel();
-        });
-        btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
-        btnCancel.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
+        LoadData();
     }
 
     @Override
     public void Update(BillObj object) {
-        final Dialog dialog = new Dialog(getContext());
+        final Dialog dialog = new Dialog(getContext(), com.google.android.material.R.style.Widget_Material3_MaterialCalendar_Fullscreen);
         dialog.setContentView(R.layout.dialog_update_bill);
         dialog.setCancelable(false);
-        Window window = dialog.getWindow();
-        window.setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         dialog.show();
-        Calendar thoigian = Calendar.getInstance();
-        Calendar lich = Calendar.getInstance();
-        title = (TextView) dialog.findViewById(R.id.title);
-        upCaseId = (EditText) dialog.findViewById(R.id.up_case_id);
-        upPrice = (EditText) dialog.findViewById(R.id.up_price);
-        upNote = (EditText) dialog.findViewById(R.id.up_note);
 
-        upCaseId.setText(object.getId_case_file() + "");
-        upNote.setText(object.getNote());
-        upPrice.setText(object.getPrice() + "");
-
+        edUsername = (TextInputEditText) dialog.findViewById(R.id.ed_Username);
+        edUserphone = (TextInputEditText) dialog.findViewById(R.id.ed_Userphone);
+        edTime = (TextInputEditText) dialog.findViewById(R.id.ed_time);
+        edDate = (TextInputEditText) dialog.findViewById(R.id.ed_date);
+        edPrice = (TextInputEditText) dialog.findViewById(R.id.ed_price);
+        edNote = (TextInputEditText) dialog.findViewById(R.id.ed_note);
         btnUpdateBill = (Button) dialog.findViewById(R.id.btn_Update_bill);
+        btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
+        if (!username.equals("Admin")){
+            btnUpdateBill.setVisibility(View.GONE);
+        }
+        edNote.setText(object.getNote());
+        edPrice.setText(object.getPrice() + "");
+
+        SharedPreferences sharedPreferences1 = requireActivity().getSharedPreferences("Users_info_id", Context.MODE_PRIVATE);
+        int userid = sharedPreferences1.getInt("userId", 0);
+        edDate.setText(sdfdate.format(new Date()));
+        edTime.setText(sdftime.format(new Date()));
+        UsersObj usersObj = UsersDB.getInstance(getActivity()).Dao().getID(userid);
+        edUsername.setText(usersObj.getFull_name());
+        edUserphone.setText(usersObj.getPhone());
         btnUpdateBill.setOnClickListener(v -> {
-            int idcaseup = Integer.parseInt(upCaseId.getText().toString().trim());
-            double priceup = Double.parseDouble(upPrice.getText().toString().trim());
-            String noteup = upNote.getText().toString().trim();
-            if (noteup.isEmpty()) {
+            if (edPrice.getText().toString().trim().isEmpty()||edNote.getText().toString().trim().isEmpty()) {
                 Toast.makeText(getActivity(), "ko dc de trong", Toast.LENGTH_SHORT).show();
             } else {
-                object.setId_case_file(idcaseup);
-                String time = sdftime.format(new Date());
-                String date = sdfdate.format(new Date());
-                object.setTime(time);
-                object.setDate(date);
-                object.setPrice(priceup);
-                object.setNote(noteup);
+                object.setTime(sdftime.format(new Date()));
+                object.setDate(sdfdate.format(new Date()));
+                object.setPrice(Double.parseDouble(edPrice.getText().toString().trim()));
+                object.setNote(edNote.getText().toString().trim());
                 BillDB.getInstance(getContext()).Dao().editBill(object);
                 arrayList = (ArrayList<BillObj>) BillDB.getInstance(getContext()).Dao().getAllData();
                 adapterBill.setData(arrayList);
@@ -202,7 +145,6 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
                 dialog.dismiss();
             }
         });
-        btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
         btnCancel.setOnClickListener(v -> {
             dialog.cancel();
         });

@@ -29,6 +29,7 @@ public class UsersInforActivity extends AppCompatActivity {
     private TextInputLayout TIPGender;
     private Button btnUpdateUser;
     private TextView tvThongbao;
+    private Button btnCancelUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class UsersInforActivity extends AppCompatActivity {
         TIPGender = findViewById(R.id.TIP_gender);
         btnUpdateUser = findViewById(R.id.btn_updateUser);
         tvThongbao = findViewById(R.id.tv_thongbao);
+        btnCancelUser = findViewById(R.id.btn_cancelUser);
 
         tvThongbao.setVisibility(View.INVISIBLE);
 
@@ -77,6 +79,9 @@ public class UsersInforActivity extends AppCompatActivity {
                     Toast.makeText(this, "Update successfully", Toast.LENGTH_SHORT).show();
                     finish();
                 }
+            });
+            btnCancelUser.setOnClickListener(view -> {
+                finish();
             });
         }else {
             UsersObj usersObj = UsersDB.getInstance(this).Dao().getIdUsers(username);
@@ -109,6 +114,9 @@ public class UsersInforActivity extends AppCompatActivity {
                     Toast.makeText(this, "Update successfully", Toast.LENGTH_SHORT).show();
                     finish();
                 }
+            });
+            btnCancelUser.setOnClickListener(view -> {
+                finish();
             });
         }
     }

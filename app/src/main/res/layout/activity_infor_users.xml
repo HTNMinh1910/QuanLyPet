@@ -19,12 +19,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
+        android:padding="30dp"
         android:orientation="vertical">
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             app:hintEnabled="true"
             android:paddingBottom="1dp"
             android:paddingLeft="5dp"
@@ -45,7 +45,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             app:hintEnabled="true"
             android:paddingBottom="1dp"
             android:paddingLeft="5dp"
@@ -66,9 +66,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             app:hintEnabled="true"
-
             android:paddingBottom="1dp"
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
@@ -89,7 +88,7 @@
             android:id="@+id/TIP_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             app:hintEnabled="true"
             android:paddingBottom="1dp"
             android:paddingLeft="5dp"
@@ -112,7 +111,7 @@
             android:id="@+id/TIP_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             app:hintEnabled="true"
 
             android:paddingBottom="1dp"
@@ -139,16 +138,35 @@
             android:text="Không được để trống"
             android:layout_gravity="center_horizontal"
             android:textColor="#C61A1A"
-            android:layout_marginBottom="20dp"/>
-        <Button
-            android:id="@+id/btn_updateUser"
-            android:layout_width="match_parent"
+            android:layout_marginBottom="30dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:backgroundTint="#E11515"
-            android:textAllCaps="false"
-            android:background="@drawable/button"
-            android:theme="@style/Theme.QuanLyPet.Button"
-            android:text="Update"/>
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <Button
+                android:id="@+id/btn_updateUser"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="#E11515"
+                android:textAllCaps="false"
+                android:layout_margin="20dp"
+                android:background="@drawable/button"
+                android:theme="@style/Theme.QuanLyPet.Button_1"
+                android:text="Update"/>
+            <Button
+                android:id="@+id/btn_cancelUser"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="#E11515"
+                android:textAllCaps="false"
+                android:layout_margin="20dp"
+                android:background="@drawable/button"
+                android:theme="@style/Theme.QuanLyPet.Button"
+                android:text="Cancel"/>
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

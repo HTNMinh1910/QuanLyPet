@@ -19,7 +19,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private TextInputEditText newPassAganin;
     private TextView tvErrors;
     private TextView tvExit;
-    private ImageView imgSave;
+    private TextView imgSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

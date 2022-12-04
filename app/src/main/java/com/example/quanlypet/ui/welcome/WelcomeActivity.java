@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.quanlypet.R;
 import com.example.quanlypet.dao.viewpager2.SlideAdapter;
 import com.example.quanlypet.database.AdminDB;
+import com.example.quanlypet.effect.DepthPageTransformer;
 import com.example.quanlypet.model.AdminObj;
 import com.example.quanlypet.model.Photo;
 
@@ -95,9 +96,11 @@ public class WelcomeActivity extends AppCompatActivity {
         }
         btnSignin.setOnClickListener(view -> {
           startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+          finish();
         });
         btnSignup.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(),SignupUsersActivity.class));
+            finish();
         });
     }
 }

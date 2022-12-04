@@ -28,12 +28,13 @@
             android:id="@+id/tv_prev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/biorhyme_bold"
             android:text="Prev"
+            android:padding="5dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="start|top"
-            android:textColor="#FB0F0F"
+            android:textColor="#FFFFFF"
+            android:background="#C5C5C5"
             android:textSize="18sp" />
 
         <TextView
@@ -41,11 +42,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|top"
-            android:layout_marginRight="10dp"
+            android:padding="5dp"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/biorhyme_bold"
-            android:text="Next"
-            android:textColor="#FB0F0F"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FFFFFF"
+            android:background="#C5C5C5"
+            android:layout_marginRight="10dp"
+            android:text="Bỏ qua"
             android:textSize="18sp" />
     </FrameLayout>
     <LinearLayout

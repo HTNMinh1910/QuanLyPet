@@ -1,5 +1,6 @@
 package com.example.quanlypet.effect;
 
+import android.os.Build;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
@@ -7,7 +8,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 @RequiresApi(21)
 public class DepthPageTransformer implements ViewPager2.PageTransformer {
-    private static final float MIN_SCALE = 0.1f;
+    private static final float MIN_SCALE = 0.66f;
 
     public void transformPage(View view, float position) {
         int pageWidth = view.getWidth();
@@ -19,8 +20,12 @@ public class DepthPageTransformer implements ViewPager2.PageTransformer {
         } else if (position <= 0) { // [-1,0]
             // Use the default slide transition when moving to the left page
             view.setAlpha(1f);
-            view.setTranslationX(0f);
-            view.setTranslationZ(0f);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                view.setTransitionAlpha(1f);
+            }
+            view.setTranslationX(0.1f);
+            view.setTranslationY(0.1f);
+            view.setTranslationZ(0.1f);
             view.setScaleX(1f);
             view.setScaleY(1f);
 
@@ -31,7 +36,7 @@ public class DepthPageTransformer implements ViewPager2.PageTransformer {
             // Counteract the default slide transition
             view.setTranslationX(pageWidth * -position);
             // Move it behind the left page
-            view.setTranslationZ(-1f);
+            view.setTranslationZ(0f);
 
             // Scale the page down (between MIN_SCALE and 1)
             float scaleFactor = MIN_SCALE

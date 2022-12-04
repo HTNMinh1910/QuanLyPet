@@ -34,6 +34,7 @@ public interface BookDao {
 
     @Query("SELECT *FROM book where obj_status=:obj_status and id_user =:id  LIMIT 3 ")
     List<BookObj> getStatus3(int obj_status, int id);
+
     @Query("SELECT *FROM book where obj_status=:obj_status LIMIT 3")
     List<BookObj> getStatus4(int obj_status);
     @Query("SELECT *FROM book where time between :a AND :b ")
@@ -41,4 +42,9 @@ public interface BookDao {
     @Query("SELECT *FROM book where timeHold between :a AND :b ")
     List<BookObj> checkBooking3(String a, String b);
 
+    @Query("SELECT * FROM book where time BETWEEN :dateStat AND :dataEnd")
+    List<BookObj> checkBooking(String dateStat,String dataEnd);
+
+    @Query("SELECT * FROM book where time BETWEEN :dateStat AND :dataEnd")
+    List<BookObj> checkBooking1(String dateStat,String dataEnd);
 }

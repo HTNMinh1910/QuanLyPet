@@ -93,8 +93,6 @@ public class AddBookingActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private TextInputLayout TIPTimeHold;
     private TextInputEditText TIEDTimeHold;
-
-
     private TextInputLayout TIPAddress;
     private TextInputEditText TIEDAddress;
     private TextInputLayout TIPService;
@@ -307,6 +305,9 @@ public class AddBookingActivity extends AppCompatActivity {
         spnPet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
+                String username = sharedPreferences.getString("Username","");
+                usersObj = UsersDB.getInstance(getApplicationContext()).Dao().getIdUsers(username);
                 listAnimal = AnimalDB.getInstance(getApplicationContext()).Dao().getAllData();
                 idPet = listAnimal.get(position).getId();
                 TIEDNamePet.setText(listAnimal.get(position).getName());

@@ -81,7 +81,6 @@ public class BookFragment extends Fragment {
         viewpagerTablayout = (ViewPager2) view.findViewById(R.id.viewpager_tablayout);
         ViewPager2_Booking_Adapter viewPager2_booking_adapter = new ViewPager2_Booking_Adapter(getActivity());
         viewpagerTablayout.setAdapter(viewPager2_booking_adapter);
-
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tablayout, viewpagerTablayout, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {

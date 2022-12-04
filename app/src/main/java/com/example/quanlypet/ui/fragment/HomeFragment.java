@@ -1,16 +1,20 @@
 package com.example.quanlypet.ui.fragment;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +33,7 @@ import com.example.quanlypet.dao.viewpager2.SlideAdapterHome;
 import com.example.quanlypet.adapter.booking.bookingAdapter;
 import com.example.quanlypet.adapter.booking.booking_admin_Adapter;
 
+import com.example.quanlypet.database.BillDB;
 import com.example.quanlypet.database.BookDB;
 import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.BookObj;
@@ -64,6 +69,8 @@ public class HomeFragment extends Fragment {
     private Timer timer;
     private ImageView imgAddAnimal;
     private ImageView imgMap;
+    private BarChart bcThongketuan;
+
     RecyclerView id_recyNear;
     List<BookObj> list;
     private String user;
@@ -149,8 +156,10 @@ public class HomeFragment extends Fragment {
             }
         });
         linerMess.setOnClickListener(v -> {
-            Uri uri = Uri.parse("http://m.me/100088046954126");
-            this.startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                Uri uri = Uri.parse("http://m.me/100088046954126");
+                this.startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            }
         });
         linerAmbulance.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), ListDoctorActivity.class));
@@ -166,18 +175,31 @@ public class HomeFragment extends Fragment {
         autoSlide();
         ArrayList<BarEntry> visitor = new ArrayList<>();
 
-        visitor.add(new BarEntry(1,30));
-        visitor.add(new BarEntry(2,52));
-        visitor.add(new BarEntry(3,50));
-        visitor.add(new BarEntry(4,70));
-        visitor.add(new BarEntry(5,60));
-        visitor.add(new BarEntry(6,40));
-        visitor.add(new BarEntry(7,90));
-        visitor.add(new BarEntry(8,80));
-        visitor.add(new BarEntry(9,50));
-        visitor.add(new BarEntry(10,40));
-        visitor.add(new BarEntry(11,20));
-        visitor.add(new BarEntry(12,70));
+        float dt1 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-01-01","2022-01-31");
+        float dt2 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-02-01","2022-02-29");
+        float dt3 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-03-01","2022-03-31");
+        float dt4 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-04-01","2022-04-30");
+        float dt5 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-05-01","2022-05-31");
+        float dt6 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-06-01","2022-06-30");
+        float dt7 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-07-01","2022-07-31");
+        float dt8 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-08-01","2022-08-31");
+        float dt9 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-09-01","2022-09-30");
+        float dt10 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-10-01","2022-10-31");
+        float dt11 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-11-01","2022-11-30");
+        float dt12 = BillDB.getInstance(getActivity()).Dao().getPriceDT("2022-12-01","2022-12-31");
+
+        visitor.add(new BarEntry(1,dt1));
+        visitor.add(new BarEntry(2,dt2));
+        visitor.add(new BarEntry(3,dt3));
+        visitor.add(new BarEntry(4,dt4));
+        visitor.add(new BarEntry(5,dt5));
+        visitor.add(new BarEntry(6,dt6));
+        visitor.add(new BarEntry(7,dt7));
+        visitor.add(new BarEntry(8,dt8));
+        visitor.add(new BarEntry(9,dt9));
+        visitor.add(new BarEntry(10,dt10));
+        visitor.add(new BarEntry(11,dt11));
+        visitor.add(new BarEntry(12,dt12));
 
         BarDataSet barDataSet = new BarDataSet(visitor,"Thống kê doanh thu theo tháng");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
@@ -195,7 +217,40 @@ public class HomeFragment extends Fragment {
         barChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-                Toast.makeText(getActivity(), ""+h.getY(), Toast.LENGTH_SHORT).show();
+                //CHO NAY DUNG CO XOA CUA TAO
+                Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.dialog_thongketuan);
+                Window window = dialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                if (dialog!= null && dialog.getWindow()!= null){
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    bcThongketuan = (BarChart) dialog.findViewById(R.id.bc_thongketuan);
+                    ArrayList<BarEntry> visitor = new ArrayList<>();
+
+                    float dtt1 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("01","07");
+                    float dtt2 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("08","15");
+                    float dtt3 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("16","23");
+                    float dtt4 = BillDB.getInstance(getActivity()).Dao().getPriceTuan("24","31");
+
+                    visitor.add(new BarEntry(1,dtt1));
+                    visitor.add(new BarEntry(2,dtt2));
+                    visitor.add(new BarEntry(3,dtt3));
+                    visitor.add(new BarEntry(4,dtt4));
+
+                    BarDataSet barDataSet = new BarDataSet(visitor,"Thống kê doanh thu theo tuần");
+                    barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+                    barDataSet.setValueTextColor(Color.BLACK);
+                    barDataSet.setValueTextSize(14f);
+                    BarData barData = new BarData( barDataSet);
+                    bcThongketuan.setFitBars(true);
+                    bcThongketuan.setData(barData);
+                    bcThongketuan.invalidate();
+                    bcThongketuan.getDescription().setText("Thống kê doanh thu theo tuần");
+                    bcThongketuan.getDescription().setTextSize(20f);
+                    bcThongketuan.animateY(5000);
+                    dialog.show();
+                }
             }
 
             @Override

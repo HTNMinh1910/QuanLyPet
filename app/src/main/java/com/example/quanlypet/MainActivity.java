@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(Tbr);
         bottomNavigationView.setItemIconTintList(null);
         ViewPager2Adapter adapter = new ViewPager2Adapter(this);
+        viewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         viewPager2.setAdapter(adapter);
         viewPager2.setUserInputEnabled(false);
         Tbr.setNavigationIcon(R.drawable.home_item);
