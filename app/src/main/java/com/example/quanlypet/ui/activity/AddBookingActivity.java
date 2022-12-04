@@ -270,7 +270,7 @@ public class AddBookingActivity extends AppCompatActivity {
         usersObj = UsersDB.getInstance(this).Dao().getIdUsers(user);
         int id = usersObj.getId();
 
-        if (checkBooking() == 0) {
+        if (checkBooking()==0) {
             BookObj bookObj = new BookObj(id, idDoctor, idPet, strTT, anh, strTime, strTimeHold, noikham, strDiaChi, strDichVU, 1);
             BookDB.getInstance(this).Dao().insert(bookObj);
             showSnackbar();
@@ -284,8 +284,6 @@ public class AddBookingActivity extends AppCompatActivity {
         } else {
            showSnackbar2();
         }
-
-
     }
 
     public void SlectedSpinner() {
@@ -423,9 +421,22 @@ public class AddBookingActivity extends AppCompatActivity {
         for (int i = 0; i < list.size(); i++) {
             if ( BookDB.getInstance(this).Dao().checkBooking(TIEDTime.getText().toString(),TIEDTimeHold.getText().toString()).isEmpty()) {
                 temp = 0;
+                break;
             } else {
                 temp = 1;
+            }
+        }
+        return temp;
+    }
+    public int checkBookingHold() {
+        int temp = 0;
+        List<BookObj> list = BookDB.getInstance(this).Dao().getAllData();
+        for (int i = 0; i < list.size(); i++) {
+            if ( BookDB.getInstance(this).Dao().checkBooking3(TIEDTime.getText().toString(),TIEDTimeHold.getText().toString()).isEmpty()) {
+                temp = 0;
                 break;
+            } else {
+                temp = 1;
             }
         }
         return temp;

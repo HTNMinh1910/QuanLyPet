@@ -24,7 +24,7 @@ public abstract class BookDB extends RoomDatabase {
 
         }
     };
-    public static final String DATABASENAME="Book.db";
+    public static final String DATABASENAME="Book2.db";
     public static BookDB Instance;
     public static synchronized BookDB getInstance(Context context){
         if(Instance ==null){
