@@ -9,16 +9,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,6 +43,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.quanlypet.MyApplication;
 import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.Spinner.SpinnerAnimal;
 import com.example.quanlypet.adapter.Spinner.SpinnerDoctor;
@@ -47,6 +55,7 @@ import com.example.quanlypet.model.AnimalObj;
 import com.example.quanlypet.model.BookObj;
 import com.example.quanlypet.model.DoctorObj;
 import com.example.quanlypet.model.UsersObj;
+import com.example.quanlypet.ui.fragment.BookWaitFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -55,6 +64,7 @@ import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -115,6 +125,10 @@ public class AddBookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_booking);
         findID();
+        setSupportActionBar(toolbar_booking);
+        getSupportActionBar().setTitle("Đặt Lịch");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         DatePickerDialog.OnDateSetListener date = (datePicker, year, monthOfYear, dayOfMonth) -> {
             mYear = year;
             mMonth = monthOfYear;
@@ -174,8 +188,7 @@ public class AddBookingActivity extends AppCompatActivity {
         listDoctor = DoctorDB.getInstance(this).Dao().getAllData();
         adapterSPNDoctor.setDATA(listDoctor);
         spnDoctor.setAdapter(adapterSPNDoctor);
-        toolbar_booking = findViewById(R.id.tbl_booking);
-        toolbar_booking.setTitle("Đặt Lịch");
+
 
         TIEDService.setFocusable(false);
         TIEDService.setFocusableInTouchMode(false);
@@ -213,6 +226,7 @@ public class AddBookingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addBooking();
+
             }
         });
     }
@@ -270,9 +284,10 @@ public class AddBookingActivity extends AppCompatActivity {
         usersObj = UsersDB.getInstance(this).Dao().getIdUsers(user);
         int id = usersObj.getId();
 
-        if (checkBooking()==0) {
+        if (checkBooking() == 0 ) {
             BookObj bookObj = new BookObj(id, idDoctor, idPet, strTT, anh, strTime, strTimeHold, noikham, strDiaChi, strDichVU, 1);
             BookDB.getInstance(this).Dao().insert(bookObj);
+            sendNotification();
             showSnackbar();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -280,9 +295,9 @@ public class AddBookingActivity extends AppCompatActivity {
                 public void run() {
                     finish();
                 }
-            },3000);
+            }, 3000);
         } else {
-           showSnackbar2();
+            showSnackbar2();
         }
     }
 
@@ -303,15 +318,14 @@ public class AddBookingActivity extends AppCompatActivity {
         spnPet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
-                String username = sharedPreferences.getString("Username","");
+                SharedPreferences sharedPreferences = getSharedPreferences("Users_info", MODE_PRIVATE);
+                String username = sharedPreferences.getString("Username", "");
                 usersObj = UsersDB.getInstance(getApplicationContext()).Dao().getIdUsers(username);
                 listAnimal = AnimalDB.getInstance(getApplicationContext()).Dao().getAllData();
                 idPet = listAnimal.get(position).getId();
                 TIEDNamePet.setText(listAnimal.get(position).getName());
                 TIEDTypePet.setText(listAnimal.get(position).getSpecies());
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -326,6 +340,7 @@ public class AddBookingActivity extends AppCompatActivity {
         TIEDPhoneNumber = (TextInputEditText) findViewById(R.id.TIED_PhoneNumber);
         spnPet = (Spinner) findViewById(R.id.spn_Pet);
         TIPNamePet = (TextInputLayout) findViewById(R.id.TIP_NamePet);
+        toolbar_booking = findViewById(R.id.tbl_booking);
         TIEDNamePet = (TextInputEditText) findViewById(R.id.TIED_NamePet);
         TIPTypePet = (TextInputLayout) findViewById(R.id.TIP_TypePet);
         TIEDTypePet = (TextInputEditText) findViewById(R.id.TIED_TypePet);
@@ -419,7 +434,7 @@ public class AddBookingActivity extends AppCompatActivity {
         int temp = 0;
         List<BookObj> list = BookDB.getInstance(this).Dao().getAllData();
         for (int i = 0; i < list.size(); i++) {
-            if ( BookDB.getInstance(this).Dao().checkBooking(TIEDTime.getText().toString(),TIEDTimeHold.getText().toString()).isEmpty()) {
+            if (BookDB.getInstance(this).Dao().checkBooking(TIEDTime.getText().toString(), TIEDTimeHold.getText().toString()).isEmpty()) {
                 temp = 0;
                 break;
             } else {
@@ -428,11 +443,12 @@ public class AddBookingActivity extends AppCompatActivity {
         }
         return temp;
     }
+
     public int checkBookingHold() {
         int temp = 0;
         List<BookObj> list = BookDB.getInstance(this).Dao().getAllData();
         for (int i = 0; i < list.size(); i++) {
-            if ( BookDB.getInstance(this).Dao().checkBooking3(TIEDTime.getText().toString(),TIEDTimeHold.getText().toString()).isEmpty()) {
+            if (BookDB.getInstance(this).Dao().checkBooking3(TIEDTime.getText().toString(), TIEDTimeHold.getText().toString()).isEmpty()) {
                 temp = 0;
                 break;
             } else {
@@ -443,7 +459,7 @@ public class AddBookingActivity extends AppCompatActivity {
     }
 
     public void showSnackbar() {
-      findID();
+        findID();
         Snackbar snackbar = Snackbar.make(btnBooking, "", Snackbar.LENGTH_LONG);
         View custom = getLayoutInflater().inflate(R.layout.custom_snackbar, null);
         snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
@@ -452,6 +468,7 @@ public class AddBookingActivity extends AppCompatActivity {
         snackbarLayout.addView(custom, 0);
         snackbar.show();
     }
+
     public void showSnackbar2() {
         findID();
         Snackbar snackbar = Snackbar.make(btnBooking, "", Snackbar.LENGTH_LONG);
@@ -462,5 +479,26 @@ public class AddBookingActivity extends AppCompatActivity {
         snackbarLayout.addView(custom, 0);
         snackbar.show();
 
+    }
+
+    public void sendNotification() {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources   (), R.drawable.pet_shop);
+        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        Notification notification = new NotificationCompat.Builder(this, MyApplication.CHANNEL_ID)
+                .setContentTitle("Thông báo từ PetVip")
+                .setContentText("Đặt Lịch Thành Công")
+                .setSmallIcon(R.drawable.pet_shop)
+                .setLargeIcon(bitmap)
+                .setSound(uri)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setColor(getResources().getColor(R.color.purple_2001))
+                .setAutoCancel(true)
+                .build();
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(getNotificationID(), notification);
+    }
+
+    private int getNotificationID() {
+        return (int) new Date().getTime();
     }
 }

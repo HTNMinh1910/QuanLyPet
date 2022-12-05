@@ -54,6 +54,8 @@ public class AddAnimalActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_add_animal);
         idTollBar = (Toolbar) findViewById(R.id.id_tollBar_addAnimal);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Tbr = findViewById(R.id.id_tollBar_addAnimal);
         setSupportActionBar(Tbr);
         getSupportActionBar().setTitle("Add Animal");
