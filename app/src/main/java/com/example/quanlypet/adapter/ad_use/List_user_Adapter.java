@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,6 +49,7 @@ public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         UsersObj obj = list.get(position);
         holder.tvFullnameUsers.setText(obj.getFull_name());
         holder.tvPhoneUsers.setText(obj.getPhone());
@@ -54,6 +57,7 @@ public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.Vi
             clickItem.update(obj);
             return false;
         });
+        holder.itemView.startAnimation(animation);
     }
 
     @Override
