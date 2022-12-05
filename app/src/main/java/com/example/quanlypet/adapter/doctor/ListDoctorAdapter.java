@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Filter;
@@ -57,6 +59,7 @@ public class ListDoctorAdapter extends RecyclerView.Adapter<ListDoctorAdapter.DS
 
     @Override
     public void onBindViewHolder(@NonNull DSDocterViewHolder holder, int position) {
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         ListDoctorObj dsDoctorObj =listDS.get(position);
         if(dsDoctorObj==null)
             return;
@@ -92,6 +95,7 @@ public class ListDoctorAdapter extends RecyclerView.Adapter<ListDoctorAdapter.DS
             });
             dialog.show();
         });
+        holder.itemView.startAnimation(animation);
     }
 
     @Override

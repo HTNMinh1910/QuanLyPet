@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -59,6 +61,8 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
+
         BookObj obj = list.get(position);
         int index = position;
         UsersObj usersObj = UsersDB.getInstance(mContext).Dao().getID(obj.getId_user());
@@ -129,6 +133,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
                 return false;
             }
         });
+        holder.itemView.startAnimation(animation);
     }
 
 

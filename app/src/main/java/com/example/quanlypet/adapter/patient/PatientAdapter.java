@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -45,6 +47,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
 
     @Override
     public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
        PatientObj patientObj = list.get(position);
         if(patientObj==null)
             return;
@@ -93,6 +96,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
             });
             dialog.show();
         });
+        holder.itemView.startAnimation(animation);
     }
 
     @Override

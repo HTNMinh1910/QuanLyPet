@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -51,6 +53,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
     }
     @Override
     public void onBindViewHolder(@NonNull AnimalViewHolder holder, int position) {
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         AnimalObj object = arrayList.get(position);
         if (object == null)
             return;
@@ -88,6 +91,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
             btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
             dialog.show();
         });
+        holder.itemView.startAnimation(animation);
     }
     @Override
     public int getItemCount() {
