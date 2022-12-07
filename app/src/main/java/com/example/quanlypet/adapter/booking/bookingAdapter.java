@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -56,6 +58,8 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
+
         BookObj obj = list.get(position);
         int index = position;
         holder.tvTime.setText(obj.getTime());
@@ -88,6 +92,7 @@ public class bookingAdapter extends RecyclerView.Adapter<bookingAdapter.ViewHold
                 showDiaLogHuy(obj, index);
             }
         });
+        holder.itemView.startAnimation(animation);
 
     }
 

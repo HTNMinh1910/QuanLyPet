@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -59,6 +61,8 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
+
         BookObj obj = list.get(position);
         int index = position;
         UsersObj usersObj = UsersDB.getInstance(mContext).Dao().getID(obj.getId_user());
@@ -72,9 +76,11 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
             holder.imgMore.setVisibility(View.INVISIBLE);
         } else if (obj.getObj_status() == 3) {
             holder.linnerStatus.setBackgroundColor(Color.GREEN);
+
         } else if (obj.getObj_status() == 4) {
             holder.linnerStatus.setBackgroundColor(Color.BLUE);
             holder.imgMore.setVisibility(View.INVISIBLE);
+
         }
         holder.imgMore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,46 +112,30 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
                 CVTaobill = (CardView) dialog.findViewById(R.id.CV_taobill);
                 btnTaobill = (Button) dialog.findViewById(R.id.btn_taobill);
                 btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
+
                 btnTaobill.setOnClickListener(view -> {
                     Intent intent = new Intent(mContext, AddBillActivity.class);
                     SharedPreferences sharedPreferences = mContext.getSharedPreferences("Users_info_id", mContext.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt("userId", obj.getId_user());
+                    editor.putString("obj_service", obj.getService());
                     editor.commit();
                     mContext.startActivity(intent);
+                    dialog.dismiss();
                 });
                 btnCancel.setOnClickListener(view -> {
                     dialog.cancel();
                 });
+
                 if (obj.getObj_status() == 4) {
                     dialog.show();
                 }
                 return false;
             }
         });
+        holder.itemView.startAnimation(animation);
     }
 
-    public void openDiaLogTaoHoaDon() {
-        Dialog dialog = new Dialog(mContext);
-        dialog.setContentView(R.layout.dialog_create_bill);
-        dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
-        Window window = dialog.getWindow();
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        WindowManager.LayoutParams windowAttributes = window.getAttributes();
-        window.setAttributes(windowAttributes);
-        windowAttributes.gravity = Gravity.BOTTOM;
-        CardView CVTaobill;
-        Button btnTaobill;
-        Button btnCancel;
-        CVTaobill = (CardView) dialog.findViewById(R.id.CV_taobill);
-        btnTaobill = (Button) dialog.findViewById(R.id.btn_taobill);
-        btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
-        btnTaobill.setOnClickListener(v -> {
-            Intent intent = new Intent(mContext, AddBillActivity.class);
-            mContext.startActivity(intent);
-        });
-        dialog.show();
-    }
 
     public void showDiaLogHuy(BookObj bookObj, int index) {
         Dialog dialog = new Dialog(mContext);
@@ -161,11 +151,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
         Button btn_xacnhan = dialog.findViewById(R.id.btn_xacnhan);
         Button btn_hoanthanh = dialog.findViewById(R.id.btn_hoanthanh);
         Button btn_cancle = dialog.findViewById(R.id.btn_cancel);
-        if (bookObj.getObj_status() == 3) {
-            btn_hoanthanh.setVisibility(View.INVISIBLE);
-            cv_hoanthanh.setVisibility(View.INVISIBLE);
-        }
-        if (bookObj.getObj_status() == 4) {
+        if (bookObj.getObj_status() == 3 || bookObj.getObj_status() == 4) {
             btn_xacnhan.setVisibility(View.INVISIBLE);
             cv_xacnhan.setVisibility(View.INVISIBLE);
         }
