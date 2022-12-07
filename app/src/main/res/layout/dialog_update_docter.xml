@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,48 +10,45 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="15dp"
+            android:layout_margin="10dp"
+            android:padding="10dp"
             android:orientation="vertical">
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_exit"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/biorhyme_bold"
+                android:text="Exit"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="3dp"
+                android:background="@drawable/button"
+                android:backgroundTint="#DD2C00"
+                android:layout_gravity="center_vertical"
+                android:textColor="#FFFFFF"
                 android:layout_marginBottom="20dp"
-                app:hintEnabled="true"
-                android:paddingBottom="1dp"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingRight="5dp"
-                android:background="@drawable/bg_coneradios"
-                app:startIconTintMode="screen"
-                app:startIconTint="@color/cardview_shadow_end_color"
-                app:startIconDrawable="@drawable/doctor_name"
-                app:boxBackgroundColor="#ffff">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Tên Bác Sĩ"
-                    android:id="@+id/ed_nameDocter"
-                    android:textColorHint="@color/black"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:textSize="10sp" />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/id_TIP_layout_picture"
                 style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
+                    android:fontFamily="@font/solway_extrabold"
                     android:text="Ảnh Bác sĩ"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="20dp">
+                    android:orientation="horizontal">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_picture"
@@ -71,11 +67,33 @@
                         android:backgroundTint="#F4F1F1" />
                 </LinearLayout>
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                app:hintEnabled="true"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/doctor_name"
+                app:boxBackgroundColor="#ffff">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tên Bác Sĩ"
+                    android:fontFamily="@font/solway_medium"
+                    android:id="@+id/ed_nameDocter"
+                    android:textColorHint="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 app:hintEnabled="true"
                 android:paddingBottom="1dp"
                 android:paddingLeft="5dp"
@@ -90,6 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Số điện thoại"
+                    android:fontFamily="@font/solway_medium"
                     android:id="@+id/ed_phoneDocter"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -106,6 +125,7 @@
                 <RadioButton
                     android:id="@+id/rdo_boy"
                     android:text="Nam"
+                    android:fontFamily="@font/solway_light"
                     android:textSize="18dp"
                     android:enabled="true"
                     android:layout_width="wrap_content"
@@ -113,6 +133,7 @@
                 <RadioButton
                     android:id="@+id/rdo_girl"
                     android:text="Nữ"
+                    android:fontFamily="@font/solway_light"
                     android:textSize="18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -120,7 +141,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 app:hintEnabled="true"
                 android:paddingBottom="1dp"
                 android:paddingLeft="5dp"
@@ -135,13 +156,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
+                    android:fontFamily="@font/solway_medium"
                     android:id="@+id/ed_emailDocter"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 app:hintEnabled="true"
                 android:paddingBottom="1dp"
                 android:paddingLeft="5dp"
@@ -156,13 +178,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Địa chỉ"
+                    android:fontFamily="@font/solway_medium"
                     android:id="@+id/ed_addressDocter"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 app:hintEnabled="true"
                 android:paddingBottom="1dp"
                 android:paddingLeft="5dp"
@@ -177,6 +200,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Chuyên Ngành"
+                    android:fontFamily="@font/solway_medium"
                     android:id="@+id/ed_specializeDocter"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -184,6 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal">
                 <Button
                     android:id="@+id/btn_updateDocter"
@@ -193,6 +218,7 @@
                     android:backgroundTint="#E11515"
                     android:theme="@style/Theme.QuanLyPet.Button_1"
                     android:textAllCaps="false"
+                    android:fontFamily="@font/solway_regular"
                     android:background="@drawable/button"
                     android:text="Sửa"/>
                 <Button
@@ -202,6 +228,7 @@
                     android:textAllCaps="false"
                     android:theme="@style/Theme.QuanLyPet.Button"
                     android:layout_width="150dp"
+                    android:fontFamily="@font/solway_regular"
                     android:layout_height="wrap_content"
                     android:text="Hủy"/>
 

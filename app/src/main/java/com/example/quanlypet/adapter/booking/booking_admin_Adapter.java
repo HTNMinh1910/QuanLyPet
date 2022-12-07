@@ -88,42 +88,43 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
                 callback.updateAdmin(obj, index);
             }
         });
-        if (obj.getObj_status() == 4) {
-           holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-               @Override
-               public boolean onLongClick(View v) {
-                   Dialog dialog = new Dialog(mContext);
-                   dialog.setContentView(R.layout.dialog_create_bill);
-                   dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
-                   Window window = dialog.getWindow();
-                   window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-                   WindowManager.LayoutParams windowAttributes = window.getAttributes();
-                   window.setAttributes(windowAttributes);
-                   windowAttributes.gravity = Gravity.BOTTOM;
-                   CardView CVTaobill;
-                   Button btnTaobill;
-                   Button btnCancel;
-                   CVTaobill = (CardView) dialog.findViewById(R.id.CV_taobill);
-                   btnTaobill = (Button) dialog.findViewById(R.id.btn_taobill);
-                   btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
-                   btnTaobill.setOnClickListener(view -> {
-                       Intent intent = new Intent(mContext, AddBillActivity.class);
-                       SharedPreferences sharedPreferences = mContext.getSharedPreferences("Users_info_id", mContext.MODE_PRIVATE);
-                       SharedPreferences.Editor editor = sharedPreferences.edit();
-                       editor.putInt("userId",obj.getId_user());
-                       editor.commit();
-                       mContext.startActivity(intent);
-                   });
-                   btnCancel.setOnClickListener(view -> {
-                       dialog.cancel();
-                   });
-                   dialog.show();
 
-                   return false;
-               }
-           });
-        }
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Dialog dialog = new Dialog(mContext);
+                dialog.setContentView(R.layout.dialog_create_bill);
+                dialog.getWindow().setBackgroundDrawable(mContext.getDrawable(R.drawable.bg_huy_booking));
+                Window window = dialog.getWindow();
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                WindowManager.LayoutParams windowAttributes = window.getAttributes();
+                window.setAttributes(windowAttributes);
+                windowAttributes.gravity = Gravity.BOTTOM;
+                CardView CVTaobill;
+                Button btnTaobill;
+                Button btnCancel;
+                CVTaobill = (CardView) dialog.findViewById(R.id.CV_taobill);
+                btnTaobill = (Button) dialog.findViewById(R.id.btn_taobill);
+                btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
+                btnTaobill.setOnClickListener(view -> {
+                    Intent intent = new Intent(mContext, AddBillActivity.class);
+                    SharedPreferences sharedPreferences = mContext.getSharedPreferences("Users_info_id", mContext.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("userId", obj.getId_user());
+                    editor.commit();
+                    mContext.startActivity(intent);
+                });
+                btnCancel.setOnClickListener(view -> {
+                    dialog.cancel();
+                });
+                if (obj.getObj_status() == 4) {
+                    dialog.show();
+                }
+                return false;
+            }
+        });
     }
+
     public void openDiaLogTaoHoaDon() {
         Dialog dialog = new Dialog(mContext);
         dialog.setContentView(R.layout.dialog_create_bill);
@@ -145,6 +146,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
         });
         dialog.show();
     }
+
     public void showDiaLogHuy(BookObj bookObj, int index) {
         Dialog dialog = new Dialog(mContext);
         dialog.setContentView(R.layout.dialog_book_confirm_done);
@@ -159,7 +161,11 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
         Button btn_xacnhan = dialog.findViewById(R.id.btn_xacnhan);
         Button btn_hoanthanh = dialog.findViewById(R.id.btn_hoanthanh);
         Button btn_cancle = dialog.findViewById(R.id.btn_cancel);
-        if (bookObj.getObj_status() == 3 || bookObj.getObj_status() == 4) {
+        if (bookObj.getObj_status() == 3) {
+            btn_hoanthanh.setVisibility(View.INVISIBLE);
+            cv_hoanthanh.setVisibility(View.INVISIBLE);
+        }
+        if (bookObj.getObj_status() == 4) {
             btn_xacnhan.setVisibility(View.INVISIBLE);
             cv_xacnhan.setVisibility(View.INVISIBLE);
         }

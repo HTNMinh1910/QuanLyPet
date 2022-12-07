@@ -54,6 +54,7 @@ public class DoctorFragment extends Fragment implements DoctorAdapter.Callback {
     ImageView imgPicture;
     ImageView btnAlbum;
     private String user;
+    private TextInputEditText edSearchDoctor;
     public DoctorFragment() {
     }
 

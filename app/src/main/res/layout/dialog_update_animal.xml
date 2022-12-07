@@ -3,18 +3,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
+
     <TextView
-        android:id="@+id/title"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:padding="5dp"
-        android:background="#FFAB00"
-        android:text="Update Animal"
-        android:gravity="center"
+        android:id="@+id/tv_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/biorhyme_bold"
+        android:text="Exit"
+        android:paddingTop="3dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="3dp"
+        android:background="@drawable/button"
+        android:backgroundTint="#DD2C00"
+        android:layout_gravity="center_vertical"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp" />
+
+    <LinearLayout
+        android:id="@+id/up_liner_share_animal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/up_img_anh"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/camera" />
+        <ImageView
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_album_up"
+            android:layout_gravity="center"
+            android:src="@drawable/photo_album"/>
+    </LinearLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,32 +57,13 @@
         app:startIconDrawable="@drawable/name_animal">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_marginTop="10dp"
-            android:hint="name animal"
+            android:hint="Name animal"
+            android:fontFamily="@font/solway_medium"
             android:background="@color/white"
             android:id="@+id/up_nameAnimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
-<LinearLayout
-        android:id="@+id/up_liner_share_animal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/up_img_anh"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
-            android:src="@drawable/camera" />
-    <ImageView
-        android:layout_marginLeft="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_album_up"
-        android:layout_gravity="center"
-        android:src="@drawable/photo_album"/>
-    </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +78,8 @@
         app:startIconDrawable="@drawable/age">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_marginTop="10dp"
-            android:hint="age animal"
+            android:hint="Age animal"
+            android:fontFamily="@font/solway_medium"
             android:id="@+id/up_ageAnimal"
             android:background="@color/white"
             android:layout_width="match_parent"
@@ -92,8 +102,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/solway_medium"
             android:background="@color/white"
-            android:hint="species animal" />
+            android:hint="Species animal" />
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -105,8 +116,9 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/btn_updateAnimal"
-            android:text="update"
+            android:text="Update"
             android:textAllCaps="false"
+            android:fontFamily="@font/solway_medium"
             android:background="@drawable/button"
             android:backgroundTint="#ccc"
             android:theme="@style/Theme.QuanLyPet.Button_1"
@@ -116,7 +128,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/btn_cancel"
-            android:text="cancel"
+            android:text="Cancel"
+            android:fontFamily="@font/solway_medium"
             android:textAllCaps="false"
             android:background="@drawable/button"
             android:theme="@style/Theme.QuanLyPet.Button"

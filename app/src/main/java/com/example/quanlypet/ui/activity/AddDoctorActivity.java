@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -73,7 +74,7 @@ public class AddDoctorActivity extends AppCompatActivity{
         setSupportActionBar(Tbr);
         getSupportActionBar().setTitle("Thêm Bác sĩ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        Tbr.setTitleTextColor(Color.WHITE);
         imgPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

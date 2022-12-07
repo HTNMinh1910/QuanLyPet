@@ -31,8 +31,8 @@
             android:text="Đăng ký tài khoản"
             android:gravity="center"
             android:textSize="25sp"
-            android:fontFamily="@font/biorhyme_bold"
-            android:layout_marginTop="20dp"
+            android:fontFamily="@font/solway_extrabold"
+            android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:textStyle="bold"/>
         <com.google.android.material.textfield.TextInputLayout
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
-                android:fontFamily="@font/biorhyme_bold"
+                android:fontFamily="@font/solway_medium"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
-                android:fontFamily="@font/biorhyme_bold"
+                android:fontFamily="@font/solway_medium"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                android:fontFamily="@font/biorhyme_bold"/>
+                android:fontFamily="@font/solway_medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -121,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone"
-                android:fontFamily="@font/biorhyme_bold"
+                android:fontFamily="@font/solway_medium"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout
@@ -150,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
-                    android:fontFamily="@font/biorhyme_bold"
+                    android:fontFamily="@font/solway_medium"
                     android:layout_marginLeft="15dp"/>
 
                 <RadioButton
@@ -158,7 +158,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
-                    android:fontFamily="@font/biorhyme_bold"
+                    android:fontFamily="@font/solway_medium"
                     android:layout_marginLeft="15dp"/>
             </RadioGroup>
 
@@ -183,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:fontFamily="@font/biorhyme_bold"
+                android:fontFamily="@font/solway_medium"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -207,7 +207,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Confirm password"
-                android:fontFamily="@font/biorhyme_bold"
+                android:fontFamily="@font/solway_medium"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
         <TextView
@@ -216,7 +216,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
-            android:fontFamily="@font/biorhyme_bold"
+            android:fontFamily="@font/solway_regular"
             android:layout_gravity="center"
             android:text="Lỗi tài khoản"
             android:textColor="#FB0F0F"
@@ -227,6 +227,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button"
             android:textAllCaps="false"
+            android:fontFamily="@font/solway_medium"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:theme="@style/Theme.QuanLyPet.Button_1"
