@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.AnimalObj;
 import com.example.quanlypet.ui.activity.DoctorInforActivity;
+import com.example.quanlypet.ui.activity.PatientActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -79,16 +81,19 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
             CardView CVTaobenhan;
             Button btnTaoBenhAn;
             CardView CVXembenhan;
-            Button btnXemBenhAn;
-            Button btnCancel;
-            CVTaobenhan = (CardView) dialog.findViewById(R.id.CV_taobenhan);
-            btnTaoBenhAn = (Button) dialog.findViewById(R.id.btn_taoBenhAn);
-            btnTaoBenhAn.setOnClickListener(v1 ->{
-
+            Button btnXemBenhAn = dialog.findViewById(R.id.btn_xemBenhAn);
+            Button btnCancel  = dialog.findViewById(R.id.btn_cancel);
+            btnXemBenhAn.setOnClickListener(view->{
+                Intent intent = new Intent(v.getContext(), PatientActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("obj", object);
+                intent.putExtras(bundle);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             });
-            CVXembenhan = (CardView) dialog.findViewById(R.id.CV_xembenhan);
-            btnXemBenhAn = (Button) dialog.findViewById(R.id.btn_xemBenhAn);
-            btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
+            btnCancel.setOnClickListener(view->{
+                dialog.dismiss();
+            });
             dialog.show();
         });
         holder.itemView.startAnimation(animation);

@@ -13,6 +13,23 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CV_taopatient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#403F3F"
+            app:cardCornerRadius="20dp">
+
+            <Button
+                android:id="@+id/btn_taopatient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#403F3F"
+
+                android:textAllCaps="false"
+                android:text="Tạo Bệnh Án" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/CV_taobill"

@@ -20,4 +20,7 @@ public interface PatientDao {
 
     @Update
     void edit(PatientObj patientObj);
+
+    @Query("SELECT * FROM patient where id_animal = :id")
+    List<PatientObj> getIDAnimal(String id);
 }
