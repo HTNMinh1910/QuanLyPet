@@ -14,21 +14,6 @@
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
         <androidx.cardview.widget.CardView
-            android:id="@+id/CV_taobenhan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#403F3F"
-            app:cardCornerRadius="20dp">
-            <Button
-                android:id="@+id/btn_taoBenhAn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#403F3F"
-                android:text="Tạo benh an"
-                android:textAllCaps="false" />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
             android:id="@+id/CV_xembenhan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
