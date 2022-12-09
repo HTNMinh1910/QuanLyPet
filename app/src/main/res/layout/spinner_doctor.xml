@@ -23,8 +23,10 @@
             android:layout_toRightOf="@id/img_animal"
             android:text="Animal name"
             android:layout_centerHorizontal="true"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/solway_extrabold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/tv_typeAnimal"
@@ -35,9 +37,11 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/img_animal"
-            android:textSize="16dp"
+            android:textSize="14sp"
             android:text="Khám Sức Khỏe"
-            android:textStyle="bold" />
+            android:fontFamily="@font/solway_medium"
+            android:textColor="@color/black"
+            android:textStyle="normal" />
     </RelativeLayout>
 
 

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/bg_tabarlayout">
+    android:background="#F2F2F2">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
             android:id="@+id/id_tollBar_addAnimal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#03A9F4"
+            android:background="#FFAB00"
             app:menu="@menu/meu_add_animal"/>
     </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
@@ -22,7 +22,27 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="10dp">
-
+        <LinearLayout
+            android:id="@+id/liner_share_animal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="30dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_anh"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/camera" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_album"
+                android:src="@drawable/photo_album"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center" />
+        </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,35 +58,12 @@
         app:startIconDrawable="@drawable/name_animal"
         app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="name animal"
+            android:hint="Name animal"
             android:id="@+id/ed_nameAnimal"
+            android:fontFamily="@font/solway_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
-    <LinearLayout
-        android:id="@+id/liner_share_animal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_coneradios"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="30dp">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_anh"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/camera" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_album"
-            android:src="@drawable/photo_album"
-            android:layout_marginLeft="30dp"
-            android:layout_gravity="center" />
-    </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,8 +79,9 @@
         app:startIconDrawable="@drawable/age"
         app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="age animal"
+            android:hint="Age animal"
             android:id="@+id/ed_ageAnimal"
+            android:fontFamily="@font/solway_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -102,8 +100,9 @@
         app:startIconDrawable="@drawable/species"
         app:hintEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="species animal"
+            android:hint="Species animal"
             android:id="@+id/ed_speciesAnimal"
+            android:fontFamily="@font/solway_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -114,14 +113,14 @@
         android:gravity="center"
         android:layout_marginTop="60dp">
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/btn_addAnimal"
             android:background="@drawable/button"
             android:theme="@style/Theme.QuanLyPet.Button_1"
             android:text="Add Animal"
-            android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="14sp"
+            android:fontFamily="@font/solway_bold"
             android:textAllCaps="false"
             android:backgroundTint="#E11515"
             android:textColor="@color/white"

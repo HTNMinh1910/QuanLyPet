@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg_tabarlayout">
+    android:background="#F2F2F2">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -39,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="User Name"
+                android:fontFamily="@font/solway_medium"
                 android:id="@+id/ed_username"
                 android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -60,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Fullname"
+                android:fontFamily="@font/solway_medium"
                 android:id="@+id/ed_fullnameUser"
                 android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -81,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
+                android:fontFamily="@font/solway_medium"
                 android:id="@+id/ed_emailUsers"
                 android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -103,6 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone"
+                android:fontFamily="@font/solway_medium"
                 android:id="@+id/ed_phoneUsers"
                 android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -127,6 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Gender"
+                android:fontFamily="@font/solway_medium"
                 android:id="@+id/ed_genderUsers"
                 android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -151,6 +156,7 @@
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#E11515"
                 android:textAllCaps="false"
+                android:fontFamily="@font/solway_bold"
                 android:layout_margin="20dp"
                 android:background="@drawable/button"
                 android:theme="@style/Theme.QuanLyPet.Button_1"
@@ -162,6 +168,7 @@
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#E11515"
                 android:textAllCaps="false"
+                android:fontFamily="@font/solway_bold"
                 android:layout_margin="20dp"
                 android:background="@drawable/button"
                 android:theme="@style/Theme.QuanLyPet.Button"

@@ -8,8 +8,8 @@
         android:id="@+id/img_slider"
         android:layout_gravity="center"
         android:layout_width="400dp"
-        android:layout_height="250dp"
-        android:src="@drawable/one"
+        android:layout_height="400dp"
+        android:src="@drawable/users_well"
         android:scaleType="fitCenter"
         />
 </FrameLayout>

@@ -157,7 +157,7 @@ public class HomeFragment extends Fragment {
         linerMess.setOnClickListener(v -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 Uri uri = Uri.parse("http://m.me/100088046954126");
-                this.startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
             }
         });
         linerAmbulance.setOnClickListener(v -> {

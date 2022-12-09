@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg_tabarlayout">
+    android:background="#F2F2F2">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="0dp">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/id_tollBar"
             android:layout_width="match_parent"
@@ -20,33 +20,36 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:layout_margin="15dp">
+        android:padding="20dp">
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TIP_ImportName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_til_booking"
             android:hint="Tên Tài Khoản"
             android:paddingBottom="1dp"
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
-            >
-
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/businessman"
+            app:boxBackgroundColor="#ffff">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/TIED_ImportName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:textColor="@color/black"
+                android:fontFamily="@font/solway_medium"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TIP_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_til_booking"
             android:hint="Mật Khẩu"
             android:paddingBottom="1dp"
@@ -54,7 +57,10 @@
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             app:passwordToggleEnabled="true"
-            >
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/password"
+            app:boxBackgroundColor="#ffff">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/TIED_password"
                 android:layout_width="match_parent"
@@ -62,21 +68,24 @@
                 android:background="@color/white"
                 android:textColor="@color/black"
                 android:inputType="textPassword"
-
+                android:fontFamily="@font/solway_medium"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TIP_NameUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_til_booking"
             android:hint="Họ Và Tên Người Dùng"
             android:paddingBottom="1dp"
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
-          >
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/name"
+            app:boxBackgroundColor="#ffff">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/TIED_NameUser"
@@ -84,20 +93,24 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:textColor="@color/black"
+                android:fontFamily="@font/solway_medium"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TIP_Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_til_booking"
             android:hint="Email"
             android:paddingBottom="1dp"
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
-            >
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/email"
+            app:boxBackgroundColor="#ffff">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/TIED_Email"
@@ -105,20 +118,24 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:textColor="@color/black"
+                android:fontFamily="@font/solway_medium"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TIP_PhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_til_booking"
             android:hint="Số Điện Thoại"
             android:paddingBottom="1dp"
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
-            >
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/phone"
+            app:boxBackgroundColor="#ffff">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/TIED_PhoneNumber"
@@ -126,27 +143,31 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:textColor="@color/black"
+                android:fontFamily="@font/solway_medium"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TIP_Gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_til_booking"
             android:hint="Giới Tính"
             android:paddingBottom="1dp"
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
-            >
-
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/cardview_shadow_end_color"
+            app:startIconDrawable="@drawable/gender"
+            app:boxBackgroundColor="#ffff">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/TIED_Gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:textColor="@color/black"
+                android:fontFamily="@font/solway_medium"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
         <Button
@@ -154,7 +175,11 @@
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:text="Cập Nhập"
-            android:layout_marginTop="20dp"
+            android:fontFamily="@font/solway_regular"
+            android:background="@drawable/button"
+            android:theme="@style/Theme.QuanLyPet.Button_1"
+            android:textAllCaps="false"
+            android:layout_marginTop="30dp"
             android:textStyle="bold"
             />
     </LinearLayout>

@@ -37,14 +37,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginLeft="10dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="55 lịch hẹn"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kinh nghiệm: 2013 | KV: Cầu giấy, Hà nội"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -52,11 +44,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/solway_regular"
                         android:text="Chuyên môn: "/>
                     <TextView
                         android:id="@+id/tv_specializeDocter"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/solway_regular"
                         android:text="Khám sức khỏe tổng hợp, Da liễu, Nội soi"/>
                 </LinearLayout>
             </LinearLayout>
@@ -85,6 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Họ và tên: "
+                    android:fontFamily="@font/solway_regular"
                     android:textSize="16sp" />
 
                 <TextView
@@ -93,6 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Nam"
+                    android:fontFamily="@font/solway_medium"
                     android:layout_gravity="center"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -121,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:text="  Điện thoại: "
                     android:layout_gravity="center"
+                    android:fontFamily="@font/solway_regular"
                     android:layout_marginRight="5dp"
                     android:textSize="16sp"/>
                 <TextView
@@ -128,6 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0912821312"
+                    android:fontFamily="@font/solway_medium"
                     android:layout_gravity="center"
                     android:id="@+id/tv_phoneDocter"
                     android:textSize="16sp"
@@ -156,6 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Địa chỉ: "
+                    android:fontFamily="@font/solway_regular"
                     android:layout_gravity="center"
                     android:textSize="16sp"/>
                 <TextView
@@ -165,6 +164,7 @@
                     android:text="Nam từ liêm, Hà Nội"
                     android:id="@+id/tv_addressDocter"
                     android:textSize="16sp"
+                    android:fontFamily="@font/solway_medium"
                     android:layout_gravity="center"
                     android:textStyle="bold"/>
             </LinearLayout>

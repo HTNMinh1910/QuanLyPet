@@ -34,7 +34,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center|right"
                         android:gravity="center_vertical"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/solway_medium"
                         android:layout_marginLeft="10dp"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -61,7 +61,7 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="right|center"
                             android:gravity="center_vertical"
-                            android:textStyle="bold"
+                            android:fontFamily="@font/solway_medium"
                             android:layout_marginLeft="10dp"
                             android:textSize="15sp" />
                     </LinearLayout>
@@ -82,7 +82,7 @@
                             android:layout_width="140dp"
                             android:layout_height="match_parent"
                             android:text=""
-                            android:textStyle="bold"
+                            android:fontFamily="@font/solway_medium"
                             android:gravity="center_vertical"
                             android:layout_gravity="center|right"
                             android:layout_marginLeft="10dp"

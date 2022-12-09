@@ -52,13 +52,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Date Create: "
-                    android:textSize="15sp"
+                    android:fontFamily="@font/solway_regular"
+                    android:textSize="12sp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_dateCreate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="2022-10-09"
+                    android:fontFamily="@font/solway_medium"
                     android:textSize="15sp"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -70,7 +72,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Date Update: "
-                    android:textSize="15sp"
+                    android:fontFamily="@font/solway_regular"
+                    android:textSize="12sp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_dateUpdate"
@@ -78,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:hint="2022-11-12"
                     android:textSize="15sp"
+                    android:fontFamily="@font/solway_medium"
                     android:textStyle="bold"/>
             </LinearLayout>
             <LinearLayout
@@ -88,7 +92,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Triệu chứng: "
-                    android:textSize="15sp"
+                    android:fontFamily="@font/solway_regular"
+                    android:textSize="12sp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_sysptems"
@@ -96,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Đau bụng"
                     android:textSize="15sp"
+                    android:fontFamily="@font/solway_medium"
                     android:textStyle="bold"/>
             </LinearLayout>
             <LinearLayout
@@ -105,14 +111,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chuẩn đoán: "
-                    android:textSize="15sp"
+                    android:text="Chẩn đoán: "
+                    android:fontFamily="@font/solway_regular"
+                    android:textSize="12sp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_diagnostic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Đau dạ dày"
+                    android:fontFamily="@font/solway_medium"
                     android:textSize="15sp"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -124,13 +132,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Đơn thuốc: "
-                    android:textSize="15sp"
+                    android:fontFamily="@font/solway_regular"
+                    android:textSize="12sp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_instructions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="AlphaB"
+                    android:fontFamily="@font/solway_medium"
                     android:textSize="15sp"
                     android:textStyle="bold"/>
             </LinearLayout>

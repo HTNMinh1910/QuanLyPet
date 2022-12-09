@@ -53,6 +53,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:text="ten animal"
+                            android:fontFamily="@font/solway_extrabold"
                             android:textColor="@color/black"
                             android:textSize="24sp" />
                     </LinearLayout>
@@ -80,6 +81,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:text="loai"
+                                android:fontFamily="@font/solway_medium"
                                 android:textSize="18sp"
                                 android:textColor="@color/black" />
                         </LinearLayout>
@@ -101,6 +103,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:fontFamily="@font/solway_medium"
                                 android:textSize="14sp"
                                 android:text="1" />
                         </LinearLayout>
@@ -115,6 +118,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/information"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginRight="15dp"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

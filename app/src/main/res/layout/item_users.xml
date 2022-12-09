@@ -31,8 +31,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Họ Tên: "
+                    android:fontFamily="@font/solway_bold"
                     android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_fullnameUsers"
@@ -41,8 +42,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:text="Họ Tên: "
+                    android:fontFamily="@font/solway_medium"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -56,8 +58,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Số Điện Thoại: "
+                    android:fontFamily="@font/solway_bold"
                     android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_phoneUsers"
@@ -66,8 +69,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:text="Phone"
+                    android:fontFamily="@font/solway_medium"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>

@@ -10,7 +10,6 @@
             app:searchIcon="@drawable/search"
             app:queryHint="Search"
             android:layout_marginTop="5dp"
-            android:backgroundTint="#E0E0E0"
             android:background="@drawable/bg_coneradios"
             android:layoutDirection="rtl"
             android:layout_width="match_parent"
@@ -32,6 +31,6 @@
             android:tintMode="@integer/material_motion_duration_medium_1"
             android:visibility="gone"
             app:backgroundTint="@color/white"
-            android:src="@drawable/report" />
+            android:src="@drawable/add_doctor" />
     </FrameLayout>
 </LinearLayout>

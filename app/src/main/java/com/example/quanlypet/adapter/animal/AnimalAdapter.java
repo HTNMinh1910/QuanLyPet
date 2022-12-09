@@ -15,6 +15,8 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,17 +27,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlypet.R;
 import com.example.quanlypet.model.AnimalObj;
+import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.DoctorInforActivity;
 import com.example.quanlypet.ui.activity.PatientActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>{
+public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder> implements Filterable {
     private Context context;
     private Callback callback;
     private ArrayList<AnimalObj> arrayList;
-    private ArrayList<AnimalObj> arrayList2;
+    private ArrayList<AnimalObj> listAnimal;
 
 
     public AnimalAdapter(Context context, Callback callback) {
@@ -46,7 +49,35 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         this.arrayList = arrayList;
         notifyDataSetChanged();
     }
-
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String search = constraint.toString();
+                if (search.isEmpty()){
+                    arrayList = listAnimal;
+                }else{
+                    ArrayList<AnimalObj> listdt = new ArrayList<>();
+                    for (AnimalObj object: listAnimal){
+                        if (object.getName().toLowerCase().contains(search.toLowerCase())||
+                                object.getSpecies().toLowerCase().contains(search.toLowerCase())){
+                            listdt.add(object);
+                        }
+                    }
+                    arrayList = listdt;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = arrayList;
+                return filterResults;
+            }
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                arrayList = (ArrayList<AnimalObj>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
     @NonNull
     @Override
     public AnimalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

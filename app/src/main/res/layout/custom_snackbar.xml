@@ -3,7 +3,7 @@
     android:id="@+id/contrain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#EDCA95"
+    android:background="#FBE9CD"
     android:layout_margin="5dp">
     >
 

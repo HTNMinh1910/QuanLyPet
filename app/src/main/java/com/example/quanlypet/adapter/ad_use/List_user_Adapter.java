@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,13 +18,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.quanlypet.R;
 import com.example.quanlypet.adapter.booking.booking_admin_Adapter;
 import com.example.quanlypet.model.BookObj;
+import com.example.quanlypet.model.DoctorObj;
 import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.DetailUsersActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.ViewHolder> {
+public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.ViewHolder> implements Filterable {
     List<UsersObj> list;
+    List<UsersObj> listUsers;
     Context mContext;
     ClickItem clickItem;
 
@@ -39,7 +44,36 @@ public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.Vi
         this.list = list;
         notifyDataSetChanged();
     }
-
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String search = constraint.toString();
+                if (search.isEmpty()){
+                    list = listUsers;
+                }else{
+                    ArrayList<UsersObj> listdt = new ArrayList<>();
+                    for (UsersObj object: listUsers){
+                        if (object.getFull_name().toLowerCase().contains(search.toLowerCase())||
+                                object.getEmail().toLowerCase().contains(search.toLowerCase())||
+                                object.getPhone().toLowerCase().contains(search.toLowerCase())){
+                            listdt.add(object);
+                        }
+                    }
+                    list = listdt;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = list;
+                return filterResults;
+            }
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                list = (ArrayList<UsersObj>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

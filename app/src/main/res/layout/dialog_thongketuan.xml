@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#fff">
+    android:background="#F9F9F9">
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/bc_thongketuan"
         android:layout_width="match_parent"

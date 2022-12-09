@@ -35,6 +35,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="10dp"
                                 android:text="Đặt Lịch"
+                                android:fontFamily="@font/solway_extrabold"
                                 android:textColor="@color/white"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
@@ -58,6 +59,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cấp Cứu "
+                            android:fontFamily="@font/solway_extrabold"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:textColor="@color/white"
@@ -84,6 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tư Vấn"
+                android:fontFamily="@font/solway_extrabold"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
@@ -112,17 +115,13 @@
                         android:layout_marginBottom="5dp"/>
                 </FrameLayout>
             </androidx.cardview.widget.CardView>
-
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barChart"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"/>
         <TextView
             android:id="@+id/titleNear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/solway_extrabold"
             android:text="Lịch Hoàn Thành Gần Đây"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -133,6 +132,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_margin="10dp"/>
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
         </LinearLayout>
     </ScrollView>
 
