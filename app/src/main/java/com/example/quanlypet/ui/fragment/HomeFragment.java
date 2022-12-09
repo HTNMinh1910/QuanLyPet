@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -106,6 +108,12 @@ public class HomeFragment extends Fragment {
         linerBooking = view.findViewById(R.id.liner_booking);
         linerAmbulance = view.findViewById(R.id.liner_ambulance);
         linerMess = view.findViewById(R.id.liner_mess);
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_left);
+        Animation animation1 = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up);
+        Animation animation2 = AnimationUtils.loadAnimation(getContext(), R.anim.slide_right);
+        linerMess.setAnimation(animation1);
+        linerBooking.setAnimation(animation2);
+        linerAmbulance.setAnimation(animation);
         titleNear = view.findViewById(R.id.titleNear);
         list = new ArrayList<>();
         id_recyNear = view.findViewById(R.id.recy_bookingNear);
@@ -301,6 +309,10 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         LoadData();
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_left);
+        linerMess.setAnimation(animation);
+        linerBooking.setAnimation(animation);
+        linerAmbulance.setAnimation(animation);
     }
     public void LoadData(){
         if (user.equalsIgnoreCase("Admin")) {

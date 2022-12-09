@@ -47,6 +47,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
     }
     public void setData(ArrayList<AnimalObj> arrayList){
         this.arrayList = arrayList;
+        this.listAnimal = arrayList;
         notifyDataSetChanged();
     }
     @Override

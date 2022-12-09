@@ -42,6 +42,7 @@ public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.Vi
 
     public void setData(List<UsersObj> list) {
         this.list = list;
+        this.listUsers = list;
         notifyDataSetChanged();
     }
     @Override
@@ -96,7 +97,7 @@ public class List_user_Adapter extends RecyclerView.Adapter<List_user_Adapter.Vi
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list == null ? 0: list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
