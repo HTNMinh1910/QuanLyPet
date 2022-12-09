@@ -36,9 +36,6 @@ public class WelcomeActivity extends AppCompatActivity {
         list.add(new Photo(R.drawable.one));
         list.add(new Photo(R.drawable.two));
         list.add(new Photo(R.drawable.three));
-        list.add(new Photo(R.drawable.four));
-        list.add(new Photo(R.drawable.five));
-        list.add(new Photo(R.drawable.six));
         return list;
     }
     private void tapSlide(){
