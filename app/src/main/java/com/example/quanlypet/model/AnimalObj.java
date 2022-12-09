@@ -3,8 +3,10 @@ package com.example.quanlypet.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "Animal")
-public class AnimalObj {
+public class AnimalObj implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int id_users;

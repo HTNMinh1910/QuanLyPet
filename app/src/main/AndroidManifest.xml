@@ -31,6 +31,14 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ui.activity.PatientActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.activity.PatientActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.activity.ListDoctorActivity"
             android:exported="false" >
             <meta-data

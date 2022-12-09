@@ -42,41 +42,7 @@
                     android:layout_height="wrap_content"
                     android:hint="1"/>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ID Docter: "
-                    android:textSize="15sp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/tv_idDocter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="DT1"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ID Animal: "
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/tv_idAnimal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="A1"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,6 +77,60 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="2022-11-12"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Triệu chứng: "
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tv_sysptems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Đau bụng"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chuẩn đoán: "
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tv_diagnostic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Đau dạ dày"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đơn thuốc: "
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tv_instructions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="AlphaB"
                     android:textSize="15sp"
                     android:textStyle="bold"/>
             </LinearLayout>

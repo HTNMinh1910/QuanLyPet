@@ -29,6 +29,7 @@ import com.example.quanlypet.database.UsersDB;
 import com.example.quanlypet.model.BookObj;
 import com.example.quanlypet.model.UsersObj;
 import com.example.quanlypet.ui.activity.AddBillActivity;
+import com.example.quanlypet.ui.activity.AddPatientActivity;
 
 import java.util.List;
 
@@ -112,7 +113,8 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
                 CVTaobill = (CardView) dialog.findViewById(R.id.CV_taobill);
                 btnTaobill = (Button) dialog.findViewById(R.id.btn_taobill);
                 btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
-
+                Button btnTaopatient;
+                btnTaopatient = (Button) dialog.findViewById(R.id.btn_taopatient);
                 btnTaobill.setOnClickListener(view -> {
                     Intent intent = new Intent(mContext, AddBillActivity.class);
                     SharedPreferences sharedPreferences = mContext.getSharedPreferences("Users_info_id", mContext.MODE_PRIVATE);
@@ -122,6 +124,15 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
                     editor.commit();
                     mContext.startActivity(intent);
                     dialog.dismiss();
+                });
+                btnTaopatient.setOnClickListener(view->{
+                    Intent intent = new Intent(mContext, AddPatientActivity.class);
+                    SharedPreferences sharedPreferences = mContext.getSharedPreferences("Animal_id_doctor_id", mContext.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("doctorId",obj.getId_doctor());
+                    editor.putInt("animalId",obj.getId_animal());
+                    editor.commit();
+                    mContext.startActivity(intent);
                 });
                 btnCancel.setOnClickListener(view -> {
                     dialog.cancel();
