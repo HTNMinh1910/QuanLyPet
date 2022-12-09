@@ -268,6 +268,7 @@ public class HomeFragment extends Fragment {
         list.add(new Photo(R.drawable.one));
         list.add(new Photo(R.drawable.two));
         list.add(new Photo(R.drawable.three));
+        list.add(new Photo(R.drawable.dichvu));
         return list;
     }
     private void autoSlide() {

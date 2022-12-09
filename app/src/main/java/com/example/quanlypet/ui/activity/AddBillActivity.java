@@ -57,7 +57,7 @@ public class AddBillActivity extends AppCompatActivity {
         if (service.equals("Khám và Chữa")) {
             edPrice.setText("200000");
         } else if (service.equalsIgnoreCase("Kiểm tra sức Khỏe")) {
-            edPrice.setText("100000");
+            edPrice.setText("200000");
         } else if (service.equalsIgnoreCase("Tiêm Phòng")) {
             edPrice.setText("150000");
         } else if (service.equalsIgnoreCase("Phẫu Thuật")) {
