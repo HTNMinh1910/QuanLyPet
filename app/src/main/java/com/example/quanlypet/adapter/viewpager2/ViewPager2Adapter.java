@@ -1,4 +1,4 @@
-package com.example.quanlypet.dao.viewpager2;
+package com.example.quanlypet.adapter.viewpager2;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

@@ -24,13 +24,15 @@
         app:startIconTint="@color/cardview_shadow_end_color"
         app:startIconDrawable="@drawable/name"
         app:boxBackgroundColor="#ffff"
+        android:enabled="false"
         android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_Username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="User name"
-            android:fontFamily="@font/biorhyme_bold"
+            android:fontFamily="@font/solway_medium"
+            android:textColor="@color/black"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -46,13 +48,15 @@
         app:startIconTint="@color/cardview_shadow_end_color"
         app:startIconDrawable="@drawable/phone"
         app:boxBackgroundColor="#ffff"
+        android:enabled="false"
         android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_Userphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="User phone"
-            android:fontFamily="@font/biorhyme_bold"
+            android:fontFamily="@font/solway_medium"
+            android:textColor="@color/black"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -68,13 +72,15 @@
         app:startIconTint="@color/cardview_shadow_end_color"
         app:startIconDrawable="@drawable/name"
         app:boxBackgroundColor="#ffff"
+        android:enabled="false"
         android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Time"
-            android:fontFamily="@font/biorhyme_bold"
+            android:fontFamily="@font/solway_medium"
+            android:textColor="@color/black"
             android:inputType="time" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -90,19 +96,22 @@
         app:startIconTint="@color/cardview_shadow_end_color"
         app:startIconDrawable="@drawable/schedule"
         app:boxBackgroundColor="#ffff"
+        android:enabled="false"
         android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date"
-            android:fontFamily="@font/biorhyme_bold"
+            android:fontFamily="@font/solway_medium"
+            android:textColor="@color/black"
             android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:hintEnabled="true"
+        android:enabled="false"
         android:paddingBottom="1dp"
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
@@ -118,7 +127,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Price"
-            android:fontFamily="@font/biorhyme_bold"
+            android:fontFamily="@font/solway_medium"
+            android:textColor="@color/black"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -140,7 +150,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Notes"
-            android:fontFamily="@font/biorhyme_bold"
+            android:fontFamily="@font/solway_medium"
+            android:textColor="@color/black"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,8 +166,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_Update_bill"
                 android:text="Update"
+                android:fontFamily="@font/solway_regular"
                 android:textAllCaps="false"
                 android:backgroundTint="#ccc"
+                android:theme="@style/Theme.QuanLyPet.Button_1"
                 android:textColor="@color/black"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/button"/>
@@ -165,10 +178,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_cancel"
             android:text="Cancel"
+            android:fontFamily="@font/solway_regular"
             android:textAllCaps="false"
-            android:backgroundTint="#ccc"
+            android:backgroundTint="#FF7878"
             android:background="@drawable/button"
-            android:textColor="@color/black"
+            android:theme="@style/Theme.QuanLyPet.Button"
+            android:textColor="@color/white"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
 </LinearLayout>

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.example.quanlypet.R;
@@ -30,6 +31,7 @@ public class List_User_Activity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_user);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Danh Sách Người Dùng");
+        toolbar.setTitleTextColor(Color.WHITE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.recy_list_user);
         adapter = new List_user_Adapter(this, new List_user_Adapter.ClickItem() {

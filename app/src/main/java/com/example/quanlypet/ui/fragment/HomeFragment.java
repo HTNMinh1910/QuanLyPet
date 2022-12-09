@@ -18,7 +18,6 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.quanlypet.R;
-import com.example.quanlypet.dao.viewpager2.SlideAdapterHome;
+import com.example.quanlypet.adapter.viewpager2.SlideAdapterHome;
 
 import com.example.quanlypet.adapter.booking.bookingAdapter;
 import com.example.quanlypet.adapter.booking.booking_admin_Adapter;

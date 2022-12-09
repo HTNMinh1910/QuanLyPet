@@ -23,15 +23,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class AddBillActivity extends AppCompatActivity {
-    private TextInputEditText edCaseId;
+    private Toolbar Tbr;
+    private TextInputEditText edUsername;
+    private TextInputEditText edUserphone;
+    private TextInputEditText edTime;
+    private TextInputEditText edDate;
     private TextInputEditText edPrice;
     private TextInputEditText edNote;
     private Button btnAddBill;
-    private Toolbar Tbr;
-    private TextView tvNaneUsers;
-    private TextView tvSdtUsers;
-    private TextView tvTime;
-    private TextView tvDate;
 
     private SimpleDateFormat sdftime = new SimpleDateFormat("HH:mm");
     private SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy-MM-dd");
@@ -44,10 +43,11 @@ public class AddBillActivity extends AppCompatActivity {
         setSupportActionBar(Tbr);
         getSupportActionBar().setTitle("Thêm bill");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        tvNaneUsers = (TextView) findViewById(R.id.tv_naneUsers);
-        tvSdtUsers = (TextView) findViewById(R.id.tv_sdtUsers);
-        tvTime = (TextView) findViewById(R.id.tv_time);
-        tvDate = (TextView) findViewById(R.id.tv_date);
+
+        edUsername = (TextInputEditText) findViewById(R.id.ed_Username);
+        edUserphone = (TextInputEditText) findViewById(R.id.ed_Userphone);
+        edTime = (TextInputEditText) findViewById(R.id.ed_time);
+        edDate = (TextInputEditText) findViewById(R.id.ed_date);
         edPrice = (TextInputEditText) findViewById(R.id.ed_price);
         edNote = (TextInputEditText) findViewById(R.id.ed_note);
         btnAddBill = (Button) findViewById(R.id.btn_Add_bill);
@@ -67,11 +67,11 @@ public class AddBillActivity extends AppCompatActivity {
         } else if (service.equalsIgnoreCase("Spa - Cắt & tỉa")) {
             edPrice.setText("200000");
         }
-        tvDate.setText(sdfdate.format(new Date()));
-        tvTime.setText(sdftime.format(new Date()));
+        edDate.setText(sdfdate.format(new Date()));
+        edTime.setText(sdftime.format(new Date()));
         UsersObj usersObj = UsersDB.getInstance(getApplicationContext()).Dao().getID(userid);
-        tvNaneUsers.setText(usersObj.getFull_name());
-        tvSdtUsers.setText(usersObj.getPhone());
+        edUsername.setText(usersObj.getFull_name());
+        edUserphone.setText(usersObj.getPhone());
         btnAddBill.setOnClickListener(v -> {
 
             double price = Double.parseDouble(edPrice.getText().toString().trim());

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,7 @@ public class UsersInforActivity extends AppCompatActivity {
 
         setSupportActionBar(idTollBar);
         getSupportActionBar().setTitle("Personal Information");
+        idTollBar.setTitleTextColor(Color.WHITE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (username.equals("Admin")){
             AdminObj adminObj = AdminDB.getInstance(this).Dao().getIdAdmin(username);

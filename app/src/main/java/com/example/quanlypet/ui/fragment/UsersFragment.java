@@ -13,6 +13,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,7 +37,7 @@ public class UsersFragment extends Fragment {
     private LinearLayout lnChangePass;
     private LinearLayout lnLogOut;
     private TextView usersName;
-
+    private Animation animation;
     public UsersFragment() {
     }
 
@@ -65,6 +67,7 @@ public class UsersFragment extends Fragment {
         lnUserManager = view.findViewById(R.id.ln_userManager);
         lnChangePass = view.findViewById(R.id.ln_changePass);
         lnLogOut = view.findViewById(R.id.ln_logOut);
+        animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.slide_down);
         SharedPreferences preferences = requireActivity().getSharedPreferences("Users_info", Context.MODE_PRIVATE);
         String username = preferences.getString("Username", "");
         if (username.equals("Admin")) {
@@ -92,8 +95,17 @@ public class UsersFragment extends Fragment {
         lnLogOut.setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), LoginActivity.class));
             getActivity().finish();
-
         });
+        lnLogOut.setAnimation(animation);
+        lnChangePass.setAnimation(animation);
+        lnUserManager.setAnimation(animation);
+        lnInforAccount.setAnimation(animation);
+        lnAnimalManager.setAnimation(animation);
+    }
+
+    public void setAnimation(Animation animation) {
+        this.animation = animation;
+        notifyAll();
     }
 
     public void replaceFragmet(Fragment fragment) {

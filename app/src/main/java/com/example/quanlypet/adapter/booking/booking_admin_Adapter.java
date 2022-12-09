@@ -62,7 +62,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.slide_up);
 
         BookObj obj = list.get(position);
         int index = position;

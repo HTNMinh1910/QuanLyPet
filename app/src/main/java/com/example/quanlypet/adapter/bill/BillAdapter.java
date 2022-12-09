@@ -45,7 +45,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull BillViewHolder holder, int position) {
-        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.slide_up);
         BillObj object = arrayList.get(position);
         if (object == null)
             return;
@@ -53,8 +53,9 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
         holder.tvNameUsers.setText(usersObj.getFull_name());
         holder.tvDate.setText(object.getDate());
         holder.tvPriceBill.setText(object.getPrice()+"");
-        holder.idItemBill.setOnClickListener(v -> {
+        holder.idItemBill.setOnLongClickListener(v -> {
             callback.Update(object);
+            return false;
         });
         holder.itemView.startAnimation(animation);
     }

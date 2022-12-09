@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,7 @@ public class DetailUsersActivity extends AppCompatActivity {
         findID();
         setSupportActionBar(idTollBar);
         getSupportActionBar().setTitle("Personal Information");
+        idTollBar.setTitleTextColor(Color.WHITE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         obj = (UsersObj) getIntent().getExtras().get("object_user");
         TIEDImportName.setEnabled(false);

@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -82,6 +84,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
 
     @Override
     public void onBindViewHolder(@NonNull DocterViewHolder holder, int position) {
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.slide_up);
         DoctorObj docterObj = list.get(position);
         if(docterObj==null)
             return;
@@ -117,6 +120,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DocterView
                 intent.putExtra("img",ByteArray);
                 context.startActivity(intent);
         });
+        holder.itemView.startAnimation(animation);
     }
     @Override
     public int getItemCount() {

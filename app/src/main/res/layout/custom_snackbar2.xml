@@ -14,9 +14,9 @@
 
         <ImageView
             android:id="@+id/img_petshop"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:src="@drawable/pet_shop" />
 
         <LinearLayout
@@ -31,7 +31,7 @@
                 android:layout_marginLeft="20dp"
                 android:text="THÔNG BÁO!!"
                 android:textColor="#F13030"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -40,18 +40,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:text="Giờ Đặt Không Còn Trống"
+                android:text="Giờ đặt không còn trống."
                 android:textColor="#F13030"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
         </LinearLayout>
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:src="@drawable/sad"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginLeft="20dp" />
 
     </LinearLayout>
 
