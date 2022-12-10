@@ -97,15 +97,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="20dp"
-                android:layout_margin="10dp">
+                android:layout_margin="15dp">
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <androidx.viewpager.widget.ViewPager
-
                         android:id="@+id/vpr"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"/>
+                        android:layout_height="200dp"/>
 
                     <me.relex.circleindicator.CircleIndicator
                         android:id="@+id/circle_indicator"
