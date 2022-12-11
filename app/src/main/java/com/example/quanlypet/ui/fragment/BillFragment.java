@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,6 +54,7 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
     private SimpleDateFormat sdftime = new SimpleDateFormat("HH:mm");
     private SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy-MM-dd");
     private String username;
+    private SearchView searchBill;
 
     public BillFragment() {
     }
@@ -79,11 +81,26 @@ public class BillFragment extends Fragment implements BillAdapter.Callback {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("user_file", Context.MODE_PRIVATE);
         username = sharedPreferences.getString("Username", "");
         rcvBill = (RecyclerView) view.findViewById(R.id.rcv_bill);
+        searchBill = (SearchView) view.findViewById(R.id.search_bill);
         adapterBill = new BillAdapter(getContext(), this);
         LoadData();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rcvBill.setLayoutManager(layoutManager);
         rcvBill.setAdapter(adapterBill);
+
+        searchBill.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapterBill.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterBill.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
     public void LoadData() {
         if (username.equals("Admin")) {
