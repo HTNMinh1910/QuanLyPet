@@ -128,6 +128,7 @@ public class AddBookingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar_booking);
         getSupportActionBar().setTitle("Đặt Lịch");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar_booking.setTitleTextColor(Color.WHITE);
 
         DatePickerDialog.OnDateSetListener date = (datePicker, year, monthOfYear, dayOfMonth) -> {
             mYear = year;

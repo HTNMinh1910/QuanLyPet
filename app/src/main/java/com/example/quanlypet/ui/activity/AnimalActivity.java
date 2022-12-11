@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -63,6 +64,7 @@ public class AnimalActivity extends AppCompatActivity implements AnimalAdapter.C
         setSupportActionBar(Tbr);
         getSupportActionBar().setTitle("Animal");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Tbr.setTitleTextColor(Color.WHITE);
 
         SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
         String username = sharedPreferences.getString("Username","");

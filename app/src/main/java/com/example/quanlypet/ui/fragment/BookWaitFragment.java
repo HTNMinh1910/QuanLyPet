@@ -475,8 +475,6 @@ public class BookWaitFragment extends Fragment implements SwipeRefreshLayout.OnR
                 Toast.makeText(getActivity(), "Đã sửa", Toast.LENGTH_SHORT).show();
             }
         });
-
-
         dialog.show();
     }
 

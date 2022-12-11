@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class AddAnimalActivity extends AppCompatActivity {
         setSupportActionBar(Tbr);
         getSupportActionBar().setTitle("Add Animal");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Tbr.setTitleTextColor(Color.WHITE);
         edNameAnimal = (EditText)findViewById(R.id.ed_nameAnimal);
         btnAlbum = findViewById(R.id.btn_album);
         SharedPreferences sharedPreferences = getSharedPreferences("Users_info",MODE_PRIVATE);
