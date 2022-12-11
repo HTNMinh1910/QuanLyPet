@@ -101,7 +101,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
             callback.Update(object);
             return false;
         });
-        holder.relyAnimal.setOnClickListener(v ->{
+        holder.imgInformation.setOnClickListener(v ->{
             Dialog dialog = new Dialog(v.getContext());
             dialog.setContentView(R.layout.dialog_benh_an);
             dialog.getWindow().setBackgroundDrawable(context.getDrawable(R.drawable.bg_huy_booking));

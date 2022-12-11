@@ -133,6 +133,7 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
                     editor.putInt("animalId",obj.getId_animal());
                     editor.commit();
                     mContext.startActivity(intent);
+                    dialog.dismiss();
                 });
                 btnCancel.setOnClickListener(view -> {
                     dialog.cancel();
@@ -162,9 +163,13 @@ public class booking_admin_Adapter extends RecyclerView.Adapter<booking_admin_Ad
         Button btn_xacnhan = dialog.findViewById(R.id.btn_xacnhan);
         Button btn_hoanthanh = dialog.findViewById(R.id.btn_hoanthanh);
         Button btn_cancle = dialog.findViewById(R.id.btn_cancel);
-        if (bookObj.getObj_status() == 3 || bookObj.getObj_status() == 4) {
-            btn_xacnhan.setVisibility(View.INVISIBLE);
-            cv_xacnhan.setVisibility(View.INVISIBLE);
+        if (bookObj.getObj_status() == 3) {
+            btn_xacnhan.setVisibility(View.GONE);
+            cv_xacnhan.setVisibility(View.GONE);
+        }
+        if (bookObj.getObj_status() == 1) {
+            btn_hoanthanh.setVisibility(View.GONE);
+            cv_hoanthanh.setVisibility(View.GONE);
         }
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
