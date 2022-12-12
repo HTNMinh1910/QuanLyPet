@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F2F2F2">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tbl_booking"
+        app:title="Update doctor"
+        app:titleTextColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:background="#FFAB00" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,22 +22,6 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_exit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/biorhyme_bold"
-                android:text="Exit"
-                android:paddingTop="3dp"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                android:paddingBottom="3dp"
-                android:background="@drawable/button"
-                android:backgroundTint="#DD2C00"
-                android:layout_gravity="center_vertical"
-                android:textColor="#FFFFFF"
-                android:layout_marginBottom="20dp"
-                android:textSize="10sp" />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/id_TIP_layout_picture"
                 style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
