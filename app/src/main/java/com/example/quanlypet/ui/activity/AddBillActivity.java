@@ -56,16 +56,22 @@ public class AddBillActivity extends AppCompatActivity {
         String service = sharedPreferences.getString("obj_service", "");
         if (service.equals("Khám và Chữa")) {
             edPrice.setText("200000");
+            edNote.setText("Khám và Chữa giá 200000");
         } else if (service.equalsIgnoreCase("Kiểm tra sức Khỏe")) {
             edPrice.setText("200000");
+            edNote.setText("Kiểm tra sức Khỏe giá 200000");
         } else if (service.equalsIgnoreCase("Tiêm Phòng")) {
             edPrice.setText("150000");
+            edNote.setText("Tiêm Phòng giá 150000");
         } else if (service.equalsIgnoreCase("Phẫu Thuật")) {
             edPrice.setText("350000");
+            edNote.setText("Phẫu Thuật giá 350000");
         } else if (service.equalsIgnoreCase("Siêu âm")) {
             edPrice.setText("300000");
+            edNote.setText("Siêu âm giá 300000");
         } else if (service.equalsIgnoreCase("Spa - Cắt & tỉa")) {
             edPrice.setText("200000");
+            edNote.setText("Spa - Cắt & tỉa giá 200000");
         }
         edDate.setText(sdfdate.format(new Date()));
         edTime.setText(sdftime.format(new Date()));

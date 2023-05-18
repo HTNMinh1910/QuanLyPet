@@ -70,54 +70,60 @@
                 android:textColor="@color/black"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintEnabled="true"
-            android:paddingBottom="1dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:background="@drawable/bg_coneradios"
-            app:startIconTintMode="screen"
-            app:startIconTint="@color/cardview_shadow_end_color"
-            app:startIconDrawable="@drawable/name"
-            app:boxBackgroundColor="#ffff"
-            android:layout_marginTop="30dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_time"
-                android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:hint="Time"
-                android:enabled="false"
-                android:fontFamily="@font/solway_medium"
-                android:textColor="@color/black"
-                android:inputType="time" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:hintEnabled="true"
-            android:paddingBottom="1dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:background="@drawable/bg_coneradios"
-            app:startIconTintMode="screen"
-            app:startIconTint="@color/cardview_shadow_end_color"
-            app:startIconDrawable="@drawable/schedule"
-            app:boxBackgroundColor="#ffff"
-            android:layout_marginTop="30dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_date"
-                android:layout_width="match_parent"
+                app:hintEnabled="true"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/name"
+                app:boxBackgroundColor="#ffff"
+                android:layout_marginTop="30dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Time"
+                    android:enabled="false"
+                    android:fontFamily="@font/solway_medium"
+                    android:textColor="@color/black"
+                    android:inputType="time" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:hint="Date"
-                android:enabled="false"
-                android:fontFamily="@font/solway_medium"
-                android:textColor="@color/black"
-                android:inputType="date" />
-        </com.google.android.material.textfield.TextInputLayout>
+                app:hintEnabled="true"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_coneradios"
+                app:startIconTintMode="screen"
+                app:startIconTint="@color/cardview_shadow_end_color"
+                app:startIconDrawable="@drawable/schedule"
+                app:boxBackgroundColor="#ffff"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Date"
+                    android:enabled="false"
+                    android:fontFamily="@font/solway_medium"
+                    android:textColor="@color/black"
+                    android:inputType="date" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -159,7 +165,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_note"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:hint="Notes"
                 android:fontFamily="@font/solway_medium"
                 android:textColor="@color/black"
